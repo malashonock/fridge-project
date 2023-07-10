@@ -7,7 +7,7 @@
       "i18n": {
         "sourceLocale": "en-US",
         "locales": {
-          "ru-RU": {
+          "ru": {
             "translation": "src/locale/messages.ru.xlf"
           }
         }
@@ -28,7 +28,7 @@
             "outputPath": "dist/fridge-project",
             "index": "src/index.html",
             "localize": [
-              "ru-RU"
+              "ru"
             ],
             "main": "src/main.ts",
             "polyfills": [
