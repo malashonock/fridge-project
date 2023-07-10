@@ -1,13 +1,17 @@
 <div>
-  <nav>
-    <ul>
-      <li>
-        <a routerLink="login">Log in</a>
-      </li>
-      <li>
-        <a routerLink="signup">Sign up</a>
-      </li>
-    </ul>
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a
+      mat-tab-link
+      *ngFor="let tab of tabs"
+      [routerLink]="tab.link"
+      routerLinkActive
+      #rla="routerLinkActive"
+      [active]="rla.isActive"
+      (click)="onTabSelect(tab)"
+      >{{ tab.label }}</a
+    >
   </nav>
-  <router-outlet></router-outlet>
+  <mat-tab-nav-panel #tabPanel class="tab-panel">
+    <router-outlet></router-outlet>
+  </mat-tab-nav-panel>
 </div>
