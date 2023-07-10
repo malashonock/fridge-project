@@ -4,6 +4,14 @@
   "newProjectRoot": "projects",
   "projects": {
     "fridge-project": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "ru-RU": {
+            "translation": "src/locale/messages.ru.xlf"
+          }
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -19,6 +27,9 @@
           "options": {
             "outputPath": "dist/fridge-project",
             "index": "src/index.html",
+            "localize": [
+              "ru-RU"
+            ],
             "main": "src/main.ts",
             "polyfills": [
               "zone.js"
