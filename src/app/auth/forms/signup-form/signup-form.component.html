@@ -1,1 +1,95 @@
-<p>signup-form works!</p>
+<form (ngSubmit)="onSubmit()" class="form" [formGroup]="form">
+  <header class="header">
+    <mat-icon class="account-icon" fontIcon="account_circle"></mat-icon>
+    <h2 class="title">Sign up</h2>
+  </header>
+
+  <mat-form-field
+    appearance="outline"
+    subscriptSizing="dynamic"
+    class="form-field"
+  >
+    <mat-label>User name</mat-label>
+    <input matInput placeholder="User name" formControlName="userName" />
+    <mat-error *ngIf="form.get('userName')?.errors">{{
+      getFieldErrorMessage("userName")
+    }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    appearance="outline"
+    subscriptSizing="dynamic"
+    class="form-field"
+  >
+    <mat-label>Email</mat-label>
+    <input matInput type="email" placeholder="Email" formControlName="email" />
+    <mat-error *ngIf="form.get('email')?.errors">{{
+      getFieldErrorMessage("email")
+    }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    appearance="outline"
+    subscriptSizing="dynamic"
+    class="form-field"
+  >
+    <mat-label>Role</mat-label>
+    <mat-select formControlName="role">
+      <mat-option value="user">User</mat-option>
+      <mat-option value="admin">Admin</mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.get('role')?.errors">{{
+      getFieldErrorMessage("role")
+    }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    appearance="outline"
+    subscriptSizing="dynamic"
+    class="form-field"
+  >
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <mat-error *ngIf="form.get('password')?.errors">{{
+      getFieldErrorMessage("password")
+    }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    appearance="outline"
+    subscriptSizing="dynamic"
+    class="form-field"
+  >
+    <mat-label>Confirm password</mat-label>
+    <input
+      matInput
+      type="password"
+      placeholder="Confirm password"
+      formControlName="passwordConfirm"
+    />
+    <mat-error *ngIf="form.get('passwordConfirm')?.errors">{{
+      getFieldErrorMessage("passwordConfirm")
+    }}</mat-error>
+  </mat-form-field>
+
+  <mat-error *ngIf="form.errors">{{ getFormErrorMessage() }}</mat-error>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="form.invalid"
+  >
+    Log in
+  </button>
+
+  <p class="login-link">
+    <span>Already have an account? </span>
+    <a routerLink="/auth/login">Log in</a>
+  </p>
+</form>
