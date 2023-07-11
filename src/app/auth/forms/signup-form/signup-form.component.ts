@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SignupCredentials } from 'app/auth/models/signup.model';
 
+import { SignupCredentials } from 'app/auth/models/signup.model';
 import { UserRole } from 'app/shared/models/user/user-role.model';
 import { SentenceCasePipe } from 'app/shared/pipes/sentence-case/sentence-case.pipe';
 import { SplitCamelCasePipe } from 'app/shared/pipes/split-camel-case/split-camel-case.pipe';
