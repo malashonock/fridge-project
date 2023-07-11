@@ -12,7 +12,7 @@ import {
 } from 'app/shared/utils/regex/regex';
 
 export class EmailValidator {
-  static validEmail: ValidatorFn = (
+  static valid: ValidatorFn = (
     control: AbstractControl
   ): ValidationErrors | null => {
     // Alias character sequences
