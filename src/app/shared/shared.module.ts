@@ -6,6 +6,7 @@ import { SplitCamelCasePipe } from './pipes/split-camel-case/split-camel-case.pi
 
 @NgModule({
   declarations: [SentenceCasePipe, SplitCamelCasePipe],
+  exports: [SentenceCasePipe, SplitCamelCasePipe],
   imports: [CommonModule],
 })
 export class SharedModule {}
