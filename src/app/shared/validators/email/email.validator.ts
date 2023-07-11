@@ -9,7 +9,7 @@ import {
   minCount,
   startWith,
   endWith,
-} from 'app/shared/utils/regex';
+} from 'app/shared/utils/regex/regex';
 
 export class EmailValidator {
   static validEmail: ValidatorFn = (
