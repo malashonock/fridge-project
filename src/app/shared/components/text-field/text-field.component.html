@@ -1,0 +1,9 @@
+<mat-form-field
+  appearance="outline"
+  subscriptSizing="dynamic"
+  class="form-field"
+>
+  <mat-label>{{ label }}</mat-label>
+  <input #input matInput placeholder="{{ label }}" />
+  <mat-error *ngIf="error">{{ error }}</mat-error>
+</mat-form-field>

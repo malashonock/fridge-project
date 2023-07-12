@@ -4,13 +4,25 @@
     <h2 class="title">Sign up</h2>
   </header>
 
+  <!-- <app-text-field
+    formControlName="userName"
+    name="userName"
+    label="User name"
+    [error]="getFieldErrorMessage('userName')"
+  ></app-text-field> -->
+
   <mat-form-field
     appearance="outline"
     subscriptSizing="dynamic"
     class="form-field"
   >
     <mat-label>User name</mat-label>
-    <input matInput placeholder="User name" formControlName="userName" />
+    <input
+      matInput
+      type="email"
+      placeholder="User name"
+      formControlName="userName"
+    />
     <mat-error *ngIf="form.get('userName')?.errors">{{
       getFieldErrorMessage("userName")
     }}</mat-error>
