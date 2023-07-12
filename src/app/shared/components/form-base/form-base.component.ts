@@ -8,7 +8,7 @@ type FormValues = { [key: string]: any };
 type FormControls = Parameters<typeof FormBuilder.prototype.group>[0];
 
 export class FormBaseComponent {
-  protected form: FormGroup;
+  readonly form: FormGroup;
   protected initialValues: FormValues = {};
 
   constructor(
@@ -28,6 +28,10 @@ export class FormBaseComponent {
   }
 
   getFieldErrorMessage(fieldKey: string, fieldName?: string): string | null {
+    if (!Object.hasOwn(this.form.controls, fieldKey)) {
+      throw new Error(`Field '${fieldKey}' is missing on the form`);
+    }
+
     const fieldErrors = this.form.controls[fieldKey].errors;
 
     if (!fieldErrors) {
