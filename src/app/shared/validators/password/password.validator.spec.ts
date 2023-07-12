@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
 import { FormControl, FormGroup } from '@angular/forms';
 import { PasswordValidator } from './password.validator';
 
