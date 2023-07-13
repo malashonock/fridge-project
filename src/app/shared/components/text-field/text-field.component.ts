@@ -1,9 +1,25 @@
-import { Component, Input, ViewChild, forwardRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Injector,
+  Input,
+  OnInit,
+  Renderer2,
+  ViewChild,
+  forwardRef,
+} from '@angular/core';
 import {
   ControlValueAccessor,
-  DefaultValueAccessor,
+  FormControl,
+  FormControlDirective,
+  FormControlName,
+  FormGroupDirective,
   NG_VALUE_ACCESSOR,
+  NgControl,
 } from '@angular/forms';
+
+type ChangeEventHandler = (value: string | null) => void;
+type BlurEventHandler = () => void;
 
 @Component({
   selector: 'app-text-field',
@@ -17,26 +33,47 @@ import {
     },
   ],
 })
-export class TextFieldComponent implements ControlValueAccessor {
+export class TextFieldComponent implements ControlValueAccessor, OnInit {
   @Input() name = '';
   @Input() label = '';
   @Input() error: string | null = null;
 
-  @ViewChild('input') textInput!: DefaultValueAccessor;
+  formControl!: FormControl;
+
+  @ViewChild('input', { static: true }) input!: ElementRef;
+
+  value = '';
+
+  onChange: ChangeEventHandler = () => undefined;
+  onBlur: BlurEventHandler = () => undefined;
+
+  constructor(private injector: Injector, private renderer: Renderer2) {}
+
+  ngOnInit(): void {
+    const ngControl = this.injector.get(NgControl);
+    if (ngControl instanceof FormControlName) {
+      this.formControl = this.injector
+        .get(FormGroupDirective)
+        .getControl(ngControl);
+    } else {
+      this.formControl = (ngControl as FormControlDirective)
+        .form as FormControl;
+    }
+  }
 
   writeValue(value: string): void {
-    this.textInput.writeValue(value);
+    this.renderer.setProperty(this.input.nativeElement, 'value', value);
   }
 
-  registerOnChange(fn: any): void {
-    this.textInput.onChange = fn;
+  registerOnChange(changeEventHandler: ChangeEventHandler): void {
+    this.onChange = changeEventHandler;
   }
 
-  registerOnTouched(fn: any): void {
-    this.textInput.onTouched = fn;
+  registerOnTouched(blurEventHandler: BlurEventHandler): void {
+    this.onBlur = blurEventHandler;
   }
 
-  setDisabledState?(isDisabled: boolean): void {
-    this.textInput.setDisabledState(isDisabled);
+  setDisabledState(isDisabled: boolean): void {
+    this.renderer.setProperty(this.input.nativeElement, 'disabled', isDisabled);
   }
 }

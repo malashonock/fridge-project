@@ -4,29 +4,12 @@
     <h2 class="title">Sign up</h2>
   </header>
 
-  <!-- <app-text-field
+  <app-text-field
     formControlName="userName"
     name="userName"
     label="User name"
     [error]="getFieldErrorMessage('userName')"
-  ></app-text-field> -->
-
-  <mat-form-field
-    appearance="outline"
-    subscriptSizing="dynamic"
-    class="form-field"
-  >
-    <mat-label>User name</mat-label>
-    <input
-      matInput
-      type="email"
-      placeholder="User name"
-      formControlName="userName"
-    />
-    <mat-error *ngIf="form.get('userName')?.errors">{{
-      getFieldErrorMessage("userName")
-    }}</mat-error>
-  </mat-form-field>
+  ></app-text-field>
 
   <mat-form-field
     appearance="outline"
@@ -35,9 +18,7 @@
   >
     <mat-label>Email</mat-label>
     <input matInput type="email" placeholder="Email" formControlName="email" />
-    <mat-error *ngIf="form.get('email')?.errors">{{
-      getFieldErrorMessage("email")
-    }}</mat-error>
+    <mat-error>{{ getFieldErrorMessage("email") }}</mat-error>
   </mat-form-field>
 
   <mat-form-field
