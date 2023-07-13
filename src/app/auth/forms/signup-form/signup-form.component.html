@@ -17,20 +17,12 @@
     [error]="getFieldErrorMessage('email')"
   ></app-text-field>
 
-  <mat-form-field
-    appearance="outline"
-    subscriptSizing="dynamic"
-    class="form-field"
-  >
-    <mat-label>Role</mat-label>
-    <mat-select formControlName="role">
-      <mat-option value="user">User</mat-option>
-      <mat-option value="admin">Admin</mat-option>
-    </mat-select>
-    <mat-error *ngIf="form.get('role')?.errors">{{
-      getFieldErrorMessage("role")
-    }}</mat-error>
-  </mat-form-field>
+  <app-select-field
+    name="role"
+    label="Role"
+    [options]="roles"
+    [error]="getFieldErrorMessage('role')"
+  ></app-select-field>
 
   <app-text-field
     name="password"

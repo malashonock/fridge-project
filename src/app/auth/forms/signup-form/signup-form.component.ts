@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FormBaseComponent } from 'app/shared/components/form-base/form-base.component';
+import { SelectOption } from 'app/shared/components/select-field/select-field.component';
 import { UserRole } from 'app/shared/models/user/user-role.model';
 import { SentenceCasePipe } from 'app/shared/pipes/sentence-case/sentence-case.pipe';
 import { SplitCamelCasePipe } from 'app/shared/pipes/split-camel-case/split-camel-case.pipe';
@@ -14,6 +15,11 @@ import { PasswordValidator } from 'app/shared/validators/password/password.valid
   styleUrls: ['./signup-form.component.scss'],
 })
 export class SignupFormComponent extends FormBaseComponent {
+  roles: SelectOption[] = [
+    { value: 'user', label: 'User' },
+    { value: 'admin', label: 'Admin' },
+  ];
+
   constructor(
     formBuilder: FormBuilder,
     sentenceCasePipe: SentenceCasePipe,
