@@ -15,7 +15,7 @@ import { SharedModule } from 'app/shared/shared.module';
 import { FormBaseComponent } from '../form-base/form-base.component';
 import { SentenceCasePipe } from 'app/shared/pipes/sentence-case/sentence-case.pipe';
 import { SplitCamelCasePipe } from 'app/shared/pipes/split-camel-case/split-camel-case.pipe';
-import { EmailValidator } from 'app/shared/validators/email/email.validator';
+import { EmailValidator } from 'app/core/validators/email/email.validator';
 
 describe('TextFieldComponent', () => {
   let loader: HarnessLoader;

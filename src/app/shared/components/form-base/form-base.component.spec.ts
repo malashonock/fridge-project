@@ -3,8 +3,8 @@ import { FormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { FormBaseComponent } from './form-base.component';
 import { SentenceCasePipe } from 'app/shared/pipes/sentence-case/sentence-case.pipe';
 import { SplitCamelCasePipe } from 'app/shared/pipes/split-camel-case/split-camel-case.pipe';
-import { EmailValidator } from 'app/shared/validators/email/email.validator';
-import { PasswordValidator } from 'app/shared/validators/password/password.validator';
+import { EmailValidator } from 'app/core/validators/email/email.validator';
+import { PasswordValidator } from 'app/core/validators/password/password.validator';
 
 describe('FormBaseComponent', () => {
   describe('constructor', () => {
