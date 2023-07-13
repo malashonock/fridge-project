@@ -1,0 +1,21 @@
+<mat-form-field
+  appearance="outline"
+  subscriptSizing="dynamic"
+  class="form-field"
+>
+  <mat-label>{{ label }}</mat-label>
+  <mat-select
+    [id]="name"
+    placeholder="{{ label }}"
+    [formControl]="formControl"
+    [value]="value"
+    (selectionChange)="onChange($event.value)"
+    (closed)="onBlur()"
+    [disabled]="disabled"
+  >
+    <mat-option *ngFor="let option of options" value="option.value">{{
+      option.label
+    }}</mat-option>
+  </mat-select>
+  <mat-error *ngIf="error">{{ error }}</mat-error>
+</mat-form-field>
