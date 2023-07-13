@@ -1,12 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTabsModule } from '@angular/material/tabs';
-import { AuthRoutingModule } from 'app/auth/auth-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
 
 import { SignupFormComponent } from './signup-form.component';
@@ -26,11 +21,6 @@ describe('SignupFormComponent', () => {
         BrowserAnimationsModule,
         SharedModule,
         ReactiveFormsModule,
-        AuthRoutingModule,
-        MatTabsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
         MatButtonModule,
         MatIconModule,
         RouterTestingModule,
