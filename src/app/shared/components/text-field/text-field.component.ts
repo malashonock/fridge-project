@@ -1,21 +1,10 @@
-import {
-  Component,
-  ElementRef,
-  Injector,
-  Input,
-  OnInit,
-  Renderer2,
-  ViewChild,
-  forwardRef,
-} from '@angular/core';
+import { Component, Input, ViewChild, forwardRef } from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
   FormControlDirective,
-  FormControlName,
   FormGroupDirective,
   NG_VALUE_ACCESSOR,
-  NgControl,
 } from '@angular/forms';
 
 type ChangeEventHandler = (value: string | null) => void;
@@ -33,47 +22,40 @@ type BlurEventHandler = () => void;
     },
   ],
 })
-export class TextFieldComponent implements ControlValueAccessor, OnInit {
+export class TextFieldComponent implements ControlValueAccessor {
   @Input() name = '';
   @Input() label = '';
   @Input() error: string | null = null;
 
-  formControl!: FormControl;
+  @ViewChild(FormControlDirective, { static: true })
+  formControlDirective!: FormControlDirective;
 
-  @ViewChild('input', { static: true }) input!: ElementRef;
+  constructor(private formGroupDirective: FormGroupDirective) {}
 
-  value = '';
-
-  onChange: ChangeEventHandler = () => undefined;
-  onBlur: BlurEventHandler = () => undefined;
-
-  constructor(private injector: Injector, private renderer: Renderer2) {}
-
-  ngOnInit(): void {
-    const ngControl = this.injector.get(NgControl);
-    if (ngControl instanceof FormControlName) {
-      this.formControl = this.injector
-        .get(FormGroupDirective)
-        .getControl(ngControl);
-    } else {
-      this.formControl = (ngControl as FormControlDirective)
-        .form as FormControl;
-    }
+  get formControl(): FormControl {
+    return (
+      (this.formGroupDirective.control?.get(this.name) as FormControl) ??
+      new FormControl('')
+    );
   }
 
   writeValue(value: string): void {
-    this.renderer.setProperty(this.input.nativeElement, 'value', value);
+    this.formControlDirective.valueAccessor?.writeValue(value);
   }
 
   registerOnChange(changeEventHandler: ChangeEventHandler): void {
-    this.onChange = changeEventHandler;
+    this.formControlDirective.valueAccessor?.registerOnChange(
+      changeEventHandler
+    );
   }
 
   registerOnTouched(blurEventHandler: BlurEventHandler): void {
-    this.onBlur = blurEventHandler;
+    this.formControlDirective.valueAccessor?.registerOnTouched(
+      blurEventHandler
+    );
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.renderer.setProperty(this.input.nativeElement, 'disabled', isDisabled);
+    this.formControlDirective.valueAccessor?.setDisabledState?.(isDisabled);
   }
 }

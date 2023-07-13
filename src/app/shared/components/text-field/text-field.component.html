@@ -5,14 +5,10 @@
 >
   <mat-label>{{ label }}</mat-label>
   <input
-    #input
     matInput
     [name]="name"
     [id]="name"
     placeholder="{{ label }}"
-    [value]="value"
-    (change)="onChange($any($event.target).value)"
-    (blur)="onBlur()"
     [formControl]="formControl"
   />
   <mat-error *ngIf="error">{{ error }}</mat-error>
