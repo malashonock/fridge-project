@@ -1,4 +1,10 @@
-import { Component, Input, ViewChild, forwardRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  Optional,
+  ViewChild,
+  forwardRef,
+} from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
@@ -31,11 +37,11 @@ export class TextFieldComponent implements ControlValueAccessor {
   @ViewChild(FormControlDirective, { static: true })
   formControlDirective!: FormControlDirective;
 
-  constructor(private formGroupDirective: FormGroupDirective) {}
+  constructor(@Optional() private formGroupDirective: FormGroupDirective) {}
 
   get formControl(): FormControl {
     return (
-      (this.formGroupDirective.control?.get(this.name) as FormControl) ??
+      (this.formGroupDirective?.control?.get(this.name) as FormControl) ??
       new FormControl('')
     );
   }
