@@ -1,1 +1,33 @@
-<p>login-form works!</p>
+<form (ngSubmit)="onSubmit()" class="form" [formGroup]="form">
+  <header class="header">
+    <mat-icon class="account-icon" fontIcon="account_circle"></mat-icon>
+    <h2 class="title">Log in</h2>
+  </header>
+
+  <app-text-field
+    name="userName"
+    label="User name"
+    [error]="getFieldErrorMessage('userName')"
+  ></app-text-field>
+
+  <app-text-field
+    name="password"
+    label="Password"
+    type="password"
+    [error]="getFieldErrorMessage('password')"
+  ></app-text-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="form.invalid"
+  >
+    Log in
+  </button>
+
+  <p class="signup-link">
+    <span>Don't have an account yet? </span>
+    <a routerLink="/auth/signup">Sign up</a>
+  </p>
+</form>
