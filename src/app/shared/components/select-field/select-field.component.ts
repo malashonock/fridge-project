@@ -43,8 +43,6 @@ export class SelectFieldComponent implements ControlValueAccessor {
     this.onChange(option);
   }
 
-  disabled = false;
-
   onChange: ChangeEventHandler = () => undefined;
   onBlur: BlurEventHandler = () => undefined;
 
@@ -70,6 +68,10 @@ export class SelectFieldComponent implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    if (isDisabled) {
+      this.formControl.disable();
+    } else {
+      this.formControl.enable();
+    }
   }
 }
