@@ -25,6 +25,7 @@ type BlurEventHandler = () => void;
 export class TextFieldComponent implements ControlValueAccessor {
   @Input() name = '';
   @Input() label = '';
+  @Input() type = 'text';
   @Input() error: string | null = null;
 
   @ViewChild(FormControlDirective, { static: true })
