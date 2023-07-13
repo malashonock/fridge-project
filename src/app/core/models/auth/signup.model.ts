@@ -1,4 +1,4 @@
-import { UserRole } from 'app/shared/models/user/user-role.model';
+import { UserRole } from '../user/user-role.model';
 
 export interface SignupCredentials {
   userName: string;

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FormBaseComponent } from 'app/shared/components/form-base/form-base.component';
 import { SelectOption } from 'app/shared/components/select-field/select-field.component';
-import { UserRole } from 'app/shared/models/user/user-role.model';
+import { UserRole } from 'app/core/models/user/user-role.model';
 import { SentenceCasePipe } from 'app/shared/pipes/sentence-case/sentence-case.pipe';
 import { SplitCamelCasePipe } from 'app/shared/pipes/split-camel-case/split-camel-case.pipe';
 import { EmailValidator } from 'app/shared/validators/email/email.validator';
