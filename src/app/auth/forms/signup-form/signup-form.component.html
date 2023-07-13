@@ -10,15 +10,12 @@
     [error]="getFieldErrorMessage('userName')"
   ></app-text-field>
 
-  <mat-form-field
-    appearance="outline"
-    subscriptSizing="dynamic"
-    class="form-field"
-  >
-    <mat-label>Email</mat-label>
-    <input matInput type="email" placeholder="Email" formControlName="email" />
-    <mat-error>{{ getFieldErrorMessage("email") }}</mat-error>
-  </mat-form-field>
+  <app-text-field
+    name="email"
+    label="Email"
+    type="email"
+    [error]="getFieldErrorMessage('email')"
+  ></app-text-field>
 
   <mat-form-field
     appearance="outline"
@@ -35,39 +32,19 @@
     }}</mat-error>
   </mat-form-field>
 
-  <mat-form-field
-    appearance="outline"
-    subscriptSizing="dynamic"
-    class="form-field"
-  >
-    <mat-label>Password</mat-label>
-    <input
-      matInput
-      type="password"
-      placeholder="Password"
-      formControlName="password"
-    />
-    <mat-error *ngIf="form.get('password')?.errors">{{
-      getFieldErrorMessage("password")
-    }}</mat-error>
-  </mat-form-field>
+  <app-text-field
+    name="password"
+    label="Password"
+    type="password"
+    [error]="getFieldErrorMessage('password')"
+  ></app-text-field>
 
-  <mat-form-field
-    appearance="outline"
-    subscriptSizing="dynamic"
-    class="form-field"
-  >
-    <mat-label>Confirm password</mat-label>
-    <input
-      matInput
-      type="password"
-      placeholder="Confirm password"
-      formControlName="passwordConfirm"
-    />
-    <mat-error *ngIf="form.get('passwordConfirm')?.errors">{{
-      getFieldErrorMessage("passwordConfirm")
-    }}</mat-error>
-  </mat-form-field>
+  <app-text-field
+    name="passwordConfirm"
+    label="Confirm password"
+    type="password"
+    [error]="getFieldErrorMessage('passwordConfirm')"
+  ></app-text-field>
 
   <mat-error *ngIf="form.errors">{{ getFormErrorMessage() }}</mat-error>
 
