@@ -9,7 +9,7 @@ export const AuthActions = createActionGroup({
   source: 'Auth',
   events: {
     Signup: props<{ credentials: SignupCredentials }>(),
-    'Signup Success': props<{ createdUser: User }>(),
+    'Signup Success': props<{ user: User; password: string }>(),
     'Signup Failure': props<{ error: string }>(),
     Login: props<{ credentials: LoginCredentials }>(),
     'Login Success': props<{ sessionData: AuthSession }>(),

@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 import { AuthSession } from 'app/state/auth/auth.slice';
 import { User } from 'app/core/models/user/user.model';
+import { SignupCredentials } from 'app/core/models/auth/signup.model';
+import { LoginCredentials } from 'app/core/models/auth/login.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,11 +17,11 @@ export class AuthService {
     throw new Error('Method not implemented!');
   }
 
-  signup(): Observable<User> {
+  signup(credentials: SignupCredentials): Observable<User> {
     throw new Error('Method not implemented!');
   }
 
-  login(): Observable<AuthSession> {
+  login(credentials: LoginCredentials): Observable<AuthSession> {
     throw new Error('Method not implemented!');
   }
 
