@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { authSlice } from './state/auth/auth.slice';
 import { AuthEffects } from './state/auth/auth.effects';
+import { AuthSessionInitializer } from './core/services/auth/auth-session.initializer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,7 @@ import { AuthEffects } from './state/auth/auth.effects';
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([AuthEffects]),
   ],
-  providers: [],
+  providers: [AuthSessionInitializer],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
