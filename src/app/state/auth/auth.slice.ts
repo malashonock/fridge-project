@@ -1,13 +1,10 @@
 import { createFeature, createReducer } from '@ngrx/store';
-import { UserRole } from 'app/core/models/user/user-role.model';
+
+import { User } from 'app/core/models/user/user.model';
 
 export type AuthSessionState =
   | {
-      user: {
-        id: string;
-        name: string;
-        role: UserRole;
-      };
+      user: User;
       token: string;
       expiresAt: Date;
     }
