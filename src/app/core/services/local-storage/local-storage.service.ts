@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalStorageService {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getItem(key: string, parsableDateFields: string[] = []): any {
     const itemAsText = window.localStorage.getItem(key);
 
@@ -21,14 +22,22 @@ export class LocalStorageService {
     // overwrite date fields with Date values
     for (const dateField of parsableDateFields) {
       if (Object.hasOwn(item, dateField)) {
-        item[dateField] = Date.parse(item[dateField]);
+        item[dateField] = new Date(Date.parse(item[dateField]));
       }
     }
 
     return item;
   }
 
-  setItem<T>(key: string, item: T): void {
+  setItem(key: string, item: any): void {
+    if (typeof item === 'object') {
+      for (const field of Object.keys(item)) {
+        if (item[field] instanceof Date) {
+          item[field] = item[field].toISOString();
+        }
+      }
+    }
+
     const itemAsText = JSON.stringify(item);
     window.localStorage.setItem(key, itemAsText);
   }
