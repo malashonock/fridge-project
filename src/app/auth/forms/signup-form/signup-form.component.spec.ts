@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from 'app/shared/shared.module';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { SignupFormComponent } from './signup-form.component';
 import { SentenceCasePipe } from 'app/shared/pipes/sentence-case/sentence-case.pipe';
@@ -13,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 describe('SignupFormComponent', () => {
   let component: SignupFormComponent;
   let fixture: ComponentFixture<SignupFormComponent>;
+  const initialState = {
+    auth: undefined,
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -25,7 +29,11 @@ describe('SignupFormComponent', () => {
         MatIconModule,
         RouterTestingModule,
       ],
-      providers: [SentenceCasePipe, SplitCamelCasePipe],
+      providers: [
+        SentenceCasePipe,
+        SplitCamelCasePipe,
+        provideMockStore({ initialState }),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SignupFormComponent);
