@@ -27,7 +27,11 @@ export class LoginFormComponent extends FormBaseComponent {
       },
       undefined,
       (form: FormGroup): void => {
-        this.store.dispatch(AuthActions.login(form.value));
+        this.store.dispatch(
+          AuthActions.login({
+            credentials: form.value,
+          })
+        );
       },
       formBuilder,
       sentenceCasePipe,

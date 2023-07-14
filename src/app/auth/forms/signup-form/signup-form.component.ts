@@ -41,7 +41,11 @@ export class SignupFormComponent extends FormBaseComponent {
         validators: [PasswordValidator.match('password', 'passwordConfirm')],
       },
       (form: FormGroup): void => {
-        this.store.dispatch(AuthActions.signup(form.value));
+        this.store.dispatch(
+          AuthActions.signup({
+            credentials: form.value,
+          })
+        );
       },
       formBuilder,
       sentenceCasePipe,
