@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
 import { FormBaseComponent } from 'app/shared/components/form-base/form-base.component';
 import { SentenceCasePipe } from 'app/shared/pipes/sentence-case/sentence-case.pipe';
 import { SplitCamelCasePipe } from 'app/shared/pipes/split-camel-case/split-camel-case.pipe';
+import { AuthActions } from 'app/state/auth/auth.actions';
 
 @Component({
   selector: 'app-login-form',
@@ -14,7 +16,8 @@ export class LoginFormComponent extends FormBaseComponent {
   constructor(
     formBuilder: FormBuilder,
     sentenceCasePipe: SentenceCasePipe,
-    splitCamelCasePipe: SplitCamelCasePipe
+    splitCamelCasePipe: SplitCamelCasePipe,
+    private store: Store
   ) {
     // Instantiate base class
     super(
@@ -23,7 +26,9 @@ export class LoginFormComponent extends FormBaseComponent {
         password: ['', [Validators.required]],
       },
       undefined,
-      (form: FormGroup): void => console.log(form.value),
+      (form: FormGroup): void => {
+        this.store.dispatch(AuthActions.login(form.value));
+      },
       formBuilder,
       sentenceCasePipe,
       splitCamelCasePipe

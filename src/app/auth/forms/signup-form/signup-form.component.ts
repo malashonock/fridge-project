@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
 import { FormBaseComponent } from 'app/shared/components/form-base/form-base.component';
 import { SelectOption } from 'app/shared/components/select-field/select-field.component';
@@ -8,6 +9,7 @@ import { SentenceCasePipe } from 'app/shared/pipes/sentence-case/sentence-case.p
 import { SplitCamelCasePipe } from 'app/shared/pipes/split-camel-case/split-camel-case.pipe';
 import { EmailValidator } from 'app/core/validators/email/email.validator';
 import { PasswordValidator } from 'app/core/validators/password/password.validator';
+import { AuthActions } from 'app/state/auth/auth.actions';
 
 @Component({
   selector: 'app-signup-form',
@@ -23,7 +25,8 @@ export class SignupFormComponent extends FormBaseComponent {
   constructor(
     formBuilder: FormBuilder,
     sentenceCasePipe: SentenceCasePipe,
-    splitCamelCasePipe: SplitCamelCasePipe
+    splitCamelCasePipe: SplitCamelCasePipe,
+    private store: Store
   ) {
     // Instantiate base class
     super(
@@ -37,7 +40,9 @@ export class SignupFormComponent extends FormBaseComponent {
       {
         validators: [PasswordValidator.match('password', 'passwordConfirm')],
       },
-      (form: FormGroup): void => console.log(form.value),
+      (form: FormGroup): void => {
+        this.store.dispatch(AuthActions.signup(form.value));
+      },
       formBuilder,
       sentenceCasePipe,
       splitCamelCasePipe
