@@ -7,6 +7,7 @@ import { User } from 'app/core/models/user/user.model';
 import { SignupCredentials } from 'app/core/models/auth/signup.model';
 import { LoginCredentials } from 'app/core/models/auth/login.model';
 import { LocalStorageService } from '../local-storage/local-storage.service';
+import { UserRole } from 'app/core/models/user/user-role.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,33 +18,42 @@ export class AuthService {
     private localStorageService: LocalStorageService
   ) {}
 
-  restoreSession(): Observable<AuthSession | undefined> {
-    return of(
-      this.localStorageService.getItem('auth', ['expiresAt']) || undefined
-    );
+  restoreSession(): AuthSession | undefined {
+    return this.localStorageService.getItem('auth', ['expiresAt']) || undefined;
   }
 
-  saveSession(sessionData: AuthSession): Observable<void> {
-    return of(this.localStorageService.setItem('auth', sessionData));
+  saveSession(sessionData: AuthSession): void {
+    this.localStorageService.setItem('auth', sessionData);
   }
 
-  clearSession(): Observable<void> {
-    return of(this.localStorageService.removeItem('auth'));
+  clearSession(): void {
+    this.localStorageService.removeItem('auth');
   }
 
   signup(credentials: SignupCredentials): Observable<User> {
-    throw new Error('Method not implemented!');
+    // TODO: implement HTTP call
+    return of({
+      id: '1',
+      name: credentials.userName,
+      role: credentials.role,
+    });
   }
 
   login(credentials: LoginCredentials): Observable<AuthSession> {
-    throw new Error('Method not implemented!');
-    return of(undefined as unknown as AuthSession).pipe(
-      tap((sessionData: AuthSession) => this.saveSession(sessionData))
-    );
+    // TODO: implement HTTP call
+    return of({
+      user: {
+        id: '1',
+        name: credentials.userName,
+        role: UserRole.User,
+      },
+      token: 'AaBbCcDdEeFf12345678',
+      expiresAt: new Date(),
+    }).pipe(tap((sessionData: AuthSession) => this.saveSession(sessionData)));
   }
 
   logout(): Observable<void> {
-    throw new Error('Method not implemented!');
+    // TODO: implement HTTP call
     return of(undefined).pipe(tap(() => this.clearSession()));
   }
 }
