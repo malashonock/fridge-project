@@ -64,7 +64,7 @@ export class AuthEffects {
   logout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.logout),
-      tap(() => this.authService.logout())
+      tap(() => this.authService.logout().subscribe())
     )
   );
 }
