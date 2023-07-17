@@ -40,6 +40,17 @@ class AuthController {
       });
     }
 
+    // Remove previous session tokens
+    this.db.setState({
+      ...this.db.getState(),
+      tokens: this.db
+        .getState()
+        .tokens.filter(
+          (token) =>
+            !new RegExp(`^${user.id.toString().padStart(3, '0')}`).test(token)
+        ),
+    });
+
     // Generate fake JWT token
     const createdAt = new Date();
     const token = `${user.id
