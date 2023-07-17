@@ -20,6 +20,7 @@ export const authSlice = createFeature({
     initialState as AuthSessionState,
     on(AuthActions.loginSuccess, AuthActionReducers.loginSuccessReducer),
     on(AuthActions.loginFailure, AuthActionReducers.loginFailureReducer),
-    on(AuthActions.logout, AuthActionReducers.logoutReducer)
+    on(AuthActions.logoutSuccess, AuthActionReducers.logoutSuccessReducer),
+    on(AuthActions.logoutFailure, AuthActionReducers.logoutFailureReducer)
   ),
 });

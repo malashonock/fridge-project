@@ -13,13 +13,19 @@ const loginFailureReducer: OnReducer<
   [typeof AuthActions.loginFailure]
 > = () => undefined;
 
-const logoutReducer: OnReducer<
+const logoutSuccessReducer: OnReducer<
   AuthSessionState,
-  [typeof AuthActions.logout]
+  [typeof AuthActions.logoutSuccess]
+> = () => undefined;
+
+const logoutFailureReducer: OnReducer<
+  AuthSessionState,
+  [typeof AuthActions.logoutFailure]
 > = () => undefined;
 
 export const AuthActionReducers = {
   loginSuccessReducer,
   loginFailureReducer,
-  logoutReducer,
+  logoutSuccessReducer,
+  logoutFailureReducer,
 };
