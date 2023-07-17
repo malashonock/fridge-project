@@ -21,7 +21,9 @@ class AuthController {
     });
     this.db.write();
 
-    res.status(201).send(newUser);
+    // eslint-disable-next-line no-unused-vars
+    const { password: _, ...userData } = newUser;
+    res.status(201).send(userData);
   };
 
   login = (req, res) => {

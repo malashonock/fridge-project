@@ -31,7 +31,7 @@ export class AuthService {
 
   signup(credentials: SignupCredentials): Observable<User> {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { passwordConfirm, ...userData } = credentials;
+    const { passwordConfirm: _, ...userData } = credentials;
 
     return this.httpClient.post<User>(
       'http://localhost:3000/api/auth/signup',
