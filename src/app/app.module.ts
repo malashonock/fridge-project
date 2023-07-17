@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { authSlice } from './state/auth/auth.slice';
 import { AuthEffects } from './state/auth/auth.effects';
 import { AuthSessionInitializer } from './core/services/auth/auth-session.initializer';
+import { httpInterceptorProviders } from './core/interceptors';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +28,7 @@ import { AuthSessionInitializer } from './core/services/auth/auth-session.initia
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([AuthEffects]),
   ],
-  providers: [AuthSessionInitializer],
+  providers: [AuthSessionInitializer, httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
