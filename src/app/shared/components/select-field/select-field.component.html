@@ -8,11 +8,11 @@
     [id]="name"
     placeholder="{{ label }}"
     [formControl]="formControl"
-    [value]="value"
+    [value]="selectedOption?.value"
     (selectionChange)="onChange($event.value)"
     (closed)="onBlur()"
   >
-    <mat-option *ngFor="let option of options" value="option.value">{{
+    <mat-option *ngFor="let option of options" [value]="option.value">{{
       option.label
     }}</mat-option>
   </mat-select>

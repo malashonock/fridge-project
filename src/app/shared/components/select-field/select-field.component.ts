@@ -6,7 +6,7 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
-type ChangeEventHandler = (value: SelectOption | null) => void;
+type ChangeEventHandler = (option: SelectOption | null) => void;
 type BlurEventHandler = () => void;
 
 export interface SelectOption {
@@ -32,14 +32,14 @@ export class SelectFieldComponent implements ControlValueAccessor {
   @Input() options: SelectOption[] = [];
   @Input() error: string | null = null;
 
-  private _value: SelectOption | null = null;
+  private _selectedOption: SelectOption | null = null;
 
-  get value(): SelectOption | null {
-    return this._value;
+  get selectedOption(): SelectOption | null {
+    return this._selectedOption;
   }
 
-  set value(option: SelectOption | null) {
-    this._value = option;
+  set selectedOption(option: SelectOption | null) {
+    this._selectedOption = option;
     this.onChange(option);
   }
 
@@ -55,8 +55,8 @@ export class SelectFieldComponent implements ControlValueAccessor {
     );
   }
 
-  writeValue(value: SelectOption | null): void {
-    this.value = value;
+  writeValue(option: SelectOption | null): void {
+    this.selectedOption = option;
   }
 
   registerOnChange(changeEventHandler: ChangeEventHandler): void {
