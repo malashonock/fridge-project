@@ -11,7 +11,8 @@
     "lint": "ng lint --fix",
     "prepare": "husky install",
     "storybook": "ng run fridge-project:storybook",
-    "build-storybook": "ng run fridge-project:build-storybook"
+    "build-storybook": "ng run fridge-project:build-storybook",
+    "start:server": "cd json-server && nodemon server.mjs"
   },
   "private": true,
   "dependencies": {
@@ -61,6 +62,7 @@
     "jest-marbles": "^3.0.3",
     "jest-preset-angular": "^13.1.1",
     "json-server": "^0.17.3",
+    "nodemon": "^3.0.1",
     "prettier": "^2.8.8",
     "prettier-eslint": "^15.0.1",
     "react": "^18.2.0",

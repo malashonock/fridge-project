@@ -72,9 +72,33 @@
           }
         ]
       }
+    },
+    {
+      "files": [
+        "json-server/**/*.{js,mjs}"
+      ],
+      "env": {
+        "node": true
+      },
+      "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "prettier/prettier": [
+          "error",
+          {
+            "singleQuote": true
+          }
+        ]
+      }
     }
   ],
   "extends": [
-    "plugin:storybook/recommended"
+    "plugin:prettier/recommended"
   ]
 }
