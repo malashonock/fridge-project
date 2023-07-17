@@ -12,7 +12,7 @@
     "prepare": "husky install",
     "storybook": "ng run fridge-project:storybook",
     "build-storybook": "ng run fridge-project:build-storybook",
-    "start:server": "cd json-server && nodemon server.mjs"
+    "start:server": "cd json-server && nodemon server.mjs --ignore db.json"
   },
   "private": true,
   "dependencies": {
