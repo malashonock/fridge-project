@@ -283,7 +283,7 @@ describe('FormBaseComponent', () => {
         expect(spyOnSubmitAction).toHaveBeenCalledWith(formComponent.form);
       });
 
-      it('should reset form fields to initial values', () => {
+      it('should NOT reset form fields to initial values', () => {
         const formComponent = new FormBaseComponent(
           {
             userName: ['user'],
@@ -300,7 +300,7 @@ describe('FormBaseComponent', () => {
 
         formComponent.onSubmit();
 
-        expect(spyOnReset).toHaveBeenCalledTimes(1);
+        expect(spyOnReset).not.toHaveBeenCalled();
       });
     });
 

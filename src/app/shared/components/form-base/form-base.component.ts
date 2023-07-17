@@ -89,7 +89,5 @@ export class FormBaseComponent {
     }
 
     this.submitAction(this.form);
-
-    this.reset();
   }
 }
