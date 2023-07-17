@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   Input,
   Optional,
@@ -27,6 +28,7 @@ type BlurEventHandler = () => void;
       multi: true,
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextFieldComponent implements ControlValueAccessor {
   @Input() name = '';

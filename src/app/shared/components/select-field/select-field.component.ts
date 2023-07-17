@@ -1,4 +1,10 @@
-import { Component, Input, Optional, forwardRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  Optional,
+  forwardRef,
+} from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
@@ -25,6 +31,7 @@ export interface SelectOption {
       multi: true,
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectFieldComponent implements ControlValueAccessor {
   @Input() name = '';
