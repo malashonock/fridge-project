@@ -22,7 +22,11 @@ export class LocalStorageService {
     // overwrite date fields with Date values
     for (const dateField of parsableDateFields) {
       if (Object.hasOwn(item, dateField)) {
-        item[dateField] = new Date(Date.parse(item[dateField]));
+        const parsedDate: number = Date.parse(item[dateField]);
+
+        item[dateField] = !Number.isNaN(parsedDate)
+          ? new Date(Date.parse(item[dateField]))
+          : item[dateField];
       }
     }
 
@@ -30,14 +34,6 @@ export class LocalStorageService {
   }
 
   setItem(key: string, item: any): void {
-    if (typeof item === 'object') {
-      for (const field of Object.keys(item)) {
-        if (item[field] instanceof Date) {
-          item[field] = item[field].toISOString();
-        }
-      }
-    }
-
     const itemAsText = JSON.stringify(item);
     window.localStorage.setItem(key, itemAsText);
   }
