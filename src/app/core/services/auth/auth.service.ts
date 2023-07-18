@@ -33,21 +33,18 @@ export class AuthService {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { passwordConfirm: _, ...userData } = credentials;
 
-    return this.httpClient.post<User>(
-      'http://localhost:3000/api/auth/signup',
-      userData
-    );
+    return this.httpClient.post<User>('/auth/signup', userData);
   }
 
   login(credentials: LoginCredentials): Observable<AuthSession> {
     return this.httpClient
-      .post<AuthSession>('http://localhost:3000/api/auth/login', credentials)
+      .post<AuthSession>('/auth/login', credentials)
       .pipe(tap((sessionData: AuthSession) => this.saveSession(sessionData)));
   }
 
   logout(): Observable<void> {
     return this.httpClient
-      .post<void>('http://localhost:3000/api/auth/logout', {})
+      .post<void>('/auth/logout', {})
       .pipe(tap(() => this.clearSession()));
   }
 }
