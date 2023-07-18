@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Observable, first, mergeMap } from 'rxjs';
+import { Observable, exhaustMap, first } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { selectAuthToken } from 'app/state/auth/auth.selectors';
@@ -20,7 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     return this.store.select(selectAuthToken).pipe(
       first(),
-      mergeMap((authToken: string | undefined) => {
+      exhaustMap((authToken: string | undefined) => {
         const authRequest = authToken
           ? request.clone({
               setHeaders: {
