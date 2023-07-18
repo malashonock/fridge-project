@@ -9,6 +9,7 @@ import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 
 describe('AuthInterceptor', () => {
+  let authInterceptor: AuthInterceptor;
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   const testUrl = 'http://example.com';
@@ -29,6 +30,7 @@ describe('AuthInterceptor', () => {
       ],
     });
 
+    authInterceptor = TestBed.inject(HTTP_INTERCEPTORS)[0] as AuthInterceptor;
     httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
   };
@@ -42,6 +44,10 @@ describe('AuthInterceptor', () => {
       setup({
         auth: undefined,
       });
+    });
+
+    it('should be created', () => {
+      expect(authInterceptor).toBeTruthy();
     });
 
     it('should NOT append Authorization header', () => {
