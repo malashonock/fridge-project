@@ -7,6 +7,7 @@ import { SplitCamelCasePipe } from './pipes/split-camel-case/split-camel-case.pi
 import { TextFieldComponent } from './components/text-field/text-field.component';
 import { SelectFieldComponent } from './components/select-field/select-field.component';
 import { MaterialModule } from './material/material.module';
+import { LogoComponent } from './components/logo/logo.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { MaterialModule } from './material/material.module';
     SplitCamelCasePipe,
     TextFieldComponent,
     SelectFieldComponent,
+    LogoComponent,
   ],
   exports: [
     CommonModule,
@@ -23,6 +25,7 @@ import { MaterialModule } from './material/material.module';
     SplitCamelCasePipe,
     TextFieldComponent,
     SelectFieldComponent,
+    LogoComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, MaterialModule],
 })
