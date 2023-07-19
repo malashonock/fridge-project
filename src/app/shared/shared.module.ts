@@ -8,6 +8,7 @@ import { TextFieldComponent } from './components/text-field/text-field.component
 import { SelectFieldComponent } from './components/select-field/select-field.component';
 import { MaterialModule } from './material/material.module';
 import { LogoComponent } from './components/logo/logo.component';
+import { InitialsPipe } from './pipes/initials/initials.pipe';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { LogoComponent } from './components/logo/logo.component';
     TextFieldComponent,
     SelectFieldComponent,
     LogoComponent,
+    InitialsPipe,
   ],
   exports: [
     CommonModule,
