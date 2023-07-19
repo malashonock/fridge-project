@@ -43,3 +43,6 @@ Thumbs.db
 
 # json-server
 json-server/db.json
+
+# Documentation
+docs/
