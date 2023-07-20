@@ -13,6 +13,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { UserButtonComponent } from './components/user-button/user-button.component';
 import { InitialsPipe } from './pipes/initials/initials.pipe';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
+import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
     UserButtonComponent,
     InitialsPipe,
     MenuItemComponent,
+    BurgerButtonComponent,
   ],
   exports: [
     CommonModule,
