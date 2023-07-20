@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { UserButtonComponent } from './components/user-button/user-button.component';
 import { InitialsPipe } from './pipes/initials/initials.pipe';
+import { MenuItemComponent } from './components/menu-item/menu-item.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { InitialsPipe } from './pipes/initials/initials.pipe';
     LogoComponent,
     UserButtonComponent,
     InitialsPipe,
+    MenuItemComponent,
   ],
   exports: [
     CommonModule,
@@ -34,6 +36,7 @@ import { InitialsPipe } from './pipes/initials/initials.pipe';
     SelectFieldComponent,
     HeaderComponent,
     LogoComponent,
+    MenuItemComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })
