@@ -1,1 +1,23 @@
-<p>admin-page works!</p>
+<app-header
+  [compactWidthMode]="compactWidthMode"
+  [(showMobileMenu)]="showSideMenu"
+></app-header>
+
+<mat-sidenav-container class="container">
+  <mat-sidenav
+    #sideMenu
+    class="side-menu"
+    position="end"
+    [mode]="sideMenuMode"
+    [(opened)]="showSideMenu"
+    [disableClose]="!compactWidthMode"
+  >
+    <app-menu-item
+      *ngFor="let menuItemConfig of menuConfig"
+      [config]="menuItemConfig"
+    ></app-menu-item>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

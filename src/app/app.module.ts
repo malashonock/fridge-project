@@ -6,6 +6,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,7 @@ import { httpInterceptorProviders } from './core/interceptors';
     CoreModule,
     BrowserModule,
     BrowserAnimationsModule,
+    LayoutModule,
     HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot({ [authSlice.name]: authSlice.reducer }, {}),
