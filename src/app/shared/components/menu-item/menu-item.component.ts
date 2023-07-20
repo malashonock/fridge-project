@@ -13,5 +13,5 @@ export interface MenuItemConfig {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuItemComponent {
-  @Input() config!: MenuItemConfig;
+  @Input() config?: MenuItemConfig;
 }
