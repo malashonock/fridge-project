@@ -15,6 +15,8 @@ import { authSlice } from './state/auth/auth.slice';
 import { AuthEffects } from './state/auth/auth.effects';
 import { AuthSessionInitializer } from './core/services/auth/auth-session.initializer';
 import { httpInterceptorProviders } from './core/interceptors';
+import { uiSlice } from './state/ui/ui.slice';
+import { UiEffects } from './state/ui/ui.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,10 +27,13 @@ import { httpInterceptorProviders } from './core/interceptors';
     LayoutModule,
     HttpClientModule,
     AppRoutingModule,
-    StoreModule.forRoot({ [authSlice.name]: authSlice.reducer }, {}),
+    StoreModule.forRoot(
+      { [authSlice.name]: authSlice.reducer, [uiSlice.name]: uiSlice.reducer },
+      {}
+    ),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, UiEffects]),
   ],
   providers: [AuthSessionInitializer, httpInterceptorProviders],
   bootstrap: [AppComponent],
