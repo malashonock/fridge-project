@@ -15,6 +15,7 @@ import { InitialsPipe } from './pipes/initials/initials.pipe';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 import { MobileMenuDirective } from './directives/mobile/menu/mobile-menu.directive';
+import { FixedHeaderDirective } from './directives/fixed-header/fixed-header.directive';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MobileMenuDirective } from './directives/mobile/menu/mobile-menu.direct
     MenuItemComponent,
     BurgerButtonComponent,
     MobileMenuDirective,
+    FixedHeaderDirective,
   ],
   exports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { MobileMenuDirective } from './directives/mobile/menu/mobile-menu.direct
     HeaderComponent,
     MenuItemComponent,
     MobileMenuDirective,
+    FixedHeaderDirective,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })
