@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { LogoComponent } from './logo.component';
+import { SharedModule } from 'app/shared/shared.module';
 
 describe('LogoComponent', () => {
   let component: LogoComponent;
@@ -9,6 +11,7 @@ describe('LogoComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LogoComponent],
+      imports: [SharedModule, RouterTestingModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LogoComponent);
