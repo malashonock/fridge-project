@@ -12,7 +12,7 @@ export interface AuthSession {
 
 export type AuthSessionState = AuthSession | undefined;
 
-const initialState: AuthSessionState = undefined;
+export const initialState: AuthSessionState = undefined;
 
 export const authFeature = createFeature({
   name: 'auth',

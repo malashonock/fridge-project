@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AuthenticationGuard } from './authentication.guard';
 import { provideMockStore } from '@ngrx/store/testing';
-import { AuthSessionState } from 'app/state/auth/auth.slice';
+import { AuthSessionState } from 'app/state/auth/auth.feature';
 import { UserRole } from 'app/core/models/user/user-role.model';
 import { Observable } from 'rxjs';
 

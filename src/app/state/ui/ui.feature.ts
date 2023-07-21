@@ -8,7 +8,7 @@ export interface UiState {
   showSideMenu: boolean;
 }
 
-const initialState: UiState = {
+export const initialState: UiState = {
   mobileMode: false,
   showSideMenu: true,
 };
