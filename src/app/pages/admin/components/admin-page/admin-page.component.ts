@@ -1,16 +1,6 @@
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  ViewChild,
-} from '@angular/core';
-import {
-  BreakpointObserver,
-  BreakpointState,
-  Breakpoints,
-} from '@angular/cdk/layout';
-import { Observable, Subject, map, takeUntil } from 'rxjs';
+import { Component, ViewChild } from '@angular/core';
+import {} from '@angular/cdk/layout';
+import { Observable, map } from 'rxjs';
 import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { Store } from '@ngrx/store';
 
@@ -20,13 +10,15 @@ import {
   selectShowSideMenu,
 } from 'app/state/ui/ui.selectors';
 import { UiActions } from 'app/state/ui/ui.actions';
+import { MobilePageDirective } from 'app/shared/directives/mobile/page/mobile-page.directive';
 
 @Component({
   selector: 'app-admin-page',
   templateUrl: './admin-page.component.html',
   styleUrls: ['./admin-page.component.scss'],
+  hostDirectives: [MobilePageDirective],
 })
-export class AdminPageComponent implements AfterViewInit, OnDestroy {
+export class AdminPageComponent {
   menuConfig: MenuItemConfig[] = [
     { text: 'Products', href: 'products', matIconCode: 'fastfood' },
     { text: 'Fridges', href: 'fridges', matIconCode: 'kitchen' },
@@ -37,15 +29,9 @@ export class AdminPageComponent implements AfterViewInit, OnDestroy {
   showSideMenu$: Observable<boolean>;
   sideMenuMode$: Observable<MatDrawerMode>;
 
-  destroy$ = new Subject();
-
   @ViewChild('sideMenu') sideMenu?: MatSidenav;
 
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    private store: Store,
-    private viewRef: ChangeDetectorRef
-  ) {
+  constructor(private store: Store) {
     this.mobileMode$ = this.store.select(selectMobileMode);
     this.showSideMenu$ = this.store.select(selectShowSideMenu);
     this.sideMenuMode$ = this.mobileMode$.pipe(
@@ -53,32 +39,8 @@ export class AdminPageComponent implements AfterViewInit, OnDestroy {
     );
   }
 
-  ngAfterViewInit(): void {
-    this.breakpointObserver
-      .observe([
-        Breakpoints.XSmall,
-        Breakpoints.TabletPortrait,
-        Breakpoints.HandsetPortrait,
-      ])
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(this.handleBreakpointChange.bind(this));
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next(null);
-    this.destroy$.complete();
-  }
-
   toggleSideMenu(showSideMenu: boolean) {
     this.store.dispatch(UiActions.toggleSideMenu({ showSideMenu }));
-  }
-
-  handleBreakpointChange(state: BreakpointState): void {
-    this.store.dispatch(
-      UiActions.toggleMobileMode({ mobileMode: state.matches })
-    );
-    // Need to trigger CD manually to avoid ExpressionChangedAfterItHasBeenCheckedError
-    this.viewRef.detectChanges();
   }
 
   getMenuItemKey(index: number, menuItemConfig: MenuItemConfig): string {
