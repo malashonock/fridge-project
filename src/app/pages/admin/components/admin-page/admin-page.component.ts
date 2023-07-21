@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { MenuItemConfig } from 'app/shared/components/menu-item/menu-item.component';
 import { MobilePageDirective } from 'app/shared/directives/mobile/page/mobile-page.directive';
+import { adminPageMenuConfig } from '../../admin.menu-config';
 
 @Component({
   selector: 'app-admin-page',
@@ -10,11 +11,7 @@ import { MobilePageDirective } from 'app/shared/directives/mobile/page/mobile-pa
   hostDirectives: [MobilePageDirective],
 })
 export class AdminPageComponent {
-  menuConfig: MenuItemConfig[] = [
-    { text: 'Products', href: 'products', matIconCode: 'fastfood' },
-    { text: 'Fridges', href: 'fridges', matIconCode: 'kitchen' },
-    { text: 'Map', href: 'map', matIconCode: 'map' },
-  ];
+  readonly menuConfig: MenuItemConfig[] = adminPageMenuConfig;
 
   getMenuItemKey(index: number, menuItemConfig: MenuItemConfig): string {
     return menuItemConfig.text;
