@@ -11,11 +11,11 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { authSlice } from './state/auth/auth.slice';
+import { authFeature } from './state/auth/auth.feature';
 import { AuthEffects } from './state/auth/auth.effects';
 import { AuthSessionInitializer } from './core/services/auth/auth-session.initializer';
 import { httpInterceptorProviders } from './core/interceptors';
-import { uiSlice } from './state/ui/ui.slice';
+import { uiFeature } from './state/ui/ui.feature';
 import { UiEffects } from './state/ui/ui.effects';
 
 @NgModule({
@@ -28,7 +28,10 @@ import { UiEffects } from './state/ui/ui.effects';
     HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot(
-      { [authSlice.name]: authSlice.reducer, [uiSlice.name]: uiSlice.reducer },
+      {
+        [authFeature.name]: authFeature.reducer,
+        [uiFeature.name]: uiFeature.reducer,
+      },
       {}
     ),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),

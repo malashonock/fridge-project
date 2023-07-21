@@ -1,6 +1,6 @@
 import { OnReducer } from '@ngrx/store/src/reducer_creator';
 
-import { UiState } from './ui.slice';
+import { UiState } from './ui.feature';
 import { UiActions } from './ui.actions';
 
 const toggleMobileModeReducer: OnReducer<

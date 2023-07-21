@@ -1,3 +1,4 @@
-import { uiSlice } from './ui.slice';
+import { uiFeature } from './ui.feature';
 
-export const { selectUiState, selectMobileMode, selectShowSideMenu } = uiSlice;
+export const { selectUiState, selectMobileMode, selectShowSideMenu } =
+  uiFeature;

@@ -13,7 +13,7 @@ const initialState: UiState = {
   showSideMenu: true,
 };
 
-export const uiSlice = createFeature({
+export const uiFeature = createFeature({
   name: 'ui',
   reducer: createReducer(
     initialState,

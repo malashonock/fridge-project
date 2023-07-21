@@ -1,7 +1,7 @@
 import { User } from 'app/core/models/user/user.model';
 import { AuthActionReducers } from './auth.reducers';
 import { UserRole } from 'app/core/models/user/user-role.model';
-import { AuthSession } from './auth.slice';
+import { AuthSession } from './auth.feature';
 import { AuthActions } from './auth.actions';
 
 describe('Auth action reducers', () => {

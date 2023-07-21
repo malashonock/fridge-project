@@ -1,6 +1,6 @@
 import { OnReducer } from '@ngrx/store/src/reducer_creator';
 
-import { AuthSessionState } from './auth.slice';
+import { AuthSessionState } from './auth.feature';
 import { AuthActions } from './auth.actions';
 
 const loginSuccessReducer: OnReducer<
