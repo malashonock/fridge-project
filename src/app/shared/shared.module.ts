@@ -37,7 +37,6 @@ import { BurgerButtonComponent } from './components/burger-button/burger-button.
     TextFieldComponent,
     SelectFieldComponent,
     HeaderComponent,
-    LogoComponent,
     MenuItemComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
