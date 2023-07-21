@@ -17,3 +17,10 @@
     flex-direction: column;
   }
 }
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
