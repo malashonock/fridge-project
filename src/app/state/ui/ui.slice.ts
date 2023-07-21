@@ -17,9 +17,7 @@ export const uiSlice = createFeature({
   name: 'ui',
   reducer: createReducer(
     initialState,
-    on(UiActions.enterMobileMode, UiActionReducers.enterMobileModeReducer),
-    on(UiActions.leaveMobileMode, UiActionReducers.leaveMobileModeReducer),
-    on(UiActions.openSideMenu, UiActionReducers.openSideMenuReducer),
-    on(UiActions.closeSideMenu, UiActionReducers.closeSideMenuReducer)
+    on(UiActions.toggleMobileMode, UiActionReducers.toggleMobileModeReducer),
+    on(UiActions.toggleSideMenu, UiActionReducers.toggleSideMenuReducer)
   ),
 });

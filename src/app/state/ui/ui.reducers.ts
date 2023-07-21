@@ -3,49 +3,27 @@ import { OnReducer } from '@ngrx/store/src/reducer_creator';
 import { UiState } from './ui.slice';
 import { UiActions } from './ui.actions';
 
-const enterMobileModeReducer: OnReducer<
+const toggleMobileModeReducer: OnReducer<
   UiState,
-  [typeof UiActions.enterMobileMode]
-> = (state: UiState) => {
+  [typeof UiActions.toggleMobileMode]
+> = (state: UiState, { mobileMode }) => {
   return {
     ...state,
-    mobileMode: true,
+    mobileMode: mobileMode ?? !state.mobileMode,
   };
 };
 
-const leaveMobileModeReducer: OnReducer<
+const toggleSideMenuReducer: OnReducer<
   UiState,
-  [typeof UiActions.leaveMobileMode]
-> = (state: UiState) => {
+  [typeof UiActions.toggleSideMenu]
+> = (state: UiState, { showSideMenu }) => {
   return {
     ...state,
-    mobileMode: false,
-  };
-};
-
-const openSideMenuReducer: OnReducer<
-  UiState,
-  [typeof UiActions.openSideMenu]
-> = (state: UiState) => {
-  return {
-    ...state,
-    showSideMenu: true,
-  };
-};
-
-const closeSideMenuReducer: OnReducer<
-  UiState,
-  [typeof UiActions.closeSideMenu]
-> = (state: UiState) => {
-  return {
-    ...state,
-    showSideMenu: false,
+    showSideMenu: showSideMenu ?? !state.showSideMenu,
   };
 };
 
 export const UiActionReducers = {
-  enterMobileModeReducer,
-  leaveMobileModeReducer,
-  openSideMenuReducer,
-  closeSideMenuReducer,
+  toggleMobileModeReducer,
+  toggleSideMenuReducer,
 };
