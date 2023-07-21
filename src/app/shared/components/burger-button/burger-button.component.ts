@@ -1,10 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { UiActions } from 'app/state/ui/ui.actions';
+import { selectShowSideMenu } from 'app/state/ui/ui.selectors';
 
 @Component({
   selector: 'app-burger-button',
@@ -13,10 +12,13 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BurgerButtonComponent {
-  @Input() showMobileMenu = false;
-  @Output() showMobileMenuChange = new EventEmitter<boolean>();
+  showMobileMenu$: Observable<boolean>;
 
-  toggleShowMobileMenu(): void {
-    this.showMobileMenuChange.emit(!this.showMobileMenu);
+  constructor(private store: Store) {
+    this.showMobileMenu$ = this.store.select(selectShowSideMenu);
+  }
+
+  toggleMobileMenu(): void {
+    this.store.dispatch(UiActions.toggleSideMenu());
   }
 }

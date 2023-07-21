@@ -1,4 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { selectMobileMode } from 'app/state/ui/ui.selectors';
 
 @Component({
   selector: 'app-header',
@@ -6,18 +10,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Input() compactWidthMode = false;
+  mobileMode$: Observable<boolean>;
 
-  private _showMobileMenu = false;
-
-  get showMobileMenu(): boolean {
-    return this._showMobileMenu;
+  constructor(private store: Store) {
+    this.mobileMode$ = this.store.select(selectMobileMode);
   }
-
-  @Input() set showMobileMenu(value: boolean) {
-    this._showMobileMenu = value;
-    this.showMobileMenuChange.emit(value);
-  }
-
-  @Output() showMobileMenuChange = new EventEmitter<boolean>();
 }

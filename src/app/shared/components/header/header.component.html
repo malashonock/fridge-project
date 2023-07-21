@@ -2,8 +2,5 @@
   <app-logo></app-logo>
   <div class="spacer"></div>
   <app-user-button></app-user-button>
-  <app-burger-button
-    *ngIf="compactWidthMode"
-    [(showMobileMenu)]="showMobileMenu"
-  ></app-burger-button>
+  <app-burger-button *ngIf="mobileMode$ | async"></app-burger-button>
 </mat-toolbar>
