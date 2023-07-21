@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
-import { IndexComponent } from './components/index/index.component';
+import { AdminIndexComponent } from './components/admin-index/admin-index.component';
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        component: IndexComponent,
+        component: AdminIndexComponent,
       },
     ],
   },

@@ -4,10 +4,10 @@ import { MenuItemConfig } from 'app/shared/components/menu-item/menu-item.compon
 import { adminPageMenuConfig } from '../../admin.menu-config';
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.scss'],
+  selector: 'app-admin-index',
+  templateUrl: './admin-index.component.html',
+  styleUrls: ['./admin-index.component.scss'],
 })
-export class IndexComponent {
+export class AdminIndexComponent {
   menuConfig: MenuItemConfig[] = adminPageMenuConfig;
 }
