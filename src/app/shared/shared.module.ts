@@ -16,6 +16,7 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 import { MobileMenuDirective } from './directives/mobile/menu/mobile-menu.directive';
 import { FixedHeaderDirective } from './directives/fixed-header/fixed-header.directive';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { FixedHeaderDirective } from './directives/fixed-header/fixed-header.dir
     BurgerButtonComponent,
     MobileMenuDirective,
     FixedHeaderDirective,
+    MapComponent,
   ],
   exports: [
     CommonModule,
@@ -44,6 +46,7 @@ import { FixedHeaderDirective } from './directives/fixed-header/fixed-header.dir
     MenuItemComponent,
     MobileMenuDirective,
     FixedHeaderDirective,
+    MapComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })
