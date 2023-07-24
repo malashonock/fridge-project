@@ -33,7 +33,7 @@ export class AuthenticationGuard {
               return true;
             }
 
-            // Redirect depending on user roley
+            // Redirect depending on user role
             switch (authState.user.role) {
               case UserRole.Admin:
                 return router.parseUrl('/admin');
