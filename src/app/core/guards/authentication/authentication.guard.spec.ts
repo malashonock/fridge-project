@@ -9,6 +9,7 @@ import {
   ActivatedRouteSnapshot,
   Router,
   RouterStateSnapshot,
+  UrlTree,
 } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -48,14 +49,15 @@ describe('AuthenticationGuard', () => {
         });
       });
 
-      it('should let the route be activated', () => {
+      it('should let the route be activated', (done) => {
         const authenticatedGuard = AuthenticationGuard.forAuthenticated();
         (
           TestBed.runInInjectionContext(() =>
             authenticatedGuard(activatedRouteSnapshot, routerStateSnapshot)
           ) as Observable<boolean>
-        ).subscribe({
-          next: (result) => expect(result).toBe(true),
+        ).subscribe((result) => {
+          expect(result).toBe(true);
+          done();
         });
       });
     });
@@ -65,14 +67,15 @@ describe('AuthenticationGuard', () => {
         setup(undefined);
       });
 
-      it('should NOT let the route be activated', () => {
+      it('should NOT let the route be activated', (done) => {
         const authenticatedGuard = AuthenticationGuard.forAuthenticated();
         (
           TestBed.runInInjectionContext(() =>
             authenticatedGuard(activatedRouteSnapshot, routerStateSnapshot)
           ) as Observable<boolean>
-        ).subscribe({
-          next: (result) => expect(result).toBe(false),
+        ).subscribe((result) => {
+          expect(result).toBe(false);
+          done();
         });
       });
     });
@@ -80,7 +83,7 @@ describe('AuthenticationGuard', () => {
 
   describe('forUnauthenticated()', () => {
     describe('given there is a logged in user', () => {
-      it('should redirect admin users to /admin route', () => {
+      it('should redirect admin users to /admin route', (done) => {
         const unauthenticatedGuard = AuthenticationGuard.forUnauthenticated();
 
         setup({
@@ -96,13 +99,14 @@ describe('AuthenticationGuard', () => {
         (
           TestBed.runInInjectionContext(() =>
             unauthenticatedGuard(activatedRouteSnapshot, routerStateSnapshot)
-          ) as Observable<boolean>
-        ).subscribe({
-          next: (result) => expect(result).toBe(router.parseUrl('/admin')),
+          ) as Observable<UrlTree | boolean>
+        ).subscribe((result) => {
+          expect(result.toString()).toBe(router.parseUrl('/admin').toString());
+          done();
         });
       });
 
-      it('should redirect plain users to /user route', () => {
+      it('should redirect plain users to /user route', (done) => {
         const unauthenticatedGuard = AuthenticationGuard.forUnauthenticated();
 
         setup({
@@ -118,9 +122,10 @@ describe('AuthenticationGuard', () => {
         (
           TestBed.runInInjectionContext(() =>
             unauthenticatedGuard(activatedRouteSnapshot, routerStateSnapshot)
-          ) as Observable<boolean>
-        ).subscribe({
-          next: (result) => expect(result).toBe(router.parseUrl('/user')),
+          ) as Observable<UrlTree | boolean>
+        ).subscribe((result) => {
+          expect(result.toString()).toBe(router.parseUrl('/user').toString());
+          done();
         });
       });
     });
@@ -130,14 +135,15 @@ describe('AuthenticationGuard', () => {
         setup(undefined);
       });
 
-      it('should let the route be activated', () => {
+      it('should let the route be activated', (done) => {
         const unauthenticatedGuard = AuthenticationGuard.forUnauthenticated();
         (
           TestBed.runInInjectionContext(() =>
             unauthenticatedGuard(activatedRouteSnapshot, routerStateSnapshot)
           ) as Observable<boolean>
-        ).subscribe({
-          next: (result) => expect(result).toBe(true),
+        ).subscribe((result) => {
+          expect(result).toBe(true);
+          done();
         });
       });
     });
