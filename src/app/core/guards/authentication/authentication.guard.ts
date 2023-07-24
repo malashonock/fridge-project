@@ -1,23 +1,48 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, UrlTree } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { selectAuthState } from 'app/state/auth/auth.selectors';
-import { AuthSessionState } from 'app/state/auth/auth.feature';
 import { Observable, map } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class AuthenticationGuard implements CanActivate {
-  constructor(private store: Store) {}
+import { AuthSessionState } from 'app/state/auth/auth.feature';
+import { selectAuthState } from 'app/state/auth/auth.selectors';
+import { UserRole } from 'app/core/models/user/user-role.model';
 
-  canActivate():
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    return this.store
-      .select(selectAuthState)
-      .pipe(map((authState: AuthSessionState) => !!authState));
-  }
-}
+export const AuthenticationGuard = {
+  forAuthenticated(): CanActivateFn {
+    return (): Observable<boolean> => {
+      return inject(Store)
+        .select(selectAuthState)
+        .pipe(
+          map((authState: AuthSessionState): boolean => {
+            return authState !== undefined;
+          })
+        );
+    };
+  },
+
+  forUnauthenticated(): CanActivateFn {
+    return (): Observable<boolean | UrlTree> => {
+      const router = inject(Router);
+
+      return inject(Store)
+        .select(selectAuthState)
+        .pipe(
+          map((authState: AuthSessionState): boolean | UrlTree => {
+            // Let unauthenticated user in
+            if (authState === undefined) {
+              return true;
+            }
+
+            // Redirect depending on user roley
+            switch (authState.user.role) {
+              case UserRole.Admin:
+                return router.parseUrl('/admin');
+              case UserRole.User:
+              default:
+                return router.parseUrl('/user');
+            }
+          })
+        );
+    };
+  },
+};

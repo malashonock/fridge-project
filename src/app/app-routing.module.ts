@@ -12,12 +12,18 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () =>
       import('./pages/auth/auth.module').then((m) => m.AuthModule),
+    canActivate: [AuthenticationGuard.forUnauthenticated()],
   },
   {
-    path: 'admin',
-    loadChildren: () =>
-      import('./pages/admin/admin.module').then((m) => m.AdminModule),
-    canActivate: [AuthenticationGuard],
+    path: '',
+    canActivate: [AuthenticationGuard.forAuthenticated()],
+    children: [
+      {
+        path: 'admin',
+        loadChildren: () =>
+          import('./pages/admin/admin.module').then((m) => m.AdminModule),
+      },
+    ],
   },
 ];
 
