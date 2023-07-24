@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AuthenticationGuard } from './core/guards/authentication/authentication.guard';
+import { AuthorizationGuard } from './core/guards/authorization/authorization.guard';
+import { UserRole } from './core/models/user/user-role.model';
 
 const routes: Routes = [
   {
@@ -22,6 +25,7 @@ const routes: Routes = [
         path: 'admin',
         loadChildren: () =>
           import('./pages/admin/admin.module').then((m) => m.AdminModule),
+        canActivate: [AuthorizationGuard.forRoles([UserRole.Admin])],
       },
     ],
   },
