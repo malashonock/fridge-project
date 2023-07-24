@@ -6,6 +6,11 @@ export interface MenuItemConfig {
   matIconCode?: string;
 }
 
+export enum MenuItemVariant {
+  Row = 'menu-item--row',
+  Tile = 'menu-item--tile',
+}
+
 @Component({
   selector: 'app-menu-item',
   templateUrl: './menu-item.component.html',
@@ -14,4 +19,5 @@ export interface MenuItemConfig {
 })
 export class MenuItemComponent {
   @Input() config?: MenuItemConfig;
+  @Input() variant = MenuItemVariant.Row;
 }
