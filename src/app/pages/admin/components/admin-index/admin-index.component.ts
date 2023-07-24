@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 
-import { MenuItemConfig } from 'app/shared/components/menu-item/menu-item.component';
+import {
+  MenuItemConfig,
+  MenuItemVariant,
+} from 'app/shared/components/menu-item/menu-item.component';
 import { adminPageMenuConfig } from '../../admin.menu-config';
 
 @Component({
@@ -9,5 +12,6 @@ import { adminPageMenuConfig } from '../../admin.menu-config';
   styleUrls: ['./admin-index.component.scss'],
 })
 export class AdminIndexComponent {
+  MenuItemVariant = MenuItemVariant;
   menuConfig: MenuItemConfig[] = adminPageMenuConfig;
 }
