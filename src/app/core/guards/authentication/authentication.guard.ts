@@ -7,8 +7,8 @@ import { AuthSessionState } from 'app/state/auth/auth.feature';
 import { selectAuthState } from 'app/state/auth/auth.selectors';
 import { UserRole } from 'app/core/models/user/user-role.model';
 
-export const AuthenticationGuard = {
-  forAuthenticated(): CanActivateFn {
+export class AuthenticationGuard {
+  static forAuthenticated(): CanActivateFn {
     return (): Observable<boolean> => {
       return inject(Store)
         .select(selectAuthState)
@@ -18,9 +18,9 @@ export const AuthenticationGuard = {
           })
         );
     };
-  },
+  }
 
-  forUnauthenticated(): CanActivateFn {
+  static forUnauthenticated(): CanActivateFn {
     return (): Observable<boolean | UrlTree> => {
       const router = inject(Router);
 
@@ -44,5 +44,5 @@ export const AuthenticationGuard = {
           })
         );
     };
-  },
-};
+  }
+}
