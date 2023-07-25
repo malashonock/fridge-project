@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 
-import { AuthSession } from 'app/state/auth/auth.slice';
+import { AuthSession } from 'app/state/auth/auth.feature';
 import { User } from 'app/core/models/user/user.model';
 import { SignupCredentials } from 'app/core/models/auth/signup.model';
 import { LoginCredentials } from 'app/core/models/auth/login.model';

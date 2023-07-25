@@ -1,0 +1,13 @@
+<app-header appFixedHeader></app-header>
+
+<mat-sidenav-container class="container">
+  <mat-sidenav appMobileMenu class="side-menu" position="end">
+    <app-menu-item
+      *ngFor="let menuItemConfig of menuConfig"
+      [config]="menuItemConfig"
+    ></app-menu-item>
+  </mat-sidenav>
+  <mat-sidenav-content class="main-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

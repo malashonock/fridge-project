@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
 
 import { AuthService } from 'app/core/services/auth/auth.service';
 import { AuthActions } from './auth.actions';
 import { User } from 'app/core/models/user/user.model';
-import { AuthSession } from './auth.slice';
+import { AuthSession } from './auth.feature';
+import { UserRole } from 'app/core/models/user/user-role.model';
 
 @Injectable()
 export class AuthEffects {
-  constructor(private actions$: Actions, private authService: AuthService) {}
+  constructor(
+    private store: Store,
+    private actions$: Actions,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   signup$ = createEffect(() =>
     this.actions$.pipe(
@@ -61,6 +69,22 @@ export class AuthEffects {
     )
   );
 
+  loginSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.loginSuccess),
+        tap(
+          /* Redirect depending on user role */
+          ({ sessionData }: ReturnType<typeof AuthActions.loginSuccess>) => {
+            const { user } = sessionData;
+            const redirectTo = user.role === UserRole.Admin ? '/admin' : 'user';
+            this.router.navigateByUrl(redirectTo);
+          }
+        )
+      ),
+    { dispatch: false }
+  );
+
   logout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.logout),
@@ -73,5 +97,14 @@ export class AuthEffects {
         )
       )
     )
+  );
+
+  logoutSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.logoutSuccess),
+        tap(() => this.router.navigateByUrl('/auth/login'))
+      ),
+    { dispatch: false }
   );
 }

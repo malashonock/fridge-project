@@ -3,11 +3,11 @@ import {
   selectLoggedUser,
   selectSessionExpirationTime,
 } from './auth.selectors';
-import { AuthSession } from './auth.slice';
+import { AuthSession } from './auth.feature';
 import { UserRole } from 'app/core/models/user/user-role.model';
 import { User } from 'app/core/models/user/user.model';
 
-describe('Auth slice selectors', () => {
+describe('Auth feature selectors', () => {
   const mockUser: User = {
     id: '1',
     name: 'admin',

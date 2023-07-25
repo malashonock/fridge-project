@@ -1,4 +1,4 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 import {
   anyOf,
@@ -12,9 +12,7 @@ import {
 } from 'app/utils/regex/regex';
 
 export class EmailValidator {
-  static valid: ValidatorFn = (
-    control: AbstractControl
-  ): ValidationErrors | null => {
+  static valid(control: AbstractControl): ValidationErrors | null {
     // Alias character sequences
     const englishLetters = 'A-Za-z';
     const digits = '0-9';
@@ -62,5 +60,5 @@ export class EmailValidator {
       : {
           invalidEmail: email,
         };
-  };
+  }
 }

@@ -11,7 +11,7 @@ const initializeAuthSessionFactory =
     store.dispatch(
       sessionData
         ? AuthActions.loginSuccess({ sessionData })
-        : AuthActions.logout()
+        : AuthActions.logoutSuccess()
     );
   };
 

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { AuthService } from './auth.service';
 import { LocalStorageService } from '../local-storage/local-storage.service';
-import { AuthSession } from 'app/state/auth/auth.slice';
+import { AuthSession } from 'app/state/auth/auth.feature';
 import { UserRole } from 'app/core/models/user/user-role.model';
 import { SignupCredentials } from 'app/core/models/auth/signup.model';
 import { User } from 'app/core/models/user/user.model';
