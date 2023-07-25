@@ -1,0 +1,56 @@
+<form (ngSubmit)="onSubmit()" class="form" [formGroup]="form">
+  <header class="header">
+    <mat-icon class="account-icon" fontIcon="account_circle"></mat-icon>
+    <h2 class="title">Sign up</h2>
+  </header>
+
+  <app-text-field
+    name="userName"
+    label="User name"
+    [error]="getFieldErrorMessage('userName')"
+  ></app-text-field>
+
+  <app-text-field
+    name="email"
+    label="Email"
+    type="email"
+    [error]="getFieldErrorMessage('email')"
+  ></app-text-field>
+
+  <app-select-field
+    name="role"
+    label="Role"
+    [options]="roles"
+    [error]="getFieldErrorMessage('role')"
+  ></app-select-field>
+
+  <app-text-field
+    name="password"
+    label="Password"
+    type="password"
+    [error]="getFieldErrorMessage('password')"
+  ></app-text-field>
+
+  <app-text-field
+    name="passwordConfirm"
+    label="Confirm password"
+    type="password"
+    [error]="getFieldErrorMessage('passwordConfirm')"
+  ></app-text-field>
+
+  <mat-error *ngIf="form.errors">{{ getFormErrorMessage() }}</mat-error>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="form.invalid"
+  >
+    Sign up
+  </button>
+
+  <p class="login-link">
+    <span>Already have an account? </span>
+    <a routerLink="/auth/login">Log in</a>
+  </p>
+</form>

@@ -19,7 +19,10 @@
         "@angular-eslint/component-class-suffix": [
           "error",
           {
-            "suffixes": ["Page", "Component"]
+            "suffixes": [
+              "Page",
+              "Component"
+            ]
           }
         ],
         "@angular-eslint/directive-selector": [
@@ -69,6 +72,33 @@
           }
         ]
       }
+    },
+    {
+      "files": [
+        "json-server/**/*.{js,mjs}"
+      ],
+      "env": {
+        "node": true
+      },
+      "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "prettier/prettier": [
+          "error",
+          {
+            "singleQuote": true
+          }
+        ]
+      }
     }
+  ],
+  "extends": [
+    "plugin:prettier/recommended"
   ]
 }

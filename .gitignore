@@ -40,3 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# json-server
+json-server/db.json
+
+# Documentation
+docs/
