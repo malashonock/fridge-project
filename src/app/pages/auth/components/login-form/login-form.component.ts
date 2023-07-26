@@ -11,16 +11,16 @@ import { AuthActions } from 'app/state/auth/auth.actions';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginFormComponent {
-  form: FormGroup;
+  public form: FormGroup;
 
-  constructor(formBuilder: FormBuilder, private store: Store) {
+  public constructor(formBuilder: FormBuilder, private store: Store) {
     this.form = formBuilder.group({
       userName: ['', [Validators.required, Validators.minLength(2)]],
       password: ['', [Validators.required]],
     });
   }
 
-  onSubmit(): void {
+  public onSubmit(): void {
     if (this.form.invalid) {
       return;
     }

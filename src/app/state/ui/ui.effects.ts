@@ -6,9 +6,9 @@ import { UiActions } from './ui.actions';
 
 @Injectable()
 export class UiEffects {
-  constructor(private actions$: Actions) {}
+  public constructor(private actions$: Actions) {}
 
-  toggleMobileMode$ = createEffect(() =>
+  public toggleMobileMode$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UiActions.toggleMobileMode),
       map(({ mobileMode }) => {

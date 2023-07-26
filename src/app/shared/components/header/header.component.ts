@@ -11,9 +11,9 @@ import { selectMobileMode } from 'app/state/ui/ui.selectors';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  mobileMode$: Observable<boolean>;
+  public mobileMode$: Observable<boolean>;
 
-  constructor(private store: Store) {
+  public constructor(private store: Store) {
     this.mobileMode$ = this.store.select(selectMobileMode);
   }
 }

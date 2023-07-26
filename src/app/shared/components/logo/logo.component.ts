@@ -11,7 +11,7 @@ import { FRIDGE_ICON } from './fridge-icon.svg';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LogoComponent {
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  public constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIconLiteral(
       'fridge-icon',
       sanitizer.bypassSecurityTrustHtml(FRIDGE_ICON)

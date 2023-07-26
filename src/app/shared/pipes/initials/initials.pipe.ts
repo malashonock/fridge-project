@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'toInitials',
 })
 export class InitialsPipe implements PipeTransform {
-  transform(fullName: string | null): string {
+  public transform(fullName: string | null): string {
     return (
       fullName
         ?.trim()

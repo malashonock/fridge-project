@@ -15,7 +15,7 @@ export class FixedHeaderDirective implements OnInit, OnDestroy {
   private headerHeight$: BehaviorSubject<number>;
   private headerHeightObserver: ResizeObserver;
 
-  constructor(
+  public constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
     private zone: NgZone
@@ -41,7 +41,7 @@ export class FixedHeaderDirective implements OnInit, OnDestroy {
     );
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     // Subscribe to header height observable
     this.headerHeight$
       .pipe(distinctUntilChanged())
@@ -53,7 +53,7 @@ export class FixedHeaderDirective implements OnInit, OnDestroy {
     this.headerHeightObserver.observe(this.elementRef.nativeElement);
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.headerHeightObserver.unobserve(this.elementRef.nativeElement);
     this.headerHeight$.complete();
   }

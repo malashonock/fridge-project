@@ -8,7 +8,7 @@ import { selectAuthState } from 'app/state/auth/auth.selectors';
 import { AuthSessionState } from 'app/state/auth/auth.feature';
 
 export class AuthorizationGuard {
-  static forRoles(roles: UserRole[]): CanActivateFn {
+  public static forRoles(roles: UserRole[]): CanActivateFn {
     return (): Observable<boolean> => {
       return inject(Store)
         .select(selectAuthState)

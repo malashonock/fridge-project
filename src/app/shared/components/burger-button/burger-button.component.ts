@@ -12,13 +12,13 @@ import { selectShowSideMenu } from 'app/state/ui/ui.selectors';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BurgerButtonComponent {
-  showMobileMenu$: Observable<boolean>;
+  public showMobileMenu$: Observable<boolean>;
 
-  constructor(private store: Store) {
+  public constructor(private store: Store) {
     this.showMobileMenu$ = this.store.select(selectShowSideMenu);
   }
 
-  toggleMobileMenu(): void {
+  public toggleMobileMenu(): void {
     this.store.dispatch(UiActions.toggleSideMenu());
   }
 }

@@ -12,11 +12,7 @@ import { MobilePageDirective } from 'app/shared/directives/mobile/page/mobile-pa
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminPageComponent {
-  constructor(
+  public constructor(
     @Inject(ADMIN_PAGE_MENU_CONFIG) public menuItemsConfig: MenuItemConfig[]
   ) {}
-
-  getMenuItemKey(index: number, menuItemConfig: MenuItemConfig): string {
-    return menuItemConfig.text;
-  }
 }

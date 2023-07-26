@@ -13,9 +13,9 @@ import { ADMIN_PAGE_MENU_CONFIG } from 'app/core/configs/admin-page-menu.config'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminIndexComponent {
-  MenuItemVariant = MenuItemVariant;
+  public MenuItemVariant = MenuItemVariant;
 
-  constructor(
+  public constructor(
     @Inject(ADMIN_PAGE_MENU_CONFIG) public menuItemsConfig: MenuItemConfig[]
   ) {}
 }

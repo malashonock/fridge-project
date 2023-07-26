@@ -18,6 +18,6 @@ export enum MenuItemVariant {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuItemComponent {
-  @Input() config?: MenuItemConfig;
-  @Input() variant = MenuItemVariant.Row;
+  @Input() public config?: MenuItemConfig;
+  @Input() public variant = MenuItemVariant.Row;
 }

@@ -19,14 +19,14 @@ interface SelectOption {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignupFormComponent {
-  form: FormGroup;
+  public form: FormGroup;
 
-  roles: SelectOption[] = [
+  public roles: SelectOption[] = [
     { value: 'user', label: 'User' },
     { value: 'admin', label: 'Admin' },
   ];
 
-  constructor(formBuilder: FormBuilder, private store: Store) {
+  public constructor(formBuilder: FormBuilder, private store: Store) {
     this.form = formBuilder.group(
       {
         userName: ['', [Validators.required, Validators.minLength(2)]],
@@ -41,7 +41,7 @@ export class SignupFormComponent {
     );
   }
 
-  onSubmit(): void {
+  public onSubmit(): void {
     if (this.form.invalid) {
       return;
     }

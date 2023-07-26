@@ -12,14 +12,14 @@ interface NavTab {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthPageComponent {
-  tabs: NavTab[] = [
+  public tabs: NavTab[] = [
     { link: 'login', label: 'Log in' },
     { link: 'signup', label: 'Sign up' },
   ];
 
-  activeTab = this.tabs[0];
+  public activeTab = this.tabs[0];
 
-  onTabSelect(tab: NavTab) {
+  public onTabSelect(tab: NavTab): void {
     this.activeTab = tab;
   }
 }
