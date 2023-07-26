@@ -5,7 +5,7 @@ import { Observable, map } from 'rxjs';
 
 import { AuthSessionState } from 'app/state/auth/auth.feature';
 import { selectAuthState } from 'app/state/auth/auth.selectors';
-import { UserRole } from 'app/core/models/user/user-role.model';
+import { UserRole } from 'app/core/models/user/user-role.enum';
 
 export class AuthenticationGuard {
   static forAuthenticated(): CanActivateFn {

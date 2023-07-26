@@ -3,7 +3,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { Observable } from 'rxjs';
 
 import { AuthSessionState } from 'app/state/auth/auth.feature';
-import { UserRole } from 'app/core/models/user/user-role.model';
+import { UserRole } from 'app/core/models/user/user-role.enum';
 import { AuthenticationGuard } from './authentication.guard';
 import {
   ActivatedRouteSnapshot,

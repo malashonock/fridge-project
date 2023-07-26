@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 
 import { AuthorizationGuard } from './authorization.guard';
 import { AuthSessionState } from 'app/state/auth/auth.feature';
-import { UserRole } from 'app/core/models/user/user-role.model';
+import { UserRole } from 'app/core/models/user/user-role.enum';
 
 describe('AuthorizationGuard', () => {
   let router: Router;

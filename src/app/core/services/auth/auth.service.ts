@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 
 import { AuthSession } from 'app/state/auth/auth.feature';
-import { User } from 'app/core/models/user/user.model';
-import { SignupCredentials } from 'app/core/models/auth/signup.model';
-import { LoginCredentials } from 'app/core/models/auth/login.model';
+import { User } from 'app/core/models/user/user.interface';
+import { SignupCredentials } from 'app/core/models/auth/signup.interface';
+import { LoginCredentials } from 'app/core/models/auth/login.interface';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 
 @Injectable({

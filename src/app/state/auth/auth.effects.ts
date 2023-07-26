@@ -6,9 +6,9 @@ import { catchError, map, of, switchMap, tap } from 'rxjs';
 
 import { AuthService } from 'app/core/services/auth/auth.service';
 import { AuthActions } from './auth.actions';
-import { User } from 'app/core/models/user/user.model';
+import { User } from 'app/core/models/user/user.interface';
 import { AuthSession } from './auth.feature';
-import { UserRole } from 'app/core/models/user/user-role.model';
+import { UserRole } from 'app/core/models/user/user-role.enum';
 
 @Injectable()
 export class AuthEffects {
