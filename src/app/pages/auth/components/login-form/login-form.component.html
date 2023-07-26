@@ -13,9 +13,7 @@
       formControlName="userName"
       placeholder="User name"
     />
-    <mat-error *ngIf="getFieldErrorMessage('userName')">{{
-      getFieldErrorMessage("userName")
-    }}</mat-error>
+    <mat-error>{{ getFieldErrorMessage("userName") }}</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline" subscriptSizing="dynamic">
@@ -28,9 +26,7 @@
       formControlName="password"
       placeholder="Password"
     />
-    <mat-error *ngIf="getFieldErrorMessage('password')">{{
-      getFieldErrorMessage("password")
-    }}</mat-error>
+    <mat-error>{{ getFieldErrorMessage("password") }}</mat-error>
   </mat-form-field>
 
   <button
