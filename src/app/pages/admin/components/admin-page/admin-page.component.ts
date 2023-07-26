@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 
-import { MenuItemConfig } from 'app/shared/components/menu-item/menu-item.component';
+import {
+  MenuItemConfig,
+  menuItemTrackBy,
+} from 'app/shared/components/menu-item/menu-item.component';
 import { ADMIN_PAGE_MENU_CONFIG } from 'app/core/configs/admin-page-menu.config';
 import { MobilePageDirective } from 'app/shared/directives/mobile/page/mobile-page.directive';
 
@@ -15,4 +18,6 @@ export class AdminPageComponent {
   public constructor(
     @Inject(ADMIN_PAGE_MENU_CONFIG) public menuItemsConfig: MenuItemConfig[]
   ) {}
+
+  public menuItemTrackBy = menuItemTrackBy;
 }

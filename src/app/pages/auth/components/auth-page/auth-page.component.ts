@@ -22,4 +22,8 @@ export class AuthPageComponent {
   public onTabSelect(tab: NavTab): void {
     this.activeTab = tab;
   }
+
+  public tabTrackBy(index: number, tab: NavTab): string {
+    return tab.label;
+  }
 }
