@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { SentenceCasePipe } from './pipes/sentence-case/sentence-case.pipe';
-import { SplitCamelCasePipe } from './pipes/split-camel-case/split-camel-case.pipe';
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/logo/logo.component';
@@ -18,8 +16,6 @@ import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
-    SentenceCasePipe,
-    SplitCamelCasePipe,
     HeaderComponent,
     LogoComponent,
     UserButtonComponent,
@@ -34,8 +30,6 @@ import { MapComponent } from './components/map/map.component';
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
-    SentenceCasePipe,
-    SplitCamelCasePipe,
     HeaderComponent,
     MenuItemComponent,
     MobileMenuDirective,
