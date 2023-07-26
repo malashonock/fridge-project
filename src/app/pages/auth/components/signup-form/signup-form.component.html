@@ -33,12 +33,17 @@
     }}</mat-error>
   </mat-form-field>
 
-  <app-select-field
-    name="role"
-    label="Role"
-    [options]="roles"
-    [error]="getFieldErrorMessage('role')"
-  ></app-select-field>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Role</mat-label>
+    <mat-select id="role" formControlName="role" placeholder="Role">
+      <mat-option *ngFor="let role of roles" [value]="role.value">{{
+        role.label
+      }}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="getFieldErrorMessage('role')">{{
+      getFieldErrorMessage("role")
+    }}</mat-error>
+  </mat-form-field>
 
   <mat-form-field appearance="outline" subscriptSizing="dynamic">
     <mat-label>Password</mat-label>

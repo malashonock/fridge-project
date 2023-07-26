@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 
 import { SentenceCasePipe } from './pipes/sentence-case/sentence-case.pipe';
 import { SplitCamelCasePipe } from './pipes/split-camel-case/split-camel-case.pipe';
-import { SelectFieldComponent } from './components/select-field/select-field.component';
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/logo/logo.component';
@@ -21,7 +20,6 @@ import { MapComponent } from './components/map/map.component';
   declarations: [
     SentenceCasePipe,
     SplitCamelCasePipe,
-    SelectFieldComponent,
     HeaderComponent,
     LogoComponent,
     UserButtonComponent,
@@ -38,7 +36,6 @@ import { MapComponent } from './components/map/map.component';
     MaterialModule,
     SentenceCasePipe,
     SplitCamelCasePipe,
-    SelectFieldComponent,
     HeaderComponent,
     MenuItemComponent,
     MobileMenuDirective,
