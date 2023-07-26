@@ -1,6 +1,6 @@
 import { InjectionToken, Provider } from '@angular/core';
 
-import { MenuItemConfig } from 'app/shared/components/menu-item/menu-item.component';
+import { MenuItemConfig } from 'shared/components';
 
 export const adminPageMenuConfig: MenuItemConfig[] = [
   { text: 'Products', href: 'products', matIconCode: 'fastfood' },

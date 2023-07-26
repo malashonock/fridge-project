@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { SharedModule } from 'app/shared/shared.module';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
@@ -12,9 +11,10 @@ import { MatInputHarness } from '@angular/material/input/testing';
 import { MatFormFieldHarness } from '@angular/material/form-field/testing';
 import { MatButtonHarness } from '@angular/material/button/testing';
 
+import { SharedModule } from 'shared/shared.module';
 import { LoginFormComponent } from './login-form.component';
-import { AuthActions } from 'app/state/auth/auth.actions';
-import { LoginCredentials } from 'app/core/models/auth/login.interface';
+import { AuthActions } from 'app/state/auth';
+import { LoginCredentials } from 'core/models';
 
 describe('LoginFormComponent', () => {
   let component: LoginFormComponent;

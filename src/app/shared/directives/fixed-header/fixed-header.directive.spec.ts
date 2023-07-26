@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { FixedHeaderDirective } from './fixed-header.directive';
-import { SharedModule } from 'app/shared/shared.module';
-import { ResizeObserverSpies } from '../../../../../setup-jest';
+import { SharedModule } from 'shared/shared.module';
+import { ResizeObserverSpies } from 'rootDir/setup-jest';
 
 @Component({
   template: `

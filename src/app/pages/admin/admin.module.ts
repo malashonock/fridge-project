@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from 'shared/shared.module';
 import { AdminRoutingModule } from './admin-routing.module';
-import { AdminPageComponent } from './components/admin-page/admin-page.component';
-import { AdminIndexComponent } from './components/admin-index/admin-index.component';
-import { MobilePageDirective } from 'app/shared/directives/mobile/page/mobile-page.directive';
-import { ProductsComponent } from './components/products/products.component';
-import { FridgesComponent } from './components/fridges/fridges.component';
-import { adminPageMenuConfigProvider } from 'app/core/configs/admin-page-menu.config';
+import {
+  AdminPageComponent,
+  AdminIndexComponent,
+  ProductsComponent,
+  FridgesComponent,
+} from './components';
+import { MobilePageDirective } from 'shared/directives';
+import { adminPageMenuConfigProvider } from 'core/configs';
 
 @NgModule({
   declarations: [

@@ -1,9 +1,7 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
-import { LoginCredentials } from 'app/core/models/auth/login.interface';
+import { LoginCredentials, SignupCredentials, User } from 'core/models';
 import { AuthSession } from './auth.feature';
-import { SignupCredentials } from 'app/core/models/auth/signup.interface';
-import { User } from 'app/core/models/user/user.interface';
 
 export const AuthActions = createActionGroup({
   source: 'Auth',

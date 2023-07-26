@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 
 import { UserButtonComponent } from './user-button.component';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from 'shared/shared.module';
 
 describe('UserButtonComponent', () => {
   let component: UserButtonComponent;

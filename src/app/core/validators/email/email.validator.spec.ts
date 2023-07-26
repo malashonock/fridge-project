@@ -1,4 +1,5 @@
 import { AbstractControl, FormControl } from '@angular/forms';
+
 import { EmailValidator } from './email.validator';
 
 describe('Email validator', () => {

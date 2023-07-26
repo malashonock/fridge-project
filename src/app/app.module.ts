@@ -8,15 +8,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 
-import { CoreModule } from './core/core.module';
+import { CoreModule } from 'core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { authFeature } from './state/auth/auth.feature';
-import { AuthEffects } from './state/auth/auth.effects';
-import { AuthSessionInitializer } from './core/services/auth/auth-session.initializer';
-import { httpInterceptorProviders } from './core/interceptors';
-import { uiFeature } from './state/ui/ui.feature';
-import { UiEffects } from './state/ui/ui.effects';
+import { AuthSessionInitializer } from 'core/services';
+import { httpInterceptorProviders } from 'core/interceptors';
+import { authFeature, AuthEffects } from './state/auth';
+import { uiFeature, UiEffects } from './state/ui';
 
 @NgModule({
   declarations: [AppComponent],

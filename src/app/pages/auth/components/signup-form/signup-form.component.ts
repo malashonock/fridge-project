@@ -2,10 +2,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { UserRole } from 'app/core/models/user/user-role.enum';
-import { EmailValidator } from 'app/core/validators/email/email.validator';
-import { PasswordValidator } from 'app/core/validators/password/password.validator';
-import { AuthActions } from 'app/state/auth/auth.actions';
+import { UserRole } from 'core/models';
+import { EmailValidator, PasswordValidator } from 'core/validators';
+import { AuthActions } from 'app/state/auth';
 
 interface SelectOption {
   value: string;

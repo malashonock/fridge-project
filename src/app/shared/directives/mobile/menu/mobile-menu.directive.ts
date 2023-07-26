@@ -3,11 +3,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Subject, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import {
-  selectMobileMode,
-  selectShowSideMenu,
-} from 'app/state/ui/ui.selectors';
-import { UiActions } from 'app/state/ui/ui.actions';
+import { UiActions, selectMobileMode, selectShowSideMenu } from 'app/state/ui';
 
 @Directive({
   selector: '[appMobileMenu]',

@@ -2,9 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 
-import { User } from 'app/core/models/user/user.interface';
-import { selectLoggedUser } from 'app/state/auth/auth.selectors';
-import { AuthActions } from 'app/state/auth/auth.actions';
+import { User } from 'core/models';
+import { AuthActions, selectLoggedUser } from 'app/state/auth';
 
 @Component({
   selector: 'app-user-button',

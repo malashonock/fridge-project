@@ -2,7 +2,7 @@ import { Store } from '@ngrx/store';
 import { APP_INITIALIZER, Provider } from '@angular/core';
 
 import { AuthService } from './auth.service';
-import { AuthActions } from 'app/state/auth/auth.actions';
+import { AuthActions } from 'app/state/auth';
 
 // Restore session data from local storage on app startup
 const initializeAuthSessionFactory =

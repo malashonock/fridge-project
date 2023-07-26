@@ -4,8 +4,8 @@ import {
   MenuItemConfig,
   MenuItemVariant,
   menuItemTrackBy,
-} from 'app/shared/components/menu-item/menu-item.component';
-import { ADMIN_PAGE_MENU_CONFIG } from 'app/core/configs/admin-page-menu.config';
+} from 'shared/components';
+import { ADMIN_PAGE_MENU_CONFIG } from 'core/configs';
 
 @Component({
   selector: 'app-admin-index',

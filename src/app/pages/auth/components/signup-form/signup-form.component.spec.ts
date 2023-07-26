@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { SharedModule } from 'app/shared/shared.module';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,10 +15,10 @@ import { MatSelectHarness } from '@angular/material/select/testing';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 
+import { SharedModule } from 'shared/shared.module';
 import { SignupFormComponent } from './signup-form.component';
-import { AuthActions } from 'app/state/auth/auth.actions';
-import { SignupCredentials } from 'app/core/models/auth/signup.interface';
-import { UserRole } from 'app/core/models/user/user-role.enum';
+import { AuthActions } from 'app/state/auth';
+import { SignupCredentials, UserRole } from 'core/models';
 
 describe('SignupFormComponent', () => {
   let component: SignupFormComponent;
