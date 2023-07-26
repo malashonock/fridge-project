@@ -4,18 +4,34 @@
     <h2 class="title">Log in</h2>
   </header>
 
-  <app-text-field
-    name="userName"
-    label="User name"
-    [error]="getFieldErrorMessage('userName')"
-  ></app-text-field>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>User name</mat-label>
+    <input
+      matInput
+      id="userName"
+      name="userName"
+      formControlName="userName"
+      placeholder="User name"
+    />
+    <mat-error *ngIf="getFieldErrorMessage('userName')">{{
+      getFieldErrorMessage("userName")
+    }}</mat-error>
+  </mat-form-field>
 
-  <app-text-field
-    name="password"
-    label="Password"
-    type="password"
-    [error]="getFieldErrorMessage('password')"
-  ></app-text-field>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      type="password"
+      id="password"
+      name="password"
+      formControlName="password"
+      placeholder="Password"
+    />
+    <mat-error *ngIf="getFieldErrorMessage('password')">{{
+      getFieldErrorMessage("password")
+    }}</mat-error>
+  </mat-form-field>
 
   <button
     mat-raised-button
