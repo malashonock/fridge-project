@@ -7,6 +7,7 @@ import { AdminIndexComponent } from './components/admin-index/admin-index.compon
 import { MobilePageDirective } from 'app/shared/directives/mobile/page/mobile-page.directive';
 import { ProductsComponent } from './components/products/products.component';
 import { FridgesComponent } from './components/fridges/fridges.component';
+import { adminPageMenuConfigProvider } from 'app/core/configs/admin-page-menu.config';
 
 @NgModule({
   declarations: [
@@ -17,5 +18,6 @@ import { FridgesComponent } from './components/fridges/fridges.component';
   ],
   exports: [AdminPageComponent],
   imports: [SharedModule, AdminRoutingModule, MobilePageDirective],
+  providers: [adminPageMenuConfigProvider],
 })
 export class AdminModule {}

@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 import {
   MenuItemConfig,
   MenuItemVariant,
 } from 'app/shared/components/menu-item/menu-item.component';
-import { adminPageMenuConfig } from '../../admin.menu-config';
+import { ADMIN_PAGE_MENU_CONFIG } from 'app/core/configs/admin-page-menu.config';
 
 @Component({
   selector: 'app-admin-index',
@@ -13,5 +13,8 @@ import { adminPageMenuConfig } from '../../admin.menu-config';
 })
 export class AdminIndexComponent {
   MenuItemVariant = MenuItemVariant;
-  menuConfig: MenuItemConfig[] = adminPageMenuConfig;
+
+  constructor(
+    @Inject(ADMIN_PAGE_MENU_CONFIG) public menuItemsConfig: MenuItemConfig[]
+  ) {}
 }

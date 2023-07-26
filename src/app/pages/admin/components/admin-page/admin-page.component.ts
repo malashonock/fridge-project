@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 import { MenuItemConfig } from 'app/shared/components/menu-item/menu-item.component';
+import { ADMIN_PAGE_MENU_CONFIG } from 'app/core/configs/admin-page-menu.config';
 import { MobilePageDirective } from 'app/shared/directives/mobile/page/mobile-page.directive';
-import { adminPageMenuConfig } from '../../admin.menu-config';
 
 @Component({
   selector: 'app-admin-page',
@@ -11,7 +11,9 @@ import { adminPageMenuConfig } from '../../admin.menu-config';
   hostDirectives: [MobilePageDirective],
 })
 export class AdminPageComponent {
-  readonly menuConfig: MenuItemConfig[] = adminPageMenuConfig;
+  constructor(
+    @Inject(ADMIN_PAGE_MENU_CONFIG) public menuItemsConfig: MenuItemConfig[]
+  ) {}
 
   getMenuItemKey(index: number, menuItemConfig: MenuItemConfig): string {
     return menuItemConfig.text;
