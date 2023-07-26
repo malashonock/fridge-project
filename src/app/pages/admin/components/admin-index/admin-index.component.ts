@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 
 import {
   MenuItemConfig,
@@ -10,6 +10,7 @@ import { ADMIN_PAGE_MENU_CONFIG } from 'app/core/configs/admin-page-menu.config'
   selector: 'app-admin-index',
   templateUrl: './admin-index.component.html',
   styleUrls: ['./admin-index.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminIndexComponent {
   MenuItemVariant = MenuItemVariant;
