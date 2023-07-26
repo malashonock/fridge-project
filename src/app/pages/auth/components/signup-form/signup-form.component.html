@@ -13,7 +13,14 @@
       formControlName="userName"
       placeholder="User name"
     />
-    <mat-error>{{ getFieldErrorMessage("userName") }}</mat-error>
+    <mat-error *ngIf="form.controls['userName'].hasError('required')">
+      User name is required
+    </mat-error>
+    <mat-error *ngIf="form.controls['userName'].hasError('minlength')">
+      User name must be no shorter than
+      {{ form.controls["userName"].errors!["minlength"].requiredLength }}
+      symbols
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline" subscriptSizing="dynamic">
@@ -26,7 +33,12 @@
       formControlName="email"
       placeholder="Email"
     />
-    <mat-error>{{ getFieldErrorMessage("email") }}</mat-error>
+    <mat-error *ngIf="form.controls['email'].hasError('required')">
+      Email is required
+    </mat-error>
+    <mat-error *ngIf="form.controls['email'].hasError('invalidEmail')">
+      Email is not valid
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline" subscriptSizing="dynamic">
@@ -36,7 +48,9 @@
         role.label
       }}</mat-option>
     </mat-select>
-    <mat-error>{{ getFieldErrorMessage("role") }}</mat-error>
+    <mat-error *ngIf="form.controls['role'].hasError('required')">
+      Role is required
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline" subscriptSizing="dynamic">
@@ -49,7 +63,9 @@
       formControlName="password"
       placeholder="Password"
     />
-    <mat-error>{{ getFieldErrorMessage("password") }}</mat-error>
+    <mat-error *ngIf="form.controls['password'].hasError('required')">
+      Password is required
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline" subscriptSizing="dynamic">
@@ -62,10 +78,14 @@
       formControlName="passwordConfirm"
       placeholder="Confirm password"
     />
-    <mat-error>{{ getFieldErrorMessage("passwordConfirm") }}</mat-error>
+    <mat-error *ngIf="form.controls['passwordConfirm'].hasError('required')">
+      Password confirmation is required
+    </mat-error>
   </mat-form-field>
 
-  <mat-error *ngIf="form.errors">{{ getFormErrorMessage() }}</mat-error>
+  <mat-error *ngIf="form.hasError('passwordsMismatch')">
+    Passwords don't match
+  </mat-error>
 
   <button
     mat-raised-button

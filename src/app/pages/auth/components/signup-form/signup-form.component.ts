@@ -2,10 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { FormBaseComponent } from 'app/shared/components/form-base/form-base.component';
 import { UserRole } from 'app/core/models/user/user-role.enum';
-import { SentenceCasePipe } from 'app/shared/pipes/sentence-case/sentence-case.pipe';
-import { SplitCamelCasePipe } from 'app/shared/pipes/split-camel-case/split-camel-case.pipe';
 import { EmailValidator } from 'app/core/validators/email/email.validator';
 import { PasswordValidator } from 'app/core/validators/password/password.validator';
 import { AuthActions } from 'app/state/auth/auth.actions';
@@ -21,20 +18,16 @@ interface SelectOption {
   styleUrls: ['./signup-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignupFormComponent extends FormBaseComponent {
+export class SignupFormComponent {
+  form: FormGroup;
+
   roles: SelectOption[] = [
     { value: 'user', label: 'User' },
     { value: 'admin', label: 'Admin' },
   ];
 
-  constructor(
-    formBuilder: FormBuilder,
-    sentenceCasePipe: SentenceCasePipe,
-    splitCamelCasePipe: SplitCamelCasePipe,
-    private store: Store
-  ) {
-    // Instantiate base class
-    super(
+  constructor(formBuilder: FormBuilder, private store: Store) {
+    this.form = formBuilder.group(
       {
         userName: ['', [Validators.required, Validators.minLength(2)]],
         email: ['', [Validators.required, EmailValidator.valid]],
@@ -44,17 +37,19 @@ export class SignupFormComponent extends FormBaseComponent {
       },
       {
         validators: [PasswordValidator.match('password', 'passwordConfirm')],
-      },
-      (form: FormGroup): void => {
-        this.store.dispatch(
-          AuthActions.signup({
-            credentials: form.value,
-          })
-        );
-      },
-      formBuilder,
-      sentenceCasePipe,
-      splitCamelCasePipe
+      }
+    );
+  }
+
+  onSubmit(): void {
+    if (this.form.invalid) {
+      return;
+    }
+
+    this.store.dispatch(
+      AuthActions.signup({
+        credentials: this.form.value,
+      })
     );
   }
 }

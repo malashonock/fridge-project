@@ -13,7 +13,14 @@
       formControlName="userName"
       placeholder="User name"
     />
-    <mat-error>{{ getFieldErrorMessage("userName") }}</mat-error>
+    <mat-error *ngIf="form.controls['userName'].hasError('required')">
+      User name is required
+    </mat-error>
+    <mat-error *ngIf="form.controls['userName'].hasError('minlength')">
+      User name must be no shorter than
+      {{ form.controls["userName"].errors!["minlength"].requiredLength }}
+      symbols
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline" subscriptSizing="dynamic">
@@ -26,7 +33,9 @@
       formControlName="password"
       placeholder="Password"
     />
-    <mat-error>{{ getFieldErrorMessage("password") }}</mat-error>
+    <mat-error *ngIf="form.controls['password'].hasError('required')">
+      Password is required
+    </mat-error>
   </mat-form-field>
 
   <button
@@ -39,7 +48,7 @@
   </button>
 
   <p class="signup-link">
-    <span>Don't have an account yet? </span>
+    <span>Don't have an account yet?</span>
     <a routerLink="/auth/signup">Sign up</a>
   </p>
 </form>
