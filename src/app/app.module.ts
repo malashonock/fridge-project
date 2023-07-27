@@ -11,7 +11,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { CoreModule } from 'core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthSessionInitializer } from 'core/services';
+import { AuthSessionInitializer, ProductsInitializer } from 'core/services';
 import { httpInterceptorProviders } from 'core/interceptors';
 import { authFeature, AuthEffects } from './state/auth';
 import { uiFeature, UiEffects } from './state/ui';
@@ -38,7 +38,11 @@ import { productsFeature, ProductsEffects } from './state/products';
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([AuthEffects, UiEffects, ProductsEffects]),
   ],
-  providers: [AuthSessionInitializer, httpInterceptorProviders],
+  providers: [
+    AuthSessionInitializer,
+    ProductsInitializer,
+    httpInterceptorProviders,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
