@@ -9,6 +9,7 @@ const jestConfig = {
     "^core/(.*)": ["<rootDir>/src/app/core/$1"],
     "^shared/(.*)": ["<rootDir>/src/app/shared/$1"],
     "^utils/(.*)": ["<rootDir>/src/app/utils/$1"],
+    "^mocks/(.*)": ["<rootDir>/src/app/mocks/$1"],
     "^rootDir/(.*)": ["<rootDir>/$1"]
   },
 };
