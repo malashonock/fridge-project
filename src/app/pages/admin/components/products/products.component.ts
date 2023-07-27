@@ -9,7 +9,10 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subject, debounceTime, fromEvent, takeUntil } from 'rxjs';
+import { Observable, Subject, debounceTime, fromEvent, takeUntil } from 'rxjs';
+
+import { Product } from 'core/models';
+import { selectAllProducts } from 'app/state/products';
 
 @Component({
   selector: 'app-products',
@@ -18,21 +21,23 @@ import { Subject, debounceTime, fromEvent, takeUntil } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
-  private destroy$ = new Subject();
   public searchControl: FormControl;
+  public products$: Observable<Product[]>;
+  private searchQuery = '';
+  private destroy$ = new Subject();
 
   @ViewChild('searchInput') searchInput!: ElementRef;
 
   public constructor(formBuilder: FormBuilder, private store: Store) {
     this.searchControl = formBuilder.control('');
+    this.products$ = this.store.select(selectAllProducts);
   }
 
   public ngOnInit(): void {
     this.searchControl.valueChanges
       .pipe(debounceTime(500), takeUntil(this.destroy$))
       .subscribe((query: string): void => {
-        console.log('dispatch set query action:', query);
-        // this.store.dispatch(ProductActions.searchProducts);
+        this.searchQuery = query;
       });
   }
 
