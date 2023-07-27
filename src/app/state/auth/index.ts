@@ -1,5 +1,4 @@
 export { AuthActions } from './auth.actions';
-export { AuthActionReducers } from './auth.reducers';
 export { AuthEffects } from './auth.effects';
 export {
   AuthSession,
