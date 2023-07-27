@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTableModule } from '@angular/material/table';
 
 const materialModules = [
   MatFormFieldModule,
@@ -21,6 +22,7 @@ const materialModules = [
   MatMenuModule,
   MatSidenavModule,
   MatTooltipModule,
+  MatTableModule,
 ];
 
 @NgModule({
