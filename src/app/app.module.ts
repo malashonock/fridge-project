@@ -15,6 +15,7 @@ import { AuthSessionInitializer } from 'core/services';
 import { httpInterceptorProviders } from 'core/interceptors';
 import { authFeature, AuthEffects } from './state/auth';
 import { uiFeature, UiEffects } from './state/ui';
+import { productsFeature, ProductsEffects } from './state/products';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,12 +30,13 @@ import { uiFeature, UiEffects } from './state/ui';
       {
         [authFeature.name]: authFeature.reducer,
         [uiFeature.name]: uiFeature.reducer,
+        [productsFeature.name]: productsFeature.reducer,
       },
       {}
     ),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([AuthEffects, UiEffects]),
+    EffectsModule.forRoot([AuthEffects, UiEffects, ProductsEffects]),
   ],
   providers: [AuthSessionInitializer, httpInterceptorProviders],
   bootstrap: [AppComponent],
