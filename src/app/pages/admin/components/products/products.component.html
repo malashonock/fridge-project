@@ -1,1 +1,24 @@
-<p>Products management page</p>
+<h1>Manage products</h1>
+
+<div class="controls">
+  <button mat-fab matTooltip="Add new product" class="add-product-btn">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <mat-form-field
+    class="search-box"
+    appearance="outline"
+    subscriptSizing="dynamic"
+  >
+    <mat-label>Search products</mat-label>
+    <input
+      #searchInput
+      matInput
+      [formControl]="searchControl"
+      id="search-products"
+      name="search-products"
+      placeholder="Search in product name or description"
+    />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>
