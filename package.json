@@ -10,7 +10,7 @@
     "test:watch": "jest --watch --coverage",
     "lint": "ng lint --fix",
     "prepare": "husky install",
-    "start:server": "cd json-server && nodemon server.mjs --ignore db.json"
+    "start:server": "cd json-server && nodemon server.mjs --ignore db.json --ignore 'public/*'"
   },
   "private": true,
   "dependencies": {
