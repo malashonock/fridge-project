@@ -23,4 +23,11 @@
       font-weight: bolder;
     }
   }
+
+  &.active {
+    .icon,
+    .text {
+      color: var(--color-primary);
+    }
+  }
 }
