@@ -45,14 +45,20 @@ describe('FixedHeaderDirective', () => {
     expect(directive).toBeTruthy();
   });
 
-  it('should apply appropriate styles to host DOM element', () => {
+  it('should apply appropriate styles to header', () => {
     expect(headerEl.nativeElement.style.position).toBe('fixed');
     expect(headerEl.nativeElement.style.top).toBe('0px');
     expect(headerEl.nativeElement.style.width).toBe('100%');
-    expect(headerEl.nativeElement.style.zIndex).toBe('100');
+    expect(headerEl.nativeElement.style.zIndex).toBe('10');
   });
 
-  it('should adjust top margin of the content element to match header height changes', () => {
+  it('should apply appropriate fixed styles to content container', () => {
+    expect(contentEl.nativeElement.style.position).toBe('fixed');
+    expect(contentEl.nativeElement.style.width).toBe('100%');
+    expect(contentEl.nativeElement.style.bottom).toBe('0px');
+  });
+
+  it('should adjust top margin of the content container to match header height changes', () => {
     const { spyOnResizeObserverObserve, triggerResizeObserver } =
       ResizeObserverSpies;
     expect(spyOnResizeObserverObserve).toHaveBeenCalledWith(
@@ -86,6 +92,6 @@ describe('FixedHeaderDirective', () => {
       },
     ]);
 
-    expect(contentEl.nativeElement.style.marginTop).toBe('50px');
+    expect(contentEl.nativeElement.style.top).toBe('50px');
   });
 });
