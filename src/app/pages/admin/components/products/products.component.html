@@ -25,7 +25,7 @@
 
 <div class="table-container">
   <table mat-table [dataSource]="(products$ | async) || []">
-    <ng-container matColumnDef="actions">
+    <ng-container matColumnDef="actions" sticky>
       <th
         mat-header-cell
         *matHeaderCellDef
@@ -35,12 +35,18 @@
         Actions
       </th>
       <td mat-cell *matCellDef="let product" class="align-center">
-        <button mat-icon-button matTooltip="Edit product">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button matTooltip="Delete product">
-          <mat-icon>delete</mat-icon>
-        </button>
+        <div class="action-btn-container">
+          <button mat-icon-button matTooltip="Edit product" class="action-btn">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            matTooltip="Delete product"
+            class="action-btn"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
       </td>
     </ng-container>
 
