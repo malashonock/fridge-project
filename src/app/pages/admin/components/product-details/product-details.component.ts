@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Product } from 'core/models';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-product-details',
@@ -10,4 +11,5 @@ import { Product } from 'core/models';
 })
 export class ProductDetailsComponent {
   @Input() public product?: Product;
+  public imageServerUrl = environment.STATIC_ASSETS_BASE_URL;
 }
