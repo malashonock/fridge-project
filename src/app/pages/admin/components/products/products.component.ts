@@ -41,6 +41,13 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
   public searchControl: FormControl;
   public products$: Observable<Product[]>;
   private searchQuery = '';
+  public tableColumns: string[] = [
+    'name',
+    'price',
+    'weight',
+    'shelfLife',
+    'actions',
+  ];
   public expandedProduct: Product | null = null;
   private destroy$ = new Subject();
 
