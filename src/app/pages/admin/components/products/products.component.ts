@@ -44,6 +44,7 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
   public products = new MatTableDataSource<Product>([]);
   public tableColumns: string[] = [
     'name',
+    'category',
     'price',
     'weight',
     'shelfLife',
