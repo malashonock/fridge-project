@@ -1,6 +1,7 @@
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   OnDestroy,
@@ -16,10 +17,11 @@ import {
   animate,
 } from '@angular/animations';
 import { Store } from '@ngrx/store';
-import { Observable, Subject, debounceTime, fromEvent, takeUntil } from 'rxjs';
+import { Subject, debounceTime, fromEvent, map, takeUntil } from 'rxjs';
 
 import { Product } from 'core/models';
 import { selectAllProducts } from 'app/state/products';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-products',
@@ -39,8 +41,7 @@ import { selectAllProducts } from 'app/state/products';
 })
 export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
   public searchControl: FormControl;
-  public products$: Observable<Product[]>;
-  private searchQuery = '';
+  public products = new MatTableDataSource<Product>([]);
   public tableColumns: string[] = [
     'name',
     'price',
@@ -53,17 +54,44 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('searchInput') searchInput!: ElementRef;
 
-  public constructor(formBuilder: FormBuilder, private store: Store) {
+  public constructor(
+    formBuilder: FormBuilder,
+    private store: Store,
+    private cdRef: ChangeDetectorRef
+  ) {
     this.searchControl = formBuilder.control('');
-    this.products$ = this.store.select(selectAllProducts);
   }
 
   public ngOnInit(): void {
     this.searchControl.valueChanges
-      .pipe(debounceTime(500), takeUntil(this.destroy$))
+      .pipe(
+        takeUntil(this.destroy$),
+        debounceTime(500),
+        map((rawQuery: string) => {
+          return rawQuery?.trim().toLowerCase();
+        })
+      )
       .subscribe((query: string): void => {
-        this.searchQuery = query;
+        this.products.filter = query;
+        this.cdRef.detectChanges();
       });
+
+    this.store
+      .select(selectAllProducts)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((products: Product[]) => {
+        this.products.data = products;
+      });
+
+    this.products.filterPredicate = (
+      product: Product,
+      filter: string
+    ): boolean => {
+      return (
+        product.name.toLowerCase().includes(filter) ||
+        product.ingredients.toLowerCase().includes(filter)
+      );
+    };
   }
 
   public ngAfterViewInit(): void {
