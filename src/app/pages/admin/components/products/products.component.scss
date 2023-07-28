@@ -11,7 +11,19 @@
   gap: 1rem;
 }
 
+.table-container {
+  overflow-x: auto;
+}
+
 .search-box {
   flex-grow: 1;
   max-width: 40rem; // 640px
+}
+
+.number-column {
+  text-align: right;
+}
+
+.header-span {
+  text-align: center;
 }
