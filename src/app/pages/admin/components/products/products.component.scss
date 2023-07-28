@@ -20,10 +20,14 @@
   max-width: 40rem; // 640px
 }
 
-.number-column {
+.align-right {
   text-align: right;
 }
 
-.header-span {
+.align-center {
   text-align: center;
+}
+
+.mat-column-actions {
+  width: min-content;
 }
