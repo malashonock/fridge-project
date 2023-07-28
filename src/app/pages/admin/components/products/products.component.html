@@ -66,32 +66,7 @@
             product.id === expandedProduct?.id ? 'expanded' : 'collapsed'
           "
         >
-          <div class="product__detail">
-            <div class="product__brief-intro">
-              <img
-                class="product__photo"
-                [src]="'http://localhost:3000' + product.imageUrl"
-                [alt]="product.name + ' photo'"
-              />
-              <div class="product__energy-value">
-                <strong>Energy value:</strong> {{ product.kiloCalories }} kcal
-                <p><strong>Nutrients:</strong></p>
-                <ul>
-                  <li>
-                    <strong>Protein:</strong> {{ product.nutrients.protein }} g
-                  </li>
-                  <li><strong>Fat:</strong> {{ product.nutrients.fat }} g</li>
-                  <li>
-                    <strong>Carbohydrates:</strong>
-                    {{ product.nutrients.carbs }} g
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <p class="product__ingredients">
-              <strong>Ingredients:</strong> {{ product.ingredients }}
-            </p>
-          </div>
+          <app-product-details [product]="product"></app-product-details>
         </div>
       </td>
     </ng-container>

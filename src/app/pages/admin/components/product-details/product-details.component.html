@@ -1,0 +1,22 @@
+<div class="brief-intro">
+  <img
+    class="photo"
+    [src]="'http://localhost:3000' + product?.imageUrl"
+    [alt]="product?.name + ' photo'"
+  />
+  <div class="energy-value">
+    <strong>Energy value:</strong> {{ product?.kiloCalories }} kcal
+    <p><strong>Nutrients:</strong></p>
+    <ul>
+      <li><strong>Protein:</strong> {{ product?.nutrients?.protein }} g</li>
+      <li><strong>Fat:</strong> {{ product?.nutrients?.fat }} g</li>
+      <li>
+        <strong>Carbohydrates:</strong>
+        {{ product?.nutrients?.carbs }} g
+      </li>
+    </ul>
+  </div>
+</div>
+<p class="ingredients">
+  <strong>Ingredients:</strong> {{ product?.ingredients }}
+</p>
