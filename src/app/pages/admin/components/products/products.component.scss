@@ -53,8 +53,51 @@ $action-btn-size: 2rem; // 32px
   }
 }
 
-.mat-mdc-row:hover {
+.detail-row {
+  height: 0;
+}
+
+.main-row {
+  &.expanded * {
+    font-weight: bolder;
+  }
+  
+  &:not(.expanded) {
+    &:hover {
+      background-color: whitesmoke;
+    }
+    
+    &:active {
+      background-color: #efefef;
+    }
+  }
+  
   .mat-mdc-cell {
-    background-color: #f5f5f5;
+    border-bottom-width: 0;
+  }
+}
+
+.product {
+  &__detail {
+    width: 100%;
+    margin-bottom: 1rem; // 16px
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem; // 16px
+    font-size: 90%;
+  }
+
+  &__brief-intro {
+    display: flex;
+    gap: 1rem; // 16px
+    align-items: center;
+  }
+  
+  &__photo {
+    $photo-size: 8rem; // 128px
+    width: $photo-size;
+    height: $photo-size;
+    border-radius: 50%;
   }
 }

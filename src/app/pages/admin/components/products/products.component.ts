@@ -8,6 +8,13 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 import { Store } from '@ngrx/store';
 import { Observable, Subject, debounceTime, fromEvent, takeUntil } from 'rxjs';
 
@@ -18,12 +25,23 @@ import { selectAllProducts } from 'app/state/products';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+    ]),
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
   public searchControl: FormControl;
   public products$: Observable<Product[]>;
   private searchQuery = '';
+  public expandedProduct: Product | null = null;
   private destroy$ = new Subject();
 
   @ViewChild('searchInput') searchInput!: ElementRef;
@@ -58,5 +76,10 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
   public ngOnDestroy(): void {
     this.destroy$.next(null);
     this.destroy$.complete();
+  }
+
+  public toggleExpandProduct(product: Product): void {
+    this.expandedProduct =
+      product.id === this.expandedProduct?.id ? null : product;
   }
 }
