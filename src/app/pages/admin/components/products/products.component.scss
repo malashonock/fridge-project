@@ -24,6 +24,10 @@ $action-btn-size: 2rem; // 32px
 
 .align-right {
   text-align: right;
+  
+  ::ng-deep .mat-sort-header-container {
+    justify-content: flex-end;
+  }
 }
 
 .align-center {

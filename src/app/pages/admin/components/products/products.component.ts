@@ -18,10 +18,11 @@ import {
 } from '@angular/animations';
 import { Store } from '@ngrx/store';
 import { Subject, debounceTime, fromEvent, map, takeUntil } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 import { Product } from 'core/models';
 import { selectAllProducts } from 'app/state/products';
-import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-products',
@@ -54,6 +55,7 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
   private destroy$ = new Subject();
 
   @ViewChild('searchInput') searchInput!: ElementRef;
+  @ViewChild(MatSort) sort!: MatSort;
 
   public constructor(
     formBuilder: FormBuilder,
@@ -66,20 +68,12 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
   public ngOnInit(): void {
     this.subscribeToSearchQueryChanges();
     this.subscribeToStoreProductsChanges();
-
-    this.products.filterPredicate = (
-      product: Product,
-      filter: string
-    ): boolean => {
-      return (
-        product.name.toLowerCase().includes(filter) ||
-        product.ingredients.toLowerCase().includes(filter)
-      );
-    };
+    this.setupFilter();
   }
 
   public ngAfterViewInit(): void {
     this.subscribeToSearchKeyboardEvents();
+    this.setupSort();
   }
 
   public ngOnDestroy(): void {
@@ -123,6 +117,40 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe((products: Product[]) => {
         this.products.data = products;
       });
+  }
+
+  private setupFilter(): void {
+    this.products.filterPredicate = (
+      product: Product,
+      filter: string
+    ): boolean => {
+      return (
+        product.name.toLowerCase().includes(filter) ||
+        product.ingredients.toLowerCase().includes(filter)
+      );
+    };
+  }
+
+  private setupSort(): void {
+    this.products.sort = this.sort;
+
+    this.products.sortingDataAccessor = (
+      item: Product,
+      name: string
+    ): string | number => {
+      switch (name) {
+        case 'name':
+        case 'category':
+        case 'price':
+          return item[name];
+        case 'weight':
+          return item.weight.value;
+        default:
+          throw new Error(
+            `Sorting data accessor not implemented for "${name}" column`
+          );
+      }
+    };
   }
 
   public toggleExpandProduct(product: Product): void {

@@ -11,6 +11,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 const materialModules = [
   MatFormFieldModule,
@@ -25,6 +26,7 @@ const materialModules = [
   MatTooltipModule,
   MatTableModule,
   MatPaginatorModule,
+  MatSortModule,
 ];
 
 @NgModule({
