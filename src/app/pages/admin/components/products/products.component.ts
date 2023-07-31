@@ -20,6 +20,7 @@ import { Store } from '@ngrx/store';
 import { Subject, debounceTime, fromEvent, map, takeUntil } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { Product } from 'core/models';
 import { selectAllProducts } from 'app/state/products';
@@ -54,8 +55,9 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
   public expandedProduct: Product | null = null;
   private destroy$ = new Subject();
 
-  @ViewChild('searchInput') searchInput!: ElementRef;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild('searchInput') private searchInput!: ElementRef;
+  @ViewChild(MatSort) private sort!: MatSort;
+  @ViewChild(MatPaginator) private paginator!: MatPaginator;
 
   public constructor(
     formBuilder: FormBuilder,
@@ -74,6 +76,7 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
   public ngAfterViewInit(): void {
     this.subscribeToSearchKeyboardEvents();
     this.setupSort();
+    this.setupPaginator();
   }
 
   public ngOnDestroy(): void {
@@ -151,6 +154,10 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
           );
       }
     };
+  }
+
+  private setupPaginator(): void {
+    this.products.paginator = this.paginator;
   }
 
   public toggleExpandProduct(product: Product): void {
