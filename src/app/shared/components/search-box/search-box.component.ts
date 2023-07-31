@@ -34,7 +34,7 @@ export class SearchBoxComponent implements AfterViewInit, OnDestroy {
     return this.searchControl.valueChanges.pipe(
       debounceTime(500),
       map((rawQuery: string) => {
-        return rawQuery?.trim().toLowerCase();
+        return rawQuery.trim().toLowerCase();
       })
     );
   }
