@@ -8,7 +8,7 @@ export class MoneyPipe implements PipeTransform {
     const integerPart = Math.floor(value);
     const fractionPart = Math.floor((value - integerPart) * 100);
 
-    const dollars = `<span class="dollars">${integerPart}</span>`;
+    const dollars = `<span class="dollars">${integerPart}.</span>`;
     const cents = `<sup class="cents">${fractionPart
       .toString()
       .padStart(2, '0')}</sup>`;

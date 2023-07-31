@@ -13,7 +13,7 @@ describe('MoneyPipe', () => {
 
   it('should present numbers in marketing notation, i.e. with cents as superscript', () => {
     expect(pipe.transform(2.99)).toBe(
-      '<span class="dollars">2</span><sup class="cents">99</sup>'
+      '<span class="dollars">2.</span><sup class="cents">99</sup>'
     );
   });
 });
