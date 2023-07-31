@@ -14,9 +14,12 @@
       <th mat-header-cell mat-sort-header *matHeaderCellDef class="align-right">
         Price, BYN
       </th>
-      <td mat-cell *matCellDef="let product" class="align-right">
-        {{ product.price | currency : "BYN" : "" : "1.2-2" : "en-US" }}
-      </td>
+      <td
+        mat-cell
+        *matCellDef="let product"
+        class="align-right"
+        [innerHtml]="product.price | money"
+      ></td>
     </ng-container>
 
     <ng-container matColumnDef="weight">
