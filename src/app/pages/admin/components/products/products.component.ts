@@ -64,25 +64,8 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.searchControl.valueChanges
-      .pipe(
-        takeUntil(this.destroy$),
-        debounceTime(500),
-        map((rawQuery: string) => {
-          return rawQuery?.trim().toLowerCase();
-        })
-      )
-      .subscribe((query: string): void => {
-        this.products.filter = query;
-        this.cdRef.detectChanges();
-      });
-
-    this.store
-      .select(selectAllProducts)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((products: Product[]) => {
-        this.products.data = products;
-      });
+    this.subscribeToSearchQueryChanges();
+    this.subscribeToStoreProductsChanges();
 
     this.products.filterPredicate = (
       product: Product,
@@ -96,6 +79,30 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public ngAfterViewInit(): void {
+    this.subscribeToSearchKeyboardEvents();
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next(null);
+    this.destroy$.complete();
+  }
+
+  private subscribeToSearchQueryChanges(): void {
+    this.searchControl.valueChanges
+      .pipe(
+        takeUntil(this.destroy$),
+        debounceTime(500),
+        map((rawQuery: string) => {
+          return rawQuery?.trim().toLowerCase();
+        })
+      )
+      .subscribe((query: string): void => {
+        this.products.filter = query;
+        this.cdRef.detectChanges();
+      });
+  }
+
+  private subscribeToSearchKeyboardEvents(): void {
     fromEvent<KeyboardEvent>(this.searchInput.nativeElement, 'keyup')
       .pipe(takeUntil(this.destroy$))
       .subscribe((event: KeyboardEvent) => {
@@ -109,9 +116,13 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  public ngOnDestroy(): void {
-    this.destroy$.next(null);
-    this.destroy$.complete();
+  private subscribeToStoreProductsChanges(): void {
+    this.store
+      .select(selectAllProducts)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((products: Product[]) => {
+        this.products.data = products;
+      });
   }
 
   public toggleExpandProduct(product: Product): void {
