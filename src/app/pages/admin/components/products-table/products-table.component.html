@@ -48,6 +48,9 @@
           [@detailExpand]="
             product.id === expandedProduct?.id ? 'expanded' : 'collapsed'
           "
+          [class.expanded]="
+            product.id === expandedProduct?.id ? 'expanded' : 'collapsed'
+          "
         >
           <app-product-details [product]="product"></app-product-details>
         </div>

@@ -39,10 +39,6 @@ $action-btn-size: 2rem; // 32px
   }
 }
 
-.detail-row {
-  height: 0;
-}
-
 .main-row {
   &.expanded * {
     font-weight: bolder;
@@ -60,6 +56,14 @@ $action-btn-size: 2rem; // 32px
   
   .mat-mdc-cell {
     border-bottom-width: 0;
+  }
+}
+
+.detail-row {
+  height: 0;
+
+  &.expanded {
+    height: unset;
   }
 }
 
