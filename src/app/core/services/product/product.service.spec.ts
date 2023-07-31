@@ -6,7 +6,7 @@ import {
 import { HttpClient } from '@angular/common/http';
 
 import { ProductService } from './product.service';
-import { mockProducts } from 'mocks/product.mocks';
+import { mockProducts1 } from 'mocks/product.mocks';
 
 describe('ProductService', () => {
   let service: ProductService;
@@ -37,11 +37,11 @@ describe('ProductService', () => {
     it('should make a proper HTTP request', () => {
       service
         .getProducts()
-        .subscribe((response) => expect(response).toEqual(mockProducts));
+        .subscribe((response) => expect(response).toEqual(mockProducts1));
 
       const req = httpTestingController.expectOne(endpointUrl);
 
-      req.flush(mockProducts);
+      req.flush(mockProducts1);
     });
   });
 });

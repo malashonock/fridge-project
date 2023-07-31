@@ -1,4 +1,4 @@
-import { mockProducts } from 'mocks/product.mocks';
+import { mockProducts1 } from 'mocks/product.mocks';
 import { ProductsActions } from './products.actions';
 
 describe('UI action creators', () => {
@@ -12,10 +12,10 @@ describe('UI action creators', () => {
   describe('fetchProductsSuccess action creator', () => {
     it('given a valid payload, should create an action with the given show side menu flag', () => {
       const action = ProductsActions.fetchProductsSuccess({
-        products: mockProducts,
+        products: mockProducts1,
       });
 
-      expect(action.products).toEqual(mockProducts);
+      expect(action.products).toEqual(mockProducts1);
     });
   });
 });

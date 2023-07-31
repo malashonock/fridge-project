@@ -1,4 +1,4 @@
-import { mockProduct1, mockProducts } from 'mocks/product.mocks';
+import { mockProduct1, mockProducts1 } from 'mocks/product.mocks';
 import { ProductsActions } from './products.actions';
 import { ProductsState } from './products.feature';
 import { ProductsActionReducers } from './products.reducers';
@@ -12,7 +12,7 @@ describe('Products action reducers', () => {
       };
 
       const action = ProductsActions.fetchProductsSuccess({
-        products: mockProducts,
+        products: mockProducts1,
       });
 
       const derivedState: ProductsState =
