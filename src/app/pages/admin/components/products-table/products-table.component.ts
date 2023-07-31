@@ -94,12 +94,7 @@ export class ProductsTableComponent
 
   private subscribeToSearchQueryChanges(): void {
     this.searchQuery$
-      ?.pipe(
-        takeUntil(this.destroy$),
-        map((rawQuery: string) => {
-          return rawQuery?.trim().toLowerCase();
-        })
-      )
+      ?.pipe(takeUntil(this.destroy$))
       .subscribe((query: string): void => {
         this.dataSource.filter = query;
       });
