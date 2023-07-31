@@ -13,7 +13,10 @@ import {
   transition,
   animate,
 } from '@angular/animations';
-import { MatPaginator } from '@angular/material/paginator';
+import {
+  MAT_PAGINATOR_DEFAULT_OPTIONS,
+  MatPaginator,
+} from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, Subject, map, takeUntil } from 'rxjs';
@@ -33,6 +36,14 @@ import { Product } from 'core/models';
         animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
       ),
     ]),
+  ],
+  providers: [
+    {
+      provide: MAT_PAGINATOR_DEFAULT_OPTIONS,
+      useValue: {
+        pageSize: 10,
+      },
+    },
   ],
 })
 export class ProductsTableComponent
