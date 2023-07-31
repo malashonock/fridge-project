@@ -1,0 +1,68 @@
+$action-btn-size: 2rem; // 32px
+
+.table-container {
+  overflow-x: auto;
+}
+
+.align-right {
+  text-align: right;
+  
+  ::ng-deep .mat-sort-header-container {
+    justify-content: flex-end;
+  }
+}
+
+.align-center {
+  text-align: center;
+}
+
+.action-btn-container {
+  min-width: $action-btn-size * 2;
+}
+
+.action-btn {
+  width: $action-btn-size;
+  height: $action-btn-size;
+  font-size: $action-btn-size * 0.5;
+  padding: $action-btn-size * 0.25;
+  
+    mat-icon {
+      width: $action-btn-size * 0.5;
+      height: $action-btn-size * 0.5;
+      font-size: $action-btn-size * 0.5;
+    }
+
+  ::ng-deep .mat-mdc-button-touch-target {
+    width: $action-btn-size;
+    height: $action-btn-size;
+    font-size: $action-btn-size * 0.5;
+  }
+}
+
+.detail-row {
+  height: 0;
+}
+
+.main-row {
+  &.expanded * {
+    font-weight: bolder;
+  }
+  
+  &:not(.expanded) {
+    &:hover {
+      background-color: whitesmoke;
+    }
+    
+    &:active {
+      background-color: #efefef;
+    }
+  }
+  
+  .mat-mdc-cell {
+    border-bottom-width: 0;
+  }
+}
+
+.nodata-row {
+  padding: 1rem; // 16px
+}
