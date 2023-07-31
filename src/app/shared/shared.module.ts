@@ -11,6 +11,7 @@ import {
   MenuItemComponent,
   BurgerButtonComponent,
   MapComponent,
+  SearchBoxComponent,
 } from './components';
 import { InitialsPipe } from './pipes';
 import { MobileMenuDirective, FixedHeaderDirective } from './directives';
@@ -26,6 +27,7 @@ import { MobileMenuDirective, FixedHeaderDirective } from './directives';
     MobileMenuDirective,
     FixedHeaderDirective,
     MapComponent,
+    SearchBoxComponent,
   ],
   exports: [
     CommonModule,
@@ -36,6 +38,7 @@ import { MobileMenuDirective, FixedHeaderDirective } from './directives';
     MobileMenuDirective,
     FixedHeaderDirective,
     MapComponent,
+    SearchBoxComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })

@@ -5,22 +5,11 @@
     <mat-icon>add</mat-icon>
   </button>
 
-  <mat-form-field
-    class="search-box"
-    appearance="outline"
-    subscriptSizing="dynamic"
-  >
-    <mat-label>Search products</mat-label>
-    <input
-      #searchInput
-      matInput
-      [formControl]="searchControl"
-      id="search-products"
-      name="search-products"
-      placeholder="Search in product name or description"
-    />
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
+  <app-search-box
+    name="search-products"
+    placeholder="Search in product name or description"
+    (searchQueryChange)="onSearchQueryChange($event)"
+  ></app-search-box>
 </div>
 
 <app-products-table

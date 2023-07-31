@@ -1,0 +1,16 @@
+<mat-form-field
+  class="search-box"
+  appearance="outline"
+  subscriptSizing="dynamic"
+>
+  <mat-label>Search products</mat-label>
+  <input
+    #searchInput
+    matInput
+    [formControl]="searchControl"
+    [id]="name"
+    [name]="name"
+    [placeholder]="placeholder"
+  />
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
