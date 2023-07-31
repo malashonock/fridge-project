@@ -15,7 +15,10 @@
       "password": "admin"
     }
   ],
-  "tokens": [],
+  "tokens": [
+    "001@1690208858159",
+    "002@1690459449152"
+  ],
   "productCategories": [
     "Soups",
     "Second courses",
@@ -45,7 +48,9 @@
         "carbs": 2.1
       },
       "kiloCalories": 116,
-      "shelfLife": "2d",
+      "shelfLife": {
+        "days": 2
+      },
       "imageUrl": "/images/chicken-broth.png"
     },
     {
@@ -64,7 +69,9 @@
         "carbs": 18.9
       },
       "kiloCalories": 314,
-      "shelfLife": "72h",
+      "shelfLife": {
+        "hours": 72
+      },
       "imageUrl": "/images/ukrainian-borshch.png"
     },
     {
@@ -83,7 +90,9 @@
         "carbs": 13.4
       },
       "kiloCalories": 756,
-      "shelfLife": "24h",
+      "shelfLife": {
+        "hours": 24
+      },
       "imageUrl": "/images/cutlet-with-mashed-potatoes.png"
     },
     {
@@ -102,7 +111,9 @@
         "carbs": 61.9
       },
       "kiloCalories": 490,
-      "shelfLife": "3d",
+      "shelfLife": {
+        "days": 3
+      },
       "imageUrl": "/images/texas-burger.png"
     },
     {
@@ -121,7 +132,9 @@
         "carbs": 36.7
       },
       "kiloCalories": 396,
-      "shelfLife": "3d",
+      "shelfLife": {
+        "days": 3
+      },
       "imageUrl": "/images/sandwich-with-ham.png"
     },
     {
@@ -140,7 +153,9 @@
         "carbs": 10.8
       },
       "kiloCalories": 256,
-      "shelfLife": "12h",
+      "shelfLife": {
+        "hours": 12
+      },
       "imageUrl": "/images/chicken-caesar.png"
     },
     {
@@ -159,7 +174,9 @@
         "carbs": 8.2
       },
       "kiloCalories": 53,
-      "shelfLife": "1w",
+      "shelfLife": {
+        "weeks": 1
+      },
       "imageUrl": "/images/berry-tea.png"
     },
     {
@@ -178,7 +195,9 @@
         "carbs": 3.6
       },
       "kiloCalories": 268,
-      "shelfLife": "24h",
+      "shelfLife": {
+        "hours": 24
+      },
       "imageUrl": "/images/tiramisu.png"
     }
   ]
