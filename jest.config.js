@@ -4,6 +4,13 @@ const jestConfig = {
   moduleDirectories: ['node_modules', '<rootDir>/src'],
   transformIgnorePatterns: ['node_modules/(?!@angular|rjxs|@ngrx)'],
   collectCoverage: true,
+  collectCoverageFrom: [
+    'src/app/**/*.ts',
+    '!src/app/**/*.module.ts',
+    '!src/app/**/index.ts',
+    '!src/app/**/mocks/*',
+    '!src/app/**/models/*',
+  ],
   coverageDirectory: '<rootDir>/coverage',
   moduleNameMapper: {
     "^core/(.*)": ["<rootDir>/src/app/core/$1"],
