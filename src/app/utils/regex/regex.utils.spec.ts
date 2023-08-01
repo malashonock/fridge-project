@@ -9,7 +9,7 @@ import {
   startWith,
   zeroOrMore,
   zeroOrOne,
-} from './regex';
+} from './regex.utils';
 
 describe('Regex utils', () => {
   describe('anyOf', () => {
