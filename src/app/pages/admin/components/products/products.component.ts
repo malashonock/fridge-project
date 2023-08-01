@@ -7,9 +7,11 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 
 import { Product } from 'core/models';
 import { selectAllProducts } from 'app/state/products';
+import { ProductFormComponent } from '../product-form/product-form.component';
 
 @Component({
   selector: 'app-products',
@@ -23,7 +25,7 @@ export class ProductsComponent implements OnDestroy {
 
   @ViewChild('searchInput') private searchInput!: ElementRef;
 
-  public constructor(private store: Store) {}
+  public constructor(private store: Store, private dialog: MatDialog) {}
 
   public ngOnDestroy(): void {
     this.destroy$.next(null);
@@ -36,5 +38,11 @@ export class ProductsComponent implements OnDestroy {
 
   public onSearchQueryChange(query: string): void {
     this.searchQuery$.next(query);
+  }
+
+  public openProductDialog(product?: Product): void {
+    this.dialog.open(ProductFormComponent, {
+      data: { product },
+    });
   }
 }

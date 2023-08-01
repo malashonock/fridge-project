@@ -12,6 +12,7 @@ import {
 } from './components';
 import { MobilePageDirective } from 'shared/directives';
 import { adminPageMenuConfigProvider } from 'core/configs';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { adminPageMenuConfigProvider } from 'core/configs';
     FridgesComponent,
     ProductDetailsComponent,
     ProductsTableComponent,
+    ProductFormComponent,
   ],
   exports: [AdminPageComponent],
   imports: [SharedModule, AdminRoutingModule, MobilePageDirective],

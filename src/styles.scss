@@ -40,3 +40,20 @@ ul {
   margin: 0;
   padding-inline-start: 1rem; // 16px
 }
+
+input[type="number"] {
+  // Chrome, Safari, Edge, Opera
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  // Firefox
+  -moz-appearance: textfield;
+}
+
+fieldset {
+  border: 1px solid rgba($color: black, $alpha: 0.38);
+  border-radius: 0.25rem; // 4px
+}

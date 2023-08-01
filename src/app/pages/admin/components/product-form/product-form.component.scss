@@ -1,0 +1,75 @@
+:host {
+  display: block;
+  padding: 1rem; // 16px
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-fields {
+  width: 100%;
+  max-width: 48rem; // 768px
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "ul ur1"
+    "ul ur2"
+    "ul ur3"
+    "md md"
+    "ll lr1"
+    "ll lr2"
+    "ll lr3";
+
+  &__category {
+    grid-area: ur1;
+  }
+  
+  &__name {
+    grid-area: ur2;
+  }
+  
+  &__price {
+    grid-area: ur3;
+  }
+  
+  &__ingredients {
+    grid-area: md;
+  }
+
+  &__nutrients {
+    grid-area: ll;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; // 16px
+  }
+
+  &__weight {
+    grid-area: lr1;
+    display: flex;
+    align-items: flex-start;
+    
+    &-value {
+      flex: 1 1 auto;
+    }
+
+    &-unit {
+      flex: 0 1 25%;
+    }
+  }
+
+  &__energy-value {
+    grid-area: lr2;
+  }
+
+  &__shelf-life {
+    grid-area: lr3;
+
+    &-period {
+      width: 25%;
+    }
+  }
+}
