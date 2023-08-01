@@ -122,7 +122,7 @@
       <mat-form-field
         appearance="outline"
         subscriptSizing="dynamic"
-        class="form-fields__weight-value"
+        class="form-fields__weight-value combo-field-segment"
       >
         <mat-label>Value</mat-label>
         <input
@@ -133,18 +133,12 @@
           name="weight-value"
           formControlName="value"
         />
-        <mat-error *ngIf="form.get('weight.value')?.hasError('required')">
-          Weight value is required
-        </mat-error>
-        <mat-error *ngIf="form.get('weight.value')?.hasError('min')">
-          Weight cannot be negative
-        </mat-error>
       </mat-form-field>
 
       <mat-form-field
         appearance="outline"
         subscriptSizing="dynamic"
-        class="form-fields__weight-unit"
+        class="form-fields__weight-unit combo-field-segment"
       >
         <mat-label>Unit</mat-label>
         <mat-select id="weight-unit" formControlName="unit">
@@ -154,10 +148,34 @@
             >{{ weightUnit.label }}</mat-option
           >
         </mat-select>
-        <mat-error *ngIf="form.get('weight.unit')?.hasError('required')">
+      </mat-form-field>
+
+      <div class="combo-field-errors">
+        <mat-error
+          *ngIf="
+            form.get('weight.value')?.touched &&
+            form.get('weight.value')?.hasError('required')
+          "
+        >
+          Weight value is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            form.get('weight.value')?.touched &&
+            form.get('weight.value')?.hasError('min')
+          "
+        >
+          Weight cannot be negative
+        </mat-error>
+        <mat-error
+          *ngIf="
+            form.get('weight.unit')?.touched &&
+            form.get('weight.unit')?.hasError('required')
+          "
+        >
           Weight unit is required
         </mat-error>
-      </mat-form-field>
+      </div>
     </fieldset>
 
     <!-- Energy value -->
@@ -192,7 +210,7 @@
         *ngFor="let period of ['months', 'weeks', 'days', 'hours']"
         appearance="outline"
         subscriptSizing="dynamic"
-        [class]="'form-fields__shelf-life-period shelf-life__' + period"
+        [class]="['shelf-life__' + period, 'combo-field-segment']"
       >
         <mat-label>{{ period | titlecase }}</mat-label>
         <input
@@ -204,13 +222,22 @@
           [name]="'shelf-life' + period"
           [formControlName]="period"
         />
-        <mat-error *ngIf="form.get('shelfLife.' + period)?.hasError('min')">
-          {{ period | titlecase }} value cannot be negative
-        </mat-error>
-        <mat-error *ngIf="form.get('shelfLife.' + period)?.hasError('pattern')">
-          {{ period | titlecase }} value must be an integer
-        </mat-error>
       </mat-form-field>
+
+      <div class="combo-field-errors">
+        <ng-container
+          *ngFor="let period of ['months', 'weeks', 'days', 'hours']"
+        >
+          <mat-error *ngIf="form.get('shelfLife.' + period)?.hasError('min')">
+            {{ period | titlecase }} value cannot be negative
+          </mat-error>
+          <mat-error
+            *ngIf="form.get('shelfLife.' + period)?.hasError('pattern')"
+          >
+            {{ period | titlecase }} value must be an integer
+          </mat-error>
+        </ng-container>
+      </div>
     </fieldset>
   </mat-dialog-content>
 

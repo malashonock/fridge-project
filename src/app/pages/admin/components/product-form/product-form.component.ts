@@ -68,7 +68,7 @@ export class ProductFormComponent {
           [Validators.required, Validators.min(0)],
         ],
       }),
-      kilocalories: [
+      kiloCalories: [
         null as number | null,
         [Validators.required, Validators.min(0)],
       ],

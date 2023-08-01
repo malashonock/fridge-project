@@ -49,15 +49,22 @@
 
   &__weight {
     grid-area: lr1;
-    display: flex;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "value unit"
+      "errors errors";
     
     &-value {
-      flex: 1 1 auto;
+      grid-area: value;
     }
 
     &-unit {
-      flex: 0 1 25%;
+      grid-area: unit;
+    }
+
+    .combo-field-errors {
+      grid-area: errors;
     }
   }
 
@@ -67,9 +74,65 @@
 
   &__shelf-life {
     grid-area: lr3;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "months weeks days hours"
+      "errors errors errors errors";
 
-    &-period {
-      width: 25%;
+    .shelf-life {
+      &__months {
+        grid-area: months;
+      }
+      
+      &__weeks {
+        grid-area: weeks;
+      }
+
+      &__days {
+        grid-area: days;
+      }
+
+      &__hours {
+        grid-area: hours;
+      }
+    }
+
+    .combo-field-errors {
+      grid-area: errors;
     }
   }
+}
+
+.combo-field-segment {
+  &:first-of-type {
+    ::ng-deep .mdc-notched-outline__trailing {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  
+  &:last-of-type {
+    ::ng-deep .mdc-notched-outline__leading {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  &:not(:first-of-type):not(:last-of-type) {
+    ::ng-deep .mdc-notched-outline__trailing {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    ::ng-deep .mdc-notched-outline__leading {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+.combo-field-errors {
+  font-size: 75%;
+  line-height: calc(100% + 0.5rem); // 20px
 }
