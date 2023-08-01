@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'money',
 })
 export class MoneyPipe implements PipeTransform {
-  transform(value: number): string {
+  public transform(value: number): string {
     const integerPart = Math.floor(value);
     const fractionPart = Math.floor((value - integerPart) * 100);
 
