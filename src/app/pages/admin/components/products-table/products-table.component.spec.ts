@@ -20,7 +20,7 @@ import { By } from '@angular/platform-browser';
   selector: 'app-product-details',
 })
 class ProductDetailsStubComponent {
-  @Input() product!: Product;
+  @Input() public product!: Product;
 }
 
 describe('ProductsTableComponent', () => {
@@ -118,7 +118,7 @@ describe('ProductsTableComponent', () => {
         mockProduct1.category
       );
       expect(sortingDataAccessor(mockProduct1, 'weight')).toBe(
-        mockProduct1.weight.value
+        mockProduct1.weight?.value
       );
     });
 

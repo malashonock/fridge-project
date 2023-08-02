@@ -3,6 +3,9 @@
   "ignorePatterns": [
     "projects/**/*"
   ],
+  "rules": {
+    "@typescript-eslint/explicit-member-accessibility": "warn"
+  },
   "overrides": [
     {
       "files": [

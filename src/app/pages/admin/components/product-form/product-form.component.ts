@@ -23,10 +23,11 @@ export class ProductFormComponent {
   public form!: FormGroup;
   private product?: Product;
 
-  get title(): string {
+  public get title(): string {
     return this.product ? 'Edit product' : 'Add new product';
   }
-  get submitText(): string {
+
+  public get submitText(): string {
     return this.product ? 'Save changes' : 'Create product';
   }
 
