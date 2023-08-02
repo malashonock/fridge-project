@@ -1,5 +1,5 @@
 export interface Nutrients {
-  protein: number;
-  fat: number;
-  carbs: number;
+  proteins?: number;
+  fats?: number;
+  carbs?: number;
 }

@@ -12,8 +12,8 @@ export const mockProduct1: Product = {
     unit: UnitOfWeight.Grams,
   },
   nutrients: {
-    protein: 14.4,
-    fat: 21.6,
+    proteins: 14.4,
+    fats: 21.6,
     carbs: 36.7,
   },
   kiloCalories: 396,
@@ -35,8 +35,8 @@ export const mockProduct2: Product = {
     unit: UnitOfWeight.Grams,
   },
   nutrients: {
-    protein: 19.2,
-    fat: 15.9,
+    proteins: 19.2,
+    fats: 15.9,
     carbs: 10.8,
   },
   kiloCalories: 256,

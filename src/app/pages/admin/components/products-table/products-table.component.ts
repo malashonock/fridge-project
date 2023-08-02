@@ -106,8 +106,8 @@ export class ProductsTableComponent
       filter: string
     ): boolean => {
       return (
-        product.name.toLowerCase().includes(filter) ||
-        product.ingredients.toLowerCase().includes(filter)
+        product.ingredients?.toLowerCase().includes(filter) ||
+        product.name.toLowerCase().includes(filter)
       );
     };
   }
@@ -124,8 +124,6 @@ export class ProductsTableComponent
         case 'category':
         case 'price':
           return item[name];
-        case 'weight':
-          return item.weight.value;
         default:
           throw new Error(
             `Sorting data accessor not implemented for "${name}" column`

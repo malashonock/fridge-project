@@ -7,11 +7,11 @@ export interface Product {
   id: string;
   name: string;
   category: ProductCategory;
-  ingredients: string;
   price: number;
-  weight: ProductWeight;
-  nutrients: Nutrients;
-  kiloCalories: number;
-  shelfLife: ShelfLife;
-  imageUrl: string;
+  ingredients?: string;
+  weight?: ProductWeight;
+  nutrients?: Nutrients;
+  kiloCalories?: number;
+  shelfLife?: ShelfLife;
+  imageUrl?: string;
 }

@@ -51,27 +51,15 @@ export class ProductFormComponent {
         [Validators.required, Validators.min(0.01)],
       ],
       weight: formBuilder.group({
-        value: [
-          null as number | null,
-          [Validators.required, Validators.min(0)],
-        ],
-        unit: [null as UnitOfWeight | null, [Validators.required]],
+        value: [null as number | null, [Validators.min(0)]],
+        unit: [null as UnitOfWeight | null],
       }),
       nutrients: formBuilder.group({
-        protein: [
-          null as number | null,
-          [Validators.required, Validators.min(0)],
-        ],
-        fat: [null as number | null, [Validators.required, Validators.min(0)]],
-        carbs: [
-          null as number | null,
-          [Validators.required, Validators.min(0)],
-        ],
+        proteins: [null as number | null, [Validators.min(0)]],
+        fats: [null as number | null, [Validators.min(0)]],
+        carbs: [null as number | null, [Validators.min(0)]],
       }),
-      kiloCalories: [
-        null as number | null,
-        [Validators.required, Validators.min(0)],
-      ],
+      kiloCalories: [null as number | null, [Validators.min(0)]],
       shelfLife: formBuilder.group({
         months: [
           null as number | null,

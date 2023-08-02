@@ -43,8 +43,8 @@
         "unit": "g"
       },
       "nutrients": {
-        "protein": 11.7,
-        "fat": 6.9,
+        "proteins": 11.7,
+        "fats": 6.9,
         "carbs": 2.1
       },
       "kiloCalories": 116,
@@ -64,8 +64,8 @@
         "unit": "g"
       },
       "nutrients": {
-        "protein": 8.1,
-        "fat": 23.2,
+        "proteins": 8.1,
+        "fats": 23.2,
         "carbs": 18.9
       },
       "kiloCalories": 314,
@@ -85,8 +85,8 @@
         "unit": "g"
       },
       "nutrients": {
-        "protein": 58.8,
-        "fat": 53.2,
+        "proteins": 58.8,
+        "fats": 53.2,
         "carbs": 13.4
       },
       "kiloCalories": 756,
@@ -106,8 +106,8 @@
         "unit": "g"
       },
       "nutrients": {
-        "protein": 20.7,
-        "fat": 17.9,
+        "proteins": 20.7,
+        "fats": 17.9,
         "carbs": 61.9
       },
       "kiloCalories": 490,
@@ -127,8 +127,8 @@
         "unit": "g"
       },
       "nutrients": {
-        "protein": 14.4,
-        "fat": 21.6,
+        "proteins": 14.4,
+        "fats": 21.6,
         "carbs": 36.7
       },
       "kiloCalories": 396,
@@ -148,8 +148,8 @@
         "unit": "g"
       },
       "nutrients": {
-        "protein": 19.2,
-        "fat": 15.9,
+        "proteins": 19.2,
+        "fats": 15.9,
         "carbs": 10.8
       },
       "kiloCalories": 256,
@@ -169,8 +169,8 @@
         "unit": "ml"
       },
       "nutrients": {
-        "protein": 0.6,
-        "fat": 1.6,
+        "proteins": 0.6,
+        "fats": 1.6,
         "carbs": 8.2
       },
       "kiloCalories": 53,
@@ -190,8 +190,8 @@
         "unit": "g"
       },
       "nutrients": {
-        "protein": 3.4,
-        "fat": 26,
+        "proteins": 3.4,
+        "fats": 26,
         "carbs": 3.6
       },
       "kiloCalories": 268,
