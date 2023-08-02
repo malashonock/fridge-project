@@ -12,6 +12,25 @@
       <input type="file" id="image" name="image" formControlName="image" />
     </div>
 
+    <!-- Name -->
+    <mat-form-field
+      appearance="outline"
+      subscriptSizing="dynamic"
+      class="form-fields__name"
+    >
+      <mat-label>Product name</mat-label>
+      <input
+        matInput
+        id="name"
+        name="name"
+        formControlName="name"
+        cdkFocusInitial
+      />
+      <mat-error *ngIf="form.get('name')?.hasError('required')">
+        Product name is required
+      </mat-error>
+    </mat-form-field>
+
     <!-- Category -->
     <mat-form-field
       appearance="outline"
@@ -19,7 +38,7 @@
       class="form-fields__category"
     >
       <mat-label>Product category</mat-label>
-      <mat-select id="category" formControlName="category" cdkFocusInitial>
+      <mat-select id="category" formControlName="category">
         <mat-option
           *ngFor="let productCategory of productCategories"
           [value]="productCategory.value"
@@ -28,19 +47,6 @@
       </mat-select>
       <mat-error *ngIf="form.get('category')?.hasError('required')">
         Product category is required
-      </mat-error>
-    </mat-form-field>
-
-    <!-- Name -->
-    <mat-form-field
-      appearance="outline"
-      subscriptSizing="dynamic"
-      class="form-fields__name"
-    >
-      <mat-label>Product name</mat-label>
-      <input matInput id="name" name="name" formControlName="name" />
-      <mat-error *ngIf="form.get('name')?.hasError('required')">
-        Product name is required
       </mat-error>
     </mat-form-field>
 
