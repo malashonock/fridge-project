@@ -63,7 +63,12 @@
       <th mat-header-cell *matHeaderCellDef class="align-center">Actions</th>
       <td mat-cell *matCellDef="let product" class="align-center">
         <div class="action-btn-container">
-          <button mat-icon-button matTooltip="Edit product" class="action-btn">
+          <button
+            mat-icon-button
+            matTooltip="Edit product"
+            class="action-btn"
+            (click)="openEditProductDialog(product, $event)"
+          >
             <mat-icon>edit</mat-icon>
           </button>
           <button

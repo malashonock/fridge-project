@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import {
   Product,
@@ -8,15 +9,18 @@ import {
   SelectOption,
 } from 'core/models';
 
+interface ProductDialogData {
+  product?: Product;
+}
+
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss'],
 })
 export class ProductFormComponent {
-  @Input() public product?: Product;
-
-  public form: FormGroup;
+  public form!: FormGroup;
+  private product?: Product;
 
   get title(): string {
     return this.product ? 'Edit product' : 'Add new product';
@@ -41,44 +45,46 @@ export class ProductFormComponent {
     { value: UnitOfWeight.Milliliters, label: 'ml' },
   ];
 
-  public constructor(formBuilder: FormBuilder) {
+  public constructor(
+    formBuilder: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) data?: ProductDialogData
+  ) {
+    this.product = data?.product;
+
     this.form = formBuilder.group({
-      name: ['', [Validators.required]],
-      category: [null as ProductCategory | null, [Validators.required]],
-      ingredients: [''],
-      price: [
-        null as number | null,
-        [Validators.required, Validators.min(0.01)],
-      ],
+      name: [this.product?.name, [Validators.required]],
+      category: [this.product?.category, [Validators.required]],
+      ingredients: [this.product?.ingredients],
+      price: [this.product?.price, [Validators.required, Validators.min(0.01)]],
       weight: formBuilder.group({
-        value: [null as number | null, [Validators.min(0)]],
-        unit: [null as UnitOfWeight | null],
+        value: [this.product?.weight?.value, [Validators.min(0)]],
+        unit: [this.product?.weight?.unit],
       }),
       nutrients: formBuilder.group({
-        proteins: [null as number | null, [Validators.min(0)]],
-        fats: [null as number | null, [Validators.min(0)]],
-        carbs: [null as number | null, [Validators.min(0)]],
+        proteins: [this.product?.nutrients?.proteins, [Validators.min(0)]],
+        fats: [this.product?.nutrients?.fats, [Validators.min(0)]],
+        carbs: [this.product?.nutrients?.carbs, [Validators.min(0)]],
       }),
-      kiloCalories: [null as number | null, [Validators.min(0)]],
+      kiloCalories: [this.product?.kiloCalories, [Validators.min(0)]],
       shelfLife: formBuilder.group({
         months: [
-          null as number | null,
+          this.product?.shelfLife?.months,
           [Validators.min(0), Validators.pattern(/^[0-9]+$/)],
         ],
         weeks: [
-          null as number | null,
+          this.product?.shelfLife?.weeks,
           [Validators.min(0), Validators.pattern(/^[0-9]+$/)],
         ],
         days: [
-          null as number | null,
+          this.product?.shelfLife?.days,
           [Validators.min(0), Validators.pattern(/^[0-9]+$/)],
         ],
         hours: [
-          null as number | null,
+          this.product?.shelfLife?.hours,
           [Validators.min(0), Validators.pattern(/^[0-9]+$/)],
         ],
       }),
-      image: [null as File | null],
+      image: [null as File | null], // TODO
     });
   }
 }

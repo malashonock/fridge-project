@@ -18,10 +18,12 @@ import {
   MatPaginator,
 } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, Subject, takeUntil } from 'rxjs';
 
 import { Product } from 'core/models';
+import { ProductFormComponent } from '../product-form/product-form.component';
 
 @Component({
   selector: 'app-products-table',
@@ -67,6 +69,8 @@ export class ProductsTableComponent
 
   @ViewChild(MatSort) private sort!: MatSort;
   @ViewChild(MatPaginator) private paginator!: MatPaginator;
+
+  public constructor(private dialog: MatDialog) {}
 
   public ngOnInit(): void {
     this.subscribeToProductsChanges();
@@ -139,5 +143,13 @@ export class ProductsTableComponent
   public toggleExpandProduct(product: Product): void {
     this.expandedProduct =
       product.id === this.expandedProduct?.id ? null : product;
+  }
+
+  public openEditProductDialog(product: Product, event?: MouseEvent): void {
+    event?.stopPropagation();
+
+    this.dialog.open(ProductFormComponent, {
+      data: { product },
+    });
   }
 }

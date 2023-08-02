@@ -40,9 +40,7 @@ export class ProductsComponent implements OnDestroy {
     this.searchQuery$.next(query);
   }
 
-  public openProductDialog(product?: Product): void {
-    this.dialog.open(ProductFormComponent, {
-      data: { product },
-    });
+  public openAddProductDialog(): void {
+    this.dialog.open(ProductFormComponent);
   }
 }
