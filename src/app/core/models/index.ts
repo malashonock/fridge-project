@@ -7,4 +7,5 @@ export { ProductCategory } from './product/product-category.enum';
 export { ProductWeight } from './product/product-weight.interface';
 export { Product } from './product/product.interface';
 export { UnitOfWeight } from './product/unit-of-weight.enum';
+export { ShelfLife } from './product/shelf-life.interface';
 export { SelectOption } from './ui/select-option.interface';

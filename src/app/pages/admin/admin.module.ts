@@ -10,6 +10,7 @@ import {
   ProductDetailsComponent,
   ProductsTableComponent,
 } from './components';
+import { ShelfLifePipe } from './pipes';
 import { MobilePageDirective } from 'shared/directives';
 import { adminPageMenuConfigProvider } from 'core/configs';
 import { ProductFormComponent } from './components/product-form/product-form.component';
@@ -23,6 +24,7 @@ import { ProductFormComponent } from './components/product-form/product-form.com
     ProductDetailsComponent,
     ProductsTableComponent,
     ProductFormComponent,
+    ShelfLifePipe,
   ],
   exports: [AdminPageComponent],
   imports: [SharedModule, AdminRoutingModule, MobilePageDirective],

@@ -13,7 +13,7 @@ import {
   MapComponent,
   SearchBoxComponent,
 } from './components';
-import { InitialsPipe, MoneyPipe, ShelfLifePipe, KeysPipe } from './pipes';
+import { InitialsPipe, MoneyPipe, KeysPipe } from './pipes';
 import { MobileMenuDirective, FixedHeaderDirective } from './directives';
 
 @NgModule({
@@ -29,7 +29,6 @@ import { MobileMenuDirective, FixedHeaderDirective } from './directives';
     MapComponent,
     SearchBoxComponent,
     MoneyPipe,
-    ShelfLifePipe,
     KeysPipe,
   ],
   exports: [
@@ -43,7 +42,6 @@ import { MobileMenuDirective, FixedHeaderDirective } from './directives';
     MapComponent,
     SearchBoxComponent,
     MoneyPipe,
-    ShelfLifePipe,
     KeysPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
