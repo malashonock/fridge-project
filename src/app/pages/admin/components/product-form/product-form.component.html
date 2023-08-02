@@ -157,14 +157,23 @@
       </mat-form-field>
 
       <div class="combo-field-errors">
-        <mat-error
+        <ng-container
           *ngIf="
             form.get('weight.value')?.touched &&
-            form.get('weight.value')?.hasError('required')
+            form.get('weight.unit')?.touched &&
+            form.get('weight')?.hasError('partiallyFilled')
           "
         >
-          Weight value is required
-        </mat-error>
+          <mat-error
+            *ngFor="
+              let emptyFieldName of form
+                .get('weight')!
+                .getError('partiallyFilled').emptySubcontrols
+            "
+          >
+            Weight {{ emptyFieldName }} is required
+          </mat-error>
+        </ng-container>
         <mat-error
           *ngIf="
             form.get('weight.value')?.touched &&
@@ -172,14 +181,6 @@
           "
         >
           Weight cannot be negative
-        </mat-error>
-        <mat-error
-          *ngIf="
-            form.get('weight.unit')?.touched &&
-            form.get('weight.unit')?.hasError('required')
-          "
-        >
-          Weight unit is required
         </mat-error>
       </div>
     </fieldset>

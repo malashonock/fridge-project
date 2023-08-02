@@ -8,6 +8,7 @@ import {
   UnitOfWeight,
   SelectOption,
 } from 'core/models';
+import { ComboFieldValidator } from 'core/validators';
 
 interface ProductDialogData {
   product?: Product;
@@ -56,10 +57,15 @@ export class ProductFormComponent {
       category: [this.product?.category, [Validators.required]],
       ingredients: [this.product?.ingredients],
       price: [this.product?.price, [Validators.required, Validators.min(0.01)]],
-      weight: formBuilder.group({
-        value: [this.product?.weight?.value, [Validators.min(0)]],
-        unit: [this.product?.weight?.unit],
-      }),
+      weight: formBuilder.group(
+        {
+          value: [this.product?.weight?.value, [Validators.min(0)]],
+          unit: [this.product?.weight?.unit],
+        },
+        {
+          validators: [ComboFieldValidator.allOrNone],
+        }
+      ),
       nutrients: formBuilder.group({
         proteins: [this.product?.nutrients?.proteins, [Validators.min(0)]],
         fats: [this.product?.nutrients?.fats, [Validators.min(0)]],
