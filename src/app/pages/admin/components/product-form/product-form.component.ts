@@ -9,6 +9,7 @@ import {
   SelectOption,
 } from 'core/models';
 import { ComboFieldValidator } from 'core/validators';
+import { NumberValidator } from 'core/validators/number/number.validator';
 
 interface ProductDialogData {
   product?: Product;
@@ -57,10 +58,21 @@ export class ProductFormComponent {
       name: [this.product?.name, [Validators.required]],
       category: [this.product?.category, [Validators.required]],
       ingredients: [this.product?.ingredients],
-      price: [this.product?.price, [Validators.required, Validators.min(0.01)]],
+      price: [
+        this.product?.price,
+        [
+          Validators.required,
+          NumberValidator.number,
+          NumberValidator.maxFractionDigits(2),
+          NumberValidator.greaterThan(0),
+        ],
+      ],
       weight: formBuilder.group(
         {
-          value: [this.product?.weight?.value, [Validators.min(0)]],
+          value: [
+            this.product?.weight?.value,
+            [NumberValidator.number, Validators.min(0)],
+          ],
           unit: [this.product?.weight?.unit],
         },
         {
@@ -68,27 +80,39 @@ export class ProductFormComponent {
         }
       ),
       nutrients: formBuilder.group({
-        proteins: [this.product?.nutrients?.proteins, [Validators.min(0)]],
-        fats: [this.product?.nutrients?.fats, [Validators.min(0)]],
-        carbs: [this.product?.nutrients?.carbs, [Validators.min(0)]],
+        proteins: [
+          this.product?.nutrients?.proteins,
+          [NumberValidator.number, Validators.min(0)],
+        ],
+        fats: [
+          this.product?.nutrients?.fats,
+          [NumberValidator.number, Validators.min(0)],
+        ],
+        carbs: [
+          this.product?.nutrients?.carbs,
+          [NumberValidator.number, Validators.min(0)],
+        ],
       }),
-      kiloCalories: [this.product?.kiloCalories, [Validators.min(0)]],
+      kiloCalories: [
+        this.product?.kiloCalories,
+        [NumberValidator.number, Validators.min(0)],
+      ],
       shelfLife: formBuilder.group({
         months: [
           this.product?.shelfLife?.months,
-          [Validators.min(0), Validators.pattern(/^[0-9]+$/)],
+          [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
         ],
         weeks: [
           this.product?.shelfLife?.weeks,
-          [Validators.min(0), Validators.pattern(/^[0-9]+$/)],
+          [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
         ],
         days: [
           this.product?.shelfLife?.days,
-          [Validators.min(0), Validators.pattern(/^[0-9]+$/)],
+          [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
         ],
         hours: [
           this.product?.shelfLife?.hours,
-          [Validators.min(0), Validators.pattern(/^[0-9]+$/)],
+          [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
         ],
       }),
       image: [null as File | null], // TODO

@@ -57,20 +57,18 @@
       class="form-fields__price"
     >
       <mat-label>Price, BYN</mat-label>
-      <input
-        matInput
-        type="number"
-        step="0.01"
-        min="0.01"
-        id="price"
-        name="price"
-        formControlName="price"
-      />
+      <input matInput id="price" name="price" formControlName="price" />
       <mat-error *ngIf="form.get('price')?.hasError('required')">
         Product price is required
       </mat-error>
-      <mat-error *ngIf="form.get('price')?.hasError('min')">
-        Product price cannot be negative
+      <mat-error *ngIf="form.get('price')?.hasError('isNaN')">
+        Product price must be a valid number
+      </mat-error>
+      <mat-error *ngIf="form.get('price')?.hasError('fractionOverflow')">
+        Product price granularity is 0.01 BYN
+      </mat-error>
+      <mat-error *ngIf="form.get('price')?.hasError('greaterThan')">
+        Product price must be greater than 0
       </mat-error>
     </mat-form-field>
 
@@ -104,16 +102,12 @@
         <mat-label>{{ nutrient | titlecase }}</mat-label>
         <input
           matInput
-          type="number"
-          min="0"
           [id]="'nutrient-' + nutrient"
           [name]="'nutrient-' + nutrient"
           [formControlName]="nutrient"
         />
-        <mat-error
-          *ngIf="form.get('nutrients.' + nutrient)?.hasError('required')"
-        >
-          {{ nutrient | titlecase }} content is required
+        <mat-error *ngIf="form.get('nutrients.' + nutrient)?.hasError('isNaN')">
+          {{ nutrient | titlecase }} content must be a valid number
         </mat-error>
         <mat-error *ngIf="form.get('nutrients.' + nutrient)?.hasError('min')">
           {{ nutrient | titlecase }} content cannot be negative
@@ -133,8 +127,6 @@
         <mat-label>Value</mat-label>
         <input
           matInput
-          type="number"
-          min="0"
           id="weight-value"
           name="weight-value"
           formControlName="value"
@@ -177,10 +169,18 @@
         <mat-error
           *ngIf="
             form.get('weight.value')?.touched &&
+            form.get('weight.value')?.hasError('isNaN')
+          "
+        >
+          Weight value must be a valid number
+        </mat-error>
+        <mat-error
+          *ngIf="
+            form.get('weight.value')?.touched &&
             form.get('weight.value')?.hasError('min')
           "
         >
-          Weight cannot be negative
+          Weight value cannot be negative
         </mat-error>
       </div>
     </fieldset>
@@ -194,15 +194,12 @@
       <mat-label>Energy value, kcal</mat-label>
       <input
         matInput
-        type="number"
-        min="0"
-        step="1"
         id="energy-value"
         name="energy-value"
         formControlName="kiloCalories"
       />
-      <mat-error *ngIf="form.get('kiloCalories')?.hasError('required')">
-        Energy value is required
+      <mat-error *ngIf="form.get('kiloCalories')?.hasError('isNaN')">
+        Energy value must be a valid number
       </mat-error>
       <mat-error *ngIf="form.get('kiloCalories')?.hasError('min')">
         Energy value cannot be negative
@@ -222,9 +219,6 @@
         <mat-label>{{ period | titlecase }}</mat-label>
         <input
           matInput
-          type="number"
-          min="0"
-          step="1"
           [id]="'shelf-life' + period"
           [name]="'shelf-life' + period"
           [formControlName]="period"
@@ -235,13 +229,18 @@
         <ng-container
           *ngFor="let period of ['months', 'weeks', 'days', 'hours']"
         >
-          <mat-error *ngIf="form.get('shelfLife.' + period)?.hasError('min')">
-            {{ period | titlecase }} value cannot be negative
+          <mat-error *ngIf="form.get('shelfLife.' + period)?.hasError('isNaN')">
+            {{ period | titlecase }} value must be a valid number
           </mat-error>
           <mat-error
-            *ngIf="form.get('shelfLife.' + period)?.hasError('pattern')"
+            *ngIf="
+              form.get('shelfLife.' + period)?.hasError('fractionOverflow')
+            "
           >
             {{ period | titlecase }} value must be an integer
+          </mat-error>
+          <mat-error *ngIf="form.get('shelfLife.' + period)?.hasError('min')">
+            {{ period | titlecase }} value cannot be negative
           </mat-error>
         </ng-container>
       </div>
