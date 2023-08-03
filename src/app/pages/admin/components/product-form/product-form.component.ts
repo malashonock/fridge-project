@@ -8,8 +8,7 @@ import {
   UnitOfWeight,
   SelectOption,
 } from 'core/models';
-import { ComboFieldValidator } from 'core/validators';
-import { NumberValidator } from 'core/validators/number/number.validator';
+import { ComboFieldValidator, NumberValidator } from 'core/validators';
 import { EarlyErrorStateMatcher } from 'core/classes';
 
 interface ProductDialogData {
