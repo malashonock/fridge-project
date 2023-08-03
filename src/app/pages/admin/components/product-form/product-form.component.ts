@@ -10,6 +10,7 @@ import {
 } from 'core/models';
 import { ComboFieldValidator } from 'core/validators';
 import { NumberValidator } from 'core/validators/number/number.validator';
+import { EarlyErrorStateMatcher } from 'core/classes';
 
 interface ProductDialogData {
   product?: Product;
@@ -47,6 +48,8 @@ export class ProductFormComponent {
     { value: UnitOfWeight.Grams, label: 'g' },
     { value: UnitOfWeight.Milliliters, label: 'ml' },
   ];
+
+  public earlyErrorStateMatcher = new EarlyErrorStateMatcher();
 
   public constructor(
     formBuilder: FormBuilder,
