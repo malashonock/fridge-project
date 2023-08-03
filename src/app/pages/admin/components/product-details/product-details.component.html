@@ -1,27 +1,27 @@
 <div class="brief-intro">
   <img
-    *ngIf="product.imageUrl; else imgPlaceholder"
+    *ngIf="product?.imageUrl; else imgPlaceholder"
     class="photo"
     [src]="imageServerUrl + product.imageUrl"
     [alt]="product.name + ' photo'"
   />
   <div class="nutritional-facts">
-    <p class="energy-value" *ngIf="product.kiloCalories as kiloCalories">
+    <p class="energy-value" *ngIf="product?.kiloCalories as kiloCalories">
       <strong>Energy value:</strong>
       {{ kiloCalories }} kcal
     </p>
-    <div class="nutrients" *ngIf="product.nutrients as nutrients">
+    <div class="nutrients" *ngIf="product?.nutrients as nutrients">
       <p><strong>Nutrients:</strong></p>
       <ul>
-        <li *ngFor="let nutrientName of product.nutrients | keys">
+        <li *ngFor="let nutrientName of product.nutrients! | keys">
           <strong>{{ nutrientName | titlecase }}:</strong>
-          {{ product.nutrients[nutrientName] }} g
+          {{ product.nutrients![nutrientName] }} g
         </li>
       </ul>
     </div>
   </div>
 </div>
-<p *ngIf="product.ingredients as ingredients" class="ingredients">
+<p *ngIf="product?.ingredients as ingredients" class="ingredients">
   <strong>Ingredients:</strong> {{ ingredients }}
 </p>
 
