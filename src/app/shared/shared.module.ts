@@ -12,6 +12,7 @@ import {
   BurgerButtonComponent,
   MapComponent,
   SearchBoxComponent,
+  ImageUploaderComponent,
 } from './components';
 import { InitialsPipe, MoneyPipe, KeysPipe } from './pipes';
 import { MobileMenuDirective, FixedHeaderDirective } from './directives';
@@ -30,6 +31,7 @@ import { MobileMenuDirective, FixedHeaderDirective } from './directives';
     SearchBoxComponent,
     MoneyPipe,
     KeysPipe,
+    ImageUploaderComponent,
   ],
   exports: [
     CommonModule,
@@ -43,6 +45,7 @@ import { MobileMenuDirective, FixedHeaderDirective } from './directives';
     SearchBoxComponent,
     MoneyPipe,
     KeysPipe,
+    ImageUploaderComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })

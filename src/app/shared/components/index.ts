@@ -10,3 +10,4 @@ export {
 } from './menu-item/menu-item.component';
 export { UserButtonComponent } from './user-button/user-button.component';
 export { SearchBoxComponent } from './search-box/search-box.component';
+export { ImageUploaderComponent } from './image-uploader/image-uploader.component';
