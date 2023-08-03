@@ -138,6 +138,7 @@
           id="weight-value"
           name="weight-value"
           formControlName="value"
+          [errorStateMatcher]="comboErrorStateMatcher"
         />
       </mat-form-field>
 
@@ -147,7 +148,11 @@
         class="form-fields__weight-unit combo-field-segment"
       >
         <mat-label>Unit</mat-label>
-        <mat-select id="weight-unit" formControlName="unit">
+        <mat-select
+          id="weight-unit"
+          formControlName="unit"
+          [errorStateMatcher]="comboErrorStateMatcher"
+        >
           <mat-option
             *ngFor="let weightUnit of weightUnits"
             [value]="weightUnit.value"
@@ -157,13 +162,7 @@
       </mat-form-field>
 
       <div class="combo-field-errors">
-        <ng-container
-          *ngIf="
-            form.get('weight.value')?.touched &&
-            form.get('weight.unit')?.touched &&
-            form.get('weight')?.hasError('partiallyFilled')
-          "
-        >
+        <ng-container *ngIf="form.get('weight')?.hasError('partiallyFilled')">
           <mat-error
             *ngFor="
               let emptyFieldName of form
@@ -174,20 +173,10 @@
             Weight {{ emptyFieldName }} is required
           </mat-error>
         </ng-container>
-        <mat-error
-          *ngIf="
-            form.get('weight.value')?.touched &&
-            form.get('weight.value')?.hasError('isNaN')
-          "
-        >
+        <mat-error *ngIf="form.get('weight.value')?.hasError('isNaN')">
           Weight value must be a valid number
         </mat-error>
-        <mat-error
-          *ngIf="
-            form.get('weight.value')?.touched &&
-            form.get('weight.value')?.hasError('min')
-          "
-        >
+        <mat-error *ngIf="form.get('weight.value')?.hasError('min')">
           Weight value cannot be negative
         </mat-error>
       </div>

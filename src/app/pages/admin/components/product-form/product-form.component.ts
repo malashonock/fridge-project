@@ -9,7 +9,7 @@ import {
   SelectOption,
 } from 'core/models';
 import { ComboFieldValidator, NumberValidator } from 'core/validators';
-import { EarlyErrorStateMatcher } from 'core/classes';
+import { ComboErrorStateMatcher, EarlyErrorStateMatcher } from 'core/classes';
 
 interface ProductDialogData {
   product?: Product;
@@ -49,6 +49,7 @@ export class ProductFormComponent {
   ];
 
   public earlyErrorStateMatcher = new EarlyErrorStateMatcher();
+  public comboErrorStateMatcher = new ComboErrorStateMatcher();
 
   public constructor(
     formBuilder: FormBuilder,
