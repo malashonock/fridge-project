@@ -65,8 +65,8 @@ export class ProductFormComponent {
         [
           Validators.required,
           NumberValidator.number,
+          Validators.min(0),
           NumberValidator.maxFractionDigits(2),
-          NumberValidator.greaterThan(0),
         ],
       ],
       weight: formBuilder.group(
