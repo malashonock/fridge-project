@@ -17,10 +17,6 @@ export class NumberValidator {
         return null;
       }
 
-      if (maxFractionDigits < 0) {
-        return null;
-      }
-
       const x = Math.abs(control.value * 10 ** maxFractionDigits);
       const fractionOverflow = x - Math.floor(x);
 
@@ -40,7 +36,10 @@ export class NumberValidator {
 
   public static greaterThan(min: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      if (!control.value || NumberValidator.number(control) !== null) {
+      if (
+        (!control.value && control.value !== 0) ||
+        NumberValidator.number(control) !== null
+      ) {
         return null;
       }
 
