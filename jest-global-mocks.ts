@@ -31,3 +31,14 @@ export const ResizeObserverSpies = {
   spyOnResizeObserverUnobserve,
   spyOnResizeObserverDisconnect,
 };
+
+// Mock URL.createObjectURL and URL.revokeObjectURL
+const spyOnCreateObjectURL = jest.fn();
+const spyOnRevokeObjectURL = jest.fn();
+window.URL.createObjectURL = spyOnCreateObjectURL;
+window.URL.revokeObjectURL = spyOnRevokeObjectURL;
+
+export const ObjectUrlSpies = {
+  spyOnCreateObjectURL,
+  spyOnRevokeObjectURL,
+};
