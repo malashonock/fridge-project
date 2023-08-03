@@ -9,7 +9,11 @@ import {
   SelectOption,
 } from 'core/models';
 import { ComboFieldValidator, NumberValidator } from 'core/validators';
-import { ComboErrorStateMatcher, EarlyErrorStateMatcher } from 'core/classes';
+import {
+  ComboErrorStateMatcher,
+  EarlyErrorStateMatcher,
+  FileWithUrl,
+} from 'core/classes';
 
 interface ProductDialogData {
   product?: Product;
@@ -118,7 +122,7 @@ export class ProductFormComponent {
           [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
         ],
       }),
-      image: [null as File | null], // TODO
+      image: [null as FileWithUrl | null],
     });
   }
 }

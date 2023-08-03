@@ -16,24 +16,31 @@
   gap: 1rem;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "ul ur1"
-    "ul ur2"
-    "ul ur3"
+    "ul1 ur"
+    "ul2 ur"
+    "ul3 ur"
     "md md"
     "ll lr1"
     "ll lr2"
     "ll lr3";
 
+  &__image {
+    grid-area: ur;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__name {
-    grid-area: ur1;
+    grid-area: ul1;
   }
   
   &__category {
-    grid-area: ur2;
+    grid-area: ul2;
   }
   
   &__price {
-    grid-area: ur3;
+    grid-area: ul3;
   }
   
   &__ingredients {

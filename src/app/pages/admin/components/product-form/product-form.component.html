@@ -6,11 +6,11 @@
 <form [formGroup]="form">
   <mat-dialog-content class="form-fields">
     <!-- Image -->
-    <!-- TODO: implement custom image-input component -->
-    <div class="form-fields__image">
-      <label for="image">Product image</label>
-      <input type="file" id="image" name="image" formControlName="image" />
-    </div>
+    <!-- TODO: implement as custom mat-form-field input -->
+    <app-image-uploader
+      class="form-fields__image"
+      formControlName="image"
+    ></app-image-uploader>
 
     <!-- Name -->
     <mat-form-field
