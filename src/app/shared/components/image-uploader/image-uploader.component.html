@@ -1,15 +1,15 @@
 <input
   type="file"
-  [id]="name"
-  [name]="name"
+  [id]="id"
+  [name]="id"
   #nativeInput
   class="file-input"
   accept="image/*"
-  (change)="onFileSelected($event)"
+  [formControl]="formControl"
 />
 
 <div class="image-container">
-  <ng-container *ngIf="image; else noImage">
+  <ng-container *ngIf="formControl.value as image; else noImage">
     <img [src]="image.url" [alt]="image.name" class="image-preview" />
     <button mat-button class="btn clear-btn" (click)="onDiscardFile()">
       Discard image
@@ -19,6 +19,6 @@
 
 <ng-template #noImage>
   <button mat-button class="btn upload-btn" (click)="openFileDialog()">
-    Upload image
+    {{ placeholder }}
   </button>
 </ng-template>

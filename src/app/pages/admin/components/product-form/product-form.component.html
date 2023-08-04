@@ -6,11 +6,18 @@
 <form [formGroup]="form">
   <mat-dialog-content class="form-fields">
     <!-- Image -->
-    <!-- TODO: implement as custom mat-form-field input -->
-    <app-image-uploader
+    <mat-form-field
+      appearance="outline"
+      subscriptSizing="dynamic"
       class="form-fields__image"
-      formControlName="image"
-    ></app-image-uploader>
+    >
+      <mat-label>Product image</mat-label>
+      <app-image-uploader
+        class="form-fields__image"
+        formControlName="image"
+        id="image"
+      ></app-image-uploader>
+    </mat-form-field>
 
     <!-- Name -->
     <mat-form-field
