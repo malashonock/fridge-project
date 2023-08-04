@@ -15,7 +15,11 @@ import {
   ImageUploaderComponent,
 } from './components';
 import { InitialsPipe, MoneyPipe, KeysPipe } from './pipes';
-import { MobileMenuDirective, FixedHeaderDirective } from './directives';
+import {
+  MobileMenuDirective,
+  FixedHeaderDirective,
+  FileInputDirective,
+} from './directives';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,7 @@ import { MobileMenuDirective, FixedHeaderDirective } from './directives';
     MoneyPipe,
     KeysPipe,
     ImageUploaderComponent,
+    FileInputDirective,
   ],
   exports: [
     CommonModule,
@@ -46,6 +51,7 @@ import { MobileMenuDirective, FixedHeaderDirective } from './directives';
     MoneyPipe,
     KeysPipe,
     ImageUploaderComponent,
+    FileInputDirective,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })
