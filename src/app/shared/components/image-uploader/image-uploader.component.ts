@@ -102,7 +102,7 @@ export class ImageUploaderComponent
   }
 
   public get errorState(): boolean {
-    return this.formControl.touched && this.formControl.invalid;
+    return Boolean(this.formControl.touched && this.ngControl.control?.errors);
   }
 
   @ViewChild('nativeInput') public nativeInput?: ElementRef;
@@ -185,6 +185,7 @@ export class ImageUploaderComponent
       .subscribe(() => {
         this.touch();
         this.stateChanges.next();
+        this.updateErrors();
       });
 
     this.formControl.statusChanges
@@ -204,5 +205,28 @@ export class ImageUploaderComponent
     this.stateChanges.complete();
     this.destroy$.next(null);
     this.destroy$.complete();
+  }
+
+  private updateErrors(): void {
+    let parentErrors = this.ngControl.control?.errors
+      ? { ...this.ngControl.control?.errors }
+      : null;
+
+    delete parentErrors?.['fileType'];
+
+    parentErrors =
+      parentErrors && Object.getOwnPropertyNames(parentErrors).length > 0
+        ? parentErrors
+        : null;
+
+    const combinedErrors =
+      parentErrors || this.formControl.errors
+        ? {
+            ...parentErrors,
+            ...this.formControl.errors,
+          }
+        : null;
+
+    this.ngControl.control?.setErrors(combinedErrors);
   }
 }
