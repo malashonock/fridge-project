@@ -13,81 +13,82 @@
     >
       <mat-label>Product image</mat-label>
       <app-image-uploader
-        class="form-fields__image"
-        formControlName="image"
         id="image"
+        formControlName="image"
       ></app-image-uploader>
       <mat-error *ngIf="form.get('image')?.hasError('fileType')">
         The uploaded file is not a valid image
       </mat-error>
     </mat-form-field>
 
-    <!-- Name -->
-    <mat-form-field
-      appearance="outline"
-      subscriptSizing="dynamic"
-      class="form-fields__name"
-    >
-      <mat-label>Product name</mat-label>
-      <input
-        matInput
-        id="name"
-        name="name"
-        formControlName="name"
-        [errorStateMatcher]="earlyErrorStateMatcher"
-        cdkFocusInitial
-      />
-      <mat-error *ngIf="form.get('name')?.hasError('required')">
-        Product name is required
-      </mat-error>
-    </mat-form-field>
+    <div class="form-fields__required">
+      <!-- Name -->
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="form-fields__name"
+      >
+        <mat-label>Product name</mat-label>
+        <input
+          matInput
+          id="name"
+          name="name"
+          formControlName="name"
+          [errorStateMatcher]="earlyErrorStateMatcher"
+          cdkFocusInitial
+        />
+        <mat-error *ngIf="form.get('name')?.hasError('required')">
+          Product name is required
+        </mat-error>
+      </mat-form-field>
 
-    <!-- Category -->
-    <mat-form-field
-      appearance="outline"
-      subscriptSizing="dynamic"
-      class="form-fields__category"
-    >
-      <mat-label>Product category</mat-label>
-      <mat-select id="category" formControlName="category">
-        <mat-option
-          *ngFor="let productCategory of productCategories"
-          [value]="productCategory.value"
-          >{{ productCategory.label }}</mat-option
-        >
-      </mat-select>
-      <mat-error *ngIf="form.get('category')?.hasError('required')">
-        Product category is required
-      </mat-error>
-    </mat-form-field>
+      <!-- Category -->
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="form-fields__category"
+      >
+        <mat-label>Product category</mat-label>
+        <mat-select id="category" formControlName="category">
+          <mat-option
+            *ngFor="let productCategory of productCategories"
+            [value]="productCategory.value"
+            >{{ productCategory.label }}</mat-option
+          >
+        </mat-select>
+        <mat-error *ngIf="form.get('category')?.hasError('required')">
+          Product category is required
+        </mat-error>
+      </mat-form-field>
 
-    <!-- Price -->
-    <mat-form-field
-      appearance="outline"
-      subscriptSizing="dynamic"
-      class="form-fields__price"
-    >
-      <mat-label>Price, BYN</mat-label>
-      <input
-        matInput
-        id="price"
-        name="price"
-        formControlName="price"
-        [errorStateMatcher]="earlyErrorStateMatcher"
-      />
-      <mat-error *ngIf="form.get('price')?.hasError('required')">
-        Product price is required
-      </mat-error>
-      <mat-error *ngIf="form.get('price')?.hasError('isNaN')">
-        Product price must be a valid number
-      </mat-error>
-      <mat-error *ngIf="form.get('price')?.hasError('fractionOverflow')">
-        Product price granularity is 0.01 BYN
-      </mat-error>
-      <mat-error *ngIf="form.get('price')?.hasError('min')">
-        Product price cannot be negative
-      </mat-error>
-    </mat-form-field>
+      <!-- Price -->
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="form-fields__price"
+      >
+        <mat-label>Price, BYN</mat-label>
+        <input
+          matInput
+          id="price"
+          name="price"
+          formControlName="price"
+          [errorStateMatcher]="earlyErrorStateMatcher"
+        />
+        <mat-error *ngIf="form.get('price')?.hasError('required')">
+          Product price is required
+        </mat-error>
+        <mat-error *ngIf="form.get('price')?.hasError('isNaN')">
+          Product price must be a valid number
+        </mat-error>
+        <mat-error *ngIf="form.get('price')?.hasError('fractionOverflow')">
+          Product price granularity is 0.01 BYN
+        </mat-error>
+        <mat-error *ngIf="form.get('price')?.hasError('min')">
+          Product price cannot be negative
+        </mat-error>
+      </mat-form-field>
+    </div>
 
     <!-- Ingredients -->
     <mat-form-field
