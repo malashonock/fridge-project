@@ -19,6 +19,7 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 
 import { FileWithUrl } from 'core/classes';
 import { FileInputDirective } from 'shared/directives';
+import { FileValidator } from 'core/validators';
 
 type VoidEventHandler = () => void;
 type ChangeEventHandler = (image: FileWithUrl | null) => void;
@@ -44,7 +45,7 @@ export class ImageUploaderComponent
     OnDestroy
 {
   public formControl = new FormControl<FileWithUrl | null>(null, [
-    /* TODO:FileValidator.image */
+    FileValidator.type('image/*'),
   ]);
 
   @Input() public id = '';
@@ -141,9 +142,7 @@ export class ImageUploaderComponent
   public registerOnTouched(onTouchedCallback: VoidEventHandler): void {
     // FileInputDirective is not available unitl AfterViewInit,
     // so we need to save the callback temporarily
-    this._onTouchedCallback = () => {
-      onTouchedCallback();
-    };
+    this._onTouchedCallback = onTouchedCallback;
   }
 
   public setDisabledState(isDisabled: boolean): void {
