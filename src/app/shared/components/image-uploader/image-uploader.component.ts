@@ -183,6 +183,7 @@ export class ImageUploaderComponent
     this.formControl.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
+        this.touch();
         this.stateChanges.next();
       });
 
