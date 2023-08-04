@@ -17,6 +17,9 @@
         formControlName="image"
         id="image"
       ></app-image-uploader>
+      <mat-error *ngIf="form.get('image')?.hasError('fileType')">
+        The uploaded file is not a valid image
+      </mat-error>
     </mat-form-field>
 
     <!-- Name -->
