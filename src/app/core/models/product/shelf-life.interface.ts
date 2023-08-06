@@ -1,6 +1,6 @@
 export interface ShelfLife {
-  months?: number;
-  weeks?: number;
-  days?: number;
-  hours?: number;
+  months: number | null;
+  weeks: number | null;
+  days: number | null;
+  hours: number | null;
 }

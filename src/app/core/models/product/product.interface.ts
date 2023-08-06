@@ -8,10 +8,10 @@ export interface Product {
   name: string;
   category: ProductCategory;
   price: number;
-  ingredients?: string;
-  weight?: ProductWeight;
-  nutrients?: Nutrients;
-  kiloCalories?: number;
-  shelfLife?: ShelfLife;
-  imageUrl?: string;
+  ingredients: string | null;
+  weight: ProductWeight | null;
+  nutrients: Nutrients | null;
+  kiloCalories: number | null;
+  shelfLife: ShelfLife | null;
+  imageUrl: string | null;
 }
