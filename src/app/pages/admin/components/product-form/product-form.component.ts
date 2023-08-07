@@ -9,6 +9,7 @@ import {
   ProductCategory,
   UnitOfWeight,
   SelectOption,
+  ProductFields,
 } from 'core/models';
 import { ComboFieldValidator, NumberValidator } from 'core/validators';
 import {
@@ -141,7 +142,6 @@ export class ProductFormComponent implements OnDestroy {
           [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
         ],
       }),
-      imageUrl: [this.initialProductImageUrl],
       image: [this.productImage],
     });
   }
@@ -156,11 +156,16 @@ export class ProductFormComponent implements OnDestroy {
       return;
     }
 
+    const productData: ProductFields = {
+      ...this.form.value,
+      imageUrl: this.form.value.image?.url || null,
+    };
+
     switch (this.mode) {
       case FormMode.Create:
         return this.store.dispatch(
           ProductsActions.createProduct({
-            productData: this.form.value,
+            productData,
           })
         );
       case FormMode.Edit:
@@ -168,7 +173,7 @@ export class ProductFormComponent implements OnDestroy {
           ProductsActions.updateProduct({
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             id: this.product!.id,
-            productData: this.form.value,
+            productData,
           })
         );
       default:
