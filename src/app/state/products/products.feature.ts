@@ -19,6 +19,18 @@ export const productsFeature = createFeature({
     on(
       ProductsActions.fetchProductsSuccess,
       ProductsActionReducers.fetchProductsSuccessReducer
+    ),
+    on(
+      ProductsActions.createProductSuccess,
+      ProductsActionReducers.createProductSuccessReducer
+    ),
+    on(
+      ProductsActions.updateProductSuccess,
+      ProductsActionReducers.updateProductSuccessReducer
+    ),
+    on(
+      ProductsActions.deleteProductSuccess,
+      ProductsActionReducers.deleteProductSuccessReducer
     )
   ),
 });
