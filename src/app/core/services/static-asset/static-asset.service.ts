@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 import { FileWithUrl } from 'core/classes';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,13 @@ export class StaticAssetService {
       .get<File>(url, { responseType: 'blob' as 'json' })
       .pipe(
         map((file: File): FileWithUrl => {
-          return new FileWithUrl(file, url);
+          const clientUploaded = url.startsWith('blob:');
+
+          const urlPrefix = clientUploaded
+            ? ''
+            : environment.STATIC_ASSETS_BASE_URL;
+
+          return new FileWithUrl(file, urlPrefix + url);
         })
       );
   }

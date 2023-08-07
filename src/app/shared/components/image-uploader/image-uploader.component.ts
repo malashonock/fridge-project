@@ -20,7 +20,6 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FileWithUrl } from 'core/classes';
 import { FileInputDirective } from 'shared/directives';
 import { FileValidator } from 'core/validators';
-import { environment } from 'environments/environment';
 
 type VoidEventHandler = () => void;
 type ChangeEventHandler = (image: FileWithUrl | null) => void;
@@ -48,8 +47,6 @@ export class ImageUploaderComponent
   public formControl = new FormControl<FileWithUrl | null>(null, [
     FileValidator.type('image/*'),
   ]);
-
-  public imageServerUrl = environment.STATIC_ASSETS_BASE_URL;
 
   @Input() public id = '';
 
