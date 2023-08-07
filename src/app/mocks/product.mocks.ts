@@ -1,4 +1,9 @@
-import { Product, ProductCategory, UnitOfWeight } from 'core/models';
+import {
+  Product,
+  ProductCategory,
+  ProductFields,
+  UnitOfWeight,
+} from 'core/models';
 
 export const mockProduct1: Product = {
   id: '5',
@@ -18,7 +23,10 @@ export const mockProduct1: Product = {
   },
   kiloCalories: 396,
   shelfLife: {
+    months: null,
+    weeks: null,
     days: 3,
+    hours: null,
   },
   imageUrl: '/images/sandwich-with-ham.png',
 };
@@ -41,6 +49,9 @@ export const mockProduct2: Product = {
   },
   kiloCalories: 256,
   shelfLife: {
+    months: null,
+    weeks: null,
+    days: null,
     hours: 12,
   },
   imageUrl: '/images/chicken-caesar.png',
@@ -48,3 +59,16 @@ export const mockProduct2: Product = {
 
 export const mockProducts1: Product[] = [mockProduct1];
 export const mockProducts2: Product[] = [mockProduct1, mockProduct2];
+
+export const mockProduct1Data: ProductFields = {
+  name: mockProduct1.name,
+  category: mockProduct1.category,
+  price: mockProduct1.price,
+  ingredients: mockProduct1.ingredients,
+  nutrients: mockProduct1.nutrients,
+  weight: mockProduct1.weight,
+  kiloCalories: mockProduct1.kiloCalories,
+  shelfLife: mockProduct1.shelfLife,
+  imageUrl: 'blob:https://localhost:4200/abc-def',
+  image: new File(['test'], 'test.txt'),
+};
