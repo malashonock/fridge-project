@@ -1,6 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Subject } from 'rxjs';
 
 import {
   Product,
@@ -14,9 +15,11 @@ import {
   EarlyErrorStateMatcher,
   FileWithUrl,
 } from 'core/classes';
+import { StaticAssetService } from 'core/services';
 
 interface ProductDialogData {
   product?: Product;
+  image?: FileWithUrl | null;
 }
 
 @Component({
@@ -24,9 +27,10 @@ interface ProductDialogData {
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss'],
 })
-export class ProductFormComponent {
+export class ProductFormComponent implements OnDestroy {
   public form!: FormGroup;
   private product?: Product;
+  private productImage?: FileWithUrl | null;
 
   public get title(): string {
     return this.product ? 'Edit product' : 'Add new product';
@@ -55,11 +59,15 @@ export class ProductFormComponent {
   public earlyErrorStateMatcher = new EarlyErrorStateMatcher();
   public comboErrorStateMatcher = new ComboErrorStateMatcher();
 
+  private destroy$ = new Subject();
+
   public constructor(
     formBuilder: FormBuilder,
+    private staticAssetService: StaticAssetService,
     @Inject(MAT_DIALOG_DATA) data?: ProductDialogData
   ) {
     this.product = data?.product;
+    this.productImage = data?.image;
 
     this.form = formBuilder.group({
       name: [this.product?.name, [Validators.required]],
@@ -122,7 +130,13 @@ export class ProductFormComponent {
           [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
         ],
       }),
-      image: [null as FileWithUrl | null],
+      imageUrl: [this.product?.imageUrl],
+      image: [this.productImage],
     });
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next(null);
+    this.destroy$.complete();
   }
 }

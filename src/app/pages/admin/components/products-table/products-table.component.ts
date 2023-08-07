@@ -20,10 +20,12 @@ import {
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, of, takeUntil } from 'rxjs';
 
 import { Product } from 'core/models';
 import { ProductFormComponent } from '../product-form/product-form.component';
+import { StaticAssetService } from 'core/services';
+import { FileWithUrl } from 'core/classes';
 
 @Component({
   selector: 'app-products-table',
@@ -70,7 +72,10 @@ export class ProductsTableComponent
   @ViewChild(MatSort) private sort!: MatSort;
   @ViewChild(MatPaginator) private paginator!: MatPaginator;
 
-  public constructor(private dialog: MatDialog) {}
+  public constructor(
+    private dialog: MatDialog,
+    private staticAssetService: StaticAssetService
+  ) {}
 
   public ngOnInit(): void {
     this.subscribeToProductsChanges();
@@ -145,11 +150,25 @@ export class ProductsTableComponent
       product.id === this.expandedProduct?.id ? null : product;
   }
 
+  private fetchProductImage({
+    imageUrl,
+  }: Product): Observable<FileWithUrl | null> {
+    return imageUrl
+      ? this.staticAssetService
+          .fetchAsset(imageUrl)
+          .pipe(takeUntil(this.destroy$))
+      : of(null);
+  }
+
   public openEditProductDialog(product: Product, event?: MouseEvent): void {
     event?.stopPropagation();
 
-    this.dialog.open(ProductFormComponent, {
-      data: { product },
-    });
+    this.fetchProductImage(product).subscribe(
+      (image: FileWithUrl | null): void => {
+        this.dialog.open(ProductFormComponent, {
+          data: { product, image },
+        });
+      }
+    );
   }
 }
