@@ -9,3 +9,4 @@ export { Product } from './product/product.interface';
 export { UnitOfWeight } from './product/unit-of-weight.enum';
 export { ShelfLife } from './product/shelf-life.interface';
 export { SelectOption } from './ui/select-option.interface';
+export { ProductFields } from './product/product-fields.interface';
