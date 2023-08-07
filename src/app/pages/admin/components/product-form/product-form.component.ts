@@ -15,7 +15,6 @@ import {
   EarlyErrorStateMatcher,
   FileWithUrl,
 } from 'core/classes';
-import { StaticAssetService } from 'core/services';
 
 interface ProductDialogData {
   product?: Product;
@@ -63,7 +62,6 @@ export class ProductFormComponent implements OnDestroy {
 
   public constructor(
     formBuilder: FormBuilder,
-    private staticAssetService: StaticAssetService,
     @Inject(MAT_DIALOG_DATA) data?: ProductDialogData
   ) {
     this.product = data?.product;
