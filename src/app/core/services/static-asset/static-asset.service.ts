@@ -11,10 +11,12 @@ export class StaticAssetService {
   public constructor(private httpClient: HttpClient) {}
 
   public fetchAsset(url: string): Observable<FileWithUrl> {
-    return this.httpClient.get<File>(url).pipe(
-      map((file: File): FileWithUrl => {
-        return new FileWithUrl(file, url);
-      })
-    );
+    return this.httpClient
+      .get<File>(url, { responseType: 'blob' as 'json' })
+      .pipe(
+        map((file: File): FileWithUrl => {
+          return new FileWithUrl(file, url);
+        })
+      );
   }
 }
