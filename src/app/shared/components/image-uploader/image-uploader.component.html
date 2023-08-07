@@ -10,7 +10,11 @@
 
 <div class="image-container">
   <ng-container *ngIf="formControl.value as image; else noImage">
-    <img [src]="image.url" [alt]="image.name" class="image-preview" />
+    <img
+      [src]="imageServerUrl + image.url"
+      [alt]="image.name"
+      class="image-preview"
+    />
     <button mat-button class="btn clear-btn" (click)="onDiscardFile()">
       Discard image
     </button>
