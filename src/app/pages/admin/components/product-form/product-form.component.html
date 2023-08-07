@@ -3,7 +3,7 @@
   <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
 </header>
 
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-dialog-content class="form-fields">
     <!-- Image -->
     <mat-form-field

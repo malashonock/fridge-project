@@ -2,6 +2,7 @@ import { Component, Inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import {
   Product,
@@ -15,10 +16,16 @@ import {
   EarlyErrorStateMatcher,
   FileWithUrl,
 } from 'core/classes';
+import { ProductsActions } from 'app/state/products';
 
 interface ProductDialogData {
   product?: Product;
   image?: FileWithUrl | null;
+}
+
+enum FormMode {
+  Create,
+  Edit,
 }
 
 @Component({
@@ -38,6 +45,10 @@ export class ProductFormComponent implements OnDestroy {
 
   public get submitText(): string {
     return this.product ? 'Save changes' : 'Create product';
+  }
+
+  private get mode(): FormMode {
+    return this.product ? FormMode.Edit : FormMode.Create;
   }
 
   // TODO: fetch on startup and select from store
@@ -63,6 +74,7 @@ export class ProductFormComponent implements OnDestroy {
 
   public constructor(
     formBuilder: FormBuilder,
+    private store: Store,
     @Inject(MAT_DIALOG_DATA) data?: ProductDialogData
   ) {
     this.product = data?.product;
@@ -137,5 +149,30 @@ export class ProductFormComponent implements OnDestroy {
   public ngOnDestroy(): void {
     this.destroy$.next(null);
     this.destroy$.complete();
+  }
+
+  public onSubmit(): void {
+    if (this.form.invalid) {
+      return;
+    }
+
+    switch (this.mode) {
+      case FormMode.Create:
+        return this.store.dispatch(
+          ProductsActions.createProduct({
+            productData: this.form.value,
+          })
+        );
+      case FormMode.Edit:
+        return this.store.dispatch(
+          ProductsActions.updateProduct({
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            id: this.product!.id,
+            productData: this.form.value,
+          })
+        );
+      default:
+        throw new Error('Unsupported form mode');
+    }
   }
 }
