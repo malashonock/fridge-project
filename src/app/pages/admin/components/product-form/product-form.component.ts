@@ -30,6 +30,7 @@ export class ProductFormComponent implements OnDestroy {
   public form!: FormGroup;
   private product?: Product;
   private productImage?: FileWithUrl | null;
+  private initialProductImageUrl = this.product?.imageUrl;
 
   public get title(): string {
     return this.product ? 'Edit product' : 'Add new product';
@@ -128,7 +129,7 @@ export class ProductFormComponent implements OnDestroy {
           [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
         ],
       }),
-      imageUrl: [this.product?.imageUrl],
+      imageUrl: [this.initialProductImageUrl],
       image: [this.productImage],
     });
   }
