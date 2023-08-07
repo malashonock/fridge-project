@@ -1,13 +1,12 @@
 export class FileWithUrl extends File {
   public url: string;
 
-  public constructor(
-    fileBits: BlobPart[],
-    fileName: string,
-    options?: FilePropertyBag | undefined
-  ) {
-    super(fileBits, fileName, options);
-    this.url = URL.createObjectURL(this);
+  public constructor(file: File, url?: string) {
+    super([file], file.name, {
+      type: file.type,
+      lastModified: file.lastModified,
+    });
+    this.url = url || URL.createObjectURL(this);
   }
 
   public onDestroy(): void {

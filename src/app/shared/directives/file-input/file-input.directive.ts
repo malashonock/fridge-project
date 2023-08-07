@@ -40,12 +40,7 @@ export class FileInputDirective implements ControlValueAccessor {
     file?: File
   ): void {
     if (file) {
-      this.notifyChangeListener?.(
-        new FileWithUrl([file], file.name, {
-          type: file.type,
-          lastModified: file.lastModified,
-        })
-      );
+      this.notifyChangeListener?.(new FileWithUrl(file));
       this.touch();
     }
   }
