@@ -16,7 +16,7 @@ describe('FileInputDirective', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   let directive: FileInputDirective;
   let nativeInput: HTMLInputElement;
-  const mockFile = new FileWithUrl(['test'], 'test.txt');
+  const mockFile = new FileWithUrl(new File(['test'], 'test.txt'));
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
