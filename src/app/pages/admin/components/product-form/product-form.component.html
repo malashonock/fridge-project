@@ -69,7 +69,8 @@
       >
         <mat-label>Price, BYN</mat-label>
         <input
-          matInput
+          type="text"
+          appNumericInput
           id="price"
           name="price"
           formControlName="price"
@@ -119,7 +120,8 @@
       >
         <mat-label>{{ nutrient | titlecase }}</mat-label>
         <input
-          matInput
+          type="text"
+          appNumericInput
           [id]="'nutrient-' + nutrient"
           [name]="'nutrient-' + nutrient"
           [formControlName]="nutrient"
@@ -145,7 +147,8 @@
       >
         <mat-label>Value</mat-label>
         <input
-          matInput
+          type="text"
+          appNumericInput
           id="weight-value"
           name="weight-value"
           formControlName="value"
@@ -201,7 +204,8 @@
     >
       <mat-label>Energy value, kcal</mat-label>
       <input
-        matInput
+        type="text"
+        appNumericInput
         id="energy-value"
         name="energy-value"
         formControlName="kiloCalories"
@@ -227,7 +231,8 @@
       >
         <mat-label>{{ period | titlecase }}</mat-label>
         <input
-          matInput
+          type="text"
+          appNumericInput
           [id]="'shelf-life' + period"
           [name]="'shelf-life' + period"
           [formControlName]="period"

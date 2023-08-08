@@ -19,6 +19,7 @@ import {
   MobileMenuDirective,
   FixedHeaderDirective,
   FileInputDirective,
+  NumericInputDirective,
 } from './directives';
 
 @NgModule({
@@ -37,6 +38,7 @@ import {
     KeysPipe,
     ImageUploaderComponent,
     FileInputDirective,
+    NumericInputDirective,
   ],
   exports: [
     CommonModule,
@@ -52,6 +54,7 @@ import {
     KeysPipe,
     ImageUploaderComponent,
     FileInputDirective,
+    NumericInputDirective,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })
