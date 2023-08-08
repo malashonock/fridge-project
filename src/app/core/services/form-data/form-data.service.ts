@@ -15,16 +15,14 @@ export class FormDataService {
           switch (true) {
             case fieldValue instanceof Blob:
               return fieldValue as Blob;
-            case fieldValue instanceof Date:
-              return (fieldValue as Date).toISOString();
-            case typeof fieldValue === 'object':
-              return JSON.stringify(fieldValue);
             default:
-              return (fieldValue as string | number | boolean).toString();
+              return JSON.stringify(fieldValue);
           }
         })();
 
-        formData.append(fieldName, formDataValue);
+        if (fieldValue !== undefined) {
+          formData.append(fieldName, formDataValue);
+        }
       }
     }
 
