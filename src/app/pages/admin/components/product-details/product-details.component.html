@@ -11,7 +11,7 @@
       {{ kiloCalories }} kcal
     </p>
     <div class="nutrients" *ngIf="product?.nutrients | any as nutrients">
-      <p><strong>Nutrients:</strong></p>
+      <p><strong>Nutrients (per 100 g):</strong></p>
       <ul>
         <li *ngFor="let nutrientName of product.nutrients! | keys">
           <strong>{{ nutrientName | titlecase }}:</strong>
