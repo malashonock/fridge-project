@@ -96,7 +96,7 @@ export class NumericInputDirective
 
   public writeValue(value: number | string | null): void {
     this.renderer.setProperty(
-      this.elementRef,
+      this.elementRef.nativeElement,
       'value',
       value?.toString() ?? ''
     );
