@@ -7,13 +7,19 @@ const productRouter = (db, upload) => {
   const router = express.Router();
   const productController = new ProductController(db);
 
-  return router.post(
-    '/',
-    upload.single('image'),
-    bodyParser,
-    productController.createProduct
-  );
-  // .put('/:productId', upload.single('image'), productController.updateProduct)
+  return router
+    .post(
+      '/',
+      upload.single('image'),
+      bodyParser,
+      productController.createProduct
+    )
+    .put(
+      '/:productId',
+      upload.single('image'),
+      bodyParser,
+      productController.updateProduct
+    );
   // .delete('/:productId', productController.deleteProduct);
 };
 

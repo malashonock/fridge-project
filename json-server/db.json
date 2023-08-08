@@ -223,6 +223,31 @@
         "hours": 24
       },
       "imageUrl": "/images/tiramisu.png"
+    },
+    {
+      "id": 9,
+      "name": "Chicken curry",
+      "category": "Second courses",
+      "ingredients": "Chicken, rice, curry, lime",
+      "price": 7.99,
+      "weight": {
+        "value": 250,
+        "unit": "g"
+      },
+      "nutrients": {
+        "proteins": 30,
+        "fats": 30,
+        "carbs": 25
+      },
+      "kiloCalories": 200,
+      "shelfLife": {
+        "months": null,
+        "weeks": null,
+        "days": 3,
+        "hours": null
+      },
+      "image": null,
+      "imageUrl": null
     }
   ]
 }

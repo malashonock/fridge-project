@@ -3,11 +3,12 @@ import multer from 'multer';
 
 import authRouter from './auth/auth.route.mjs';
 import productRouter from './product/product.route.mjs';
+import { PORT, IMAGES_FOLDER } from './constants.mjs';
 
 const server = jsonServer.create();
 const defaultRouter = jsonServer.router('db.json');
 const { db } = defaultRouter;
-const upload = multer({ dest: 'public/images/' });
+const upload = multer({ dest: IMAGES_FOLDER });
 
 // Setup middleware
 server.use(jsonServer.defaults());
@@ -24,7 +25,6 @@ server.get('/products', defaultRouter);
 server.use('/products', productRouter(db, upload));
 server.use('/', defaultRouter);
 
-const PORT = 3000;
 server.listen(PORT, () => {
   console.log('JSON Server is running');
 });
