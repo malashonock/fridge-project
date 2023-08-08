@@ -12,7 +12,7 @@ describe('FileValidator', () => {
   describe('type validator function', () => {
     it('should accept files matching the specified MIME type', () => {
       control.setValue(
-        new FileWithUrl(['test'], 'test.png', { type: 'image/png' })
+        new FileWithUrl(new File(['test'], 'test.png', { type: 'image/png' }))
       );
       expect(FileValidator.type('image/png')(control)).toBeNull();
       expect(FileValidator.type('image/*')(control)).toBeNull();
@@ -20,7 +20,7 @@ describe('FileValidator', () => {
 
     it('should return error for files not matching the specified MIME type', () => {
       control.setValue(
-        new FileWithUrl(['test'], 'test.txt', { type: 'text/plain' })
+        new FileWithUrl(new File(['test'], 'test.txt', { type: 'text/plain' }))
       );
       expect(FileValidator.type('image/*')(control)).toEqual({
         fileType: {

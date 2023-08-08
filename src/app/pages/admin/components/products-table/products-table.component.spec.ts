@@ -16,6 +16,7 @@ import {
   mockProducts2,
 } from 'mocks/product.mocks';
 import { ShelfLifePipe } from '../../pipes';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 @Component({
   selector: 'app-product-details',
@@ -46,7 +47,7 @@ describe('ProductsTableComponent', () => {
         ProductDetailsStubComponent,
         ShelfLifePipe,
       ],
-      imports: [SharedModule, NoopAnimationsModule],
+      imports: [SharedModule, NoopAnimationsModule, HttpClientTestingModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProductsTableComponent);

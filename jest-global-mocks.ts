@@ -42,3 +42,24 @@ export const ObjectUrlSpies = {
   spyOnCreateObjectURL,
   spyOnRevokeObjectURL,
 };
+
+// Mock DataTransfer
+function DataTransferMock(this: DataTransfer) {
+  const _items: any[] = [];
+
+  return {
+    get items() {
+      return {
+        add(value: any): any {
+          _items.push(value);
+          return value;
+        },
+      };
+    },
+    // get files(): FileList {
+    //   return _items as unknown as FileList;
+    // },
+  };
+}
+
+window.DataTransfer = jest.fn().mockImplementation(DataTransferMock);
