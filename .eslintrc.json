@@ -3,9 +3,6 @@
   "ignorePatterns": [
     "projects/**/*"
   ],
-  "rules": {
-    "@typescript-eslint/explicit-member-accessibility": "warn"
-  },
   "overrides": [
     {
       "files": [
@@ -45,7 +42,8 @@
           }
         ],
         "@typescript-eslint/member-ordering": 0,
-        "@typescript-eslint/naming-convention": 0
+        "@typescript-eslint/naming-convention": 0,
+        "@typescript-eslint/explicit-member-accessibility": "warn"
       }
     },
     {
