@@ -8,8 +8,9 @@ export class ShelfLifePipe implements PipeTransform {
   public transform(shelfLife: ShelfLife): string {
     return Object.entries(shelfLife)
       .map(([key, value]): string => {
-        return `${value}${key[0]}`;
+        return value ? `${value}${key[0]}` : '';
       })
+      .filter((chunk: string): boolean => !!chunk)
       .join(' ');
   }
 }

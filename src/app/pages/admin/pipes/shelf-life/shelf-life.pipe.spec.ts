@@ -22,4 +22,22 @@ describe('PropsConcatPipe', () => {
 
     expect(pipe.transform(shelfLife)).toBe('1m 2w 3d 4h');
   });
+
+  it('should disregard null key-value pairs', () => {
+    let shelfLife: ShelfLife = {
+      months: null,
+      weeks: null,
+      days: 3,
+      hours: 4,
+    };
+    expect(pipe.transform(shelfLife)).toBe('3d 4h');
+
+    shelfLife = {
+      months: null,
+      weeks: null,
+      days: null,
+      hours: null,
+    };
+    expect(pipe.transform(shelfLife)).toBe('');
+  });
 });
