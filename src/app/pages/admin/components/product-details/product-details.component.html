@@ -10,7 +10,7 @@
       <strong>Energy value:</strong>
       {{ kiloCalories }} kcal
     </p>
-    <div class="nutrients" *ngIf="product?.nutrients as nutrients">
+    <div class="nutrients" *ngIf="product?.nutrients | any as nutrients">
       <p><strong>Nutrients:</strong></p>
       <ul>
         <li *ngFor="let nutrientName of product.nutrients! | keys">
