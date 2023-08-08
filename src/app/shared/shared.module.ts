@@ -14,7 +14,7 @@ import {
   SearchBoxComponent,
   ImageUploaderComponent,
 } from './components';
-import { InitialsPipe, MoneyPipe, KeysPipe } from './pipes';
+import { InitialsPipe, MoneyPipe, KeysPipe, AnyPipe } from './pipes';
 import {
   MobileMenuDirective,
   FixedHeaderDirective,
@@ -39,6 +39,7 @@ import {
     ImageUploaderComponent,
     FileInputDirective,
     NumericInputDirective,
+    AnyPipe,
   ],
   exports: [
     CommonModule,
@@ -55,6 +56,7 @@ import {
     ImageUploaderComponent,
     FileInputDirective,
     NumericInputDirective,
+    AnyPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })
