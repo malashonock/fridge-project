@@ -20,7 +20,7 @@ import {
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable, Subject, of, takeUntil } from 'rxjs';
+import { Observable, Subject, catchError, of, takeUntil } from 'rxjs';
 
 import { Product } from 'core/models';
 import { ProductFormComponent } from '../product-form/product-form.component';
@@ -154,9 +154,10 @@ export class ProductsTableComponent
     imageUrl,
   }: Product): Observable<FileWithUrl | null> {
     return imageUrl
-      ? this.staticAssetService
-          .fetchAsset(imageUrl)
-          .pipe(takeUntil(this.destroy$))
+      ? this.staticAssetService.fetchAsset(imageUrl).pipe(
+          takeUntil(this.destroy$),
+          catchError(() => of(null))
+        )
       : of(null);
   }
 
