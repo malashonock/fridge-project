@@ -65,7 +65,10 @@ export class ProductsEffects {
             }),
             catchError((error) => {
               return of(
-                ProductsActions.updateProductFailure({ error: error.message })
+                ProductsActions.updateProductFailure({
+                  id,
+                  error: error.message,
+                })
               );
             })
           );
@@ -84,10 +87,68 @@ export class ProductsEffects {
           }),
           catchError((error) => {
             return of(
-              ProductsActions.deleteProductFailure({ error: error.message })
+              ProductsActions.deleteProductFailure({ id, error: error.message })
             );
           })
         );
+      })
+    );
+  });
+
+  public submitCreateProductSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ProductsActions.createProductSuccess),
+      map(() => {
+        return ProductsActions.submitSuccess({ id: null });
+      })
+    );
+  });
+
+  public submitUpdateProductSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ProductsActions.updateProductSuccess),
+      map(
+        ({
+          product,
+        }: ReturnType<typeof ProductsActions.updateProductSuccess>) => {
+          return ProductsActions.submitSuccess({ id: product.id });
+        }
+      )
+    );
+  });
+
+  public submitDeleteProductSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ProductsActions.deleteProductSuccess),
+      map(({ id }: ReturnType<typeof ProductsActions.deleteProductSuccess>) => {
+        return ProductsActions.submitSuccess({ id });
+      })
+    );
+  });
+
+  public submitCreateProductFailure$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ProductsActions.createProductFailure),
+      map(({ error }) => {
+        return ProductsActions.submitFailure({ id: null, error });
+      })
+    );
+  });
+
+  public submitUpdateProductFailure$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ProductsActions.updateProductFailure),
+      map(({ id, error }) => {
+        return ProductsActions.submitFailure({ id, error });
+      })
+    );
+  });
+
+  public submitDeleteProductFailure$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ProductsActions.deleteProductFailure),
+      map(({ id, error }) => {
+        return ProductsActions.submitFailure({ id, error });
       })
     );
   });

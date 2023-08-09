@@ -88,9 +88,11 @@ describe('UI action creators', () => {
   describe('updateProductFailure action creator', () => {
     it('pass the error in the namesake action property', () => {
       const action = ProductsActions.updateProductFailure({
+        id: mockProduct1.id,
         error: 'Server error',
       });
 
+      expect(action.id).toBe(mockProduct1.id);
       expect(action.error).toEqual('Server error');
     });
   });
@@ -118,9 +120,43 @@ describe('UI action creators', () => {
   describe('deleteProductFailure action creator', () => {
     it('pass the error in the namesake action property', () => {
       const action = ProductsActions.deleteProductFailure({
+        id: mockProduct1.id,
         error: 'Server error',
       });
 
+      expect(action.id).toBe(mockProduct1.id);
+      expect(action.error).toEqual('Server error');
+    });
+  });
+
+  describe('submit action creator', () => {
+    it('pass the payload in the namesake action property', () => {
+      const action = ProductsActions.submit({
+        id: mockProduct1.id,
+      });
+
+      expect(action.id).toBe(mockProduct1.id);
+    });
+  });
+
+  describe('submitSuccess action creator', () => {
+    it('pass the payload in the namesake action property', () => {
+      const action = ProductsActions.submitSuccess({
+        id: mockProduct1.id,
+      });
+
+      expect(action.id).toEqual(mockProduct1.id);
+    });
+  });
+
+  describe('submitFailure action creator', () => {
+    it('pass the payload in the namesake action property', () => {
+      const action = ProductsActions.submitFailure({
+        id: mockProduct1.id,
+        error: 'Server error',
+      });
+
+      expect(action.id).toEqual(mockProduct1.id);
       expect(action.error).toEqual('Server error');
     });
   });

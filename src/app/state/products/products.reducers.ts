@@ -1,5 +1,5 @@
 import { OnReducer } from '@ngrx/store/src/reducer_creator';
-import { ProductsState } from './products.feature';
+import { ProductsState, SubmitStatus } from './products.feature';
 import { ProductsActions } from './products.actions';
 import { productAdapter } from './products.adapter';
 
@@ -32,9 +32,43 @@ const deleteProductSuccessReducer: OnReducer<
   return productAdapter.removeOne(id, state);
 };
 
+const submitReducer: OnReducer<
+  ProductsState,
+  [typeof ProductsActions.submit]
+> = (state, { id }) => {
+  return { ...state, submitting: [...state.submitting, { id }] };
+};
+
+const submitSuccessReducer: OnReducer<
+  ProductsState,
+  [typeof ProductsActions.submitSuccess]
+> = (state, { id }) => {
+  return {
+    ...state,
+    submitting: state.submitting.filter((status: SubmitStatus): boolean => {
+      return status.id !== id;
+    }),
+  };
+};
+
+const submitFailureReducer: OnReducer<
+  ProductsState,
+  [typeof ProductsActions.submitFailure]
+> = (state, { id, error }) => {
+  return {
+    ...state,
+    submitting: state.submitting.map((status: SubmitStatus): SubmitStatus => {
+      return status.id === id ? { id, error } : status;
+    }),
+  };
+};
+
 export const ProductsActionReducers = {
   fetchProductsSuccessReducer,
   createProductSuccessReducer,
   updateProductSuccessReducer,
   deleteProductSuccessReducer,
+  submitReducer,
+  submitSuccessReducer,
+  submitFailureReducer,
 };

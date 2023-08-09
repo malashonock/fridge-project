@@ -9,6 +9,7 @@ describe('Products action reducers', () => {
       const originalState: ProductsState = {
         ids: [],
         entities: {},
+        submitting: [],
       };
 
       const action = ProductsActions.fetchProductsSuccess({
@@ -26,6 +27,7 @@ describe('Products action reducers', () => {
         entities: {
           [mockProduct1.id]: mockProduct1,
         },
+        submitting: [],
       });
     });
   });
@@ -35,6 +37,7 @@ describe('Products action reducers', () => {
       const originalState: ProductsState = {
         ids: [],
         entities: {},
+        submitting: [],
       };
 
       const action = ProductsActions.createProductSuccess({
@@ -52,6 +55,7 @@ describe('Products action reducers', () => {
         entities: {
           [mockProduct1.id]: mockProduct1,
         },
+        submitting: [],
       });
     });
   });
@@ -63,6 +67,7 @@ describe('Products action reducers', () => {
         entities: {
           [mockProduct1.id]: mockProduct1,
         },
+        submitting: [],
       };
 
       const action = ProductsActions.updateProductSuccess({
@@ -86,6 +91,7 @@ describe('Products action reducers', () => {
             name: 'Some other name',
           },
         },
+        submitting: [],
       });
     });
   });
@@ -97,6 +103,7 @@ describe('Products action reducers', () => {
         entities: {
           [mockProduct1.id]: mockProduct1,
         },
+        submitting: [],
       };
 
       const action = ProductsActions.deleteProductSuccess({
@@ -112,6 +119,81 @@ describe('Products action reducers', () => {
       expect(derivedState).toEqual({
         ids: [],
         entities: {},
+        submitting: [],
+      });
+    });
+  });
+
+  describe('submitReducer', () => {
+    it('should add the id being submitted to submitting array', () => {
+      const originalState: ProductsState = {
+        ids: [],
+        entities: {},
+        submitting: [],
+      };
+
+      const action = ProductsActions.submit({
+        id: mockProduct1.id,
+      });
+
+      const derivedState: ProductsState = ProductsActionReducers.submitReducer(
+        originalState,
+        action
+      );
+
+      expect(derivedState).toEqual({
+        ids: [],
+        entities: {},
+        submitting: [{ id: mockProduct1.id }],
+      });
+    });
+  });
+
+  describe('submitSuccessReducer', () => {
+    it('should remove the submitted id from submitting array', () => {
+      const originalState: ProductsState = {
+        ids: [],
+        entities: {},
+        submitting: [{ id: mockProduct1.id }],
+      };
+
+      const action = ProductsActions.submitSuccess({
+        id: mockProduct1.id,
+      });
+
+      const derivedState: ProductsState =
+        ProductsActionReducers.submitSuccessReducer(originalState, action);
+
+      expect(derivedState).toEqual({
+        ids: [],
+        entities: {},
+        submitting: [],
+      });
+    });
+  });
+
+  describe('submitFailureReducer', () => {
+    it('should add error message to the appropriate entry in submitting array', () => {
+      const originalState: ProductsState = {
+        ids: [],
+        entities: {},
+        submitting: [{ id: mockProduct1.id }],
+      };
+
+      const action = ProductsActions.submitFailure({
+        id: mockProduct1.id,
+        error: 'Could not update product data',
+      });
+
+      const derivedState: ProductsState =
+        ProductsActionReducers.submitFailureReducer(originalState, action);
+
+      expect(derivedState).toEqual({
+        ids: [],
+        entities: {},
+        submitting: [
+          { id: mockProduct1.id, error: 'Could not update product data' },
+        ],
       });
     });
   });

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { cold, hot } from 'jest-marbles';
 
@@ -167,7 +167,10 @@ describe('Products feature effects', () => {
         .mockReturnValue(cold('--#|', {}, new Error('Server error')));
 
       const expected = hot('---c', {
-        c: ProductsActions.updateProductFailure({ error: 'Server error' }),
+        c: ProductsActions.updateProductFailure({
+          id: mockProduct1.id,
+          error: 'Server error',
+        }),
       });
 
       expect(productEffects.updateProduct$).toBeObservable(expected);
@@ -217,10 +220,128 @@ describe('Products feature effects', () => {
         .mockReturnValue(cold('--#|', {}, new Error('Server error')));
 
       const expected = hot('---c', {
-        c: ProductsActions.deleteProductFailure({ error: 'Server error' }),
+        c: ProductsActions.deleteProductFailure({
+          id: mockProduct1.id,
+          error: 'Server error',
+        }),
       });
 
       expect(productEffects.deleteProduct$).toBeObservable(expected);
+    });
+  });
+
+  describe('submit effects', () => {
+    it('should dispatch submitSuccess action on createProductSuccess', () => {
+      actions$ = hot('-a-', {
+        a: ProductsActions.createProductSuccess({
+          product: mockProduct1,
+        }),
+      });
+
+      const expected = hot('-b-', {
+        b: ProductsActions.submitSuccess({
+          id: null,
+        }),
+      });
+
+      expect(productEffects.submitCreateProductSuccess$).toBeObservable(
+        expected
+      );
+    });
+
+    it('should dispatch submitSuccess action on updateProductSuccess', () => {
+      actions$ = hot('-a-', {
+        a: ProductsActions.updateProductSuccess({
+          product: mockProduct1,
+        }),
+      });
+
+      const expected = hot('-b-', {
+        b: ProductsActions.submitSuccess({
+          id: mockProduct1.id,
+        }),
+      });
+
+      expect(productEffects.submitUpdateProductSuccess$).toBeObservable(
+        expected
+      );
+    });
+
+    it('should dispatch submitSuccess action on deleteProductSuccess', () => {
+      actions$ = hot('-a-', {
+        a: ProductsActions.deleteProductSuccess({
+          id: mockProduct1.id,
+        }),
+      });
+
+      const expected = hot('-b-', {
+        b: ProductsActions.submitSuccess({
+          id: mockProduct1.id,
+        }),
+      });
+
+      expect(productEffects.submitDeleteProductSuccess$).toBeObservable(
+        expected
+      );
+    });
+
+    it('should dispatch submitFailure action on createProductFailure', () => {
+      actions$ = hot('-a-', {
+        a: ProductsActions.createProductFailure({
+          error: 'Server error',
+        }),
+      });
+
+      const expected = hot('-b-', {
+        b: ProductsActions.submitFailure({
+          id: null,
+          error: 'Server error',
+        }),
+      });
+
+      expect(productEffects.submitCreateProductFailure$).toBeObservable(
+        expected
+      );
+    });
+
+    it('should dispatch submitFailure action on updateProductFailure', () => {
+      actions$ = hot('-a-', {
+        a: ProductsActions.updateProductFailure({
+          id: mockProduct1.id,
+          error: 'Server error',
+        }),
+      });
+
+      const expected = hot('-b-', {
+        b: ProductsActions.submitFailure({
+          id: mockProduct1.id,
+          error: 'Server error',
+        }),
+      });
+
+      expect(productEffects.submitUpdateProductFailure$).toBeObservable(
+        expected
+      );
+    });
+
+    it('should dispatch submitFailure action on deleteProductFailure', () => {
+      actions$ = hot('-a-', {
+        a: ProductsActions.deleteProductFailure({
+          id: mockProduct1.id,
+          error: 'Server error',
+        }),
+      });
+
+      const expected = hot('-b-', {
+        b: ProductsActions.submitFailure({
+          id: mockProduct1.id,
+          error: 'Server error',
+        }),
+      });
+
+      expect(productEffects.submitDeleteProductFailure$).toBeObservable(
+        expected
+      );
     });
   });
 });
