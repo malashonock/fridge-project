@@ -1,7 +1,19 @@
 import { Component, Inject, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Subject } from 'rxjs';
+import {
+  FormBuilder,
+  FormControlStatus,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  Observable,
+  Subject,
+  combineLatest,
+  map,
+  startWith,
+  takeUntil,
+} from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import {
@@ -17,7 +29,11 @@ import {
   EarlyErrorStateMatcher,
   FileWithUrl,
 } from 'core/classes';
-import { ProductsActions } from 'app/state/products';
+import {
+  ProductsActions,
+  SubmitStatus,
+  selectProductSubmitStatus,
+} from 'app/state/products';
 
 interface ProductDialogData {
   product?: Product;
@@ -71,6 +87,9 @@ export class ProductFormComponent implements OnDestroy {
   public earlyErrorStateMatcher = new EarlyErrorStateMatcher();
   public comboErrorStateMatcher = new ComboErrorStateMatcher();
 
+  private invalid$: Observable<boolean>;
+  private submitting$: Observable<boolean>;
+  public submitDisabled$: Observable<boolean>;
   private destroy$ = new Subject();
 
   public constructor(
@@ -144,6 +163,34 @@ export class ProductFormComponent implements OnDestroy {
       }),
       image: [this.productImage],
     });
+
+    this.invalid$ = this.form.statusChanges.pipe(
+      takeUntil(this.destroy$),
+      map((status: FormControlStatus): boolean => {
+        return !(status === 'VALID');
+      }),
+      startWith(true)
+    );
+
+    this.submitting$ = this.store
+      .select(selectProductSubmitStatus(this.product?.id || null))
+      .pipe(
+        takeUntil(this.destroy$),
+        map((status: SubmitStatus | undefined): boolean => {
+          return status !== undefined;
+        }),
+        startWith(false)
+      );
+
+    this.submitDisabled$ = combineLatest([
+      this.invalid$,
+      this.submitting$,
+    ]).pipe(
+      takeUntil(this.destroy$),
+      map(([invalid, submitting]) => {
+        return invalid || submitting;
+      })
+    );
   }
 
   public ngOnDestroy(): void {
