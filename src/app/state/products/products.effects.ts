@@ -95,6 +95,33 @@ export class ProductsEffects {
     );
   });
 
+  public submitCreateProduct$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ProductsActions.createProduct),
+      map(() => {
+        return ProductsActions.submit({ id: null });
+      })
+    );
+  });
+
+  public submitUpdateProduct$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ProductsActions.updateProduct),
+      map(({ id }: ReturnType<typeof ProductsActions.updateProduct>) => {
+        return ProductsActions.submit({ id });
+      })
+    );
+  });
+
+  public submitDeleteProduct$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ProductsActions.deleteProduct),
+      map(({ id }: ReturnType<typeof ProductsActions.deleteProduct>) => {
+        return ProductsActions.submit({ id });
+      })
+    );
+  });
+
   public submitCreateProductSuccess$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ProductsActions.createProductSuccess),

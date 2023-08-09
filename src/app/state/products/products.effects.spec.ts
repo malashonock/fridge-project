@@ -231,6 +231,55 @@ describe('Products feature effects', () => {
   });
 
   describe('submit effects', () => {
+    it('should dispatch submit action on createProduct', () => {
+      actions$ = hot('-a-', {
+        a: ProductsActions.createProduct({
+          productData: mockProduct1Data,
+        }),
+      });
+
+      const expected = hot('-b-', {
+        b: ProductsActions.submit({
+          id: null,
+        }),
+      });
+
+      expect(productEffects.submitCreateProduct$).toBeObservable(expected);
+    });
+
+    it('should dispatch submit action on updateProduct', () => {
+      actions$ = hot('-a-', {
+        a: ProductsActions.updateProduct({
+          id: mockProduct1.id,
+          productData: mockProduct1Data,
+        }),
+      });
+
+      const expected = hot('-b-', {
+        b: ProductsActions.submit({
+          id: mockProduct1.id,
+        }),
+      });
+
+      expect(productEffects.submitUpdateProduct$).toBeObservable(expected);
+    });
+
+    it('should dispatch submit action on deleteProduct', () => {
+      actions$ = hot('-a-', {
+        a: ProductsActions.deleteProduct({
+          id: mockProduct1.id,
+        }),
+      });
+
+      const expected = hot('-b-', {
+        b: ProductsActions.submit({
+          id: mockProduct1.id,
+        }),
+      });
+
+      expect(productEffects.submitDeleteProduct$).toBeObservable(expected);
+    });
+
     it('should dispatch submitSuccess action on createProductSuccess', () => {
       actions$ = hot('-a-', {
         a: ProductsActions.createProductSuccess({
