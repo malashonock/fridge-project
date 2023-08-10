@@ -5,11 +5,11 @@ import { getDecimalSeparator } from 'utils/i18n/i18n.utils';
   name: 'money',
 })
 export class MoneyPipe implements PipeTransform {
-  public constructor(@Inject(LOCALE_ID) private locale: string) {}
-
   private get decimalSeparator(): string {
     return getDecimalSeparator(this.locale);
   }
+
+  public constructor(@Inject(LOCALE_ID) private locale: string) {}
 
   public transform(value: number): string {
     const integerPart = Math.floor(value);
