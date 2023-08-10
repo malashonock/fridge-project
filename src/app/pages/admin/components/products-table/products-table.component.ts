@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   Input,
   OnDestroy,
@@ -52,6 +53,7 @@ import { ProductsActions } from 'app/state/products/products.actions';
       },
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsTableComponent
   implements OnInit, AfterViewInit, OnDestroy
