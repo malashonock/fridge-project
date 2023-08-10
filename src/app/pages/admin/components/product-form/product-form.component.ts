@@ -29,11 +29,7 @@ import {
   EarlyErrorStateMatcher,
   FileWithUrl,
 } from 'core/classes';
-import {
-  ProductsActions,
-  SubmitStatus,
-  selectProductSubmitStatus,
-} from 'app/state/products';
+import { ProductsActions, selectProductSubmitting } from 'app/state/products';
 
 interface ProductDialogData {
   product?: Product;
@@ -175,13 +171,8 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     );
 
     this.submitting$ = this.store
-      .select(selectProductSubmitStatus(this.product?.id || null))
-      .pipe(
-        map((status: SubmitStatus | undefined): boolean => {
-          return status !== undefined;
-        }),
-        startWith(false)
-      );
+      .select(selectProductSubmitting(this.product?.id || null))
+      .pipe(startWith(false));
 
     this.submitDisabled$ = combineLatest([
       this.invalid$,

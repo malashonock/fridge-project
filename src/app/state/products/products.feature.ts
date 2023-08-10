@@ -5,13 +5,8 @@ import { ProductsActions } from './products.actions';
 import { Product } from 'core/models';
 import { ProductsActionReducers } from './products.reducers';
 
-export interface SubmitStatus {
-  id: string | null;
-  error?: string;
-}
-
 export type ProductsState = EntityState<Product> & {
-  submitting: SubmitStatus[];
+  submitting: (string | null)[];
 };
 
 export const initialState: ProductsState = {
@@ -43,11 +38,8 @@ export const productsFeature = createFeature({
     on(ProductsActions.submit, ProductsActionReducers.submitReducer),
     on(
       ProductsActions.submitSuccess,
-      ProductsActionReducers.submitSuccessReducer
-    ),
-    on(
       ProductsActions.submitFailure,
-      ProductsActionReducers.submitFailureReducer
+      ProductsActionReducers.submitFinishReducer
     )
   ),
 });

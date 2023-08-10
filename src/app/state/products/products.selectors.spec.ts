@@ -1,8 +1,8 @@
 import { mockProduct1, mockProduct2 } from 'mocks/product.mocks';
-import { ProductsState, SubmitStatus } from './products.feature';
+import { ProductsState } from './products.feature';
 import {
   selectAllProducts,
-  selectProductSubmitStatus,
+  selectProductSubmitting,
 } from './products.selectors';
 
 describe('Products feature selectors', () => {
@@ -24,39 +24,37 @@ describe('Products feature selectors', () => {
     });
   });
 
-  describe('selectProductSubmitStatus', () => {
-    it('for a given id, should return its submit state, if any', () => {
-      let mockProductSubmitStatus: SubmitStatus = { id: mockProduct1.id };
+  describe('selectProductSubmitting', () => {
+    it('for a given id, should return a boolean showing if it is submitting', () => {
       let mockProductsState: ProductsState = {
         ids: [],
         entities: {},
-        submitting: [mockProductSubmitStatus],
+        submitting: [mockProduct1.id],
       };
       expect(
-        selectProductSubmitStatus(mockProduct1.id).projector(mockProductsState)
-      ).toEqual(mockProductSubmitStatus);
+        selectProductSubmitting(mockProduct1.id).projector(mockProductsState)
+      ).toBe(true);
+      expect(selectProductSubmitting(null).projector(mockProductsState)).toBe(
+        false
+      );
       expect(
-        selectProductSubmitStatus(null).projector(mockProductsState)
-      ).toBeUndefined();
-      expect(
-        selectProductSubmitStatus(mockProduct2.id).projector(mockProductsState)
-      ).toBeUndefined();
+        selectProductSubmitting(mockProduct2.id).projector(mockProductsState)
+      ).toBe(false);
 
-      mockProductSubmitStatus = { id: null, error: 'Server error' };
       mockProductsState = {
         ids: [],
         entities: {},
-        submitting: [mockProductSubmitStatus],
+        submitting: [null],
       };
+      expect(selectProductSubmitting(null).projector(mockProductsState)).toBe(
+        true
+      );
       expect(
-        selectProductSubmitStatus(null).projector(mockProductsState)
-      ).toEqual(mockProductSubmitStatus);
+        selectProductSubmitting(mockProduct1.id).projector(mockProductsState)
+      ).toBe(false);
       expect(
-        selectProductSubmitStatus(mockProduct1.id).projector(mockProductsState)
-      ).toBeUndefined();
-      expect(
-        selectProductSubmitStatus(mockProduct2.id).projector(mockProductsState)
-      ).toBeUndefined();
+        selectProductSubmitting(mockProduct2.id).projector(mockProductsState)
+      ).toBe(false);
     });
   });
 });

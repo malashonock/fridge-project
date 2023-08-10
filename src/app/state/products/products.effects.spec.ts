@@ -3,6 +3,7 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { cold, hot } from 'jest-marbles';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ProductsEffects } from './products.effects';
 import { CoreModule } from 'core/core.module';
@@ -13,7 +14,6 @@ import {
   mockProduct1Data,
   mockProducts1,
 } from 'mocks/product.mocks';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('Products feature effects', () => {
   let actions$ = new Observable<Action>();

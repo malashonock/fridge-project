@@ -1,5 +1,6 @@
 import { OnReducer } from '@ngrx/store/src/reducer_creator';
-import { ProductsState, SubmitStatus } from './products.feature';
+
+import { ProductsState } from './products.feature';
 import { ProductsActions } from './products.actions';
 import { productAdapter } from './products.adapter';
 
@@ -36,30 +37,28 @@ const submitReducer: OnReducer<
   ProductsState,
   [typeof ProductsActions.submit]
 > = (state, { id }) => {
-  return { ...state, submitting: [...state.submitting, { id }] };
-};
-
-const submitSuccessReducer: OnReducer<
-  ProductsState,
-  [typeof ProductsActions.submitSuccess]
-> = (state, { id }) => {
   return {
     ...state,
-    submitting: state.submitting.filter((status: SubmitStatus): boolean => {
-      return status.id !== id;
-    }),
+    submitting: [
+      ...state.submitting.filter((submittingId: string | null): boolean => {
+        return submittingId !== id;
+      }),
+      id,
+    ],
   };
 };
 
-const submitFailureReducer: OnReducer<
+const submitFinishReducer: OnReducer<
   ProductsState,
-  [typeof ProductsActions.submitFailure]
-> = (state, { id, error }) => {
+  [typeof ProductsActions.submitSuccess, typeof ProductsActions.submitFailure]
+> = (state, { id }) => {
   return {
     ...state,
-    submitting: state.submitting.map((status: SubmitStatus): SubmitStatus => {
-      return status.id === id ? { id, error } : status;
-    }),
+    submitting: state.submitting.filter(
+      (submittingId: string | null): boolean => {
+        return submittingId !== id;
+      }
+    ),
   };
 };
 
@@ -69,6 +68,5 @@ export const ProductsActionReducers = {
   updateProductSuccessReducer,
   deleteProductSuccessReducer,
   submitReducer,
-  submitSuccessReducer,
-  submitFailureReducer,
+  submitFinishReducer,
 };

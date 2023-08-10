@@ -1,10 +1,6 @@
 import { createSelector } from '@ngrx/store';
 
-import {
-  ProductsState,
-  SubmitStatus,
-  productsFeature,
-} from './products.feature';
+import { ProductsState, productsFeature } from './products.feature';
 import { Product } from 'core/models';
 
 export const { selectProductsState } = productsFeature;
@@ -16,12 +12,7 @@ export const selectAllProducts = createSelector(
   }
 );
 
-export const selectProductSubmitStatus = (id: string | null) =>
-  createSelector(
-    selectProductsState,
-    (state: ProductsState): SubmitStatus | undefined => {
-      return state.submitting.find((status: SubmitStatus): boolean => {
-        return status.id === id;
-      });
-    }
-  );
+export const selectProductSubmitting = (id: string | null) =>
+  createSelector(selectProductsState, (state: ProductsState): boolean => {
+    return state.submitting.includes(id);
+  });

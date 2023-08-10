@@ -144,17 +144,40 @@ describe('Products action reducers', () => {
       expect(derivedState).toEqual({
         ids: [],
         entities: {},
-        submitting: [{ id: mockProduct1.id }],
+        submitting: [mockProduct1.id],
+      });
+    });
+
+    it('should not create duplicates', () => {
+      const originalState: ProductsState = {
+        ids: [],
+        entities: {},
+        submitting: [mockProduct1.id],
+      };
+
+      const action = ProductsActions.submit({
+        id: mockProduct1.id,
+      });
+
+      const derivedState: ProductsState = ProductsActionReducers.submitReducer(
+        originalState,
+        action
+      );
+
+      expect(derivedState).toEqual({
+        ids: [],
+        entities: {},
+        submitting: [mockProduct1.id],
       });
     });
   });
 
-  describe('submitSuccessReducer', () => {
+  describe('submitFinishReducer', () => {
     it('should remove the submitted id from submitting array', () => {
       const originalState: ProductsState = {
         ids: [],
         entities: {},
-        submitting: [{ id: mockProduct1.id }],
+        submitting: [mockProduct1.id],
       };
 
       const action = ProductsActions.submitSuccess({
@@ -162,38 +185,12 @@ describe('Products action reducers', () => {
       });
 
       const derivedState: ProductsState =
-        ProductsActionReducers.submitSuccessReducer(originalState, action);
+        ProductsActionReducers.submitFinishReducer(originalState, action);
 
       expect(derivedState).toEqual({
         ids: [],
         entities: {},
         submitting: [],
-      });
-    });
-  });
-
-  describe('submitFailureReducer', () => {
-    it('should add error message to the appropriate entry in submitting array', () => {
-      const originalState: ProductsState = {
-        ids: [],
-        entities: {},
-        submitting: [{ id: mockProduct1.id }],
-      };
-
-      const action = ProductsActions.submitFailure({
-        id: mockProduct1.id,
-        error: 'Could not update product data',
-      });
-
-      const derivedState: ProductsState =
-        ProductsActionReducers.submitFailureReducer(originalState, action);
-
-      expect(derivedState).toEqual({
-        ids: [],
-        entities: {},
-        submitting: [
-          { id: mockProduct1.id, error: 'Could not update product data' },
-        ],
       });
     });
   });
