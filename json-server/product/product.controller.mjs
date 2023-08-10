@@ -9,7 +9,7 @@ class ProductController {
   createProduct = (req, res) => {
     const id = this.db._.createId(this.db.getState().products);
 
-    const imageUrl = req.file.path.replace(PUBLIC_FOLDER, '');
+    const imageUrl = req.file?.path.replace(PUBLIC_FOLDER, '');
 
     const newProduct = {
       id,
