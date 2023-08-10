@@ -16,14 +16,14 @@
   gap: 1rem;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "ul ur"
-    "md md"
-    "ll lr1"
-    "ll lr2"
-    "ll lr3";
+    "required    image"
+    "ingredients ingredients"
+    "nutrients   weight"
+    "nutrients   energyValue"
+    "nutrients   shelfLife";
 
   &__image {
-    grid-area: ur;
+    grid-area: image;
 
     ::ng-deep .mat-mdc-text-field-wrapper,
     ::ng-deep .mat-mdc-form-field-infix {
@@ -34,7 +34,7 @@
   }
 
   &__required {
-    grid-area: ul;
+    grid-area: required;
     align-self: flex-start;
     display: flex;
     flex-direction: column;
@@ -42,22 +42,22 @@
   }
   
   &__ingredients {
-    grid-area: md;
+    grid-area: ingredients;
   }
 
   &__nutrients {
-    grid-area: ll;
+    grid-area: nutrients;
     display: flex;
     flex-direction: column;
     gap: 1rem; // 16px
   }
 
   &__weight {
-    grid-area: lr1;
+    grid-area: weight;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "value unit"
+      "value  unit"
       "errors errors";
     
     &-value {
@@ -74,15 +74,15 @@
   }
 
   &__energy-value {
-    grid-area: lr2;
+    grid-area: energyValue;
   }
 
   &__shelf-life {
-    grid-area: lr3;
+    grid-area: shelfLife;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
-      "months weeks days hours"
+      "months weeks  days   hours"
       "errors errors errors errors";
 
     .shelf-life {
@@ -98,7 +98,7 @@
         grid-area: days;
       }
 
-      &__hours {
+      &__hoimages {
         grid-area: hours;
       }
     }
@@ -109,30 +109,32 @@
   }
 }
 
-.combo-field-segment {
-  &:first-of-type {
-    ::ng-deep .mdc-notched-outline__trailing {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+@media (min-width: 32rem /* 512px */) {
+  .combo-field-segment {
+    &:first-of-type {
+      ::ng-deep .mdc-notched-outline__trailing {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
     }
-  }
+    
+    &:last-of-type {
+      ::ng-deep .mdc-notched-outline__leading {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
   
-  &:last-of-type {
-    ::ng-deep .mdc-notched-outline__leading {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-  }
-
-  &:not(:first-of-type):not(:last-of-type) {
-    ::ng-deep .mdc-notched-outline__trailing {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-
-    ::ng-deep .mdc-notched-outline__leading {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+    &:not(:first-of-type):not(:last-of-type) {
+      ::ng-deep .mdc-notched-outline__trailing {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+  
+      ::ng-deep .mdc-notched-outline__leading {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
     }
   }
 }
@@ -140,4 +142,34 @@
 .combo-field-errors {
   font-size: 75%;
   line-height: calc(100% + 0.5rem); // 20px
+}
+
+@media (max-width: 48rem /* 768px */) {
+  .form-fields {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "image"
+      "required"
+      "ingredients"
+      "nutrients"
+      "weight"
+      "energyValue"
+      "shelfLife";
+  }
+}
+
+@media (max-width: 32rem /* 512px */) {
+  .form-fields {
+    &__shelf-life {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "months"
+        "weeks"
+        "days"
+        "hours"
+        "errors";
+
+      gap: 1rem; // 16px
+    }
+  }
 }
