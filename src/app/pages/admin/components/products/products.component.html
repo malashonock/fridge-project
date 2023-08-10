@@ -1,1 +1,18 @@
-<p>Products management page</p>
+<h1>Manage products</h1>
+
+<div class="controls">
+  <button mat-fab matTooltip="Add new product" class="add-product-btn">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <app-search-box
+    name="search-products"
+    placeholder="Search in product name or description"
+    (searchQueryChange)="onSearchQueryChange($event)"
+  ></app-search-box>
+</div>
+
+<app-products-table
+  [products$]="products$"
+  [searchQuery$]="searchQuery$"
+></app-products-table>

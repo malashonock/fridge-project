@@ -11,10 +11,11 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { CoreModule } from 'core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthSessionInitializer } from 'core/services';
+import { AuthSessionInitializer, ProductsInitializer } from 'core/services';
 import { httpInterceptorProviders } from 'core/interceptors';
 import { authFeature, AuthEffects } from './state/auth';
 import { uiFeature, UiEffects } from './state/ui';
+import { productsFeature, ProductsEffects } from './state/products';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,14 +30,19 @@ import { uiFeature, UiEffects } from './state/ui';
       {
         [authFeature.name]: authFeature.reducer,
         [uiFeature.name]: uiFeature.reducer,
+        [productsFeature.name]: productsFeature.reducer,
       },
       {}
     ),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([AuthEffects, UiEffects]),
+    EffectsModule.forRoot([AuthEffects, UiEffects, ProductsEffects]),
   ],
-  providers: [AuthSessionInitializer, httpInterceptorProviders],
+  providers: [
+    AuthSessionInitializer,
+    ProductsInitializer,
+    httpInterceptorProviders,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

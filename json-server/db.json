@@ -1,0 +1,204 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "user",
+      "email": "user@domain.com",
+      "role": "user",
+      "password": "user"
+    },
+    {
+      "id": 2,
+      "name": "admin",
+      "email": "admin@domain.com",
+      "role": "admin",
+      "password": "admin"
+    }
+  ],
+  "tokens": [
+    "001@1690208858159",
+    "002@1690459449152"
+  ],
+  "productCategories": [
+    "Soups",
+    "Second courses",
+    "Salads",
+    "Snacks",
+    "Drinks",
+    "Desserts"
+  ],
+  "unitsOfWeight": [
+    "g",
+    "ml"
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Chicken broth",
+      "ingredients": "Chicken broth, egg, dill, croutons",
+      "category": "Soups",
+      "price": 4.2,
+      "weight": {
+        "value": 250,
+        "unit": "g"
+      },
+      "nutrients": {
+        "protein": 11.7,
+        "fat": 6.9,
+        "carbs": 2.1
+      },
+      "kiloCalories": 116,
+      "shelfLife": {
+        "days": 2
+      },
+      "imageUrl": "/images/chicken-broth.png"
+    },
+    {
+      "id": 2,
+      "name": "Ukrainian borshch",
+      "category": "Soups",
+      "ingredients": "Pork, beets, potatoes, carrots, tomato paste, fresh pepper, vegetable oil, onion, garlic, sugar, vinegar, dill, salt, pepper mixture, bay leaf, sour cream",
+      "price": 5.9,
+      "weight": {
+        "value": 300,
+        "unit": "g"
+      },
+      "nutrients": {
+        "protein": 8.1,
+        "fat": 23.2,
+        "carbs": 18.9
+      },
+      "kiloCalories": 314,
+      "shelfLife": {
+        "hours": 72
+      },
+      "imageUrl": "/images/ukrainian-borshch.png"
+    },
+    {
+      "id": 3,
+      "name": "Homemade cutlet with mashed potatoes",
+      "category": "Second courses",
+      "ingredients": "Mashed potatoes (potatoes, milk, butter, salt), cutlet (minced chicken, bread, eggs, pepper mixture, salt), sauce (milk, tomato paste, onion, butter, flour, pepper mixture, salt)",
+      "price": 8.5,
+      "weight": {
+        "value": 300,
+        "unit": "g"
+      },
+      "nutrients": {
+        "protein": 58.8,
+        "fat": 53.2,
+        "carbs": 13.4
+      },
+      "kiloCalories": 756,
+      "shelfLife": {
+        "hours": 24
+      },
+      "imageUrl": "/images/cutlet-with-mashed-potatoes.png"
+    },
+    {
+      "id": 4,
+      "name": "Texas beef burger",
+      "category": "Snacks",
+      "ingredients": "Ciabatta, beef, red cabbage, pickled cucumbers, carrots, barbecue sauce, mayonnaise, red onion, green onion, vinegar",
+      "price": 12.5,
+      "weight": {
+        "value": 270,
+        "unit": "g"
+      },
+      "nutrients": {
+        "protein": 20.7,
+        "fat": 17.9,
+        "carbs": 61.9
+      },
+      "kiloCalories": 490,
+      "shelfLife": {
+        "days": 3
+      },
+      "imageUrl": "/images/texas-burger.png"
+    },
+    {
+      "id": 5,
+      "name": "Cold sandwich with ham",
+      "category": "Snacks",
+      "ingredients": "Harris bread wheat-bran, ham, mozzarella cheese, tomatoes, Chinese cabbage, parsley, mayonnaise",
+      "price": 6.9,
+      "weight": {
+        "value": 180,
+        "unit": "g"
+      },
+      "nutrients": {
+        "protein": 14.4,
+        "fat": 21.6,
+        "carbs": 36.7
+      },
+      "kiloCalories": 396,
+      "shelfLife": {
+        "days": 3
+      },
+      "imageUrl": "/images/sandwich-with-ham.png"
+    },
+    {
+      "id": 6,
+      "name": "Chicken Caesar",
+      "category": "Salads",
+      "ingredients": "Cherry tomatoes, fried chicken fillet, Caesar sauce (mayonnaise, mustard, soy sauce, garlic), chicken eggs, romaine lettuce, mozzarella cheese, spinach, croutons",
+      "price": 9.9,
+      "weight": {
+        "value": 190,
+        "unit": "g"
+      },
+      "nutrients": {
+        "protein": 19.2,
+        "fat": 15.9,
+        "carbs": 10.8
+      },
+      "kiloCalories": 256,
+      "shelfLife": {
+        "hours": 12
+      },
+      "imageUrl": "/images/chicken-caesar.png"
+    },
+    {
+      "id": 7,
+      "name": "Berry tea",
+      "category": "Drinks",
+      "ingredients": "Sea buckthorn, thyme, lemon, sugar",
+      "price": 3.5,
+      "weight": {
+        "value": 300,
+        "unit": "ml"
+      },
+      "nutrients": {
+        "protein": 0.6,
+        "fat": 1.6,
+        "carbs": 8.2
+      },
+      "kiloCalories": 53,
+      "shelfLife": {
+        "weeks": 1
+      },
+      "imageUrl": "/images/berry-tea.png"
+    },
+    {
+      "id": 8,
+      "name": "Tiramisu",
+      "category": "Desserts",
+      "ingredients": "Sour cream, cream cheese, Savoiardi cookies, cocoa, sugar, Belarusian balsam, vanillin, coffee",
+      "price": 5.9,
+      "weight": {
+        "value": 120,
+        "unit": "g"
+      },
+      "nutrients": {
+        "protein": 3.4,
+        "fat": 26,
+        "carbs": 3.6
+      },
+      "kiloCalories": 268,
+      "shelfLife": {
+        "hours": 24
+      },
+      "imageUrl": "/images/tiramisu.png"
+    }
+  ]
+}

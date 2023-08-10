@@ -75,7 +75,12 @@ export class AuthEffects {
           ({ sessionData }: ReturnType<typeof AuthActions.loginSuccess>) => {
             const { user } = sessionData;
             const redirectTo = user.role === UserRole.Admin ? '/admin' : 'user';
-            this.router.navigateByUrl(redirectTo);
+            // If the user has simply reloaded a protected page, try keeping the current url
+            // NB! router.url returns "/" -> location.pathname was used
+            const currentUrl: string = window.location.pathname;
+            this.router.navigateByUrl(
+              currentUrl.startsWith(redirectTo) ? currentUrl : redirectTo
+            );
           }
         )
       ),

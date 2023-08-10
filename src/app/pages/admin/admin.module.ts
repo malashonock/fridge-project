@@ -7,6 +7,8 @@ import {
   AdminIndexComponent,
   ProductsComponent,
   FridgesComponent,
+  ProductDetailsComponent,
+  ProductsTableComponent,
 } from './components';
 import { MobilePageDirective } from 'shared/directives';
 import { adminPageMenuConfigProvider } from 'core/configs';
@@ -17,6 +19,8 @@ import { adminPageMenuConfigProvider } from 'core/configs';
     AdminIndexComponent,
     ProductsComponent,
     FridgesComponent,
+    ProductDetailsComponent,
+    ProductsTableComponent,
   ],
   exports: [AdminPageComponent],
   imports: [SharedModule, AdminRoutingModule, MobilePageDirective],

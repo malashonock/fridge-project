@@ -46,7 +46,7 @@ export class FixedHeaderDirective implements OnInit, OnDestroy {
     this.headerHeight$
       .pipe(distinctUntilChanged())
       .subscribe((headerHeight: number) => {
-        this.setContentStyle('margin-top', `${headerHeight}px`);
+        this.setContentStyles(headerHeight);
       });
 
     // Subscribe header height observer
@@ -62,7 +62,14 @@ export class FixedHeaderDirective implements OnInit, OnDestroy {
     this.setHeaderStyle('position', 'fixed');
     this.setHeaderStyle('top', '0');
     this.setHeaderStyle('width', '100%');
-    this.setHeaderStyle('z-index', '100');
+    this.setHeaderStyle('z-index', '10');
+  }
+
+  private setContentStyles(headerHeight: number): void {
+    this.setContentStyle('position', 'fixed');
+    this.setContentStyle('top', `${headerHeight}px`);
+    this.setContentStyle('width', '100%');
+    this.setContentStyle('bottom', '0');
   }
 
   private setElementStyle(

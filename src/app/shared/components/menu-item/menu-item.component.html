@@ -1,4 +1,9 @@
-<a mat-menu-item [routerLink]="config?.href" [class]="['menu-item', variant]">
+<a
+  mat-menu-item
+  [routerLink]="config?.href"
+  routerLinkActive="active"
+  [class]="['menu-item', variant]"
+>
   <mat-icon
     *ngIf="!!config?.matIconCode"
     class="icon material-symbols-outlined"
