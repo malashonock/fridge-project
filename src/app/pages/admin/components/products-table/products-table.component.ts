@@ -58,8 +58,8 @@ import { ProductsActions } from 'app/state/products/products.actions';
 export class ProductsTableComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
-  @Input() public products$?: Observable<Product[]>;
-  @Input() public searchQuery$?: Observable<string>;
+  @Input() public products$: Observable<Product[]>;
+  @Input() public searchQuery$: Observable<string>;
 
   public dataSource = new MatTableDataSource<Product>([]);
   public tableColumns: string[] = [

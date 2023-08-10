@@ -30,6 +30,6 @@ export const menuItemTrackBy: TrackByFunction<MenuItemConfig> = (
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuItemComponent {
-  @Input() public config?: MenuItemConfig;
+  @Input() public config: MenuItemConfig;
   @Input() public variant = MenuItemVariant.Row;
 }
