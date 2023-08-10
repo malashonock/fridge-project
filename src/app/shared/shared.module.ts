@@ -13,6 +13,7 @@ import {
   MapComponent,
   SearchBoxComponent,
   ImageUploaderComponent,
+  ConfirmDeleteComponent,
 } from './components';
 import { InitialsPipe, MoneyPipe, KeysPipe, AnyPipe } from './pipes';
 import {
@@ -40,6 +41,7 @@ import {
     FileInputDirective,
     NumericInputDirective,
     AnyPipe,
+    ConfirmDeleteComponent,
   ],
   exports: [
     CommonModule,
@@ -57,6 +59,7 @@ import {
     FileInputDirective,
     NumericInputDirective,
     AnyPipe,
+    ConfirmDeleteComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })
