@@ -75,7 +75,27 @@ class ProductController {
     res.status(200).send(updatedProduct);
   };
 
-  // deleteProduct = (req, res) => {};
+  deleteProduct = (req, res) => {
+    const id = +req.params.productId;
+
+    const product = this.db
+      .getState()
+      .products.find((product) => product.id === id);
+
+    if (!product) {
+      res.status(404).send({ error: 'Product with specified id not found' });
+    }
+
+    this.db.setState({
+      ...this.db.getState(),
+      products: this.db.getState().products.filter((product) => {
+        return product.id !== id;
+      }),
+    });
+    this.db.write();
+
+    res.status(200).send({ id });
+  };
 }
 
 export default ProductController;

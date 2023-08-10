@@ -19,8 +19,8 @@ const productRouter = (db, upload) => {
       upload.single('image'),
       bodyParser,
       productController.updateProduct
-    );
-  // .delete('/:productId', productController.deleteProduct);
+    )
+    .delete('/:productId', productController.deleteProduct);
 };
 
 export default productRouter;
