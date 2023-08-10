@@ -83,6 +83,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   public earlyErrorStateMatcher = new EarlyErrorStateMatcher();
   public comboErrorStateMatcher = new ComboErrorStateMatcher();
 
+  private pristine$: Observable<boolean>;
   private invalid$: Observable<boolean>;
   private submitted$ = new Subject<boolean>();
   private submitting$: Observable<boolean>;
@@ -163,6 +164,13 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       image: [this.productImage],
     });
 
+    this.pristine$ = this.form.valueChanges.pipe(
+      map((): boolean => {
+        return this.form.pristine;
+      }),
+      startWith(this.form.pristine)
+    );
+
     this.invalid$ = this.form.statusChanges.pipe(
       map((status: FormControlStatus): boolean => {
         return !(status === 'VALID');
@@ -175,11 +183,12 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       .pipe(startWith(false));
 
     this.submitDisabled$ = combineLatest([
+      this.pristine$,
       this.invalid$,
       this.submitting$,
     ]).pipe(
-      map(([invalid, submitting]) => {
-        return invalid || submitting;
+      map(([pristine, invalid, submitting]) => {
+        return pristine || invalid || submitting;
       })
     );
 
