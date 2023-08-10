@@ -4,12 +4,11 @@ import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { MatIconHarness } from '@angular/material/icon/testing';
 import { MatButtonHarness } from '@angular/material/button/testing';
+import { MemoizedSelector } from '@ngrx/store';
 
 import { BurgerButtonComponent } from './burger-button.component';
-import { SharedModule } from 'app/shared/shared.module';
-import { selectShowSideMenu } from 'app/state/ui/ui.selectors';
-import { MemoizedSelector } from '@ngrx/store';
-import { UiActions } from 'app/state/ui/ui.actions';
+import { SharedModule } from 'shared/shared.module';
+import { UiActions, selectShowSideMenu } from 'app/state/ui';
 
 describe('BurgerButtonComponent', () => {
   let component: BurgerButtonComponent;

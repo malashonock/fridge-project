@@ -3,7 +3,7 @@
 <mat-sidenav-container class="container">
   <mat-sidenav appMobileMenu class="side-menu" position="end">
     <app-menu-item
-      *ngFor="let menuItemConfig of menuConfig"
+      *ngFor="let menuItemConfig of menuItemsConfig; trackBy: menuItemTrackBy"
       [config]="menuItemConfig"
     ></app-menu-item>
   </mat-sidenav>

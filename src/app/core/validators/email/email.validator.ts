@@ -9,10 +9,10 @@ import {
   minCount,
   startWith,
   endWith,
-} from 'app/utils/regex/regex';
+} from 'utils/regex/regex';
 
 export class EmailValidator {
-  static valid(control: AbstractControl): ValidationErrors | null {
+  public static valid(control: AbstractControl): ValidationErrors | null {
     // Alias character sequences
     const englishLetters = 'A-Za-z';
     const digits = '0-9';

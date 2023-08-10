@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class LocalStorageService {
-  getItem(key: string, parsableDateFields: string[] = []): any {
+  public getItem(key: string, parsableDateFields: string[] = []): any {
     const itemAsText = window.localStorage.getItem(key);
 
     if (itemAsText === null) {
@@ -33,12 +33,12 @@ export class LocalStorageService {
     return item;
   }
 
-  setItem(key: string, item: any): void {
+  public setItem(key: string, item: any): void {
     const itemAsText = JSON.stringify(item);
     window.localStorage.setItem(key, itemAsText);
   }
 
-  removeItem(key: string): void {
+  public removeItem(key: string): void {
     window.localStorage.removeItem(key);
   }
 }

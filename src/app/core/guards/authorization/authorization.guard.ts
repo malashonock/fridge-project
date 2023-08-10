@@ -3,12 +3,11 @@ import { CanActivateFn } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 
-import { UserRole } from 'app/core/models/user/user-role.model';
-import { selectAuthState } from 'app/state/auth/auth.selectors';
-import { AuthSessionState } from 'app/state/auth/auth.feature';
+import { UserRole } from 'app/core/models';
+import { AuthSessionState, selectAuthState } from 'app/state/auth';
 
 export class AuthorizationGuard {
-  static forRoles(roles: UserRole[]): CanActivateFn {
+  public static forRoles(roles: UserRole[]): CanActivateFn {
     return (): Observable<boolean> => {
       return inject(Store)
         .select(selectAuthState)

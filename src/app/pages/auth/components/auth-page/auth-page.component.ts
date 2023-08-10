@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 interface NavTab {
   link: string;
@@ -9,16 +9,21 @@ interface NavTab {
   selector: 'app-auth-page',
   templateUrl: './auth-page.component.html',
   styleUrls: ['./auth-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthPageComponent {
-  tabs: NavTab[] = [
+  public tabs: NavTab[] = [
     { link: 'login', label: 'Log in' },
     { link: 'signup', label: 'Sign up' },
   ];
 
-  activeTab = this.tabs[0];
+  public activeTab = this.tabs[0];
 
-  onTabSelect(tab: NavTab) {
+  public onTabSelect(tab: NavTab): void {
     this.activeTab = tab;
+  }
+
+  public tabTrackBy(index: number, tab: NavTab): string {
+    return tab.label;
   }
 }

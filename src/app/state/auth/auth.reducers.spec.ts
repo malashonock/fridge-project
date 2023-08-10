@@ -1,6 +1,5 @@
-import { User } from 'app/core/models/user/user.model';
+import { User, UserRole } from 'core/models';
 import { AuthActionReducers } from './auth.reducers';
-import { UserRole } from 'app/core/models/user/user-role.model';
 import { AuthSession } from './auth.feature';
 import { AuthActions } from './auth.actions';
 

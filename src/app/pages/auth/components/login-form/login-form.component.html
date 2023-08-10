@@ -4,18 +4,39 @@
     <h2 class="title">Log in</h2>
   </header>
 
-  <app-text-field
-    name="userName"
-    label="User name"
-    [error]="getFieldErrorMessage('userName')"
-  ></app-text-field>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>User name</mat-label>
+    <input
+      matInput
+      id="userName"
+      name="userName"
+      formControlName="userName"
+      placeholder="User name"
+    />
+    <mat-error *ngIf="form.controls['userName'].hasError('required')">
+      User name is required
+    </mat-error>
+    <mat-error *ngIf="form.controls['userName'].hasError('minlength')">
+      User name must be no shorter than
+      {{ form.controls["userName"].errors!["minlength"].requiredLength }}
+      symbols
+    </mat-error>
+  </mat-form-field>
 
-  <app-text-field
-    name="password"
-    label="Password"
-    type="password"
-    [error]="getFieldErrorMessage('password')"
-  ></app-text-field>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      type="password"
+      id="password"
+      name="password"
+      formControlName="password"
+      placeholder="Password"
+    />
+    <mat-error *ngIf="form.controls['password'].hasError('required')">
+      Password is required
+    </mat-error>
+  </mat-form-field>
 
   <button
     mat-raised-button

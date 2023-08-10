@@ -1,25 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 
-import { AuthService } from 'app/core/services/auth/auth.service';
+import { AuthService } from 'core/services';
+import { User, UserRole } from 'core/models';
 import { AuthActions } from './auth.actions';
-import { User } from 'app/core/models/user/user.model';
 import { AuthSession } from './auth.feature';
-import { UserRole } from 'app/core/models/user/user-role.model';
 
 @Injectable()
 export class AuthEffects {
-  constructor(
-    private store: Store,
+  public constructor(
     private actions$: Actions,
     private authService: AuthService,
     private router: Router
   ) {}
 
-  signup$ = createEffect(() =>
+  public signup$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.signup),
       switchMap(({ credentials }: ReturnType<typeof AuthActions.signup>) =>
@@ -35,7 +32,7 @@ export class AuthEffects {
     )
   );
 
-  signupSuccess$ = createEffect(() =>
+  public signupSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.signupSuccess),
       switchMap(
@@ -53,7 +50,7 @@ export class AuthEffects {
     )
   );
 
-  login$ = createEffect(() =>
+  public login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.login),
       switchMap(({ credentials }: ReturnType<typeof AuthActions.login>) =>
@@ -69,7 +66,7 @@ export class AuthEffects {
     )
   );
 
-  loginSuccess$ = createEffect(
+  public loginSuccess$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.loginSuccess),
@@ -85,7 +82,7 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  logout$ = createEffect(() =>
+  public logout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.logout),
       switchMap(() =>
@@ -99,7 +96,7 @@ export class AuthEffects {
     )
   );
 
-  logoutSuccess$ = createEffect(
+  public logoutSuccess$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.logoutSuccess),

@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthenticationGuard } from './core/guards/authentication/authentication.guard';
-import { AuthorizationGuard } from './core/guards/authorization/authorization.guard';
-import { UserRole } from './core/models/user/user-role.model';
+import { AuthenticationGuard, AuthorizationGuard } from 'core/guards';
+import { UserRole } from 'core/models';
 
 const routes: Routes = [
   {

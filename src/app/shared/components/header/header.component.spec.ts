@@ -3,8 +3,8 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { HeaderComponent } from './header.component';
-import * as uiFeature from 'app/state/ui/ui.feature';
-import { SharedModule } from 'app/shared/shared.module';
+import * as uiFeature from 'app/state/ui';
+import { SharedModule } from 'shared/shared.module';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;

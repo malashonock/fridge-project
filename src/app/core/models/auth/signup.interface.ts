@@ -1,4 +1,4 @@
-import { UserRole } from '../user/user-role.model';
+import { UserRole } from '../user/user-role.enum';
 
 export interface SignupCredentials {
   userName: string;

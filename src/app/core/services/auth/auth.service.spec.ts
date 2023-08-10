@@ -6,12 +6,14 @@ import {
 import { HttpClient } from '@angular/common/http';
 
 import { AuthService } from './auth.service';
-import { LocalStorageService } from '../local-storage/local-storage.service';
-import { AuthSession } from 'app/state/auth/auth.feature';
-import { UserRole } from 'app/core/models/user/user-role.model';
-import { SignupCredentials } from 'app/core/models/auth/signup.model';
-import { User } from 'app/core/models/user/user.model';
-import { LoginCredentials } from 'app/core/models/auth/login.model';
+import { LocalStorageService } from 'core/services';
+import { AuthSession } from 'app/state/auth';
+import {
+  User,
+  UserRole,
+  LoginCredentials,
+  SignupCredentials,
+} from 'core/models';
 
 describe('AuthService', () => {
   let authService: AuthService;

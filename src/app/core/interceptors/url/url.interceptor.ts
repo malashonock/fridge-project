@@ -11,7 +11,7 @@ import { environment } from 'environments/environment';
 
 @Injectable()
 export class UrlInterceptor implements HttpInterceptor {
-  intercept(
+  public intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {

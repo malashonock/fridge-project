@@ -4,41 +4,88 @@
     <h2 class="title">Sign up</h2>
   </header>
 
-  <app-text-field
-    name="userName"
-    label="User name"
-    [error]="getFieldErrorMessage('userName')"
-  ></app-text-field>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>User name</mat-label>
+    <input
+      matInput
+      id="userName"
+      name="userName"
+      formControlName="userName"
+      placeholder="User name"
+    />
+    <mat-error *ngIf="form.controls['userName'].hasError('required')">
+      User name is required
+    </mat-error>
+    <mat-error *ngIf="form.controls['userName'].hasError('minlength')">
+      User name must be no shorter than
+      {{ form.controls["userName"].errors!["minlength"].requiredLength }}
+      symbols
+    </mat-error>
+  </mat-form-field>
 
-  <app-text-field
-    name="email"
-    label="Email"
-    type="email"
-    [error]="getFieldErrorMessage('email')"
-  ></app-text-field>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      type="email"
+      id="email"
+      name="email"
+      formControlName="email"
+      placeholder="Email"
+    />
+    <mat-error *ngIf="form.controls['email'].hasError('required')">
+      Email is required
+    </mat-error>
+    <mat-error *ngIf="form.controls['email'].hasError('invalidEmail')">
+      Email is not valid
+    </mat-error>
+  </mat-form-field>
 
-  <app-select-field
-    name="role"
-    label="Role"
-    [options]="roles"
-    [error]="getFieldErrorMessage('role')"
-  ></app-select-field>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Role</mat-label>
+    <mat-select id="role" formControlName="role" placeholder="Role">
+      <mat-option *ngFor="let role of roles" [value]="role.value">{{
+        role.label
+      }}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.controls['role'].hasError('required')">
+      Role is required
+    </mat-error>
+  </mat-form-field>
 
-  <app-text-field
-    name="password"
-    label="Password"
-    type="password"
-    [error]="getFieldErrorMessage('password')"
-  ></app-text-field>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      type="password"
+      id="password"
+      name="password"
+      formControlName="password"
+      placeholder="Password"
+    />
+    <mat-error *ngIf="form.controls['password'].hasError('required')">
+      Password is required
+    </mat-error>
+  </mat-form-field>
 
-  <app-text-field
-    name="passwordConfirm"
-    label="Confirm password"
-    type="password"
-    [error]="getFieldErrorMessage('passwordConfirm')"
-  ></app-text-field>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Confirm password</mat-label>
+    <input
+      matInput
+      type="password"
+      id="passwordConfirm"
+      name="passwordConfirm"
+      formControlName="passwordConfirm"
+      placeholder="Confirm password"
+    />
+    <mat-error *ngIf="form.controls['passwordConfirm'].hasError('required')">
+      Password confirmation is required
+    </mat-error>
+  </mat-form-field>
 
-  <mat-error *ngIf="form.errors">{{ getFormErrorMessage() }}</mat-error>
+  <mat-error *ngIf="form.hasError('passwordsMismatch')">
+    Passwords don't match
+  </mat-error>
 
   <button
     mat-raised-button

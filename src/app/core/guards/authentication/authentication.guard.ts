@@ -3,12 +3,11 @@ import { CanActivateFn, Router, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 
-import { AuthSessionState } from 'app/state/auth/auth.feature';
-import { selectAuthState } from 'app/state/auth/auth.selectors';
-import { UserRole } from 'app/core/models/user/user-role.model';
+import { AuthSessionState, selectAuthState } from 'app/state/auth';
+import { UserRole } from 'core/models';
 
 export class AuthenticationGuard {
-  static forAuthenticated(): CanActivateFn {
+  public static forAuthenticated(): CanActivateFn {
     return (): Observable<boolean> => {
       return inject(Store)
         .select(selectAuthState)
@@ -20,7 +19,7 @@ export class AuthenticationGuard {
     };
   }
 
-  static forUnauthenticated(): CanActivateFn {
+  public static forUnauthenticated(): CanActivateFn {
     return (): Observable<boolean | UrlTree> => {
       const router = inject(Router);
 

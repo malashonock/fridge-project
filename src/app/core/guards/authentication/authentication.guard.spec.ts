@@ -1,10 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import { Observable } from 'rxjs';
-
-import { AuthSessionState } from 'app/state/auth/auth.feature';
-import { UserRole } from 'app/core/models/user/user-role.model';
-import { AuthenticationGuard } from './authentication.guard';
 import {
   ActivatedRouteSnapshot,
   Router,
@@ -12,6 +8,10 @@ import {
   UrlTree,
 } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+
+import { AuthSessionState } from 'app/state/auth';
+import { UserRole } from 'core/models';
+import { AuthenticationGuard } from './authentication.guard';
 
 describe('AuthenticationGuard', () => {
   let router: Router;

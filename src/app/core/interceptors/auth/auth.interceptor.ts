@@ -8,13 +8,13 @@ import {
 import { Observable, exhaustMap, first } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { selectAuthToken } from 'app/state/auth/auth.selectors';
+import { selectAuthToken } from 'app/state/auth';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private store: Store) {}
+  public constructor(private store: Store) {}
 
-  intercept(
+  public intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
