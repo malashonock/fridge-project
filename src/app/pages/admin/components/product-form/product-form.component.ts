@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControlStatus,
@@ -50,7 +50,7 @@ enum FormMode {
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss'],
 })
-export class ProductFormComponent implements OnDestroy {
+export class ProductFormComponent implements OnInit, OnDestroy {
   public form!: FormGroup;
   private product?: Product;
   private productImage?: FileWithUrl | null;
@@ -88,13 +88,16 @@ export class ProductFormComponent implements OnDestroy {
   public comboErrorStateMatcher = new ComboErrorStateMatcher();
 
   private invalid$: Observable<boolean>;
+  private submitted$ = new Subject<boolean>();
   private submitting$: Observable<boolean>;
   public submitDisabled$: Observable<boolean>;
+  private canClose$: Observable<boolean>;
   private destroy$ = new Subject();
 
   public constructor(
     formBuilder: FormBuilder,
     private store: Store,
+    public dialogRef: MatDialogRef<ProductFormComponent>,
     @Inject(MAT_DIALOG_DATA) data?: ProductDialogData
   ) {
     this.product = data?.product;
@@ -165,17 +168,15 @@ export class ProductFormComponent implements OnDestroy {
     });
 
     this.invalid$ = this.form.statusChanges.pipe(
-      takeUntil(this.destroy$),
       map((status: FormControlStatus): boolean => {
         return !(status === 'VALID');
       }),
-      startWith(true)
+      startWith(this.form.invalid)
     );
 
     this.submitting$ = this.store
       .select(selectProductSubmitStatus(this.product?.id || null))
       .pipe(
-        takeUntil(this.destroy$),
         map((status: SubmitStatus | undefined): boolean => {
           return status !== undefined;
         }),
@@ -186,14 +187,30 @@ export class ProductFormComponent implements OnDestroy {
       this.invalid$,
       this.submitting$,
     ]).pipe(
-      takeUntil(this.destroy$),
       map(([invalid, submitting]) => {
         return invalid || submitting;
       })
     );
+
+    this.canClose$ = combineLatest([this.submitted$, this.submitting$]).pipe(
+      map(([submitted, submitting]) => {
+        return submitted && !submitting;
+      })
+    );
+  }
+
+  public ngOnInit(): void {
+    this.canClose$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((canClose: boolean) => {
+        if (canClose) {
+          this.dialogRef.close();
+        }
+      });
   }
 
   public ngOnDestroy(): void {
+    this.submitted$.complete();
     this.destroy$.next(null);
     this.destroy$.complete();
   }
@@ -210,21 +227,25 @@ export class ProductFormComponent implements OnDestroy {
 
     switch (this.mode) {
       case FormMode.Create:
-        return this.store.dispatch(
+        this.store.dispatch(
           ProductsActions.createProduct({
             productData,
           })
         );
+        break;
       case FormMode.Edit:
-        return this.store.dispatch(
+        this.store.dispatch(
           ProductsActions.updateProduct({
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             id: this.product!.id,
             productData,
           })
         );
+        break;
       default:
         throw new Error('Unsupported form mode');
     }
+
+    this.submitted$.next(true);
   }
 }
