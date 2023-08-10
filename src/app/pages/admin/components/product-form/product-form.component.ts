@@ -1,19 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControlStatus,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControlStatus, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import {
-  Observable,
-  Subject,
-  combineLatest,
-  map,
-  startWith,
-  takeUntil,
-} from 'rxjs';
+import { Subject, combineLatest, map, startWith, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import {
@@ -47,10 +35,73 @@ enum FormMode {
   styleUrls: ['./product-form.component.scss'],
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
-  public form!: FormGroup;
-  private product?: Product;
-  private productImage?: FileWithUrl | null;
+  private product = this.data?.product;
+  private productImage = this.data?.image;
   private initialProductImageUrl = this.product?.imageUrl;
+
+  public form = this.formBuilder.group({
+    name: [this.product?.name, [Validators.required]],
+    category: [this.product?.category, [Validators.required]],
+    ingredients: [this.product?.ingredients],
+    price: [
+      this.product?.price,
+      [
+        Validators.required,
+        NumberValidator.number,
+        Validators.min(0),
+        NumberValidator.maxFractionDigits(2),
+      ],
+    ],
+    weight: this.formBuilder.group(
+      {
+        value: [
+          this.product?.weight?.value,
+          [NumberValidator.number, Validators.min(0)],
+        ],
+        unit: [this.product?.weight?.unit],
+      },
+      {
+        validators: [ComboFieldValidator.allOrNone],
+      }
+    ),
+    nutrients: this.formBuilder.group({
+      proteins: [
+        this.product?.nutrients?.proteins,
+        [NumberValidator.number, Validators.min(0)],
+      ],
+      fats: [
+        this.product?.nutrients?.fats,
+        [NumberValidator.number, Validators.min(0)],
+      ],
+      carbs: [
+        this.product?.nutrients?.carbs,
+        [NumberValidator.number, Validators.min(0)],
+      ],
+    }),
+    kiloCalories: [
+      this.product?.kiloCalories,
+      [NumberValidator.number, Validators.min(0)],
+    ],
+    shelfLife: this.formBuilder.group({
+      months: [
+        this.product?.shelfLife?.months,
+        [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
+      ],
+      weeks: [
+        this.product?.shelfLife?.weeks,
+        [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
+      ],
+      days: [
+        this.product?.shelfLife?.days,
+        [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
+      ],
+      hours: [
+        this.product?.shelfLife?.hours,
+        [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
+      ],
+    }),
+    image: [this.productImage],
+  });
 
   public get title(): string {
     return this.product ? 'Edit product' : 'Add new product';
@@ -83,121 +134,50 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   public earlyErrorStateMatcher = new EarlyErrorStateMatcher();
   public comboErrorStateMatcher = new ComboErrorStateMatcher();
 
-  private pristine$: Observable<boolean>;
-  private invalid$: Observable<boolean>;
+  private pristine$ = this.form.valueChanges.pipe(
+    map((): boolean => {
+      return this.form.pristine;
+    }),
+    startWith(this.form.pristine)
+  );
+
+  private invalid$ = this.form.statusChanges.pipe(
+    map((status: FormControlStatus): boolean => {
+      return !(status === 'VALID');
+    }),
+    startWith(this.form.invalid)
+  );
+
   private submitted$ = new Subject<boolean>();
-  private submitting$: Observable<boolean>;
-  public submitDisabled$: Observable<boolean>;
-  private canClose$: Observable<boolean>;
+
+  private submitting$ = this.store
+    .select(selectProductSubmitting(this.product?.id || null))
+    .pipe(startWith(false));
+
+  public submitDisabled$ = combineLatest([
+    this.pristine$,
+    this.invalid$,
+    this.submitting$,
+  ]).pipe(
+    map(([pristine, invalid, submitting]) => {
+      return pristine || invalid || submitting;
+    })
+  );
+
+  private canClose$ = combineLatest([this.submitted$, this.submitting$]).pipe(
+    map(([submitted, submitting]) => {
+      return submitted && !submitting;
+    })
+  );
+
   private destroy$ = new Subject();
 
   public constructor(
-    formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private store: Store,
     public dialogRef: MatDialogRef<ProductFormComponent>,
-    @Inject(MAT_DIALOG_DATA) data?: ProductDialogData
-  ) {
-    this.product = data?.product;
-    this.productImage = data?.image;
-
-    this.form = formBuilder.group({
-      name: [this.product?.name, [Validators.required]],
-      category: [this.product?.category, [Validators.required]],
-      ingredients: [this.product?.ingredients],
-      price: [
-        this.product?.price,
-        [
-          Validators.required,
-          NumberValidator.number,
-          Validators.min(0),
-          NumberValidator.maxFractionDigits(2),
-        ],
-      ],
-      weight: formBuilder.group(
-        {
-          value: [
-            this.product?.weight?.value,
-            [NumberValidator.number, Validators.min(0)],
-          ],
-          unit: [this.product?.weight?.unit],
-        },
-        {
-          validators: [ComboFieldValidator.allOrNone],
-        }
-      ),
-      nutrients: formBuilder.group({
-        proteins: [
-          this.product?.nutrients?.proteins,
-          [NumberValidator.number, Validators.min(0)],
-        ],
-        fats: [
-          this.product?.nutrients?.fats,
-          [NumberValidator.number, Validators.min(0)],
-        ],
-        carbs: [
-          this.product?.nutrients?.carbs,
-          [NumberValidator.number, Validators.min(0)],
-        ],
-      }),
-      kiloCalories: [
-        this.product?.kiloCalories,
-        [NumberValidator.number, Validators.min(0)],
-      ],
-      shelfLife: formBuilder.group({
-        months: [
-          this.product?.shelfLife?.months,
-          [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
-        ],
-        weeks: [
-          this.product?.shelfLife?.weeks,
-          [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
-        ],
-        days: [
-          this.product?.shelfLife?.days,
-          [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
-        ],
-        hours: [
-          this.product?.shelfLife?.hours,
-          [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
-        ],
-      }),
-      image: [this.productImage],
-    });
-
-    this.pristine$ = this.form.valueChanges.pipe(
-      map((): boolean => {
-        return this.form.pristine;
-      }),
-      startWith(this.form.pristine)
-    );
-
-    this.invalid$ = this.form.statusChanges.pipe(
-      map((status: FormControlStatus): boolean => {
-        return !(status === 'VALID');
-      }),
-      startWith(this.form.invalid)
-    );
-
-    this.submitting$ = this.store
-      .select(selectProductSubmitting(this.product?.id || null))
-      .pipe(startWith(false));
-
-    this.submitDisabled$ = combineLatest([
-      this.pristine$,
-      this.invalid$,
-      this.submitting$,
-    ]).pipe(
-      map(([pristine, invalid, submitting]) => {
-        return pristine || invalid || submitting;
-      })
-    );
-
-    this.canClose$ = combineLatest([this.submitted$, this.submitting$]).pipe(
-      map(([submitted, submitting]) => {
-        return submitted && !submitting;
-      })
-    );
-  }
+    @Inject(MAT_DIALOG_DATA) private data?: ProductDialogData
+  ) {}
 
   public ngOnInit(): void {
     this.canClose$
@@ -220,10 +200,10 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const productData: ProductFields = {
+    const productData = {
       ...this.form.value,
       imageUrl: this.form.value.image?.url || null,
-    };
+    } as ProductFields;
 
     switch (this.mode) {
       case FormMode.Create:
