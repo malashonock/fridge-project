@@ -1,7 +1,7 @@
 import { createSelector } from '@ngrx/store';
 
 import { ProductsState, productsFeature } from './products.feature';
-import { Product } from 'core/models';
+import { Product } from 'core/models/product/product.interface';
 
 export const { selectProductsState } = productsFeature;
 

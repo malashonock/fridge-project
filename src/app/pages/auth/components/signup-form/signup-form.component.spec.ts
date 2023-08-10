@@ -17,8 +17,9 @@ import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 
 import { SharedModule } from 'shared/shared.module';
 import { SignupFormComponent } from './signup-form.component';
-import { AuthActions } from 'app/state/auth';
-import { SignupCredentials, UserRole } from 'core/models';
+import { AuthActions } from 'app/state/auth/auth.actions';
+import { SignupCredentials } from 'core/models/auth/signup.interface';
+import { UserRole } from 'core/models/user/user-role.enum';
 
 describe('SignupFormComponent', () => {
   let component: SignupFormComponent;

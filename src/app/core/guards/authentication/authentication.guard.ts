@@ -3,8 +3,9 @@ import { CanActivateFn, Router, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 
-import { AuthSessionState, selectAuthState } from 'app/state/auth';
-import { UserRole } from 'core/models';
+import { AuthSessionState } from 'app/state/auth/auth.feature';
+import { selectAuthState } from 'app/state/auth/auth.selectors';
+import { UserRole } from 'core/models/user/user-role.enum';
 
 export class AuthenticationGuard {
   public static forAuthenticated(): CanActivateFn {

@@ -10,7 +10,9 @@ import { MatSidenavHarness } from '@angular/material/sidenav/testing';
 
 import { MobileMenuDirective } from './mobile-menu.directive';
 import { SharedModule } from 'shared/shared.module';
-import { UiActions, uiFeature, UiEffects } from 'app/state/ui';
+import { UiActions } from 'app/state/ui/ui.actions';
+import { uiFeature } from 'app/state/ui/ui.feature';
+import { UiEffects } from 'app/state/ui/ui.effects';
 
 @Component({
   template: `

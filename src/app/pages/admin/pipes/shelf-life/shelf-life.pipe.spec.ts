@@ -1,4 +1,4 @@
-import { ShelfLife } from 'core/models';
+import { ShelfLife } from 'core/models/product/shelf-life.interface';
 import { ShelfLifePipe } from './shelf-life.pipe';
 
 describe('PropsConcatPipe', () => {

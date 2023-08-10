@@ -4,24 +4,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from './material/material.module';
-import {
-  HeaderComponent,
-  LogoComponent,
-  UserButtonComponent,
-  MenuItemComponent,
-  BurgerButtonComponent,
-  MapComponent,
-  SearchBoxComponent,
-  ImageUploaderComponent,
-  ConfirmDeleteComponent,
-} from './components';
-import { InitialsPipe, MoneyPipe, KeysPipe, AnyPipe } from './pipes';
-import {
-  MobileMenuDirective,
-  FixedHeaderDirective,
-  FileInputDirective,
-  NumericInputDirective,
-} from './directives';
+import { HeaderComponent } from './components/header/header.component';
+import { LogoComponent } from './components/logo/logo.component';
+import { UserButtonComponent } from './components/user-button/user-button.component';
+import { MenuItemComponent } from './components/menu-item/menu-item.component';
+import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
+import { MapComponent } from './components/map/map.component';
+import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
+import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-delete.component';
+import { InitialsPipe } from './pipes/initials/initials.pipe';
+import { MoneyPipe } from './pipes/money/money.pipe';
+import { KeysPipe } from './pipes/keys/keys.pipe';
+import { AnyPipe } from './pipes/any/any.pipe';
+import { MobileMenuDirective } from './directives/mobile/menu/mobile-menu.directive';
+import { FixedHeaderDirective } from './directives/fixed-header/fixed-header.directive';
+import { FileInputDirective } from './directives/file-input/file-input.directive';
+import { NumericInputDirective } from './directives/numeric-input/numeric-input.directive';
 
 @NgModule({
   declarations: [

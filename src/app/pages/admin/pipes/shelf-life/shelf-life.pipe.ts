@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ShelfLife } from 'core/models';
+
+import { ShelfLife } from 'core/models/product/shelf-life.interface';
 
 @Pipe({
   name: 'shelfLife',

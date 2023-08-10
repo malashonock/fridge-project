@@ -1,6 +1,7 @@
 import { AbstractControl, FormControl } from '@angular/forms';
+
 import { FileValidator } from './file.validator';
-import { FileWithUrl } from 'core/classes';
+import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 
 describe('FileValidator', () => {
   let control: AbstractControl;

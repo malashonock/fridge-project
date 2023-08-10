@@ -11,11 +11,15 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { CoreModule } from 'core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthSessionInitializer, ProductsInitializer } from 'core/services';
+import { AuthSessionInitializer } from 'core/services/app-initializer/auth-session.initializer';
+import { ProductsInitializer } from 'core/services/app-initializer/products.initializer';
 import { httpInterceptorProviders } from 'core/interceptors';
-import { authFeature, AuthEffects } from './state/auth';
-import { uiFeature, UiEffects } from './state/ui';
-import { productsFeature, ProductsEffects } from './state/products';
+import { authFeature } from './state/auth/auth.feature';
+import { AuthEffects } from './state/auth/auth.effects';
+import { uiFeature } from './state/ui/ui.feature';
+import { UiEffects } from './state/ui/ui.effects';
+import { productsFeature } from './state/products/products.feature';
+import { ProductsEffects } from './state/products/products.effects';
 
 @NgModule({
   declarations: [AppComponent],

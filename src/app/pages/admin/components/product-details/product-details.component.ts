@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { Product } from 'core/models';
+import { Product } from 'core/models/product/product.interface';
 import { environment } from 'environments/environment';
 
 @Component({

@@ -23,12 +23,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Observable, Subject, catchError, of, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { Product } from 'core/models';
+import { Product } from 'core/models/product/product.interface';
 import { ProductFormComponent } from '../product-form/product-form.component';
-import { StaticAssetService } from 'core/services';
-import { FileWithUrl } from 'core/classes';
-import { ConfirmDeleteComponent } from 'shared/components';
-import { ProductsActions } from 'app/state/products';
+import { StaticAssetService } from 'core/services/static-asset/static-asset.service';
+import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
+import { ConfirmDeleteComponent } from 'shared/components/confirm-delete/confirm-delete.component';
+import { ProductsActions } from 'app/state/products/products.actions';
 
 @Component({
   selector: 'app-products-table',

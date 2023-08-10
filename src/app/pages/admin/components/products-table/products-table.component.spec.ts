@@ -11,13 +11,14 @@ import { provideMockStore } from '@ngrx/store/testing';
 
 import { ProductsTableComponent } from './products-table.component';
 import { SharedModule } from 'shared/shared.module';
-import { Product, ProductCategory } from 'core/models';
+import { Product } from 'core/models/product/product.interface';
+import { ProductCategory } from 'core/models/product/product-category.enum';
 import {
   mockProduct1,
   mockProducts1,
   mockProducts2,
 } from 'mocks/product.mocks';
-import { ShelfLifePipe } from '../../pipes';
+import { ShelfLifePipe } from '../../pipes/shelf-life/shelf-life.pipe';
 
 @Component({
   selector: 'app-product-details',

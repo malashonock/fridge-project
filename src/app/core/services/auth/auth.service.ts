@@ -2,9 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 
-import { AuthSession } from 'app/state/auth';
-import { User, SignupCredentials, LoginCredentials } from 'core/models';
-import { LocalStorageService } from 'core/services';
+import { AuthSession } from 'app/state/auth/auth.feature';
+import { User } from 'core/models/user/user.interface';
+import { SignupCredentials } from 'core/models/auth/signup.interface';
+import { LoginCredentials } from 'core/models/auth/login.interface';
+import { LocalStorageService } from 'core/services/local-storage/local-storage.service';
 
 @Injectable({
   providedIn: 'root',

@@ -9,8 +9,8 @@ import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
-import { Product } from 'core/models';
-import { selectAllProducts } from 'app/state/products';
+import { Product } from 'core/models/product/product.interface';
+import { selectAllProducts } from 'app/state/products/products.selectors';
 import { ProductFormComponent } from '../product-form/product-form.component';
 
 @Component({

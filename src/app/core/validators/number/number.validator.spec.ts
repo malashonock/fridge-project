@@ -1,4 +1,5 @@
 import { AbstractControl, FormControl } from '@angular/forms';
+
 import { NumberValidator } from './number.validator';
 
 describe('NumberValidator', () => {

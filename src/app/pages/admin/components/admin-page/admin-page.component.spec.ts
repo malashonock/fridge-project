@@ -6,7 +6,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { AdminPageComponent } from './admin-page.component';
 import * as uiFeature from 'app/state/ui/ui.feature';
 import { SharedModule } from 'shared/shared.module';
-import { adminPageMenuConfigProvider } from 'core/configs';
+import { adminPageMenuConfigProvider } from 'core/configs/admin-page-menu.config';
 
 describe('AdminPageComponent', () => {
   let component: AdminPageComponent;

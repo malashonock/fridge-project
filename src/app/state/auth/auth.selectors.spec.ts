@@ -4,7 +4,8 @@ import {
   selectSessionExpirationTime,
 } from './auth.selectors';
 import { AuthSession } from './auth.feature';
-import { User, UserRole } from 'core/models';
+import { User } from 'core/models/user/user.interface';
+import { UserRole } from 'core/models/user/user-role.enum';
 
 describe('Auth feature selectors', () => {
   const mockUser: User = {

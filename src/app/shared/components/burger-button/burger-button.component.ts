@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { UiActions, selectShowSideMenu } from 'app/state/ui';
+import { UiActions } from 'app/state/ui/ui.actions';
+import { selectShowSideMenu } from 'app/state/ui/ui.selectors';
 
 @Component({
   selector: 'app-burger-button',

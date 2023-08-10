@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Id, Product, ProductFields } from 'core/models';
+import { Product } from 'core/models/product/product.interface';
+import { ProductFields } from 'core/models/product/product-fields.interface';
+import { Id } from 'core/models/id/id.interface';
 import { FormDataService } from '../form-data/form-data.service';
 
 @Injectable({

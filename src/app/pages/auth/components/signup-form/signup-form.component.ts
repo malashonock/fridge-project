@@ -2,9 +2,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { UserRole, SelectOption } from 'core/models';
-import { EmailValidator, PasswordValidator } from 'core/validators';
-import { AuthActions } from 'app/state/auth';
+import { UserRole } from 'core/models/user/user-role.enum';
+import { SelectOption } from 'core/models/ui/select-option.interface';
+import { EmailValidator } from 'core/validators/email/email.validator';
+import { PasswordValidator } from 'core/validators/password/password.validator';
+import { AuthActions } from 'app/state/auth/auth.actions';
 
 @Component({
   selector: 'app-signup-form',

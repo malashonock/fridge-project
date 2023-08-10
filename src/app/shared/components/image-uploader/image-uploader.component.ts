@@ -17,9 +17,9 @@ import { MatFormFieldControl } from '@angular/material/form-field';
 import { Subject, takeUntil } from 'rxjs';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 
-import { FileWithUrl } from 'core/classes';
-import { FileInputDirective } from 'shared/directives';
-import { FileValidator } from 'core/validators';
+import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
+import { FileInputDirective } from 'shared/directives/file-input/file-input.directive';
+import { FileValidator } from 'core/validators/file/file.validator';
 
 type VoidEventHandler = () => void;
 type ChangeEventHandler = (image: FileWithUrl | null) => void;

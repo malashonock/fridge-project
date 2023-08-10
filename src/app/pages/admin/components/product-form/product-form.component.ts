@@ -4,20 +4,18 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subject, combineLatest, map, startWith, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import {
-  Product,
-  ProductCategory,
-  UnitOfWeight,
-  SelectOption,
-  ProductFields,
-} from 'core/models';
-import { ComboFieldValidator, NumberValidator } from 'core/validators';
-import {
-  ComboErrorStateMatcher,
-  EarlyErrorStateMatcher,
-  FileWithUrl,
-} from 'core/classes';
-import { ProductsActions, selectProductSubmitting } from 'app/state/products';
+import { Product } from 'core/models/product/product.interface';
+import { ProductFields } from 'core/models/product/product-fields.interface';
+import { ProductCategory } from 'core/models/product/product-category.enum';
+import { UnitOfWeight } from 'core/models/product/unit-of-weight.enum';
+import { SelectOption } from 'core/models/ui/select-option.interface';
+import { ComboFieldValidator } from 'core/validators/combo-field/combo-field.validator';
+import { NumberValidator } from 'core/validators/number/number.validator';
+import { ComboErrorStateMatcher } from 'core/classes/combo-error-state-matcher/combo-error-state-matcher.class';
+import { EarlyErrorStateMatcher } from 'core/classes/early-error-state-matcher/early-error-state-matcher.class';
+import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
+import { ProductsActions } from 'app/state/products/products.actions';
+import { selectProductSubmitting } from 'app/state/products/products.selectors';
 
 interface ProductDialogData {
   product?: Product;

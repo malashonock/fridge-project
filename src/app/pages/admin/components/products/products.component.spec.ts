@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
 
 import { ProductsComponent } from './products.component';
 import { SharedModule } from 'shared/shared.module';
-import { Product } from 'core/models';
+import { Product } from 'core/models/product/product.interface';
 
 @Component({
   selector: 'app-products-table',
