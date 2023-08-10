@@ -21,11 +21,14 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, Subject, catchError, of, takeUntil } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { Product } from 'core/models';
 import { ProductFormComponent } from '../product-form/product-form.component';
 import { StaticAssetService } from 'core/services';
 import { FileWithUrl } from 'core/classes';
+import { ConfirmDeleteComponent } from 'shared/components';
+import { ProductsActions } from 'app/state/products';
 
 @Component({
   selector: 'app-products-table',
@@ -74,7 +77,8 @@ export class ProductsTableComponent
 
   public constructor(
     private dialog: MatDialog,
-    private staticAssetService: StaticAssetService
+    private staticAssetService: StaticAssetService,
+    private store: Store
   ) {}
 
   public ngOnInit(): void {
@@ -171,5 +175,24 @@ export class ProductsTableComponent
         });
       }
     );
+  }
+
+  public openDeleteProductDialog({ id }: Product, event?: MouseEvent): void {
+    event?.stopPropagation();
+
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      data: {
+        itemType: 'product',
+      },
+    });
+
+    dialogRef
+      .afterClosed()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((deleteConfirmed: boolean) => {
+        if (deleteConfirmed) {
+          this.store.dispatch(ProductsActions.deleteProduct({ id }));
+        }
+      });
   }
 }

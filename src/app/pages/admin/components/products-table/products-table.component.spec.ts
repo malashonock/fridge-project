@@ -6,6 +6,8 @@ import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { ProductsTableComponent } from './products-table.component';
 import { SharedModule } from 'shared/shared.module';
@@ -16,7 +18,6 @@ import {
   mockProducts2,
 } from 'mocks/product.mocks';
 import { ShelfLifePipe } from '../../pipes';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 @Component({
   selector: 'app-product-details',
@@ -48,6 +49,7 @@ describe('ProductsTableComponent', () => {
         ShelfLifePipe,
       ],
       imports: [SharedModule, NoopAnimationsModule, HttpClientTestingModule],
+      providers: [provideMockStore()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProductsTableComponent);

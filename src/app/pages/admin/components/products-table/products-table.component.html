@@ -75,6 +75,7 @@
             mat-icon-button
             matTooltip="Delete product"
             class="action-btn"
+            (click)="openDeleteProductDialog(product, $event)"
           >
             <mat-icon>delete</mat-icon>
           </button>
