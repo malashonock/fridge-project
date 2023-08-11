@@ -102,10 +102,10 @@ export class AuthEffects {
     )
   );
 
-  public logoutSuccess$ = createEffect(
+  public logoutFinish$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(AuthActions.logoutSuccess),
+        ofType(AuthActions.logoutSuccess, AuthActions.logoutFailure),
         tap(() => this.router.navigateByUrl('/auth/login'))
       ),
     { dispatch: false }

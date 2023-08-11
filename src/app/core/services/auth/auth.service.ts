@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, finalize, tap } from 'rxjs';
 
 import { AuthSession } from 'app/state/auth/auth.feature';
 import { User } from 'core/models/user/user.interface';
@@ -45,6 +45,6 @@ export class AuthService {
   public logout(): Observable<void> {
     return this.httpClient
       .post<void>('/auth/logout', {})
-      .pipe(tap(() => this.clearSession()));
+      .pipe(finalize(() => this.clearSession()));
   }
 }

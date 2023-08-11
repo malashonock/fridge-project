@@ -200,5 +200,16 @@ describe('AuthService', () => {
       const req = httpTestingController.expectOne(logoutEndpointUrl);
       req.flush(null);
     });
+
+    it('upon logout failure, should still clear session from local storage', () => {
+      const spyOnClearSession = jest.spyOn(authService, 'clearSession');
+
+      authService.logout().subscribe(() => {
+        expect(spyOnClearSession).toHaveBeenCalledTimes(1);
+      });
+
+      const req = httpTestingController.expectOne(logoutEndpointUrl);
+      req.flush(new Error('Server error'));
+    });
   });
 });
