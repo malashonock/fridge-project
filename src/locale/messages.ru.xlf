@@ -2,6 +2,94 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
+    <trans-unit id="productImageAltText" datatype="html">
+        <source>Product photo</source>
+        <target>Фото продукта</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="energyValue" datatype="html">
+        <source>Energy value</source>
+        <target>Энергетическая ценность</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="kiloCalories" datatype="html">
+        <source>kcal</source>
+        <target>ккал</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nutrients" datatype="html">
+        <source>Nutrients (per 100 g)</source>
+        <target>Питательные вещества (на 100 г)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="grams" datatype="html">
+        <source>g</source>
+        <target>г</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proteins" datatype="html">
+        <source>Proteins</source>
+        <target>Белки</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fats" datatype="html">
+        <source>Fats</source>
+        <target>Жиры</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="carbs" datatype="html">
+        <source>Carbs</source>
+        <target>Углеводы</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingredients" datatype="html">
+        <source>Ingredients</source>
+        <target>Ингредиенты</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="noPhoto" datatype="html">
+        <source>No photo</source>
+        <target>Нет фото</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="logIn" datatype="html">
         <source>Log in</source>
         <target>Вход</target>
