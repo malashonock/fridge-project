@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { AuthActions } from 'app/state/auth/auth.actions';
 import { LoginCredentials } from 'core/models/auth/login.interface';
+import { controlHasError, getControlError } from 'utils/form/form.utils';
 
 @Component({
   selector: 'app-login-form',
@@ -30,4 +31,7 @@ export class LoginFormComponent {
       })
     );
   }
+
+  public controlHasError = controlHasError.bind(this.form);
+  public getControlError = getControlError.bind(this.form);
 }

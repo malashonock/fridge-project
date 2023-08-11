@@ -8,6 +8,7 @@ import { EmailValidator } from 'core/validators/email/email.validator';
 import { PasswordValidator } from 'core/validators/password/password.validator';
 import { AuthActions } from 'app/state/auth/auth.actions';
 import { SignupCredentials } from 'core/models/auth/signup.interface';
+import { controlHasError, getControlError } from 'utils/form/form.utils';
 
 @Component({
   selector: 'app-signup-form',
@@ -31,8 +32,8 @@ export class SignupFormComponent {
 
   // TODO: fetch on startup and select from store
   public roles: SelectOption[] = [
-    { value: UserRole.User, label: 'User' },
-    { value: UserRole.Admin, label: 'Admin' },
+    { value: UserRole.User, label: $localize`:@@user:User` },
+    { value: UserRole.Admin, label: $localize`:@@admin:Admin` },
   ];
 
   public constructor(private formBuilder: FormBuilder, private store: Store) {}
@@ -48,4 +49,7 @@ export class SignupFormComponent {
       })
     );
   }
+
+  public controlHasError = controlHasError.bind(this.form);
+  public getControlError = getControlError.bind(this.form);
 }

@@ -2,6 +2,201 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="logIn" datatype="html">
+        <source>Log in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/auth-page/auth-page.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">50,52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="signUp" datatype="html">
+        <source>Sign up</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/auth-page/auth-page.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">112,114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userName" datatype="html">
+        <source>User name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userNameErrorRequired" datatype="html">
+        <source> User name is required </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">13,15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">13,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userNameErrorMinLength" datatype="html">
+        <source> User name must be no shorter than <x id="INTERPOLATION" equiv-text="{{ getControlError(&quot;userName.minlength.requiredLength&quot;) }}"/> <x id="ICU" equiv-text="{getControlError(&apos;userName.minlength.requiredLength&apos;), plural, =1 {symbol}
+      other {symbols}}" xid="1700218600521540854"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">19,24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">19,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1700218600521540854" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {symbol} other {symbols}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">22,23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">22,23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="password" datatype="html">
+        <source>Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="passwordErrorRequired" datatype="html">
+        <source> Password is required </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">39,41</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">77,79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="signUpPrompt" datatype="html">
+        <source>Don&apos;t have an account yet? </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="signUpLink" datatype="html">
+        <source>Sign up</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="email" datatype="html">
+        <source>Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailErrorRequired" datatype="html">
+        <source> Email is required </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">39,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailErrorInvalid" datatype="html">
+        <source> Email is not valid </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">45,47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="role" datatype="html">
+        <source>Role</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="roleErrorRequired" datatype="html">
+        <source> Role is required </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">60,62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="passwordConfirm" datatype="html">
+        <source>Confirm password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="passwordConfirmErrorRequired" datatype="html">
+        <source> Password confirmation is required </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">94,96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="passwordsErrorMismatch" datatype="html">
+        <source> Passwords don&apos;t match </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">102,104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logInPrompt" datatype="html">
+        <source>Already have an account? </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">117</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logInLink" datatype="html">
+        <source>Log in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="user" datatype="html">
+        <source>User</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="admin" datatype="html">
+        <source>Admin</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>

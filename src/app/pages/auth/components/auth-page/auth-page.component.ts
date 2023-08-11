@@ -13,8 +13,8 @@ interface NavTab {
 })
 export class AuthPageComponent {
   public tabs: NavTab[] = [
-    { link: 'login', label: 'Log in' },
-    { link: 'signup', label: 'Sign up' },
+    { link: 'login', label: $localize`:@@logIn:Log in` },
+    { link: 'signup', label: $localize`:@@signUp:Sign up` },
   ];
 
   public activeTab = this.tabs[0];
