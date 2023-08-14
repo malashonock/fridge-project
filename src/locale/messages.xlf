@@ -96,6 +96,10 @@
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">143</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/pipes/weight-unit/weight-unit.pipe.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="fats" datatype="html">
         <source>Fats</source>
@@ -429,6 +433,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">144</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/pipes/weight-unit/weight-unit.pipe.ts</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="proteinsGenitive" datatype="html">

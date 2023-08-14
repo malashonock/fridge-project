@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
@@ -30,7 +30,8 @@
         <source>Product photo</source>
         <target>Фото продукта</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
@@ -38,71 +39,89 @@
         <source>Energy value</source>
         <target>Энергетическая ценность</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">251</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">260</context>
         </context-group>
       </trans-unit>
       <trans-unit id="kiloCalories" datatype="html">
         <source>kcal</source>
         <target>ккал</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">12</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">253</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">262</context>
         </context-group>
       </trans-unit>
       <trans-unit id="nutrients" datatype="html">
         <source>Nutrients (per 100 g)</source>
         <target>Питательные вещества (на 100 г)</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">16</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">135</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">139</context>
         </context-group>
       </trans-unit>
       <trans-unit id="grams" datatype="html">
         <source>g</source>
         <target>г</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">22</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">26</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">30</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">138,137</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">142</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">143</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/pipes/weight-unit/weight-unit.pipe.ts</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="proteins" datatype="html">
         <source>Proteins</source>
         <target>Белки</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">21</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">150</context>
         </context-group>
       </trans-unit>
@@ -110,11 +129,13 @@
         <source>Fats</source>
         <target>Жиры</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">25</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">155</context>
         </context-group>
       </trans-unit>
@@ -122,11 +143,13 @@
         <source>Carbs</source>
         <target>Углеводы</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">29</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">160</context>
         </context-group>
       </trans-unit>
@@ -134,19 +157,22 @@
         <source>Ingredients</source>
         <target>Ингредиенты</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">37</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">121</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="noPhoto" datatype="html">
         <source>No photo</source>
         <target>Нет фото</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">42</context>
         </context-group>
       </trans-unit>
@@ -154,15 +180,17 @@
         <source>Product image</source>
         <target>Изображение продукта</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="imageErrorFileType" datatype="html">
-        <source>The uploaded file is not a valid image</source>
+        <source> The uploaded file is not a valid image </source>
         <target>Загруженный файл не является изображением</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">23,24</context>
         </context-group>
       </trans-unit>
@@ -170,19 +198,22 @@
         <source>Product name</source>
         <target>Название продукта</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">34</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products-table/products-table.component.html</context>
           <context context-type="linenumber">9,11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="productNameErrorRequired" datatype="html">
-        <source>Product name is required</source>
+        <source> Product name is required </source>
         <target>Необходимо ввести название продукта</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">47,48</context>
         </context-group>
       </trans-unit>
@@ -190,19 +221,22 @@
         <source>Product category</source>
         <target>Группа продуктов</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">57</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products-table/products-table.component.html</context>
           <context context-type="linenumber">21,23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="categoryErrorRequired" datatype="html">
-        <source>Product category is required</source>
+        <source> Product category is required </source>
         <target>Необходимо выбрать группу продуктов</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">69,70</context>
         </context-group>
       </trans-unit>
@@ -210,11 +244,13 @@
         <source>Price</source>
         <target>Цена</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">80</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products-table/products-table.component.html</context>
           <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
@@ -222,179 +258,216 @@
         <source>BYN</source>
         <target>бел. руб.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">82</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products-table/products-table.component.html</context>
           <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="priceErrorRequired" datatype="html">
-        <source>Product price is required</source>
+        <source> Product price is required </source>
         <target>Необходимо ввести цену продукта</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">92,93</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">96</context>
         </context-group>
       </trans-unit>
       <trans-unit id="priceErrorNaN" datatype="html">
-        <source>Product price must be a valid number</source>
+        <source> Product price must be a valid number </source>
         <target>Цена продукта должна быть числовым значением</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">98,99</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">102</context>
         </context-group>
       </trans-unit>
       <trans-unit id="priceErrorGranularity" datatype="html">
-        <source>Product price granularity is 0.01 BYN</source>
+        <source> Product price granularity is 0.01 BYN </source>
         <target>Цена продукта должна быть кратна 0.01 бел. руб.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">104,105</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="priceErrorNegative" datatype="html">
-        <source>Product price cannot be negative</source>
+        <source> Product price cannot be negative </source>
         <target>Цена продукта не может быть отрицательной</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">110,111</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">114</context>
         </context-group>
       </trans-unit>
       <trans-unit id="nutrientErrorNaN" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{ nutrient.labelGenitive }}"/> content must be a valid number</source>
-        <target>Содержание <x id="INTERPOLATION" equiv-text="{{ nutrient.labelGenitive }}"/> должно быть числовым значением</target>
+        <source>
+          <x id="INTERPOLATION" equiv-text="{{ nutrient.labelGenitive }}" /> content must be a valid
+          number </source>
+        <target>Содержание <x id="INTERPOLATION" equiv-text="{{ nutrient.labelGenitive }}" /> должно
+          быть числовым значением</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">159,160</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">163</context>
         </context-group>
       </trans-unit>
       <trans-unit id="nutrientErrorNegative" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{ nutrient.labelGenitive }}"/> content cannot be negative</source>
-        <target>Содержание <x id="INTERPOLATION" equiv-text="{{ nutrient.labelGenitive }}"/> не может быть отрицательным</target>
+        <source>
+          <x id="INTERPOLATION" equiv-text="{{ nutrient.labelGenitive }}" /> content cannot be
+          negative </source>
+        <target>Содержание <x id="INTERPOLATION" equiv-text="{{ nutrient.labelGenitive }}" /> не
+          может быть отрицательным</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">165,166</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">169</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weight" datatype="html">
         <source>Weight</source>
         <target>Вес</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">172</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">176</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
-          <context context-type="linenumber">42,44</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="linenumber">42</context>
         </context-group>
       </trans-unit>
       <trans-unit id="value" datatype="html">
         <source>Value</source>
         <target>Значение</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">179</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">183</context>
         </context-group>
       </trans-unit>
       <trans-unit id="unit" datatype="html">
         <source>Unit</source>
         <target>Ед. изм.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">195</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">199</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weightValueErrorRequired" datatype="html">
-        <source>Weight value is required</source>
+        <source> Weight value is required </source>
         <target>Необходимо ввести значение веса</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">218,219</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">224</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weightUnitErrorRequired" datatype="html">
-        <source>Weight unit is required</source>
+        <source> Weight unit is required </source>
         <target>Необходимо ввести единицу измерения веса</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">226,227</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">235</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weightValueErrorNaN" datatype="html">
-        <source>Weight value must be a valid number</source>
+        <source> Weight value must be a valid number </source>
         <target>Значение веса должно быть числом</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">233,234</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">242</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weightValueErrorNegative" datatype="html">
-        <source>Weight value cannot be negative</source>
+        <source> Weight value cannot be negative </source>
         <target>Значение веса не может быть отрицательным</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">239,240</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">248</context>
         </context-group>
       </trans-unit>
       <trans-unit id="energyValueErrorNaN" datatype="html">
-        <source>Energy value must be a valid number</source>
+        <source> Energy value must be a valid number </source>
         <target>Энергетическая ценность должна быть числовым значением</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">267,268</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">276</context>
         </context-group>
       </trans-unit>
       <trans-unit id="energyValueErrorNegative" datatype="html">
-        <source>Energy value cannot be negative</source>
+        <source> Energy value cannot be negative </source>
         <target>Энергетическая ценность не может быть отрицательной</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">273,274</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">282</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shelfLife" datatype="html">
         <source>Shelf life</source>
         <target>Срок хранения</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">279</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">288</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
-          <context context-type="linenumber">58,60</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="linenumber">58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shelfLifePeriodErrorNaN" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}"/> value must be a valid number</source>
-        <target>Значение <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}"/> должно быть числом</target>
+        <source>
+          <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}" /> value must be a valid
+          number </source>
+        <target>Значение <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}" /> должно
+          быть числом</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">304,305</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">313</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shelfLifePeriodErrorInteger" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}"/> value must be an integer</source>
-        <target>Значение <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}"/> должно быть целым числом</target>
+        <source>
+          <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}" /> value must be an integer </source>
+        <target>Значение <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}" /> должно
+          быть целым числом</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">312,313</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">321</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shelfLifePeriodErrorNegative" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}"/> value cannot be negative</source>
-        <target>Значение <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}"/> не может быть отрицательным</target>
+        <source>
+          <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}" /> value cannot be negative </source>
+        <target>Значение <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}" /> не может
+          быть отрицательным</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">318,319</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">327</context>
         </context-group>
       </trans-unit>
       <trans-unit id="editProductHeader" datatype="html">
         <source>Edit product</source>
         <target>Изменение данных продукта</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">114</context>
         </context-group>
       </trans-unit>
@@ -402,7 +475,8 @@
         <source>Add new product</source>
         <target>Создание нового продукта</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">115</context>
         </context-group>
       </trans-unit>
@@ -410,7 +484,8 @@
         <source>Save changes</source>
         <target>Сохранить изменения</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">120</context>
         </context-group>
       </trans-unit>
@@ -418,15 +493,22 @@
         <source>Create product</source>
         <target>Создать продукт</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">121</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products/products.component.html</context>
+          <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="soups" datatype="html">
         <source>Soups</source>
         <target>Супы</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">130</context>
         </context-group>
       </trans-unit>
@@ -434,7 +516,8 @@
         <source>Second courses</source>
         <target>Вторые блюда</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">133</context>
         </context-group>
       </trans-unit>
@@ -442,7 +525,8 @@
         <source>Salads</source>
         <target>Салаты</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">135</context>
         </context-group>
       </trans-unit>
@@ -450,7 +534,8 @@
         <source>Snacks</source>
         <target>Закуски</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">136</context>
         </context-group>
       </trans-unit>
@@ -458,7 +543,8 @@
         <source>Drinks</source>
         <target>Напитки</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">137</context>
         </context-group>
       </trans-unit>
@@ -466,7 +552,8 @@
         <source>Desserts</source>
         <target>Десерты</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">138</context>
         </context-group>
       </trans-unit>
@@ -474,15 +561,22 @@
         <source>ml</source>
         <target>мл</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">144</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/pipes/weight-unit/weight-unit.pipe.ts</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="proteinsGenitive" datatype="html">
         <source>Proteins</source>
         <target>белков</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">151</context>
         </context-group>
       </trans-unit>
@@ -490,7 +584,8 @@
         <source>Fats</source>
         <target>жиров</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">156</context>
         </context-group>
       </trans-unit>
@@ -498,7 +593,8 @@
         <source>Carbs</source>
         <target>углеводов</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">161</context>
         </context-group>
       </trans-unit>
@@ -506,7 +602,8 @@
         <source>Months</source>
         <target>Месяцы</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">168</context>
         </context-group>
       </trans-unit>
@@ -514,7 +611,8 @@
         <source>Months</source>
         <target>месяцев</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">169</context>
         </context-group>
       </trans-unit>
@@ -522,7 +620,8 @@
         <source>Weeks</source>
         <target>Недели</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">173</context>
         </context-group>
       </trans-unit>
@@ -530,7 +629,8 @@
         <source>Weeks</source>
         <target>недель</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">174</context>
         </context-group>
       </trans-unit>
@@ -538,7 +638,8 @@
         <source>Days</source>
         <target>Дни</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">178</context>
         </context-group>
       </trans-unit>
@@ -546,7 +647,8 @@
         <source>Days</source>
         <target>дней</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">179</context>
         </context-group>
       </trans-unit>
@@ -554,7 +656,8 @@
         <source>Hours</source>
         <target>Часы</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">183</context>
         </context-group>
       </trans-unit>
@@ -562,15 +665,17 @@
         <source>Hours</source>
         <target>часов</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/product-form/product-form.component.ts</context>
           <context context-type="linenumber">184</context>
         </context-group>
       </trans-unit>
       <trans-unit id="actions" datatype="html">
-        <source>Actions</source>
+        <source> Actions </source>
         <target>Действия</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products-table/products-table.component.html</context>
           <context context-type="linenumber">93,95</context>
         </context-group>
       </trans-unit>
@@ -578,7 +683,8 @@
         <source>Edit product</source>
         <target>Редактировать продукт</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products-table/products-table.component.html</context>
           <context context-type="linenumber">101</context>
         </context-group>
       </trans-unit>
@@ -586,15 +692,19 @@
         <source>Delete product</source>
         <target>Удалить продукт</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products-table/products-table.component.html</context>
           <context context-type="linenumber">110</context>
         </context-group>
       </trans-unit>
       <trans-unit id="noDataMatchingFilter" datatype="html">
-        <source>No products matching the filter &quot;<x id="INTERPOLATION" equiv-text="{{ dataSource.filter }}"/>&quot;</source>
-        <target>Не найдено продуктов, соответствующих фильтру &quot;<x id="INTERPOLATION" equiv-text="{{ dataSource.filter }}"/>&quot;</target>
+        <source> No products matching the filter "<x id="INTERPOLATION"
+            equiv-text="{{ dataSource.filter }}" />" </source>
+        <target>Не найдено продуктов, соответствующих фильтру "<x id="INTERPOLATION"
+            equiv-text="{{ dataSource.filter }}" />"</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products-table/products-table.component.html</context>
           <context context-type="linenumber">141,143</context>
         </context-group>
       </trans-unit>
@@ -602,7 +712,8 @@
         <source>Manage products</source>
         <target>Управление списком продуктов</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/products/products.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products/products.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
@@ -610,7 +721,8 @@
         <source>Search in product name or description</source>
         <target>Поиск по имени или описанию продукта</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/products/products.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products/products.component.html</context>
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
@@ -650,105 +762,177 @@
         <source>Log in</source>
         <target>Вход</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/auth-page/auth-page.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/auth-page/auth-page.component.ts</context>
           <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="signUp" datatype="html">
         <source>Sign up</source>
         <target>Регистрация</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/auth-page/auth-page.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/auth-page/auth-page.component.ts</context>
           <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="userName" datatype="html">
         <source>User name</source>
         <target>Имя пользователя</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="userNameErrorRequired" datatype="html">
-        <source>User name is required</source>
+        <source> User name is required </source>
         <target>Необходимо ввести имя пользователя</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
-          <context context-type="linenumber">13,15</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="userNameErrorMinLength" datatype="html">
-        <source>User name must be no shorter than <x id="INTERPOLATION" equiv-text="{{ getControlError(&quot;userName.minlength.requiredLength&quot;) }}"/> <x id="ICU" equiv-text="{getControlError(&quot;userName.minlength.requiredLength&quot;), plural, =1 {symbol} other
-      {symbols}}" xid="1700218600521540854"/></source>
-        <target>Имя пользователя должно быть не короче <x id="INTERPOLATION" equiv-text="{{ getControlError(&quot;userName.minlength.requiredLength&quot;) }}"/> <x id="ICU" equiv-text="{getControlError(&quot;userName.minlength.requiredLength&quot;), plural, =1 {symbol} other
-      {symbols}}" xid="1700218600521540854"/></target>
+        <source> User name must be no shorter than <x id="INTERPOLATION"
+            equiv-text="{{ getControlError(&quot;userName.minlength&quot;, &quot;requiredLength&quot;) }}" /> <x
+            id="ICU"
+            equiv-text="{getControlError('userName.minlength.requiredLength'), plural, =1 {symbol}
+      other {symbols}}"
+            xid="1700218600521540854" />
+        </source>
+        <target>Имя пользователя должно быть не короче <x id="INTERPOLATION"
+            equiv-text="{{ getControlError(&quot;userName.minlength.requiredLength&quot;) }}" /> <x
+            id="ICU"
+            equiv-text="{getControlError(&quot;userName.minlength.requiredLength&quot;), plural, =1 {symbol} other
+      {symbols}}"
+            xid="1700218600521540854" /></target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
-          <context context-type="linenumber">19,24</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1700218600521540854" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {symbol} other {symbols}}</source>
         <target>{VAR_PLURAL, plural, =1 {символа} other {символов}}</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
-          <context context-type="linenumber">22,23</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="password" datatype="html">
         <source>Password</source>
         <target>Пароль</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="passwordErrorRequired" datatype="html">
-        <source>Password is required</source>
+        <source> Password is required </source>
         <target>Необходимо ввести пароль</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
-          <context context-type="linenumber">38,40</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="signUpPrompt" datatype="html">
-        <source>Don&apos;t have an account yet? </source>
+        <source>Don't have an account yet? </source>
         <target>Еще нет учетной записи? </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="signUpLink" datatype="html">
         <source>Sign up</source>
         <target>Зарегистрироваться</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/login-form/login-form.component.html</context>
+          <context context-type="linenumber">56</context>
         </context-group>
       </trans-unit>
       <trans-unit id="email" datatype="html">
         <source>Email</source>
         <target>Email</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
           <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="emailErrorRequired" datatype="html">
-        <source>Email is required</source>
+        <source> Email is required </source>
         <target>Необходимо ввести email</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
           <context context-type="linenumber">39,41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="emailErrorInvalid" datatype="html">
-        <source>Email is not valid</source>
+        <source> Email is not valid </source>
         <target>Недопустимый адрес электронной почты</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
           <context context-type="linenumber">45,47</context>
         </context-group>
       </trans-unit>
@@ -756,15 +940,17 @@
         <source>Role</source>
         <target>Роль</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
           <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="roleErrorRequired" datatype="html">
-        <source>Role is required</source>
+        <source> Role is required </source>
         <target>Необходимо выбрать роль</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
           <context context-type="linenumber">60,62</context>
         </context-group>
       </trans-unit>
@@ -772,47 +958,53 @@
         <source>Confirm password</source>
         <target>Подтверждение пароля</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
           <context context-type="linenumber">83</context>
         </context-group>
       </trans-unit>
       <trans-unit id="passwordConfirmErrorRequired" datatype="html">
-        <source>Password confirmation is required</source>
+        <source> Password confirmation is required </source>
         <target>Необходимо подтвердить пароль</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
           <context context-type="linenumber">94,96</context>
         </context-group>
       </trans-unit>
       <trans-unit id="passwordsErrorMismatch" datatype="html">
-        <source>Passwords don&apos;t match</source>
+        <source> Passwords don't match </source>
         <target>Введенные пароли не совпадают</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">102,104</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">103</context>
         </context-group>
       </trans-unit>
       <trans-unit id="logInPrompt" datatype="html">
         <source>Already have an account? </source>
         <target>Уже есть учетная запись? </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">118</context>
         </context-group>
       </trans-unit>
       <trans-unit id="logInLink" datatype="html">
         <source>Log in</source>
         <target>Войти</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">118</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">119</context>
         </context-group>
       </trans-unit>
       <trans-unit id="user" datatype="html">
         <source>User</source>
         <target>Пользователь</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.ts</context>
           <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
@@ -820,7 +1012,8 @@
         <source>Admin</source>
         <target>Администратор</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.ts</context>
+          <context context-type="sourcefile">
+            src/app/pages/auth/components/signup-form/signup-form.component.ts</context>
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
