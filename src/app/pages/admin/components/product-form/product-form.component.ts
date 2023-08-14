@@ -23,6 +23,7 @@ import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 import { ProductsActions } from 'app/state/products/products.actions';
 import { selectProductSubmitting } from 'app/state/products/products.selectors';
 import { controlHasError, getControlError } from 'utils/form/form.utils';
+import { PRODUCT_CATEGORIES } from 'core/configs/product-category.config';
 
 interface ProductDialogData {
   product?: Product;
@@ -126,19 +127,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   }
 
   // TODO: fetch on startup and select from store
-  public productCategories: SelectOption[] = [
-    { value: ProductCategory.Soups, label: $localize`:@@soups:Soups` },
-    {
-      value: ProductCategory.SecondCourses,
-      label: $localize`:@@secondCourses:Second courses`,
-    },
-    { value: ProductCategory.Salads, label: $localize`:@@salads:Salads` },
-    { value: ProductCategory.Snacks, label: $localize`:@@snacks:Snacks` },
-    { value: ProductCategory.Drinks, label: $localize`:@@drinks:Drinks` },
-    { value: ProductCategory.Desserts, label: $localize`:@@desserts:Desserts` },
-  ];
-
-  // TODO: fetch on startup and select from store
   public weightUnits: SelectOption[] = [
     { value: UnitOfWeight.Grams, label: $localize`:@@grams:g` },
     { value: UnitOfWeight.Milliliters, label: $localize`:@@milliliters:ml` },
@@ -230,6 +218,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private store: Store,
     public dialogRef: MatDialogRef<ProductFormComponent>,
+    @Inject(PRODUCT_CATEGORIES) public productCategories: ProductCategory[],
     @Inject(MAT_DIALOG_DATA) private data?: ProductDialogData
   ) {}
 
