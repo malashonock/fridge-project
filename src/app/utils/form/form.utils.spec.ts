@@ -21,6 +21,17 @@ describe('form utils', () => {
 
       expect(fn('missingChild.required')).toBeNull();
     });
+
+    it('given a nested child control path, should correctly recognize it', () => {
+      const leaf = new FormControl('a', [Validators.minLength(2)]);
+      const form = new FormGroup({
+        childL1: new FormGroup({
+          leaf,
+        }),
+      });
+      const fn = controlHasError.bind(form);
+      expect(fn('childL1.leaf.minlength')).toBe(true);
+    });
   });
 
   describe('getControlError', () => {
@@ -52,6 +63,37 @@ describe('form utils', () => {
       const fn = getControlError.bind(form);
 
       expect(fn('missingChild.minlength', 'requiredLength')).toBeNull();
+    });
+
+    it('given a nested child control path, should correctly recognize it', () => {
+      const leaf = new FormControl('a', [Validators.minLength(2)]);
+      const form = new FormGroup({
+        childL1: new FormGroup({
+          leaf,
+        }),
+      });
+      const fn = getControlError.bind(form);
+      expect(fn('childL1.leaf.minlength', 'requiredLength')).toBe(2);
+    });
+
+    it('given a nested error prop path, should drill down correctly', () => {
+      const leaf = new FormControl('a');
+      const form = new FormGroup({
+        childL1: new FormGroup({
+          leaf,
+        }),
+      });
+      const fn = getControlError.bind(form);
+      leaf.setErrors({
+        errorCode: {
+          errorPropL1: {
+            errorPropL2: 'Error message',
+          },
+        },
+      });
+      expect(fn('childL1.leaf.errorCode', 'errorPropL1.errorPropL2')).toBe(
+        'Error message'
+      );
     });
   });
 });
