@@ -10,10 +10,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import {
+  MatPaginatorIntl,
+  MatPaginatorModule,
+} from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { A11yModule } from '@angular/cdk/a11y';
+import { matPaginatorIntl } from './configs/mat-paginator-intl.config';
 
 const materialModules = [
   MatFormFieldModule,
@@ -36,5 +40,6 @@ const materialModules = [
 @NgModule({
   imports: [...materialModules],
   exports: [...materialModules],
+  providers: [{ provide: MatPaginatorIntl, useValue: matPaginatorIntl }],
 })
 export class MaterialModule {}
