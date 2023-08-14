@@ -16,7 +16,7 @@
         id="image"
         formControlName="image"
       ></app-image-uploader>
-      <mat-error *ngIf="form.get('image')?.hasError('fileType')">
+      <mat-error *ngIf="controlHasError('image.fileType')">
         The uploaded file is not a valid image
       </mat-error>
     </mat-form-field>
@@ -37,7 +37,7 @@
           [errorStateMatcher]="earlyErrorStateMatcher"
           cdkFocusInitial
         />
-        <mat-error *ngIf="form.get('name')?.hasError('required')">
+        <mat-error *ngIf="controlHasError('name.required')">
           Product name is required
         </mat-error>
       </mat-form-field>
@@ -56,7 +56,7 @@
             >{{ productCategory.label }}</mat-option
           >
         </mat-select>
-        <mat-error *ngIf="form.get('category')?.hasError('required')">
+        <mat-error *ngIf="controlHasError('category.required')">
           Product category is required
         </mat-error>
       </mat-form-field>
@@ -76,16 +76,16 @@
           formControlName="price"
           [errorStateMatcher]="earlyErrorStateMatcher"
         />
-        <mat-error *ngIf="form.get('price')?.hasError('required')">
+        <mat-error *ngIf="controlHasError('price.required')">
           Product price is required
         </mat-error>
-        <mat-error *ngIf="form.get('price')?.hasError('isNaN')">
+        <mat-error *ngIf="controlHasError('price.isNaN')">
           Product price must be a valid number
         </mat-error>
-        <mat-error *ngIf="form.get('price')?.hasError('fractionOverflow')">
+        <mat-error *ngIf="controlHasError('price.fractionOverflow')">
           Product price granularity is 0.01 BYN
         </mat-error>
-        <mat-error *ngIf="form.get('price')?.hasError('min')">
+        <mat-error *ngIf="controlHasError('price.min')">
           Product price cannot be negative
         </mat-error>
       </mat-form-field>
@@ -127,10 +127,10 @@
           [formControlName]="nutrient"
           [errorStateMatcher]="earlyErrorStateMatcher"
         />
-        <mat-error *ngIf="form.get('nutrients.' + nutrient)?.hasError('isNaN')">
+        <mat-error *ngIf="controlHasError('nutrients.' + nutrient + '.isNaN')">
           {{ nutrient | titlecase }} content must be a valid number
         </mat-error>
-        <mat-error *ngIf="form.get('nutrients.' + nutrient)?.hasError('min')">
+        <mat-error *ngIf="controlHasError('nutrients.' + nutrient + '.min')">
           {{ nutrient | titlecase }} content cannot be negative
         </mat-error>
       </mat-form-field>
@@ -176,21 +176,22 @@
       </mat-form-field>
 
       <div class="combo-field-errors">
-        <ng-container *ngIf="form.get('weight')?.hasError('partiallyFilled')">
+        <ng-container *ngIf="controlHasError('weight.partiallyFilled')">
           <mat-error
             *ngFor="
-              let emptyFieldName of form
-                .get('weight')!
-                .getError('partiallyFilled').emptySubcontrols
+              let emptyFieldName of getControlError(
+                'weight.partiallyFilled',
+                'emptySubcontrols'
+              )
             "
           >
             Weight {{ emptyFieldName }} is required
           </mat-error>
         </ng-container>
-        <mat-error *ngIf="form.get('weight.value')?.hasError('isNaN')">
+        <mat-error *ngIf="controlHasError('weight.value.isNaN')">
           Weight value must be a valid number
         </mat-error>
-        <mat-error *ngIf="form.get('weight.value')?.hasError('min')">
+        <mat-error *ngIf="controlHasError('weight.value.min')">
           Weight value cannot be negative
         </mat-error>
       </div>
@@ -211,10 +212,10 @@
         formControlName="kiloCalories"
         [errorStateMatcher]="earlyErrorStateMatcher"
       />
-      <mat-error *ngIf="form.get('kiloCalories')?.hasError('isNaN')">
+      <mat-error *ngIf="controlHasError('kiloCalories.isNaN')">
         Energy value must be a valid number
       </mat-error>
-      <mat-error *ngIf="form.get('kiloCalories')?.hasError('min')">
+      <mat-error *ngIf="controlHasError('kiliCalories.min')">
         Energy value cannot be negative
       </mat-error>
     </mat-form-field>
@@ -244,17 +245,15 @@
         <ng-container
           *ngFor="let period of ['months', 'weeks', 'days', 'hours']"
         >
-          <mat-error *ngIf="form.get('shelfLife.' + period)?.hasError('isNaN')">
+          <mat-error *ngIf="controlHasError('shelfLife.' + period + '.isNaN')">
             {{ period | titlecase }} value must be a valid number
           </mat-error>
           <mat-error
-            *ngIf="
-              form.get('shelfLife.' + period)?.hasError('fractionOverflow')
-            "
+            *ngIf="controlHasError('shelfLife.' + period + '.fractionOverflow')"
           >
             {{ period | titlecase }} value must be an integer
           </mat-error>
-          <mat-error *ngIf="form.get('shelfLife.' + period)?.hasError('min')">
+          <mat-error *ngIf="controlHasError('shelfLife.' + period + '.min')">
             {{ period | titlecase }} value cannot be negative
           </mat-error>
         </ng-container>

@@ -22,6 +22,7 @@ import { EarlyErrorStateMatcher } from 'core/classes/early-error-state-matcher/e
 import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 import { ProductsActions } from 'app/state/products/products.actions';
 import { selectProductSubmitting } from 'app/state/products/products.selectors';
+import { controlHasError, getControlError } from 'utils/form/form.utils';
 
 interface ProductDialogData {
   product?: Product;
@@ -233,4 +234,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
     this.submitted$.next(true);
   }
+
+  public controlHasError = controlHasError.bind(this.form);
+  public getControlError = getControlError.bind(this.form);
 }
