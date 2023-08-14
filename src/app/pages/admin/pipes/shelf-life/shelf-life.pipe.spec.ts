@@ -1,7 +1,7 @@
 import { ShelfLife } from 'core/models/product/shelf-life.interface';
 import { ShelfLifePipe } from './shelf-life.pipe';
 
-describe('PropsConcatPipe', () => {
+describe('ShelfLifePipe', () => {
   let pipe: ShelfLifePipe;
 
   beforeEach(() => {
@@ -20,7 +20,7 @@ describe('PropsConcatPipe', () => {
       hours: 4,
     };
 
-    expect(pipe.transform(shelfLife)).toBe('1m 2w 3d 4h');
+    expect(pipe.transform(shelfLife)).toBe('1 mo, 2 wk, 3 d, 4 h');
   });
 
   it('should disregard null key-value pairs', () => {
@@ -30,7 +30,7 @@ describe('PropsConcatPipe', () => {
       days: 3,
       hours: 4,
     };
-    expect(pipe.transform(shelfLife)).toBe('3d 4h');
+    expect(pipe.transform(shelfLife)).toBe('3 d, 4 h');
 
     shelfLife = {
       months: null,
