@@ -18,7 +18,7 @@
       i18n="@@userNameErrorMinLength"
     >
       User name must be no shorter than
-      {{ getControlError("userName.minlength.requiredLength") }}
+      {{ getControlError("userName.minlength", "requiredLength") }}
       {getControlError('userName.minlength.requiredLength'), plural, =1 {symbol}
       other {symbols}}
     </mat-error>

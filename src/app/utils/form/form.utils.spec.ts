@@ -30,10 +30,10 @@ describe('form utils', () => {
         child,
       });
       const fn = getControlError.bind(form);
-      expect(fn('child.minlength.requiredLength')).toBe(2);
+      expect(fn('child.minlength', 'requiredLength')).toBe(2);
 
       child.setValue('abc');
-      expect(fn('child.minlength.requiredLength')).toBeNull();
+      expect(fn('child.minlength', 'requiredLength')).toBeNull();
     });
 
     it('given an invalid error property, should return null', () => {
@@ -41,17 +41,17 @@ describe('form utils', () => {
       const form = new FormGroup({
         child,
       });
-      const fn = controlHasError.bind(form);
+      const fn = getControlError.bind(form);
 
       // Note the uppercase L in minLength - it's incorrect
-      expect(fn('missingChild.minLength.requiredLength')).toBeNull();
+      expect(fn('missingChild.minLength', 'requiredLength')).toBeNull();
     });
 
     it('given an invalid child control name, should return null', () => {
       const form = new FormGroup({});
-      const fn = controlHasError.bind(form);
+      const fn = getControlError.bind(form);
 
-      expect(fn('missingChild.minlength.requiredLength')).toBeNull();
+      expect(fn('missingChild.minlength', 'requiredLength')).toBeNull();
     });
   });
 });
