@@ -157,6 +157,10 @@
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">34</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="productNameErrorRequired" datatype="html">
         <source> Product name is required </source>
@@ -170,6 +174,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">57</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="linenumber">21,23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="categoryErrorRequired" datatype="html">
@@ -185,12 +193,20 @@
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">80</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="BYN" datatype="html">
         <source>BYN</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">82</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="priceErrorRequired" datatype="html">
@@ -240,6 +256,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">176</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="linenumber">42,44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="value" datatype="html">
@@ -303,6 +323,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">288</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="linenumber">58,60</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shelfLifePeriodErrorNaN" datatype="html">
@@ -484,6 +508,34 @@
           <context context-type="linenumber">184</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="actions" datatype="html">
+        <source> Actions </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="linenumber">93,95</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editProduct" datatype="html">
+        <source>Edit product</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deleteProduct" datatype="html">
+        <source>Delete product</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="linenumber">110</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="noDataMatchingFilter" datatype="html">
+        <source> No products matching the filter &quot;<x id="INTERPOLATION" equiv-text="{{ dataSource.filter }}"/>&quot; </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
+          <context context-type="linenumber">141,143</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="productsPageHeader" datatype="html">
         <source>Manage products</source>
         <context-group purpose="location">
@@ -496,6 +548,34 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/products/products.component.html</context>
           <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="monthsAbbrev" datatype="html">
+        <source>mo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/pipes/shelf-life/shelf-life.pipe.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weeksAbbrev" datatype="html">
+        <source>wk</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/pipes/shelf-life/shelf-life.pipe.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="daysAbbrev" datatype="html">
+        <source>d</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/pipes/shelf-life/shelf-life.pipe.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hoursAbbrev" datatype="html">
+        <source>h</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/pipes/shelf-life/shelf-life.pipe.ts</context>
+          <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="logIn" datatype="html">

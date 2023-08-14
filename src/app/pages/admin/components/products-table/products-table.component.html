@@ -1,18 +1,34 @@
 <div class="table-container">
   <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort>
     <ng-container matColumnDef="name" sticky>
-      <th mat-header-cell mat-sort-header *matHeaderCellDef>Product name</th>
+      <th
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef
+        i18n="@@productName"
+      >
+        Product name
+      </th>
       <td mat-cell *matCellDef="let product">{{ product.name }}</td>
     </ng-container>
 
     <ng-container matColumnDef="category">
-      <th mat-header-cell mat-sort-header *matHeaderCellDef>Category</th>
+      <th
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef
+        i18n="@@productCategory"
+      >
+        Product category
+      </th>
       <td mat-cell *matCellDef="let product">{{ product.category }}</td>
     </ng-container>
 
     <ng-container matColumnDef="price">
       <th mat-header-cell mat-sort-header *matHeaderCellDef class="align-right">
-        Price, BYN
+        <span i18n="@@price">Price</span>
+        <span>,&nbsp;</span>
+        <span i18n="@@BYN">BYN</span>
       </th>
       <td
         mat-cell
@@ -23,16 +39,25 @@
     </ng-container>
 
     <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef class="align-right">Weight</th>
+      <th mat-header-cell *matHeaderCellDef class="align-right" i18n="@@weight">
+        Weight
+      </th>
       <td mat-cell *matCellDef="let product" class="align-right">
         <ng-container *ngIf="product.weight.value; else nodata">
-          {{ product.weight.value + " " + product.weight.unit }}
+          {{ product.weight.value + " " + (product.weight.unit | weightUnit) }}
         </ng-container>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="shelfLife">
-      <th mat-header-cell *matHeaderCellDef class="align-right">Shelf life</th>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="align-right"
+        i18n="@@shelfLife"
+      >
+        Shelf life
+      </th>
       <td mat-cell *matCellDef="let product" class="align-right">
         <ng-container *ngIf="product.shelfLife | any; else nodata">
           {{ product.shelfLife | shelfLife }}
@@ -60,11 +85,19 @@
     </ng-container>
 
     <ng-container matColumnDef="actions" stickyEnd>
-      <th mat-header-cell *matHeaderCellDef class="align-center">Actions</th>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="align-center"
+        i18n="@@actions"
+      >
+        Actions
+      </th>
       <td mat-cell *matCellDef="let product" class="align-center">
         <div class="action-btn-container">
           <button
             mat-icon-button
+            i18n-matTooltip="@@editProduct"
             matTooltip="Edit product"
             class="action-btn"
             (click)="openEditProductDialog(product, $event)"
@@ -73,6 +106,7 @@
           </button>
           <button
             mat-icon-button
+            i18n-matTooltip="@@deleteProduct"
             matTooltip="Delete product"
             class="action-btn"
             (click)="openDeleteProductDialog(product, $event)"
@@ -100,8 +134,12 @@
     ></tr>
 
     <tr *matNoDataRow>
-      <td [attr.colspan]="tableColumns.length" class="nodata-row">
-        No data matching the filter "{{ dataSource.filter }}"
+      <td
+        [attr.colspan]="tableColumns.length"
+        class="nodata-row"
+        i18n="@@noDataMatchingFilter"
+      >
+        No products matching the filter "{{ dataSource.filter }}"
       </td>
     </tr>
   </table>
