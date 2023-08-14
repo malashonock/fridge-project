@@ -21,7 +21,9 @@
       >
         Product category
       </th>
-      <td mat-cell *matCellDef="let product">{{ product.category }}</td>
+      <td mat-cell *matCellDef="let product">
+        {{ product.category | productCategory }}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="price">
