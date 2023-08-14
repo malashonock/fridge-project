@@ -2,7 +2,31 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
-    <trans-unit id="productImageAltText" datatype="html">
+      <trans-unit id="products" datatype="html">
+        <source>Products</source>
+        <target>Продукты</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/configs/admin-page-menu.config.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fridges" datatype="html">
+        <source>Fridges</source>
+        <target>Холодильники</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/configs/admin-page-menu.config.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="map" datatype="html">
+        <source>Map</source>
+        <target>Карта</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/configs/admin-page-menu.config.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="productImageAltText" datatype="html">
         <source>Product photo</source>
         <target>Фото продукта</target>
         <context-group purpose="location">
