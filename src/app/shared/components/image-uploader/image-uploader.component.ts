@@ -50,7 +50,7 @@ export class ImageUploaderComponent
 
   @Input() public id = '';
 
-  private _placehoder = 'Select image';
+  private _placehoder = $localize`:@@selectImage:Select image`;
   public get placeholder(): string {
     return this._placehoder;
   }

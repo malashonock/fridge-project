@@ -1082,6 +1082,24 @@
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="discardImage" datatype="html">
+        <source> Discard image </source>
+        <target>Удалить изображение</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/shared/components/image-uploader/image-uploader.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="selectImage" datatype="html">
+        <source>Select image</source>
+        <target>Выбрать изображение</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/shared/components/image-uploader/image-uploader.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>
