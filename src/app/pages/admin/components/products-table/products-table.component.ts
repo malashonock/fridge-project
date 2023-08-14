@@ -184,7 +184,7 @@ export class ProductsTableComponent
 
     const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
       data: {
-        itemType: 'product',
+        itemType: $localize`:@@product:product`,
       },
     });
 

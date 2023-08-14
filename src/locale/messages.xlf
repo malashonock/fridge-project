@@ -544,6 +544,13 @@
           <context context-type="linenumber">141,143</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="product" datatype="html">
+        <source>product</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.ts</context>
+          <context context-type="linenumber">187</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="productsPageHeader" datatype="html">
         <source>Manage products</source>
         <context-group purpose="location">
@@ -779,6 +786,48 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/auth/components/signup-form/signup-form.component.ts</context>
           <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmDelete" datatype="html">
+        <source>Confirm delete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/confirm-delete/confirm-delete.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deletePrompt" datatype="html">
+        <source> Are you sure you want to delete the selected <x id="INTERPOLATION" equiv-text="{{ itemType }}"/>? </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/confirm-delete/confirm-delete.component.html</context>
+          <context context-type="linenumber">7,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deleteWarning" datatype="html">
+        <source>This action is irreversible.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/confirm-delete/confirm-delete.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="delete" datatype="html">
+        <source> Delete </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/confirm-delete/confirm-delete.component.html</context>
+          <context context-type="linenumber">20,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cancel" datatype="html">
+        <source> Cancel </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/confirm-delete/confirm-delete.component.html</context>
+          <context context-type="linenumber">29,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="item" datatype="html">
+        <source>item</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/confirm-delete/confirm-delete.component.ts</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
     </body>

@@ -191,7 +191,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">23,24</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="productName" datatype="html">
@@ -205,7 +205,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/products-table/products-table.component.html</context>
-          <context context-type="linenumber">9,11</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="productNameErrorRequired" datatype="html">
@@ -214,7 +214,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">47,48</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="productCategory" datatype="html">
@@ -228,7 +228,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/products-table/products-table.component.html</context>
-          <context context-type="linenumber">21,23</context>
+          <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="categoryErrorRequired" datatype="html">
@@ -237,7 +237,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">69,70</context>
+          <context context-type="linenumber">69</context>
         </context-group>
       </trans-unit>
       <trans-unit id="price" datatype="html">
@@ -676,7 +676,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/products-table/products-table.component.html</context>
-          <context context-type="linenumber">93,95</context>
+          <context context-type="linenumber">93</context>
         </context-group>
       </trans-unit>
       <trans-unit id="editProduct" datatype="html">
@@ -705,7 +705,16 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/products-table/products-table.component.html</context>
-          <context context-type="linenumber">141,143</context>
+          <context context-type="linenumber">141</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="product" datatype="html">
+        <source>product</source>
+        <target>продукт</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products-table/products-table.component.ts</context>
+          <context context-type="linenumber">187</context>
         </context-group>
       </trans-unit>
       <trans-unit id="productsPageHeader" datatype="html">
@@ -924,7 +933,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/auth/components/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">39,41</context>
+          <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="emailErrorInvalid" datatype="html">
@@ -933,7 +942,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/auth/components/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">45,47</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="role" datatype="html">
@@ -951,7 +960,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/auth/components/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">60,62</context>
+          <context context-type="linenumber">60</context>
         </context-group>
       </trans-unit>
       <trans-unit id="passwordConfirm" datatype="html">
@@ -969,7 +978,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/auth/components/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">94,96</context>
+          <context context-type="linenumber">94</context>
         </context-group>
       </trans-unit>
       <trans-unit id="passwordsErrorMismatch" datatype="html">
@@ -1015,6 +1024,62 @@
           <context context-type="sourcefile">
             src/app/pages/auth/components/signup-form/signup-form.component.ts</context>
           <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmDelete" datatype="html">
+        <source>Confirm delete</source>
+        <target>Подтвердите удаление</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/shared/components/confirm-delete/confirm-delete.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deletePrompt" datatype="html">
+        <source> Are you sure you want to delete the selected <x id="INTERPOLATION"
+            equiv-text="{{ itemType }}" />? </source>
+        <target>Вы уверены, что хотите удалить выбранный <x id="INTERPOLATION"
+            equiv-text="{{ itemType }}" />?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/shared/components/confirm-delete/confirm-delete.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deleteWarning" datatype="html">
+        <source>This action is irreversible.</source>
+        <target>Отмена этого действия невозможна.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/shared/components/confirm-delete/confirm-delete.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="delete" datatype="html">
+        <source> Delete </source>
+        <target>Удалить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/shared/components/confirm-delete/confirm-delete.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cancel" datatype="html">
+        <source> Cancel </source>
+        <target>Отмена</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/shared/components/confirm-delete/confirm-delete.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="item" datatype="html">
+        <source>item</source>
+        <target>элемент</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/shared/components/confirm-delete/confirm-delete.component.ts</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
     </body>
