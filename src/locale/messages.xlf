@@ -36,12 +36,20 @@
           <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">260</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="kiloCalories" datatype="html">
         <source>kcal</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">262</context>
         </context-group>
       </trans-unit>
       <trans-unit id="nutrients" datatype="html">
@@ -50,12 +58,20 @@
           <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">16</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">139</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="proteins" datatype="html">
         <source>Proteins</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">150</context>
         </context-group>
       </trans-unit>
       <trans-unit id="grams" datatype="html">
@@ -72,12 +88,24 @@
           <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">30</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">142,141</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">143</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="fats" datatype="html">
         <source>Fats</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">155</context>
         </context-group>
       </trans-unit>
       <trans-unit id="carbs" datatype="html">
@@ -86,12 +114,20 @@
           <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">29</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">160</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="ingredients" datatype="html">
         <source>Ingredients</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
           <context context-type="linenumber">37</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="noPhoto" datatype="html">
@@ -101,18 +137,358 @@
           <context context-type="linenumber">42</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="productImage" datatype="html">
+        <source>Product image</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="imageErrorFileType" datatype="html">
+        <source> The uploaded file is not a valid image </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="productName" datatype="html">
+        <source>Product name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="productNameErrorRequired" datatype="html">
+        <source> Product name is required </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">47,48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="productCategory" datatype="html">
+        <source>Product category</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categoryErrorRequired" datatype="html">
+        <source> Product category is required </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">69,70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="price" datatype="html">
+        <source>Price</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BYN" datatype="html">
+        <source>BYN</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="priceErrorRequired" datatype="html">
+        <source> Product price is required </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">96,97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="priceErrorNaN" datatype="html">
+        <source> Product price must be a valid number </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">102,103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="priceErrorGranularity" datatype="html">
+        <source> Product price granularity is 0.01 BYN </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">108,109</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="priceErrorNegative" datatype="html">
+        <source> Product price cannot be negative </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">114,115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nutrientErrorNaN" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{ nutrient.labelGenitive }}"/> content must be a valid number </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">163,164</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nutrientErrorNegative" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{ nutrient.labelGenitive }}"/> content cannot be negative </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">169,170</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weight" datatype="html">
+        <source>Weight</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">176</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="value" datatype="html">
+        <source>Value</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">183</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unit" datatype="html">
+        <source>Unit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">199</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weightValueErrorRequired" datatype="html">
+        <source> Weight value is required </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">224,225</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weightUnitErrorRequired" datatype="html">
+        <source> Weight unit is required </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">235,236</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weightValueErrorNaN" datatype="html">
+        <source> Weight value must be a valid number </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">242,243</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weightValueErrorNegative" datatype="html">
+        <source> Weight value cannot be negative </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">248,249</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="energyValueErrorNaN" datatype="html">
+        <source> Energy value must be a valid number </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">276,277</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="energyValueErrorNegative" datatype="html">
+        <source> Energy value cannot be negative </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">282,283</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="shelfLife" datatype="html">
+        <source>Shelf life</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">288</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="shelfLifePeriodErrorNaN" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}"/> value must be a valid number </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">313,314</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="shelfLifePeriodErrorInteger" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}"/> value must be an integer </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">321,322</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="shelfLifePeriodErrorNegative" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}"/> value cannot be negative </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
+          <context context-type="linenumber">327,328</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editProductHeader" datatype="html">
+        <source>Edit product</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createProductHeader" datatype="html">
+        <source>Add new product</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="saveChanges" datatype="html">
+        <source>Save changes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">120</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createProduct" datatype="html">
+        <source>Create product</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">121</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/products/products.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="soups" datatype="html">
+        <source>Soups</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">130</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="secondCourses" datatype="html">
+        <source>Second courses</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">133</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="salads" datatype="html">
+        <source>Salads</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">135</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="snacks" datatype="html">
+        <source>Snacks</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">136</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="drinks" datatype="html">
+        <source>Drinks</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">137</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="desserts" datatype="html">
+        <source>Desserts</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">138</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="milliliters" datatype="html">
+        <source>ml</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">144</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proteinsGenitive" datatype="html">
+        <source>Proteins</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">151</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fatsGenitive" datatype="html">
+        <source>Fats</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">156</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="carbsGenitive" datatype="html">
+        <source>Carbs</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">161</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="months" datatype="html">
+        <source>Months</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">168</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="monthsGenitive" datatype="html">
+        <source>Months</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">169</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weeks" datatype="html">
+        <source>Weeks</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">173</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weeksGenitive" datatype="html">
+        <source>Weeks</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">174</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="days" datatype="html">
+        <source>Days</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">178</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="daysGenitive" datatype="html">
+        <source>Days</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">179</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours" datatype="html">
+        <source>Hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">183</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hoursGenitive" datatype="html">
+        <source>Hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
+          <context context-type="linenumber">184</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="productsPageHeader" datatype="html">
         <source>Manage products</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/products/products.component.html</context>
           <context context-type="linenumber">1</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="createProduct" datatype="html">
-        <source>Add new product</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/products/products.component.html</context>
-          <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="productsSearchBoxPlaceholder" datatype="html">
@@ -175,7 +551,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="userNameErrorMinLength" datatype="html">
-        <source> User name must be no shorter than <x id="INTERPOLATION" equiv-text="{{ getControlError(&quot;userName.minlength.requiredLength&quot;) }}"/> <x id="ICU" equiv-text="{getControlError(&apos;userName.minlength.requiredLength&apos;), plural, =1 {symbol}
+        <source> User name must be no shorter than <x id="INTERPOLATION" equiv-text="{{ getControlError(&quot;userName.minlength&quot;, &quot;requiredLength&quot;) }}"/> <x id="ICU" equiv-text="{getControlError(&apos;userName.minlength.requiredLength&apos;), plural, =1 {symbol}
       other {symbols}}" xid="1700218600521540854"/> </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/auth/components/login-form/login-form.component.html</context>

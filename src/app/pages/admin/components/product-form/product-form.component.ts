@@ -110,11 +110,15 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   });
 
   public get title(): string {
-    return this.product ? 'Edit product' : 'Add new product';
+    return this.product
+      ? $localize`:@@editProductHeader:Edit product`
+      : $localize`:@@createProductHeader:Add new product`;
   }
 
   public get submitText(): string {
-    return this.product ? 'Save changes' : 'Create product';
+    return this.product
+      ? $localize`:@@saveChanges:Save changes`
+      : $localize`:@@createProduct:Create product`;
   }
 
   private get mode(): FormMode {
@@ -123,18 +127,62 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
   // TODO: fetch on startup and select from store
   public productCategories: SelectOption[] = [
-    { value: ProductCategory.Soups, label: 'Soups' },
-    { value: ProductCategory.SecondCourses, label: 'Second courses' },
-    { value: ProductCategory.Salads, label: 'Salads' },
-    { value: ProductCategory.Snacks, label: 'Snacks' },
-    { value: ProductCategory.Drinks, label: 'Drinks' },
-    { value: ProductCategory.Desserts, label: 'Desserts' },
+    { value: ProductCategory.Soups, label: $localize`:@@soups:Soups` },
+    {
+      value: ProductCategory.SecondCourses,
+      label: $localize`:@@secondCourses:Second courses`,
+    },
+    { value: ProductCategory.Salads, label: $localize`:@@salads:Salads` },
+    { value: ProductCategory.Snacks, label: $localize`:@@snacks:Snacks` },
+    { value: ProductCategory.Drinks, label: $localize`:@@drinks:Drinks` },
+    { value: ProductCategory.Desserts, label: $localize`:@@desserts:Desserts` },
   ];
 
   // TODO: fetch on startup and select from store
   public weightUnits: SelectOption[] = [
-    { value: UnitOfWeight.Grams, label: 'g' },
-    { value: UnitOfWeight.Milliliters, label: 'ml' },
+    { value: UnitOfWeight.Grams, label: $localize`:@@grams:g` },
+    { value: UnitOfWeight.Milliliters, label: $localize`:@@milliliters:ml` },
+  ];
+
+  public nutrients: SelectOption[] = [
+    {
+      value: 'proteins',
+      label: $localize`:@@proteins:Proteins`,
+      labelGenitive: $localize`:@@proteinsGenitive:Proteins`,
+    },
+    {
+      value: 'fats',
+      label: $localize`:@@fats:Fats`,
+      labelGenitive: $localize`:@@fatsGenitive:Fats`,
+    },
+    {
+      value: 'carbs',
+      label: $localize`:@@carbs:Carbs`,
+      labelGenitive: $localize`:@@carbsGenitive:Carbs`,
+    },
+  ];
+
+  public shelfLifePeriods: SelectOption[] = [
+    {
+      value: 'months',
+      label: $localize`:@@months:Months`,
+      labelGenitive: $localize`:@@monthsGenitive:Months`,
+    },
+    {
+      value: 'weeks',
+      label: $localize`:@@weeks:Weeks`,
+      labelGenitive: $localize`:@@weeksGenitive:Weeks`,
+    },
+    {
+      value: 'days',
+      label: $localize`:@@days:Days`,
+      labelGenitive: $localize`:@@daysGenitive:Days`,
+    },
+    {
+      value: 'hours',
+      label: $localize`:@@hours:Hours`,
+      labelGenitive: $localize`:@@hoursGenitive:Hours`,
+    },
   ];
 
   public earlyErrorStateMatcher = new EarlyErrorStateMatcher();

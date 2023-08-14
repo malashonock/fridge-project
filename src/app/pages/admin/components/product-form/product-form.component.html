@@ -11,12 +11,15 @@
       subscriptSizing="dynamic"
       class="form-fields__image"
     >
-      <mat-label>Product image</mat-label>
+      <mat-label i18n="@@productImage">Product image</mat-label>
       <app-image-uploader
         id="image"
         formControlName="image"
       ></app-image-uploader>
-      <mat-error *ngIf="controlHasError('image.fileType')">
+      <mat-error
+        *ngIf="controlHasError('image.fileType')"
+        i18n="@@imageErrorFileType"
+      >
         The uploaded file is not a valid image
       </mat-error>
     </mat-form-field>
@@ -28,7 +31,7 @@
         subscriptSizing="dynamic"
         class="form-fields__name"
       >
-        <mat-label>Product name</mat-label>
+        <mat-label i18n="@@productName">Product name</mat-label>
         <input
           matInput
           id="name"
@@ -37,7 +40,10 @@
           [errorStateMatcher]="earlyErrorStateMatcher"
           cdkFocusInitial
         />
-        <mat-error *ngIf="controlHasError('name.required')">
+        <mat-error
+          *ngIf="controlHasError('name.required')"
+          i18n="@@productNameErrorRequired"
+        >
           Product name is required
         </mat-error>
       </mat-form-field>
@@ -48,7 +54,7 @@
         subscriptSizing="dynamic"
         class="form-fields__category"
       >
-        <mat-label>Product category</mat-label>
+        <mat-label i18n="@@productCategory">Product category</mat-label>
         <mat-select id="category" formControlName="category">
           <mat-option
             *ngFor="let productCategory of productCategories"
@@ -56,7 +62,10 @@
             >{{ productCategory.label }}</mat-option
           >
         </mat-select>
-        <mat-error *ngIf="controlHasError('category.required')">
+        <mat-error
+          *ngIf="controlHasError('category.required')"
+          i18n="@@categoryErrorRequired"
+        >
           Product category is required
         </mat-error>
       </mat-form-field>
@@ -67,7 +76,11 @@
         subscriptSizing="dynamic"
         class="form-fields__price"
       >
-        <mat-label>Price, BYN</mat-label>
+        <mat-label>
+          <span i18n="@@price">Price</span>
+          <span>, </span>
+          <span i18n="@@BYN">BYN</span>
+        </mat-label>
         <input
           type="text"
           appNumericInput
@@ -76,16 +89,28 @@
           formControlName="price"
           [errorStateMatcher]="earlyErrorStateMatcher"
         />
-        <mat-error *ngIf="controlHasError('price.required')">
+        <mat-error
+          *ngIf="controlHasError('price.required')"
+          i18n="@@priceErrorRequired"
+        >
           Product price is required
         </mat-error>
-        <mat-error *ngIf="controlHasError('price.isNaN')">
+        <mat-error
+          *ngIf="controlHasError('price.isNaN')"
+          i18n="@@priceErrorNaN"
+        >
           Product price must be a valid number
         </mat-error>
-        <mat-error *ngIf="controlHasError('price.fractionOverflow')">
+        <mat-error
+          *ngIf="controlHasError('price.fractionOverflow')"
+          i18n="@@priceErrorGranularity"
+        >
           Product price granularity is 0.01 BYN
         </mat-error>
-        <mat-error *ngIf="controlHasError('price.min')">
+        <mat-error
+          *ngIf="controlHasError('price.min')"
+          i18n="@@priceErrorNegative"
+        >
           Product price cannot be negative
         </mat-error>
       </mat-form-field>
@@ -97,7 +122,7 @@
       subscriptSizing="dynamic"
       class="form-fields__ingredients"
     >
-      <mat-label>Ingredients</mat-label>
+      <mat-label i18n="@@ingredients">Ingredients</mat-label>
       <textarea
         matInput
         id="ingredients"
@@ -110,42 +135,52 @@
 
     <!-- Nutrients -->
     <fieldset formGroupName="nutrients" class="form-fields__nutrients">
-      <legend>Nutrients per 100 g, g</legend>
+      <legend>
+        <span i18n="@@nutrients">Nutrients (per 100 g)</span>
+        <span>, </span>
+        <span i18n="@@grams">g</span>
+      </legend>
 
       <mat-form-field
-        *ngFor="let nutrient of ['proteins', 'fats', 'carbs']"
+        *ngFor="let nutrient of nutrients"
         appearance="outline"
         subscriptSizing="dynamic"
-        [class]="'form-fields__nutrient nutrients__' + nutrient"
+        [class]="'form-fields__nutrient nutrients__' + nutrient.value"
       >
-        <mat-label>{{ nutrient | titlecase }}</mat-label>
+        <mat-label>{{ nutrient.label | titlecase }}</mat-label>
         <input
           type="text"
           appNumericInput
-          [id]="'nutrient-' + nutrient"
-          [name]="'nutrient-' + nutrient"
-          [formControlName]="nutrient"
+          [id]="'nutrient-' + nutrient.value"
+          [name]="'nutrient-' + nutrient.value"
+          [formControlName]="nutrient.value"
           [errorStateMatcher]="earlyErrorStateMatcher"
         />
-        <mat-error *ngIf="controlHasError('nutrients.' + nutrient + '.isNaN')">
-          {{ nutrient | titlecase }} content must be a valid number
+        <mat-error
+          *ngIf="controlHasError('nutrients.' + nutrient.value + '.isNaN')"
+          i18n="@@nutrientErrorNaN"
+        >
+          {{ nutrient.labelGenitive }} content must be a valid number
         </mat-error>
-        <mat-error *ngIf="controlHasError('nutrients.' + nutrient + '.min')">
-          {{ nutrient | titlecase }} content cannot be negative
+        <mat-error
+          *ngIf="controlHasError('nutrients.' + nutrient.value + '.min')"
+          i18n="@@nutrientErrorNegative"
+        >
+          {{ nutrient.labelGenitive }} content cannot be negative
         </mat-error>
       </mat-form-field>
     </fieldset>
 
     <!-- Weight -->
     <fieldset formGroupName="weight" class="form-fields__weight">
-      <legend>Weight</legend>
+      <legend i18n="@@weight">Weight</legend>
 
       <mat-form-field
         appearance="outline"
         subscriptSizing="dynamic"
         class="form-fields__weight-value combo-field-segment"
       >
-        <mat-label>Value</mat-label>
+        <mat-label i18n="@@value">Value</mat-label>
         <input
           type="text"
           appNumericInput
@@ -161,7 +196,7 @@
         subscriptSizing="dynamic"
         class="form-fields__weight-unit combo-field-segment"
       >
-        <mat-label>Unit</mat-label>
+        <mat-label i18n="@@unit">Unit</mat-label>
         <mat-select
           id="weight-unit"
           formControlName="unit"
@@ -178,20 +213,38 @@
       <div class="combo-field-errors">
         <ng-container *ngIf="controlHasError('weight.partiallyFilled')">
           <mat-error
-            *ngFor="
-              let emptyFieldName of getControlError(
+            *ngIf="
+              getControlError(
                 'weight.partiallyFilled',
                 'emptySubcontrols'
-              )
+              )?.includes('value')
             "
+            i18n="@@weightValueErrorRequired"
           >
-            Weight {{ emptyFieldName }} is required
+            Weight value is required
+          </mat-error>
+          <mat-error
+            *ngIf="
+              getControlError(
+                'weight.partiallyFilled',
+                'emptySubcontrols'
+              )?.includes('unit')
+            "
+            i18n="@@weightUnitErrorRequired"
+          >
+            Weight unit is required
           </mat-error>
         </ng-container>
-        <mat-error *ngIf="controlHasError('weight.value.isNaN')">
+        <mat-error
+          *ngIf="controlHasError('weight.value.isNaN')"
+          i18n="@@weightValueErrorNaN"
+        >
           Weight value must be a valid number
         </mat-error>
-        <mat-error *ngIf="controlHasError('weight.value.min')">
+        <mat-error
+          *ngIf="controlHasError('weight.value.min')"
+          i18n="@@weightValueErrorNegative"
+        >
           Weight value cannot be negative
         </mat-error>
       </div>
@@ -203,7 +256,11 @@
       subscriptSizing="dynamic"
       class="form-fields__energy-value"
     >
-      <mat-label>Energy value, kcal</mat-label>
+      <mat-label>
+        <span i18n="@@energyValue">Energy value</span>
+        <span>, </span>
+        <span i18n="@@kiloCalories">kcal</span></mat-label
+      >
       <input
         type="text"
         appNumericInput
@@ -212,49 +269,62 @@
         formControlName="kiloCalories"
         [errorStateMatcher]="earlyErrorStateMatcher"
       />
-      <mat-error *ngIf="controlHasError('kiloCalories.isNaN')">
+      <mat-error
+        *ngIf="controlHasError('kiloCalories.isNaN')"
+        i18n="@@energyValueErrorNaN"
+      >
         Energy value must be a valid number
       </mat-error>
-      <mat-error *ngIf="controlHasError('kiliCalories.min')">
+      <mat-error
+        *ngIf="controlHasError('kiloCalories.min')"
+        i18n="@@energyValueErrorNegative"
+      >
         Energy value cannot be negative
       </mat-error>
     </mat-form-field>
 
     <!-- Shelf life -->
     <fieldset formGroupName="shelfLife" class="form-fields__shelf-life">
-      <legend>Shelf life</legend>
+      <legend i18n="@@shelfLife">Shelf life</legend>
 
       <mat-form-field
-        *ngFor="let period of ['months', 'weeks', 'days', 'hours']"
+        *ngFor="let period of shelfLifePeriods"
         appearance="outline"
         subscriptSizing="dynamic"
-        [class]="['shelf-life__' + period, 'combo-field-segment']"
+        [class]="['shelf-life__' + period.value, 'combo-field-segment']"
       >
-        <mat-label>{{ period | titlecase }}</mat-label>
+        <mat-label>{{ period.label | titlecase }}</mat-label>
         <input
           type="text"
           appNumericInput
-          [id]="'shelf-life' + period"
-          [name]="'shelf-life' + period"
-          [formControlName]="period"
+          [id]="'shelf-life' + period.value"
+          [name]="'shelf-life' + period.value"
+          [formControlName]="period.value"
           [errorStateMatcher]="earlyErrorStateMatcher"
         />
       </mat-form-field>
 
       <div class="combo-field-errors">
-        <ng-container
-          *ngFor="let period of ['months', 'weeks', 'days', 'hours']"
-        >
-          <mat-error *ngIf="controlHasError('shelfLife.' + period + '.isNaN')">
-            {{ period | titlecase }} value must be a valid number
+        <ng-container *ngFor="let period of shelfLifePeriods">
+          <mat-error
+            *ngIf="controlHasError('shelfLife.' + period.value + '.isNaN')"
+            i18n="@@shelfLifePeriodErrorNaN"
+          >
+            {{ period.labelGenitive }} value must be a valid number
           </mat-error>
           <mat-error
-            *ngIf="controlHasError('shelfLife.' + period + '.fractionOverflow')"
+            *ngIf="
+              controlHasError('shelfLife.' + period.value + '.fractionOverflow')
+            "
+            i18n="@@shelfLifePeriodErrorInteger"
           >
-            {{ period | titlecase }} value must be an integer
+            {{ period.labelGenitive }} value must be an integer
           </mat-error>
-          <mat-error *ngIf="controlHasError('shelfLife.' + period + '.min')">
-            {{ period | titlecase }} value cannot be negative
+          <mat-error
+            *ngIf="controlHasError('shelfLife.' + period.value + '.min')"
+            i18n="@@shelfLifePeriodErrorNegative"
+          >
+            {{ period.labelGenitive }} value cannot be negative
           </mat-error>
         </ng-container>
       </div>
