@@ -23,8 +23,8 @@ import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 import { ProductsActions } from 'app/state/products/products.actions';
 import { selectProductSubmitting } from 'app/state/products/products.selectors';
 import { controlHasError, getControlError } from 'utils/form/form.utils';
-import { PRODUCT_CATEGORIES } from 'core/configs/product-category.config';
-import { WEIGHT_UNITS } from 'core/configs/weight-unit.config';
+import { PRODUCT_CATEGORIES } from 'core/configs/product-categories.config';
+import { WEIGHT_UNITS } from 'core/configs/weight-units.config';
 
 interface ProductDialogData {
   product?: Product;

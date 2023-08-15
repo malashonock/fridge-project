@@ -8,7 +8,7 @@ import { PasswordValidator } from 'core/validators/password/password.validator';
 import { AuthActions } from 'app/state/auth/auth.actions';
 import { SignupCredentials } from 'core/models/auth/signup.interface';
 import { controlHasError, getControlError } from 'utils/form/form.utils';
-import { USER_ROLES } from 'core/configs/user-role.config';
+import { USER_ROLES } from 'core/configs/user-roles.config';
 
 @Component({
   selector: 'app-signup-form',
