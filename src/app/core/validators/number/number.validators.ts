@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-export class NumberValidator {
+export class NumberValidators {
   public static number(control: AbstractControl): ValidationErrors | null {
     return control.value && Number.isNaN(Number(control.value))
       ? {
@@ -13,7 +13,7 @@ export class NumberValidator {
 
   public static maxFractionDigits(maxFractionDigits: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      if (!control.value || NumberValidator.number(control) !== null) {
+      if (!control.value || NumberValidators.number(control) !== null) {
         return null;
       }
 
@@ -31,14 +31,14 @@ export class NumberValidator {
   }
 
   public static integer(control: AbstractControl): ValidationErrors | null {
-    return NumberValidator.maxFractionDigits(0)(control);
+    return NumberValidators.maxFractionDigits(0)(control);
   }
 
   public static greaterThan(min: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       if (
         (!control.value && control.value !== 0) ||
-        NumberValidator.number(control) !== null
+        NumberValidators.number(control) !== null
       ) {
         return null;
       }

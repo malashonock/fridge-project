@@ -11,7 +11,7 @@ import {
   endWith,
 } from 'utils/regex/regex.utils';
 
-export class EmailValidator {
+export class EmailValidators {
   public static valid(control: AbstractControl): ValidationErrors | null {
     // Alias character sequences
     const englishLetters = 'A-Za-z';

@@ -3,8 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 import { UserRole } from 'core/models/user/user-role.enum';
-import { EmailValidator } from 'core/validators/email/email.validator';
-import { PasswordValidator } from 'core/validators/password/password.validator';
+import { EmailValidators } from 'core/validators/email/email.validators';
+import { PasswordValidators } from 'core/validators/password/password.validators';
 import { AuthActions } from 'app/state/auth/auth.actions';
 import { SignupCredentials } from 'core/models/auth/signup.interface';
 import { controlHasError, getControlError } from 'utils/form/form.utils';
@@ -20,13 +20,13 @@ export class SignupFormComponent {
   public form = this.formBuilder.group(
     {
       userName: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, EmailValidator.valid]],
+      email: ['', [Validators.required, EmailValidators.valid]],
       role: [null as UserRole | null, [Validators.required]],
       password: ['', [Validators.required]],
       passwordConfirm: ['', [Validators.required]],
     },
     {
-      validators: [PasswordValidator.match('password', 'passwordConfirm')],
+      validators: [PasswordValidators.match('password', 'passwordConfirm')],
     }
   );
 

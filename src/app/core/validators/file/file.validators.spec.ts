@@ -1,9 +1,9 @@
 import { AbstractControl, FormControl } from '@angular/forms';
 
-import { FileValidator } from './file.validator';
+import { FileValidators } from './file.validators';
 import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 
-describe('FileValidator', () => {
+describe('FileValidators', () => {
   let control: AbstractControl;
 
   beforeEach(() => {
@@ -15,15 +15,15 @@ describe('FileValidator', () => {
       control.setValue(
         new FileWithUrl(new File(['test'], 'test.png', { type: 'image/png' }))
       );
-      expect(FileValidator.type('image/png')(control)).toBeNull();
-      expect(FileValidator.type('image/*')(control)).toBeNull();
+      expect(FileValidators.type('image/png')(control)).toBeNull();
+      expect(FileValidators.type('image/*')(control)).toBeNull();
     });
 
     it('should return error for files not matching the specified MIME type', () => {
       control.setValue(
         new FileWithUrl(new File(['test'], 'test.txt', { type: 'text/plain' }))
       );
-      expect(FileValidator.type('image/*')(control)).toEqual({
+      expect(FileValidators.type('image/*')(control)).toEqual({
         fileType: {
           accept: 'image/*',
           actual: 'text/plain',

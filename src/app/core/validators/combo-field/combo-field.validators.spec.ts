@@ -1,8 +1,8 @@
 import { FormControl, FormGroup } from '@angular/forms';
 
-import { ComboFieldValidator } from './combo-field.validator';
+import { ComboFieldValidators } from './combo-field.validators';
 
-describe('Combo field validator', () => {
+describe('Combo field validators', () => {
   let comboField: FormGroup;
   let subfield1: FormControl;
   let subfield2: FormControl;
@@ -18,27 +18,27 @@ describe('Combo field validator', () => {
 
   describe('allOrNone() method', () => {
     it('should allow all empty subfields', () => {
-      expect(ComboFieldValidator.allOrNone(comboField)).toBeNull();
+      expect(ComboFieldValidators.allOrNone(comboField)).toBeNull();
 
       subfield1.setValue('');
       subfield2.setValue('');
-      expect(ComboFieldValidator.allOrNone(comboField)).toBeNull();
+      expect(ComboFieldValidators.allOrNone(comboField)).toBeNull();
 
       subfield1.setValue(null);
       subfield2.setValue(undefined);
-      expect(ComboFieldValidator.allOrNone(comboField)).toBeNull();
+      expect(ComboFieldValidators.allOrNone(comboField)).toBeNull();
     });
 
     it('should allow all filled subfields', () => {
       subfield1.setValue('abcdef');
       subfield2.setValue('12345');
-      expect(ComboFieldValidator.allOrNone(comboField)).toBeNull();
+      expect(ComboFieldValidators.allOrNone(comboField)).toBeNull();
     });
 
     it('should reject partially filled combo field', () => {
       subfield1.setValue(null);
       subfield2.setValue('12345');
-      expect(ComboFieldValidator.allOrNone(comboField)).toEqual({
+      expect(ComboFieldValidators.allOrNone(comboField)).toEqual({
         partiallyFilled: {
           filledSubcontrols: ['subfield2'],
           emptySubcontrols: ['subfield1'],

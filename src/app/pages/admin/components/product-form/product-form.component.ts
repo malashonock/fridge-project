@@ -14,8 +14,8 @@ import { Product } from 'core/models/product/product.interface';
 import { ProductFields } from 'core/models/product/product-fields.interface';
 import { ProductCategory } from 'core/models/product/product-category.enum';
 import { UnitOfWeight } from 'core/models/product/unit-of-weight.enum';
-import { ComboFieldValidator } from 'core/validators/combo-field/combo-field.validator';
-import { NumberValidator } from 'core/validators/number/number.validator';
+import { ComboFieldValidators } from 'core/validators/combo-field/combo-field.validators';
+import { NumberValidators } from 'core/validators/number/number.validators';
 import { ComboErrorStateMatcher } from 'core/classes/combo-error-state-matcher/combo-error-state-matcher.class';
 import { EarlyErrorStateMatcher } from 'core/classes/early-error-state-matcher/early-error-state-matcher.class';
 import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
@@ -58,57 +58,57 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       this.product?.price,
       [
         Validators.required,
-        NumberValidator.number,
+        NumberValidators.number,
         Validators.min(0),
-        NumberValidator.maxFractionDigits(2),
+        NumberValidators.maxFractionDigits(2),
       ],
     ],
     weight: this.formBuilder.group(
       {
         value: [
           this.product?.weight?.value,
-          [NumberValidator.number, Validators.min(0)],
+          [NumberValidators.number, Validators.min(0)],
         ],
         unit: [this.product?.weight?.unit],
       },
       {
-        validators: [ComboFieldValidator.allOrNone],
+        validators: [ComboFieldValidators.allOrNone],
       }
     ),
     nutrients: this.formBuilder.group({
       proteins: [
         this.product?.nutrients?.proteins,
-        [NumberValidator.number, Validators.min(0)],
+        [NumberValidators.number, Validators.min(0)],
       ],
       fats: [
         this.product?.nutrients?.fats,
-        [NumberValidator.number, Validators.min(0)],
+        [NumberValidators.number, Validators.min(0)],
       ],
       carbs: [
         this.product?.nutrients?.carbs,
-        [NumberValidator.number, Validators.min(0)],
+        [NumberValidators.number, Validators.min(0)],
       ],
     }),
     kiloCalories: [
       this.product?.kiloCalories,
-      [NumberValidator.number, Validators.min(0)],
+      [NumberValidators.number, Validators.min(0)],
     ],
     shelfLife: this.formBuilder.group({
       months: [
         this.product?.shelfLife?.months,
-        [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
+        [NumberValidators.number, NumberValidators.integer, Validators.min(0)],
       ],
       weeks: [
         this.product?.shelfLife?.weeks,
-        [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
+        [NumberValidators.number, NumberValidators.integer, Validators.min(0)],
       ],
       days: [
         this.product?.shelfLife?.days,
-        [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
+        [NumberValidators.number, NumberValidators.integer, Validators.min(0)],
       ],
       hours: [
         this.product?.shelfLife?.hours,
-        [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
+        [NumberValidators.number, NumberValidators.integer, Validators.min(0)],
       ],
     }),
     image: [this.productImage],

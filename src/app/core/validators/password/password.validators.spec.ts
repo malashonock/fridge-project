@@ -2,9 +2,9 @@
 
 import { FormControl, FormGroup } from '@angular/forms';
 
-import { PasswordValidator } from './password.validator';
+import { PasswordValidators } from './password.validators';
 
-describe('Password validator', () => {
+describe('Password validators', () => {
   let form: FormGroup;
   const password = 'password';
   const passwordConfirm = 'passwordConfirm';
@@ -23,7 +23,7 @@ describe('Password validator', () => {
     passwordField.setValue('12345');
     passwordConfirmField.setValue('12345');
 
-    const passwordMatchValidator = PasswordValidator.match(
+    const passwordMatchValidator = PasswordValidators.match(
       password,
       passwordConfirm
     );
@@ -38,7 +38,7 @@ describe('Password validator', () => {
     passwordField.setValue('12345');
     passwordConfirmField.setValue('abcdef');
 
-    const passwordMatchValidator = PasswordValidator.match(
+    const passwordMatchValidator = PasswordValidators.match(
       password,
       passwordConfirm
     );

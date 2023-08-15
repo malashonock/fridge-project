@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-export class PasswordValidator {
+export class PasswordValidators {
   public static match(
     passwordFieldName: string,
     passwordConfirmFieldName: string

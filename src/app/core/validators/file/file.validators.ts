@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-export class FileValidator {
+export class FileValidators {
   public static type(mimeType: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       if (!control.value || !(control.value instanceof File)) {
