@@ -1,11 +1,11 @@
-import { ShelfLife } from 'core/models/product/shelf-life.interface';
-import { ShelfLifePipe } from './shelf-life.pipe';
+import { ShelfLife } from 'core/models/product/shelf-life.type';
+import { ShelfLifeLabelPipe } from './shelf-life-label.pipe';
 
-describe('ShelfLifePipe', () => {
-  let pipe: ShelfLifePipe;
+describe('ShelfLifeLabelPipe', () => {
+  let pipe: ShelfLifeLabelPipe;
 
   beforeEach(() => {
-    pipe = new ShelfLifePipe();
+    pipe = new ShelfLifeLabelPipe();
   });
 
   it('create an instance', () => {

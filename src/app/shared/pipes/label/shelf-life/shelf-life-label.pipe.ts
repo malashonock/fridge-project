@@ -3,9 +3,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ShelfLife } from 'core/models/product/shelf-life.type';
 
 @Pipe({
-  name: 'shelfLife',
+  name: 'shelfLifeLabel',
 })
-export class ShelfLifePipe implements PipeTransform {
+export class ShelfLifeLabelPipe implements PipeTransform {
   public transform(shelfLife: ShelfLife): string {
     return Object.entries(shelfLife)
       .map(([key, value]): string => {

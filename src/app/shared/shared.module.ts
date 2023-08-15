@@ -26,6 +26,7 @@ import { WeightUnitLabelPipe } from './pipes/label/weight-unit/weight-unit-label
 import { NutrientLabelPipe } from './pipes/label/nutrient/nutrient-label.pipe';
 import { PeriodLabelPipe } from './pipes/label/period/period-label.pipe';
 import { ProductCategoryLabelPipe } from './pipes/label/product-category/product-category-label.pipe';
+import { ShelfLifeLabelPipe } from './pipes/label/shelf-life/shelf-life-label.pipe';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ProductCategoryLabelPipe } from './pipes/label/product-category/product
     NutrientLabelPipe,
     PeriodLabelPipe,
     ProductCategoryLabelPipe,
+    ShelfLifeLabelPipe,
   ],
   exports: [
     CommonModule,
@@ -74,6 +76,7 @@ import { ProductCategoryLabelPipe } from './pipes/label/product-category/product
     NutrientLabelPipe,
     PeriodLabelPipe,
     ProductCategoryLabelPipe,
+    ShelfLifeLabelPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })

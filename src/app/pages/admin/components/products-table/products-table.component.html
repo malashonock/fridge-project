@@ -64,7 +64,7 @@
       </th>
       <td mat-cell *matCellDef="let product" class="align-right">
         <ng-container *ngIf="product.shelfLife | any; else nodata">
-          {{ product.shelfLife | shelfLife }}
+          {{ product.shelfLife | shelfLifeLabel }}
         </ng-container>
       </td>
     </ng-container>

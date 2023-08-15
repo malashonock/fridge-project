@@ -18,7 +18,7 @@ import {
   mockProducts1,
   mockProducts2,
 } from 'mocks/product.mocks';
-import { ShelfLifePipe } from '../../pipes/shelf-life/shelf-life.pipe';
+import { ShelfLifeLabelPipe } from '../../../../shared/pipes/label/shelf-life/shelf-life-label.pipe';
 
 @Component({
   selector: 'app-product-details',
@@ -47,7 +47,7 @@ describe('ProductsTableComponent', () => {
       declarations: [
         ProductsTableComponent,
         ProductDetailsStubComponent,
-        ShelfLifePipe,
+        ShelfLifeLabelPipe,
       ],
       imports: [SharedModule, NoopAnimationsModule, HttpClientTestingModule],
       providers: [provideMockStore()],

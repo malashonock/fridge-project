@@ -9,7 +9,6 @@ import { FridgesComponent } from './components/fridges/fridges.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductsTableComponent } from './components/products-table/products-table.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
-import { ShelfLifePipe } from './pipes/shelf-life/shelf-life.pipe';
 import { MobilePageDirective } from 'shared/directives/mobile/page/mobile-page.directive';
 import { adminPageMenuConfigProvider } from 'core/configs/admin-page-menu.config';
 
@@ -22,7 +21,6 @@ import { adminPageMenuConfigProvider } from 'core/configs/admin-page-menu.config
     ProductDetailsComponent,
     ProductsTableComponent,
     ProductFormComponent,
-    ShelfLifePipe,
   ],
   exports: [AdminPageComponent],
   imports: [SharedModule, AdminRoutingModule, MobilePageDirective],
