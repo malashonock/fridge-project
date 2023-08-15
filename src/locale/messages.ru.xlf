@@ -103,7 +103,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">143</context>
+          <context context-type="linenumber">131</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
@@ -122,7 +122,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">150</context>
+          <context context-type="linenumber">138</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fats" datatype="html">
@@ -136,7 +136,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">155</context>
+          <context context-type="linenumber">143</context>
         </context-group>
       </trans-unit>
       <trans-unit id="carbs" datatype="html">
@@ -150,7 +150,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">160</context>
+          <context context-type="linenumber">148</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ingredients" datatype="html">
@@ -251,7 +251,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/products-table/products-table.component.html</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="BYN" datatype="html">
@@ -265,7 +265,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/products-table/products-table.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="priceErrorRequired" datatype="html">
@@ -339,7 +339,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/products-table/products-table.component.html</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="value" datatype="html">
@@ -425,7 +425,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/products-table/products-table.component.html</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">60</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shelfLifePeriodErrorNaN" datatype="html">
@@ -468,7 +468,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">114</context>
+          <context context-type="linenumber">115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="createProductHeader" datatype="html">
@@ -477,7 +477,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">115</context>
+          <context context-type="linenumber">116</context>
         </context-group>
       </trans-unit>
       <trans-unit id="saveChanges" datatype="html">
@@ -486,7 +486,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">120</context>
+          <context context-type="linenumber">121</context>
         </context-group>
       </trans-unit>
       <trans-unit id="createProduct" datatype="html">
@@ -495,7 +495,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">121</context>
+          <context context-type="linenumber">122</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
@@ -508,11 +508,6 @@
         <target>Супы</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">130</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">
             src/app/pages/admin/pipes/product-category/product-category.pipe.ts</context>
           <context context-type="linenumber">12</context>
         </context-group>
@@ -520,11 +515,6 @@
       <trans-unit id="secondCourses" datatype="html">
         <source>Second courses</source>
         <target>Вторые блюда</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">133</context>
-        </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/pipes/product-category/product-category.pipe.ts</context>
@@ -536,11 +526,6 @@
         <target>Салаты</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">135</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">
             src/app/pages/admin/pipes/product-category/product-category.pipe.ts</context>
           <context context-type="linenumber">16</context>
         </context-group>
@@ -548,11 +533,6 @@
       <trans-unit id="snacks" datatype="html">
         <source>Snacks</source>
         <target>Закуски</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">136</context>
-        </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/pipes/product-category/product-category.pipe.ts</context>
@@ -564,11 +544,6 @@
         <target>Напитки</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">137</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">
             src/app/pages/admin/pipes/product-category/product-category.pipe.ts</context>
           <context context-type="linenumber">20</context>
         </context-group>
@@ -576,11 +551,6 @@
       <trans-unit id="desserts" datatype="html">
         <source>Desserts</source>
         <target>Десерты</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">138</context>
-        </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/pipes/product-category/product-category.pipe.ts</context>
@@ -593,7 +563,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">144</context>
+          <context context-type="linenumber">132</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
@@ -607,7 +577,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">151</context>
+          <context context-type="linenumber">139</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fatsGenitive" datatype="html">
@@ -616,7 +586,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">156</context>
+          <context context-type="linenumber">144</context>
         </context-group>
       </trans-unit>
       <trans-unit id="carbsGenitive" datatype="html">
@@ -625,7 +595,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">161</context>
+          <context context-type="linenumber">149</context>
         </context-group>
       </trans-unit>
       <trans-unit id="months" datatype="html">
@@ -634,7 +604,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">168</context>
+          <context context-type="linenumber">156</context>
         </context-group>
       </trans-unit>
       <trans-unit id="monthsGenitive" datatype="html">
@@ -643,7 +613,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">169</context>
+          <context context-type="linenumber">157</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weeks" datatype="html">
@@ -652,7 +622,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">173</context>
+          <context context-type="linenumber">161</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weeksGenitive" datatype="html">
@@ -661,7 +631,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">174</context>
+          <context context-type="linenumber">162</context>
         </context-group>
       </trans-unit>
       <trans-unit id="days" datatype="html">
@@ -670,7 +640,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">178</context>
+          <context context-type="linenumber">166</context>
         </context-group>
       </trans-unit>
       <trans-unit id="daysGenitive" datatype="html">
@@ -679,7 +649,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">179</context>
+          <context context-type="linenumber">167</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hours" datatype="html">
@@ -688,7 +658,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">183</context>
+          <context context-type="linenumber">171</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hoursGenitive" datatype="html">
@@ -697,7 +667,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">184</context>
+          <context context-type="linenumber">172</context>
         </context-group>
       </trans-unit>
       <trans-unit id="actions" datatype="html">
@@ -706,7 +676,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/products-table/products-table.component.html</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">95</context>
         </context-group>
       </trans-unit>
       <trans-unit id="editProduct" datatype="html">
@@ -715,7 +685,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/products-table/products-table.component.html</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">103</context>
         </context-group>
       </trans-unit>
       <trans-unit id="deleteProduct" datatype="html">
@@ -724,7 +694,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/products-table/products-table.component.html</context>
-          <context context-type="linenumber">110</context>
+          <context context-type="linenumber">112</context>
         </context-group>
       </trans-unit>
       <trans-unit id="noDataMatchingFilter" datatype="html">
@@ -735,7 +705,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/products-table/products-table.component.html</context>
-          <context context-type="linenumber">141</context>
+          <context context-type="linenumber">143</context>
         </context-group>
       </trans-unit>
       <trans-unit id="product" datatype="html">
@@ -1043,8 +1013,8 @@
         <target>Пользователь</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/pages/auth/components/signup-form/signup-form.component.ts</context>
-          <context context-type="linenumber">35</context>
+            src/app/shared/pipes/label/user-role/user-role-label.pipe.ts</context>
+          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="admin" datatype="html">
@@ -1052,8 +1022,8 @@
         <target>Администратор</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/pages/auth/components/signup-form/signup-form.component.ts</context>
-          <context context-type="linenumber">36</context>
+            src/app/shared/pipes/label/user-role/user-role-label.pipe.ts</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmDelete" datatype="html">

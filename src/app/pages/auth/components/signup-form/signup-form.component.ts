@@ -1,14 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 import { UserRole } from 'core/models/user/user-role.enum';
-import { SelectOption } from 'core/models/ui/select-option.interface';
 import { EmailValidator } from 'core/validators/email/email.validator';
 import { PasswordValidator } from 'core/validators/password/password.validator';
 import { AuthActions } from 'app/state/auth/auth.actions';
 import { SignupCredentials } from 'core/models/auth/signup.interface';
 import { controlHasError, getControlError } from 'utils/form/form.utils';
+import { USER_ROLES } from 'core/configs/user-role.config';
 
 @Component({
   selector: 'app-signup-form',
@@ -30,13 +30,11 @@ export class SignupFormComponent {
     }
   );
 
-  // TODO: fetch on startup and select from store
-  public roles: SelectOption[] = [
-    { value: UserRole.User, label: $localize`:@@user:User` },
-    { value: UserRole.Admin, label: $localize`:@@admin:Admin` },
-  ];
-
-  public constructor(private formBuilder: FormBuilder, private store: Store) {}
+  public constructor(
+    private formBuilder: FormBuilder,
+    private store: Store,
+    @Inject(USER_ROLES) public userRoles: UserRole[]
+  ) {}
 
   public onSubmit(): void {
     if (this.form.invalid) {

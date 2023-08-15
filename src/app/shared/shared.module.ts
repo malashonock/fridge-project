@@ -21,6 +21,7 @@ import { MobileMenuDirective } from './directives/mobile/menu/mobile-menu.direct
 import { FixedHeaderDirective } from './directives/fixed-header/fixed-header.directive';
 import { FileInputDirective } from './directives/file-input/file-input.directive';
 import { NumericInputDirective } from './directives/numeric-input/numeric-input.directive';
+import { UserRoleLabelPipe } from './pipes/label/user-role/user-role-label.pipe';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { NumericInputDirective } from './directives/numeric-input/numeric-input.
     NumericInputDirective,
     AnyPipe,
     ConfirmDeleteComponent,
+    UserRoleLabelPipe,
   ],
   exports: [
     CommonModule,
@@ -59,6 +61,7 @@ import { NumericInputDirective } from './directives/numeric-input/numeric-input.
     NumericInputDirective,
     AnyPipe,
     ConfirmDeleteComponent,
+    UserRoleLabelPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })

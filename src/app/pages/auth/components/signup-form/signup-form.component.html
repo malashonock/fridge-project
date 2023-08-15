@@ -50,8 +50,8 @@
   <mat-form-field appearance="outline" subscriptSizing="dynamic">
     <mat-label i18n="@@role">Role</mat-label>
     <mat-select id="role" formControlName="role">
-      <mat-option *ngFor="let role of roles" [value]="role.value">{{
-        role.label
+      <mat-option *ngFor="let role of userRoles" [value]="role">{{
+        role | userRoleLabel
       }}</mat-option>
     </mat-select>
     <mat-error
