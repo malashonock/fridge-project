@@ -24,6 +24,7 @@ import { NumericInputDirective } from './directives/numeric-input/numeric-input.
 import { UserRoleLabelPipe } from './pipes/label/user-role/user-role-label.pipe';
 import { WeightUnitLabelPipe } from './pipes/label/weight-unit/weight-unit-label.pipe';
 import { NutrientLabelPipe } from './pipes/label/nutrient/nutrient-label.pipe';
+import { PeriodLabelPipe } from './pipes/label/period/period-label.pipe';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { NutrientLabelPipe } from './pipes/label/nutrient/nutrient-label.pipe';
     UserRoleLabelPipe,
     WeightUnitLabelPipe,
     NutrientLabelPipe,
+    PeriodLabelPipe,
   ],
   exports: [
     CommonModule,
@@ -68,6 +70,7 @@ import { NutrientLabelPipe } from './pipes/label/nutrient/nutrient-label.pipe';
     UserRoleLabelPipe,
     WeightUnitLabelPipe,
     NutrientLabelPipe,
+    PeriodLabelPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })

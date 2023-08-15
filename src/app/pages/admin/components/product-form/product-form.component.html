@@ -289,43 +289,41 @@
       <legend i18n="@@shelfLife">Shelf life</legend>
 
       <mat-form-field
-        *ngFor="let period of shelfLifePeriods"
+        *ngFor="let period of periods"
         appearance="outline"
         subscriptSizing="dynamic"
-        [class]="['shelf-life__' + period.value, 'combo-field-segment']"
+        [class]="['shelf-life__' + period, 'combo-field-segment']"
       >
-        <mat-label>{{ period.label | titlecase }}</mat-label>
+        <mat-label>{{ period | periodLabel }}</mat-label>
         <input
           type="text"
           appNumericInput
-          [id]="'shelf-life' + period.value"
-          [name]="'shelf-life' + period.value"
-          [formControlName]="period.value"
+          [id]="'shelf-life' + period"
+          [name]="'shelf-life' + period"
+          [formControlName]="period"
           [errorStateMatcher]="earlyErrorStateMatcher"
         />
       </mat-form-field>
 
       <div class="combo-field-errors">
-        <ng-container *ngFor="let period of shelfLifePeriods">
+        <ng-container *ngFor="let period of periods">
           <mat-error
-            *ngIf="controlHasError('shelfLife.' + period.value + '.isNaN')"
+            *ngIf="controlHasError('shelfLife.' + period + '.isNaN')"
             i18n="@@shelfLifePeriodErrorNaN"
           >
-            {{ period.labelGenitive }} value must be a valid number
+            {{ period | periodLabel : "genitive" }} value must be a valid number
           </mat-error>
           <mat-error
-            *ngIf="
-              controlHasError('shelfLife.' + period.value + '.fractionOverflow')
-            "
+            *ngIf="controlHasError('shelfLife.' + period + '.fractionOverflow')"
             i18n="@@shelfLifePeriodErrorInteger"
           >
-            {{ period.labelGenitive }} value must be an integer
+            {{ period | periodLabel : "genitive" }} value must be an integer
           </mat-error>
           <mat-error
-            *ngIf="controlHasError('shelfLife.' + period.value + '.min')"
+            *ngIf="controlHasError('shelfLife.' + period + '.min')"
             i18n="@@shelfLifePeriodErrorNegative"
           >
-            {{ period.labelGenitive }} value cannot be negative
+            {{ period | periodLabel : "genitive" }} value cannot be negative
           </mat-error>
         </ng-container>
       </div>

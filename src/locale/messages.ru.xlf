@@ -425,8 +425,8 @@
       </trans-unit>
       <trans-unit id="shelfLifePeriodErrorNaN" datatype="html">
         <source>
-          <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}" /> value must be a valid
-          number </source>
+          <x id="INTERPOLATION" equiv-text="{{ period | periodLabel : &quot;genitive&quot; }}" />
+          value must be a valid number </source>
         <target>Значение <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}" /> должно
           быть числом</target>
         <context-group purpose="location">
@@ -437,24 +437,26 @@
       </trans-unit>
       <trans-unit id="shelfLifePeriodErrorInteger" datatype="html">
         <source>
-          <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}" /> value must be an integer </source>
+          <x id="INTERPOLATION" equiv-text="{{ period | periodLabel : &quot;genitive&quot; }}" />
+          value must be an integer </source>
         <target>Значение <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}" /> должно
           быть целым числом</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">322</context>
+          <context context-type="linenumber">320</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shelfLifePeriodErrorNegative" datatype="html">
         <source>
-          <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}" /> value cannot be negative </source>
+          <x id="INTERPOLATION" equiv-text="{{ period | periodLabel : &quot;genitive&quot; }}" />
+          value cannot be negative </source>
         <target>Значение <x id="INTERPOLATION" equiv-text="{{ period.labelGenitive }}" /> не может
           быть отрицательным</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">328</context>
+          <context context-type="linenumber">326</context>
         </context-group>
       </trans-unit>
       <trans-unit id="editProductHeader" datatype="html">
@@ -463,7 +465,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">118</context>
+          <context context-type="linenumber">119</context>
         </context-group>
       </trans-unit>
       <trans-unit id="createProductHeader" datatype="html">
@@ -472,7 +474,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">119</context>
+          <context context-type="linenumber">120</context>
         </context-group>
       </trans-unit>
       <trans-unit id="saveChanges" datatype="html">
@@ -481,7 +483,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">124</context>
+          <context context-type="linenumber">125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="createProduct" datatype="html">
@@ -490,7 +492,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">125</context>
+          <context context-type="linenumber">126</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
@@ -592,72 +594,64 @@
         <source>Months</source>
         <target>Месяцы</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">135</context>
+          <context context-type="sourcefile">src/app/shared/pipes/label/period/period-label.pipe.ts</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="monthsGenitive" datatype="html">
         <source>Months</source>
         <target>месяцев</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">136</context>
+          <context context-type="sourcefile">src/app/shared/pipes/label/period/period-label.pipe.ts</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weeks" datatype="html">
         <source>Weeks</source>
         <target>Недели</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">140</context>
+          <context context-type="sourcefile">src/app/shared/pipes/label/period/period-label.pipe.ts</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weeksGenitive" datatype="html">
         <source>Weeks</source>
         <target>недель</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">141</context>
+          <context context-type="sourcefile">src/app/shared/pipes/label/period/period-label.pipe.ts</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="days" datatype="html">
         <source>Days</source>
         <target>Дни</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">145</context>
+          <context context-type="sourcefile">src/app/shared/pipes/label/period/period-label.pipe.ts</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="daysGenitive" datatype="html">
         <source>Days</source>
         <target>дней</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">146</context>
+          <context context-type="sourcefile">src/app/shared/pipes/label/period/period-label.pipe.ts</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hours" datatype="html">
         <source>Hours</source>
         <target>Часы</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">150</context>
+          <context context-type="sourcefile">src/app/shared/pipes/label/period/period-label.pipe.ts</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hoursGenitive" datatype="html">
         <source>Hours</source>
         <target>часов</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">151</context>
+          <context context-type="sourcefile">src/app/shared/pipes/label/period/period-label.pipe.ts</context>
+          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="actions" datatype="html">

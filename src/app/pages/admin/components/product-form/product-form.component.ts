@@ -14,7 +14,6 @@ import { Product } from 'core/models/product/product.interface';
 import { ProductFields } from 'core/models/product/product-fields.interface';
 import { ProductCategory } from 'core/models/product/product-category.enum';
 import { UnitOfWeight } from 'core/models/product/unit-of-weight.enum';
-import { SelectOption } from 'core/models/ui/select-option.interface';
 import { ComboFieldValidator } from 'core/validators/combo-field/combo-field.validator';
 import { NumberValidator } from 'core/validators/number/number.validator';
 import { ComboErrorStateMatcher } from 'core/classes/combo-error-state-matcher/combo-error-state-matcher.class';
@@ -27,6 +26,8 @@ import { PRODUCT_CATEGORIES } from 'core/configs/product-categories.config';
 import { WEIGHT_UNITS } from 'core/configs/weight-units.config';
 import { NUTRIENTS } from 'core/configs/nutrient.config';
 import { Nutrient } from 'core/models/product/nutrient.enum';
+import { PERIODS } from 'core/configs/periods.config';
+import { Period } from 'core/models/product/period.enum';
 
 interface ProductDialogData {
   product?: Product;
@@ -129,29 +130,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     return this.product ? FormMode.Edit : FormMode.Create;
   }
 
-  public shelfLifePeriods: SelectOption[] = [
-    {
-      value: 'months',
-      label: $localize`:@@months:Months`,
-      labelGenitive: $localize`:@@monthsGenitive:Months`,
-    },
-    {
-      value: 'weeks',
-      label: $localize`:@@weeks:Weeks`,
-      labelGenitive: $localize`:@@weeksGenitive:Weeks`,
-    },
-    {
-      value: 'days',
-      label: $localize`:@@days:Days`,
-      labelGenitive: $localize`:@@daysGenitive:Days`,
-    },
-    {
-      value: 'hours',
-      label: $localize`:@@hours:Hours`,
-      labelGenitive: $localize`:@@hoursGenitive:Hours`,
-    },
-  ];
-
   public earlyErrorStateMatcher = new EarlyErrorStateMatcher();
   public comboErrorStateMatcher = new ComboErrorStateMatcher();
 
@@ -200,6 +178,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     @Inject(PRODUCT_CATEGORIES) public productCategories: ProductCategory[],
     @Inject(WEIGHT_UNITS) public weightUnits: UnitOfWeight[],
     @Inject(NUTRIENTS) public nutrients: Nutrient[],
+    @Inject(PERIODS) public periods: Period[],
     @Inject(MAT_DIALOG_DATA) private data?: ProductDialogData
   ) {}
 
