@@ -25,6 +25,8 @@ import { selectProductSubmitting } from 'app/state/products/products.selectors';
 import { controlHasError, getControlError } from 'utils/form/form.utils';
 import { PRODUCT_CATEGORIES } from 'core/configs/product-categories.config';
 import { WEIGHT_UNITS } from 'core/configs/weight-units.config';
+import { NUTRIENTS } from 'core/configs/nutrient.config';
+import { Nutrient } from 'core/models/product/nutrient.enum';
 
 interface ProductDialogData {
   product?: Product;
@@ -127,24 +129,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     return this.product ? FormMode.Edit : FormMode.Create;
   }
 
-  public nutrients: SelectOption[] = [
-    {
-      value: 'proteins',
-      label: $localize`:@@proteins:Proteins`,
-      labelGenitive: $localize`:@@proteinsGenitive:Proteins`,
-    },
-    {
-      value: 'fats',
-      label: $localize`:@@fats:Fats`,
-      labelGenitive: $localize`:@@fatsGenitive:Fats`,
-    },
-    {
-      value: 'carbs',
-      label: $localize`:@@carbs:Carbs`,
-      labelGenitive: $localize`:@@carbsGenitive:Carbs`,
-    },
-  ];
-
   public shelfLifePeriods: SelectOption[] = [
     {
       value: 'months',
@@ -215,6 +199,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     public dialogRef: MatDialogRef<ProductFormComponent>,
     @Inject(PRODUCT_CATEGORIES) public productCategories: ProductCategory[],
     @Inject(WEIGHT_UNITS) public weightUnits: UnitOfWeight[],
+    @Inject(NUTRIENTS) public nutrients: Nutrient[],
     @Inject(MAT_DIALOG_DATA) private data?: ProductDialogData
   ) {}
 

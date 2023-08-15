@@ -1,4 +1,4 @@
-import { Nutrients } from './nutrients.interface';
+import { Nutrients } from './nutrients.type';
 import { ProductCategory } from './product-category.enum';
 import { ProductWeight } from './product-weight.interface';
 import { ShelfLife } from './shelf-life.interface';

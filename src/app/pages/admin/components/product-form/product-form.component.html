@@ -145,28 +145,29 @@
         *ngFor="let nutrient of nutrients"
         appearance="outline"
         subscriptSizing="dynamic"
-        [class]="'form-fields__nutrient nutrients__' + nutrient.value"
+        [class]="'form-fields__nutrient nutrients__' + nutrient"
       >
-        <mat-label>{{ nutrient.label | titlecase }}</mat-label>
+        <mat-label>{{ nutrient | nutrientLabel }}</mat-label>
         <input
           type="text"
           appNumericInput
-          [id]="'nutrient-' + nutrient.value"
-          [name]="'nutrient-' + nutrient.value"
-          [formControlName]="nutrient.value"
+          [id]="'nutrient-' + nutrient"
+          [name]="'nutrient-' + nutrient"
+          [formControlName]="nutrient"
           [errorStateMatcher]="earlyErrorStateMatcher"
         />
         <mat-error
-          *ngIf="controlHasError('nutrients.' + nutrient.value + '.isNaN')"
+          *ngIf="controlHasError('nutrients.' + nutrient + '.isNaN')"
           i18n="@@nutrientErrorNaN"
         >
-          {{ nutrient.labelGenitive }} content must be a valid number
+          {{ nutrient | nutrientLabel : "genitive" }} content must be a valid
+          number
         </mat-error>
         <mat-error
-          *ngIf="controlHasError('nutrients.' + nutrient.value + '.min')"
+          *ngIf="controlHasError('nutrients.' + nutrient + '.min')"
           i18n="@@nutrientErrorNegative"
         >
-          {{ nutrient.labelGenitive }} content cannot be negative
+          {{ nutrient | nutrientLabel : "genitive" }} content cannot be negative
         </mat-error>
       </mat-form-field>
     </fieldset>

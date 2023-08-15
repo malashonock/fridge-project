@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { productCategoriesProvider } from './configs/product-categories.config';
 import { userRolesProvider } from './configs/user-roles.config';
 import { weightUnitsProvider } from './configs/weight-units.config';
+import { nutrientsProvider } from './configs/nutrient.config';
 
 @NgModule({
   declarations: [],
@@ -12,6 +13,7 @@ import { weightUnitsProvider } from './configs/weight-units.config';
     productCategoriesProvider,
     userRolesProvider,
     weightUnitsProvider,
+    nutrientsProvider,
   ],
 })
 export class CoreModule {}

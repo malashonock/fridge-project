@@ -23,6 +23,7 @@ import { FileInputDirective } from './directives/file-input/file-input.directive
 import { NumericInputDirective } from './directives/numeric-input/numeric-input.directive';
 import { UserRoleLabelPipe } from './pipes/label/user-role/user-role-label.pipe';
 import { WeightUnitLabelPipe } from './pipes/label/weight-unit/weight-unit-label.pipe';
+import { NutrientLabelPipe } from './pipes/label/nutrient/nutrient-label.pipe';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { WeightUnitLabelPipe } from './pipes/label/weight-unit/weight-unit-label
     ConfirmDeleteComponent,
     UserRoleLabelPipe,
     WeightUnitLabelPipe,
+    NutrientLabelPipe,
   ],
   exports: [
     CommonModule,
@@ -65,6 +67,7 @@ import { WeightUnitLabelPipe } from './pipes/label/weight-unit/weight-unit-label
     ConfirmDeleteComponent,
     UserRoleLabelPipe,
     WeightUnitLabelPipe,
+    NutrientLabelPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })
