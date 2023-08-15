@@ -204,8 +204,8 @@
         >
           <mat-option
             *ngFor="let weightUnit of weightUnits"
-            [value]="weightUnit.value"
-            >{{ weightUnit.label }}</mat-option
+            [value]="weightUnit"
+            >{{ weightUnit | weightUnitLabel }}</mat-option
           >
         </mat-select>
       </mat-form-field>

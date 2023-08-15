@@ -1,10 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { UnitOfWeight } from 'core/models/product/unit-of-weight.enum';
 
 @Pipe({
-  name: 'weightUnit',
+  name: 'weightUnitLabel',
 })
-export class WeightUnitPipe implements PipeTransform {
+export class WeightUnitLabelPipe implements PipeTransform {
   public transform(unit: UnitOfWeight): string {
     return ((): string => {
       switch (unit) {

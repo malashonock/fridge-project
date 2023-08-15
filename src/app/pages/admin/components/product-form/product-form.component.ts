@@ -24,6 +24,7 @@ import { ProductsActions } from 'app/state/products/products.actions';
 import { selectProductSubmitting } from 'app/state/products/products.selectors';
 import { controlHasError, getControlError } from 'utils/form/form.utils';
 import { PRODUCT_CATEGORIES } from 'core/configs/product-category.config';
+import { WEIGHT_UNITS } from 'core/configs/weight-unit.config';
 
 interface ProductDialogData {
   product?: Product;
@@ -126,12 +127,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     return this.product ? FormMode.Edit : FormMode.Create;
   }
 
-  // TODO: fetch on startup and select from store
-  public weightUnits: SelectOption[] = [
-    { value: UnitOfWeight.Grams, label: $localize`:@@grams:g` },
-    { value: UnitOfWeight.Milliliters, label: $localize`:@@milliliters:ml` },
-  ];
-
   public nutrients: SelectOption[] = [
     {
       value: 'proteins',
@@ -219,6 +214,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     private store: Store,
     public dialogRef: MatDialogRef<ProductFormComponent>,
     @Inject(PRODUCT_CATEGORIES) public productCategories: ProductCategory[],
+    @Inject(WEIGHT_UNITS) public weightUnits: UnitOfWeight[],
     @Inject(MAT_DIALOG_DATA) private data?: ProductDialogData
   ) {}
 

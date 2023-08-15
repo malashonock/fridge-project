@@ -1,11 +1,11 @@
 import { UnitOfWeight } from 'core/models/product/unit-of-weight.enum';
-import { WeightUnitPipe } from './weight-unit.pipe';
+import { WeightUnitLabelPipe } from './weight-unit-label.pipe';
 
-describe('WeightUnitPipe', () => {
-  let pipe: WeightUnitPipe;
+describe('WeightUnitLabelPipe', () => {
+  let pipe: WeightUnitLabelPipe;
 
   beforeEach(() => {
-    pipe = new WeightUnitPipe();
+    pipe = new WeightUnitLabelPipe();
   });
 
   it('create an instance', () => {

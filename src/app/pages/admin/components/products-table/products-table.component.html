@@ -46,7 +46,9 @@
       </th>
       <td mat-cell *matCellDef="let product" class="align-right">
         <ng-container *ngIf="product.weight.value; else nodata">
-          {{ product.weight.value + " " + (product.weight.unit | weightUnit) }}
+          {{
+            product.weight.value + " " + (product.weight.unit | weightUnitLabel)
+          }}
         </ng-container>
       </td>
     </ng-container>

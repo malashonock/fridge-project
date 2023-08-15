@@ -12,7 +12,6 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { ShelfLifePipe } from './pipes/shelf-life/shelf-life.pipe';
 import { MobilePageDirective } from 'shared/directives/mobile/page/mobile-page.directive';
 import { adminPageMenuConfigProvider } from 'core/configs/admin-page-menu.config';
-import { WeightUnitPipe } from './pipes/weight-unit/weight-unit.pipe';
 import { ProductCategoryPipe } from './pipes/product-category/product-category.pipe';
 
 @NgModule({
@@ -25,7 +24,6 @@ import { ProductCategoryPipe } from './pipes/product-category/product-category.p
     ProductsTableComponent,
     ProductFormComponent,
     ShelfLifePipe,
-    WeightUnitPipe,
     ProductCategoryPipe,
   ],
   exports: [AdminPageComponent],
