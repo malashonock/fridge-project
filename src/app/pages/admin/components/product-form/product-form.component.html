@@ -59,7 +59,7 @@
           <mat-option
             *ngFor="let productCategory of productCategories"
             [value]="productCategory"
-            >{{ productCategory | productCategory }}</mat-option
+            >{{ productCategory | productCategoryLabel }}</mat-option
           >
         </mat-select>
         <mat-error

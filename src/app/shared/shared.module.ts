@@ -25,6 +25,7 @@ import { UserRoleLabelPipe } from './pipes/label/user-role/user-role-label.pipe'
 import { WeightUnitLabelPipe } from './pipes/label/weight-unit/weight-unit-label.pipe';
 import { NutrientLabelPipe } from './pipes/label/nutrient/nutrient-label.pipe';
 import { PeriodLabelPipe } from './pipes/label/period/period-label.pipe';
+import { ProductCategoryLabelPipe } from './pipes/label/product-category/product-category-label.pipe';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { PeriodLabelPipe } from './pipes/label/period/period-label.pipe';
     WeightUnitLabelPipe,
     NutrientLabelPipe,
     PeriodLabelPipe,
+    ProductCategoryLabelPipe,
   ],
   exports: [
     CommonModule,
@@ -71,6 +73,7 @@ import { PeriodLabelPipe } from './pipes/label/period/period-label.pipe';
     WeightUnitLabelPipe,
     NutrientLabelPipe,
     PeriodLabelPipe,
+    ProductCategoryLabelPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })

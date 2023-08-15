@@ -1,11 +1,11 @@
 import { ProductCategory } from 'core/models/product/product-category.enum';
-import { ProductCategoryPipe } from './product-category.pipe';
+import { ProductCategoryLabelPipe } from './product-category-label.pipe';
 
-describe('ProductCategoryPipe', () => {
-  let pipe: ProductCategoryPipe;
+describe('ProductCategoryLabelPipe', () => {
+  let pipe: ProductCategoryLabelPipe;
 
   beforeEach(() => {
-    pipe = new ProductCategoryPipe();
+    pipe = new ProductCategoryLabelPipe();
   });
 
   it('create an instance', () => {

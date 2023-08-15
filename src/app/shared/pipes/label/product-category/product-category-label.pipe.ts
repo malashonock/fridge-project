@@ -2,9 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ProductCategory } from 'core/models/product/product-category.enum';
 
 @Pipe({
-  name: 'productCategory',
+  name: 'productCategoryLabel',
 })
-export class ProductCategoryPipe implements PipeTransform {
+export class ProductCategoryLabelPipe implements PipeTransform {
   public transform(category: ProductCategory): string {
     return (() => {
       switch (category) {

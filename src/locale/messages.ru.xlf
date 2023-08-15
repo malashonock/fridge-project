@@ -505,7 +505,7 @@
         <target>Супы</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/pages/admin/pipes/product-category/product-category.pipe.ts</context>
+            src/app/shared/pipes/label/product-category/product-category-label.pipe.ts</context>
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
@@ -514,7 +514,7 @@
         <target>Вторые блюда</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/pages/admin/pipes/product-category/product-category.pipe.ts</context>
+            src/app/shared/pipes/label/product-category/product-category-label.pipe.ts</context>
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
@@ -523,7 +523,7 @@
         <target>Салаты</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/pages/admin/pipes/product-category/product-category.pipe.ts</context>
+            src/app/shared/pipes/label/product-category/product-category-label.pipe.ts</context>
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
@@ -532,7 +532,7 @@
         <target>Закуски</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/pages/admin/pipes/product-category/product-category.pipe.ts</context>
+            src/app/shared/pipes/label/product-category/product-category-label.pipe.ts</context>
           <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
@@ -541,7 +541,7 @@
         <target>Напитки</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/pages/admin/pipes/product-category/product-category.pipe.ts</context>
+            src/app/shared/pipes/label/product-category/product-category-label.pipe.ts</context>
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
@@ -550,7 +550,7 @@
         <target>Десерты</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/pages/admin/pipes/product-category/product-category.pipe.ts</context>
+            src/app/shared/pipes/label/product-category/product-category-label.pipe.ts</context>
           <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
