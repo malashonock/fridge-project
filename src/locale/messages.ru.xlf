@@ -716,7 +716,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/products/products.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="monthsAbbrev" datatype="html">
@@ -1088,13 +1088,22 @@
           <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="search" datatype="html">
+        <source>Search</source>
+        <target>Поиск</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/shared/components/search-box/search-box.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="searchProducts" datatype="html">
         <source>Search products</source>
         <target>Поиск продуктов</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/shared/components/search-box/search-box.component.html</context>
-          <context context-type="linenumber">6</context>
+            src/app/pages/admin/components/products/products.component.html</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="settings" datatype="html">

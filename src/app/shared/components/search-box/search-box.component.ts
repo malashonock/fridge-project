@@ -26,6 +26,7 @@ import {
 })
 export class SearchBoxComponent implements AfterViewInit, OnDestroy {
   @Input() public name = 'search-box';
+  @Input() public label = $localize`:@@search:Search`;
   @Input() public placeholder = '';
 
   public searchControl = this.formBuilder.control('');
