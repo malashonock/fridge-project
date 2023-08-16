@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  OnDestroy,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -22,8 +16,6 @@ import { ProductFormComponent } from '../product-form/product-form.component';
 export class ProductsComponent implements OnDestroy {
   public searchQuery$ = new Subject<string>();
   private destroy$ = new Subject();
-
-  @ViewChild('searchInput') private searchInput!: ElementRef;
 
   public constructor(private store: Store, private dialog: MatDialog) {}
 
