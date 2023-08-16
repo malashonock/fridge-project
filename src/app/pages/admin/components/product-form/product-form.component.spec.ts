@@ -5,6 +5,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 
 import { ProductFormComponent } from './product-form.component';
 import { SharedModule } from 'shared/shared.module';
+import { CoreModule } from 'core/core.module';
 
 describe('ProductFormComponent', () => {
   let component: ProductFormComponent;
@@ -13,7 +14,7 @@ describe('ProductFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProductFormComponent],
-      imports: [SharedModule, NoopAnimationsModule],
+      imports: [SharedModule, NoopAnimationsModule, CoreModule],
       providers: [
         { provide: MatDialogRef, useValue: {} },
         { provide: MAT_DIALOG_DATA, useValue: undefined },
