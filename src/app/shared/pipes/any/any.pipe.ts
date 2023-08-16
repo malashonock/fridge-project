@@ -13,6 +13,10 @@ export class AnyPipe implements PipeTransform {
       return object;
     }
 
+    if (Array.isArray(object)) {
+      return object.length > 0 ? object : false;
+    }
+
     for (const prop in object) {
       if (Object.prototype.hasOwnProperty.call(object, prop)) {
         const value = object[prop as keyof typeof object];

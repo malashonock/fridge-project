@@ -28,7 +28,19 @@ describe('AnyPipe', () => {
     });
   });
 
-  describe('given an object', () => {
+  describe('given an array', () => {
+    it('given a non-empty array, should return the array', () => {
+      const array = [1, 2, 3];
+      expect(pipe.transform(array)).toBe(array);
+    });
+
+    it('given an empty array, should return fase', () => {
+      const array: number[] = [];
+      expect(pipe.transform(array)).toBe(false);
+    });
+  });
+
+  describe('given an plain JS object', () => {
     it('given the object has at least one truthy prop, should return the object', () => {
       const obj = {
         months: null,
