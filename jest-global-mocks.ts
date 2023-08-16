@@ -1,3 +1,5 @@
+import { TextEncoder } from 'util';
+
 // Mock ResizeObserver
 // triggerResizeObserver must be a mutable object,
 // because fn will be set after importing it to a test
@@ -63,3 +65,6 @@ function DataTransferMock(this: DataTransfer) {
 }
 
 window.DataTransfer = jest.fn().mockImplementation(DataTransferMock);
+
+// Polyfill TextEncoder
+window.TextEncoder = TextEncoder;
