@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthSessionInitializer } from 'core/services/app-initializer/auth-session.initializer';
 import { ProductsInitializer } from 'core/services/app-initializer/products.initializer';
+import { FridgesInitializer } from 'core/services/app-initializer/fridges.initializer';
 import { httpInterceptorProviders } from 'core/interceptors';
 import { authFeature } from './state/auth/auth.feature';
 import { AuthEffects } from './state/auth/auth.effects';
@@ -53,6 +54,7 @@ import { FridgesEffects } from './state/fridges/fridges.effects';
   providers: [
     AuthSessionInitializer,
     ProductsInitializer,
+    FridgesInitializer,
     httpInterceptorProviders,
   ],
   bootstrap: [AppComponent],
