@@ -1,0 +1,39 @@
+<mat-card>
+  <img
+    mat-card-image
+    *ngIf="fridge?.imageUrl; else imgPlaceholder"
+    class="photo"
+    [src]="fridge.imageUrl | staticAssetUrl"
+    i18n-alt="@@fridgeImageAltText"
+    alt="Fridge photo"
+  />
+  <mat-card-content>
+    <h3 class="fridge__model">{{ fridge?.model }}</h3>
+    <p class="fridge__description">{{ fridge?.description }}</p>
+    <p class="fridge__address">{{ fridge?.address | addressLabel }}</p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button
+      mat-icon-button
+      i18n-matTooltip="@@editFridge"
+      matTooltip="Edit fridge"
+      class="action-btn"
+      (click)="openEditFridgeDialog()"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      i18n-matTooltip="@@deleteFridge"
+      matTooltip="Delete fridge"
+      class="action-btn"
+      (click)="openDeleteFridgeDialog()"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<ng-template #imgPlaceholder>
+  <div class="photo placeholder" i18n="@@noPhoto">No photo</div>
+</ng-template>
