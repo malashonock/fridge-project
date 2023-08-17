@@ -5,9 +5,9 @@
 }
 
 mat-card {
-  width: 100%;
-  max-width: 20rem; // 320px
-  min-height: 21rem; // 336px
+  max-width: 100%;
+  width: 19rem; // 304px
+  min-height: 22rem; // 352px
   border-radius: 0;
 }
 
@@ -18,7 +18,7 @@ mat-card {
   }
 
   &__description {
-    @include multiline-ellipsis(1);
+    @include multiline-ellipsis(2);
   }
   
   &__address {
