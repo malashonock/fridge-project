@@ -8,5 +8,7 @@
 </ng-container>
 
 <ng-template #noData>
-  <p>No fridges matching the filter "{{ searchQuery$ | async }}"</p>
+  <p i18n="@@noFridgesMatchingFilter">
+    No fridges matching the filter "{{ searchQuery$ | async }}"
+  </p>
 </ng-template>
