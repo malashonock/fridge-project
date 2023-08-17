@@ -12,5 +12,14 @@
     [name]="name"
     [placeholder]="placeholder"
   />
-  <mat-icon matSuffix>search</mat-icon>
+  <mat-icon *ngIf="isBlank$ | async" matSuffix>search</mat-icon>
+  <button
+    *ngIf="(isBlank$ | async) === false"
+    matSuffix
+    mat-icon-button
+    type="button"
+    (click)="searchControl.reset()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
 </mat-form-field>
