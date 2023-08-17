@@ -25,8 +25,7 @@ export class FridgesGridComponent implements OnInit {
       this.searchQuery$?.pipe(
         map((searchQuery: string): string => {
           return searchQuery.trim().toLowerCase();
-        }),
-        startWith('')
+        })
       ),
     ]).pipe(
       map(([fridges, searchQuery]): Fridge[] => {
