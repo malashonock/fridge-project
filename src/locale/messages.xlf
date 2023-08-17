@@ -63,10 +63,10 @@
         </context-group>
       </trans-unit>
       <trans-unit id="noFridgesMatchingFilter" datatype="html">
-        <source> No fridges matching the filter &quot;<x id="INTERPOLATION" equiv-text="{{ searchQuery$ | async }}"/>&quot; </source>
+        <source> No fridges matching the filter &quot;<x id="INTERPOLATION" equiv-text="{{ searchQuery }}"/>&quot; </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/fridges-grid/fridges-grid.component.html</context>
-          <context context-type="linenumber">12,13</context>
+          <context context-type="linenumber">9,11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fridgesPageHeader" datatype="html">
@@ -481,7 +481,7 @@
         <source>product</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.ts</context>
-          <context context-type="linenumber">187</context>
+          <context context-type="linenumber">181</context>
         </context-group>
       </trans-unit>
       <trans-unit id="productsPageHeader" datatype="html">
@@ -746,7 +746,7 @@
         <source>Search</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/search-box/search-box.component.ts</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="settings" datatype="html">
