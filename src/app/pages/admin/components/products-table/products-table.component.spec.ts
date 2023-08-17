@@ -8,6 +8,7 @@ import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { provideMockStore } from '@ngrx/store/testing';
+import '@angular/localize/init';
 
 import { ProductsTableComponent } from './products-table.component';
 import { SharedModule } from 'shared/shared.module';

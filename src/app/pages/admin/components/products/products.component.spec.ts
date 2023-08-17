@@ -3,6 +3,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { Component, Input } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable, Subject } from 'rxjs';
+import '@angular/localize/init';
 
 import { ProductsComponent } from './products.component';
 import { SharedModule } from 'shared/shared.module';
