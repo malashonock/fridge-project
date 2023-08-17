@@ -1,0 +1,12 @@
+<ng-container
+  *ngIf="filteredFridges$ | async | any as filteredFridges; else noData"
+>
+  <app-fridge-card
+    *ngFor="let fridge of filteredFridges"
+    [fridge]="fridge"
+  ></app-fridge-card>
+</ng-container>
+
+<ng-template #noData>
+  <p>No fridges matching the filter "{{ searchQuery$ | async }}"</p>
+</ng-template>
