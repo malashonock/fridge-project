@@ -3,8 +3,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
+  OnChanges,
   OnDestroy,
   OnInit,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import {
@@ -56,10 +58,10 @@ import { ProductsActions } from 'app/state/products/products.actions';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsTableComponent
-  implements OnInit, AfterViewInit, OnDestroy
+  implements OnInit, OnChanges, AfterViewInit, OnDestroy
 {
-  @Input() public products$: Observable<Product[]>;
-  @Input() public searchQuery$: Observable<string>;
+  @Input() public products: Product[] = [];
+  @Input() public searchQuery = '';
 
   public dataSource = new MatTableDataSource<Product>([]);
   public tableColumns: string[] = [
@@ -83,9 +85,17 @@ export class ProductsTableComponent
     private store: Store
   ) {}
 
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (Object.hasOwn(changes, 'products')) {
+      this.dataSource.data = this.products;
+    }
+
+    if (Object.hasOwn(changes, 'searchQuery')) {
+      this.dataSource.filter = this.searchQuery;
+    }
+  }
+
   public ngOnInit(): void {
-    this.subscribeToProductsChanges();
-    this.subscribeToSearchQueryChanges();
     this.setupFilter();
   }
 
@@ -97,22 +107,6 @@ export class ProductsTableComponent
   public ngOnDestroy(): void {
     this.destroy$.next(null);
     this.destroy$.complete();
-  }
-
-  private subscribeToProductsChanges(): void {
-    this.products$
-      ?.pipe(takeUntil(this.destroy$))
-      .subscribe((products: Product[]) => {
-        this.dataSource.data = products;
-      });
-  }
-
-  private subscribeToSearchQueryChanges(): void {
-    this.searchQuery$
-      ?.pipe(takeUntil(this.destroy$))
-      .subscribe((query: string): void => {
-        this.dataSource.filter = query;
-      });
   }
 
   private setupFilter(): void {

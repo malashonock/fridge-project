@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
+import { skip } from 'rxjs';
 
 import { SearchBoxComponent } from './search-box.component';
 import { SharedModule } from 'shared/shared.module';
@@ -27,7 +28,7 @@ describe('SearchBoxComponent', () => {
   it('should debounce user input', (done) => {
     const start = Date.now();
 
-    component.searchQueryChange.subscribe(() => {
+    component.searchQueryChange.pipe(skip(1)).subscribe(() => {
       const lag = Date.now() - start;
       expect(lag).toBeGreaterThan(500);
       done();
@@ -37,11 +38,13 @@ describe('SearchBoxComponent', () => {
   });
 
   it('should trim & lowercase user input', (done) => {
-    const sub = component.searchQueryChange.subscribe((query: string) => {
-      expect(query).toBe('chicken');
-      sub.unsubscribe();
-      done();
-    });
+    const sub = component.searchQueryChange
+      .pipe(skip(1))
+      .subscribe((query: string) => {
+        expect(query).toBe('chicken');
+        sub.unsubscribe();
+        done();
+      });
 
     component.searchControl.setValue('   CHICKEN   ');
   });

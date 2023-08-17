@@ -9,8 +9,8 @@ import { Fridge } from 'core/models/fridge/fridge.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FridgesGridComponent {
-  @Input() public fridges: Fridge[];
-  @Input() public searchQuery: string;
+  @Input() public fridges: Fridge[] = [];
+  @Input() public searchQuery = '';
 
   public get filteredFridges(): Fridge[] {
     return this.fridges.filter((fridge: Fridge): boolean => {

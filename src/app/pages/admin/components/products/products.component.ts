@@ -14,7 +14,7 @@ import { ProductFormComponent } from '../product-form/product-form.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsComponent implements OnDestroy {
-  public searchQuery$ = new Subject<string>();
+  public searchQuery: string;
   private destroy$ = new Subject();
 
   public constructor(private store: Store, private dialog: MatDialog) {}
@@ -28,8 +28,8 @@ export class ProductsComponent implements OnDestroy {
     return this.store.select(selectAllProducts);
   }
 
-  public onSearchQueryChange(query: string): void {
-    this.searchQuery$.next(query);
+  public onSearchQueryChange(searchQuery: string): void {
+    this.searchQuery = searchQuery;
   }
 
   public openAddProductDialog(): void {

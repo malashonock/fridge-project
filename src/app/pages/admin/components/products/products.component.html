@@ -22,6 +22,6 @@
 </div>
 
 <app-products-table
-  [products$]="products$"
-  [searchQuery$]="searchQuery$"
+  [products]="products$ | async | or : []"
+  [searchQuery]="searchQuery"
 ></app-products-table>
