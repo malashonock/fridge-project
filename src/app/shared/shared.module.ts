@@ -29,6 +29,7 @@ import { ProductCategoryLabelPipe } from './pipes/label/product-category/product
 import { ShelfLifeLabelPipe } from './pipes/label/shelf-life/shelf-life-label.pipe';
 import { StaticAssetUrlPipe } from './pipes/static-asset-url/static-asset-url.pipe';
 import { AddressLabelPipe } from './pipes/label/address/address-label.pipe';
+import { OrPipe } from './pipes/or/or.pipe';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { AddressLabelPipe } from './pipes/label/address/address-label.pipe';
     ShelfLifeLabelPipe,
     StaticAssetUrlPipe,
     AddressLabelPipe,
+    OrPipe,
   ],
   exports: [
     CommonModule,
@@ -83,6 +85,7 @@ import { AddressLabelPipe } from './pipes/label/address/address-label.pipe';
     ShelfLifeLabelPipe,
     StaticAssetUrlPipe,
     AddressLabelPipe,
+    OrPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
   providers: [AnyPipe],
