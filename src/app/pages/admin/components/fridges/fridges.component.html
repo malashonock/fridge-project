@@ -22,6 +22,6 @@
 </div>
 
 <app-fridges-grid
-  [fridges$]="fridges$"
-  [searchQuery$]="searchQuery$"
+  [fridges]="fridges$ | async | or : []"
+  [searchQuery]="searchQuery$ | async | or : ''"
 ></app-fridges-grid>

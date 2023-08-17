@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
@@ -12,16 +12,11 @@ import { selectAllFridges } from 'app/state/fridges/fridges.selectors';
   styleUrls: ['./fridges.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FridgesComponent implements OnDestroy {
+export class FridgesComponent {
   public searchQuery$ = new Subject<string>();
   private destroy$ = new Subject();
 
   public constructor(private store: Store, private dialog: MatDialog) {}
-
-  public ngOnDestroy(): void {
-    this.destroy$.next(null);
-    this.destroy$.complete();
-  }
 
   public get fridges$(): Observable<Fridge[]> {
     return this.store.select(selectAllFridges);

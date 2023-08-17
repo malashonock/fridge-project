@@ -44,8 +44,8 @@ export class SearchBoxComponent implements AfterViewInit, OnDestroy {
 
   @Output() public get searchQueryChange(): Observable<string> {
     return this.searchControl.valueChanges.pipe(
-      startWith(this.searchControl.value),
       debounceTime(500),
+      startWith(this.searchControl.value),
       map((rawQuery: string | null) => {
         return rawQuery?.trim().toLowerCase() || '';
       })
