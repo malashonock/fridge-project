@@ -7,3 +7,22 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: $max-lines;
 }
+
+@mixin mat-icon-btn-resize($btn-size) {
+  width: $btn-size;
+  height: $btn-size;
+  font-size: $btn-size * 0.5;
+  padding: $btn-size * 0.25;
+  
+    mat-icon {
+      width: $btn-size * 0.5;
+      height: $btn-size * 0.5;
+      font-size: $btn-size * 0.5;
+    }
+
+  ::ng-deep .mat-mdc-button-touch-target {
+    width: $btn-size;
+    height: $btn-size;
+    font-size: $btn-size * 0.5;
+  }
+}
