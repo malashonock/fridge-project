@@ -1,5 +1,7 @@
 import { FormGroup } from '@angular/forms';
 
+export type ChangeEventHandler<T> = (value: T) => void;
+
 export function controlHasError(
   this: FormGroup,
   childControlErrorPath: string

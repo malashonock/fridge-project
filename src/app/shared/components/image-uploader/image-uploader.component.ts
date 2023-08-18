@@ -20,9 +20,7 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 import { FileInputDirective } from 'shared/directives/file-input/file-input.directive';
 import { FileValidators } from 'core/validators/file/file.validators';
-
-type VoidEventHandler = () => void;
-type ChangeEventHandler = (image: FileWithUrl | null) => void;
+import { ChangeEventHandler } from 'utils/form/form.utils';
 
 @Component({
   selector: 'app-image-uploader',
@@ -134,12 +132,14 @@ export class ImageUploaderComponent
     this.formControl.setValue(value);
   }
 
-  public registerOnChange(onChangeCallback: ChangeEventHandler): void {
+  public registerOnChange(
+    onChangeCallback: ChangeEventHandler<FileWithUrl | null>
+  ): void {
     this.formControl.valueChanges.subscribe(onChangeCallback);
   }
 
-  private _onTouchedCallback: VoidEventHandler | null = null;
-  public registerOnTouched(onTouchedCallback: VoidEventHandler): void {
+  private _onTouchedCallback: VoidFunction | null = null;
+  public registerOnTouched(onTouchedCallback: VoidFunction): void {
     // FileInputDirective is not available unitl AfterViewInit,
     // so we need to save the callback temporarily
     this._onTouchedCallback = onTouchedCallback;
