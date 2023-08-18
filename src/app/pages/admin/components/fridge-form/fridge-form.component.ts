@@ -47,7 +47,10 @@ export class FridgeFormComponent implements OnInit, OnDestroy {
       city: [this.fridge?.address.city],
       street: [this.fridge?.address.street],
       buildingNo: [this.fridge?.address.buildingNo],
-      floorNo: [this.fridge?.address.floorNo, [NumberValidators.integer]],
+      floorNo: [
+        this.fridge?.address.floorNo,
+        [NumberValidators.number, NumberValidators.integer],
+      ],
       roomNo: [this.fridge?.address.roomNo],
     }),
     products: [this.fridge?.products], // TODO

@@ -136,6 +136,19 @@
           formControlName="floorNo"
           [errorStateMatcher]="earlyErrorStateMatcher"
         />
+        <!-- TODO: convert to a combo-field -->
+        <mat-error
+          *ngIf="controlHasError('address.floorNo.isNaN')"
+          i18n="@@fridgeAddressFloorErrorNaN"
+        >
+          Floor number must be a number
+        </mat-error>
+        <mat-error
+          *ngIf="controlHasError('address.floorNo.fractionOverflow')"
+          i18n="@@fridgeAddressFloorErrorInteger"
+        >
+          Floor number must be an integer
+        </mat-error>
       </mat-form-field>
 
       <!-- Room # -->
@@ -147,13 +160,6 @@
         <mat-label i18n="@@roomNo">Room #</mat-label>
         <input matInput id="roomNo" name="roomNo" formControlName="roomNo" />
       </mat-form-field>
-
-      <mat-error
-        *ngIf="controlHasError('address.floorNo.fractionOverflow')"
-        i18n="@@fridgeAddressFloorErrorInteger"
-      >
-        Floor number must be an integer
-      </mat-error>
     </fieldset>
 
     <!-- Products -->
