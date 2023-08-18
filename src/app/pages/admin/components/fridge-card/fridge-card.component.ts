@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subject, catchError, of, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -8,6 +13,8 @@ import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 import { StaticAssetService } from 'core/services/static-asset/static-asset.service';
 import { ConfirmDeleteComponent } from 'shared/components/confirm-delete/confirm-delete.component';
 import { FridgeFormComponent } from '../fridge-form/fridge-form.component';
+import { ProductQuantity } from 'core/models/fridge/product-quantity.interface';
+import { selectFridgeProducts } from 'app/state/fridges/fridges.selectors';
 
 @Component({
   selector: 'app-fridge-card',
@@ -15,8 +22,10 @@ import { FridgeFormComponent } from '../fridge-form/fridge-form.component';
   styleUrls: ['./fridge-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FridgeCardComponent {
+export class FridgeCardComponent implements OnInit {
   @Input() public fridge: Fridge;
+
+  private fridgeProducts: ProductQuantity[] | undefined;
 
   private destroy$ = new Subject();
 
@@ -25,6 +34,15 @@ export class FridgeCardComponent {
     private staticAssetService: StaticAssetService,
     private store: Store
   ) {}
+
+  public ngOnInit(): void {
+    this.store
+      .select(selectFridgeProducts(this.fridge.id))
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((products: ProductQuantity[] | undefined): void => {
+        this.fridgeProducts = products;
+      });
+  }
 
   private fetchFridgeImage(): Observable<FileWithUrl | null> {
     return this.fridge?.imageUrl
@@ -40,7 +58,7 @@ export class FridgeCardComponent {
 
     this.fetchFridgeImage().subscribe((image: FileWithUrl | null): void => {
       this.dialog.open(FridgeFormComponent, {
-        data: { fridge: this.fridge, image },
+        data: { fridge: this.fridge, products: this.fridgeProducts, image },
       });
     });
   }

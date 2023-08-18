@@ -19,9 +19,11 @@ import { FridgesActions } from 'app/state/fridges/fridges.actions';
 // import { selectFridgeSubmitting } from 'app/state/fridges/fridges.selectors';
 import { controlHasError, getControlError } from 'utils/form/form.utils';
 import { FormMode } from 'core/models/ui/form-mode.enum';
+import { ProductQuantity } from 'core/models/fridge/product-quantity.interface';
 
 interface FridgeDialogData {
   fridge?: Fridge;
+  products?: ProductQuantity[];
   image?: FileWithUrl | null;
 }
 
@@ -36,6 +38,7 @@ interface FridgeDialogData {
 })
 export class FridgeFormComponent implements OnInit, OnDestroy {
   private fridge = this.data?.fridge;
+  private fridgeProducts = this.data?.products;
   private fridgeImage = this.data?.image;
 
   public form = this.formBuilder.group({
@@ -53,7 +56,7 @@ export class FridgeFormComponent implements OnInit, OnDestroy {
       ],
       roomNo: [this.fridge?.address.roomNo],
     }),
-    products: [this.fridge?.products], // TODO
+    products: [this.fridgeProducts],
     image: [this.fridgeImage],
   });
 
