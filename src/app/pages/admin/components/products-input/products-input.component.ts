@@ -3,6 +3,7 @@ import {
   Component,
   OnDestroy,
   OnInit,
+  TrackByFunction,
   forwardRef,
 } from '@angular/core';
 import {
@@ -113,6 +114,10 @@ export class ProductsInputComponent
   public setDisabledState?(isDisabled: boolean): void {
     // TODO
   }
+
+  public productQtyTrackBy: TrackByFunction<ProductQuantity> = (_, item) => {
+    return item.product?.id;
+  };
 
   private addProductEntry({ product, quantity }: ProductQuantity): void {
     const productEntry = this.formBuilder.group({

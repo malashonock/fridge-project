@@ -1,9 +1,17 @@
 <form [formGroup]="form">
   <ul formArrayName="productQuantities">
-    <ng-container *ngFor="let productQty of productQuantities; let i = index">
+    <ng-container
+      *ngFor="
+        let productQty of productQuantities;
+        let i = index;
+        trackBy: productQtyTrackBy
+      "
+    >
       <li [formGroupName]="i">
         <span>{{ productQty.product?.name }}: </span>
-        <input type="text" appNumericInput formControlName="quantity" />
+        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+          <input type="text" appNumericInput formControlName="quantity" />
+        </mat-form-field>
       </li>
     </ng-container>
   </ul>
