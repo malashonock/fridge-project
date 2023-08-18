@@ -1,6 +1,6 @@
 import { Product } from '../product/product.interface';
 
 export interface ProductQuantity {
-  product: Product;
+  product?: Product;
   quantity: number;
 }
