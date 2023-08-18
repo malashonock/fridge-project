@@ -14,6 +14,7 @@ import { adminPageMenuConfigProvider } from 'core/configs/admin-page-menu.config
 import { FridgeCardComponent } from './components/fridge-card/fridge-card.component';
 import { FridgesGridComponent } from './components/fridges-grid/fridges-grid.component';
 import { FridgeFormComponent } from './components/fridge-form/fridge-form.component';
+import { ProductsInputComponent } from './components/products-input/products-input.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FridgeFormComponent } from './components/fridge-form/fridge-form.compon
     FridgeCardComponent,
     FridgesGridComponent,
     FridgeFormComponent,
+    ProductsInputComponent,
   ],
   exports: [AdminPageComponent],
   imports: [SharedModule, AdminRoutingModule, MobilePageDirective],

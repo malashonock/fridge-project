@@ -1,0 +1,10 @@
+<form [formGroup]="form">
+  <ul formArrayName="productQuantities">
+    <ng-container *ngFor="let productQty of productQuantities; let i = index">
+      <li [formGroupName]="i">
+        <span>{{ productQty.product?.name }}: </span>
+        <input type="text" appNumericInput formControlName="quantity" />
+      </li>
+    </ng-container>
+  </ul>
+</form>
