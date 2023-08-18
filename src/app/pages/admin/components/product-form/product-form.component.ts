@@ -40,6 +40,10 @@ interface ProductDialogData {
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: EarlyErrorStateMatcher, useClass: EarlyErrorStateMatcher },
+    { provide: ComboErrorStateMatcher, useClass: ComboErrorStateMatcher },
+  ],
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
   private product = this.data?.product;
@@ -125,9 +129,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     return this.product ? FormMode.Edit : FormMode.Create;
   }
 
-  public earlyErrorStateMatcher = new EarlyErrorStateMatcher();
-  public comboErrorStateMatcher = new ComboErrorStateMatcher();
-
   private pristine$ = this.form.valueChanges.pipe(
     map((): boolean => {
       return this.form.pristine;
@@ -170,6 +171,8 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private store: Store,
     public dialogRef: MatDialogRef<ProductFormComponent>,
+    public earlyErrorStateMatcher: EarlyErrorStateMatcher,
+    public comboErrorStateMatcher: ComboErrorStateMatcher,
     @Inject(PRODUCT_CATEGORIES) public productCategories: ProductCategory[],
     @Inject(WEIGHT_UNITS) public weightUnits: UnitOfWeight[],
     @Inject(NUTRIENTS) public nutrients: Nutrient[],

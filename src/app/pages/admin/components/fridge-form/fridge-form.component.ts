@@ -13,7 +13,6 @@ import { Store } from '@ngrx/store';
 import { Fridge } from 'core/models/fridge/fridge.interface';
 // import { FridgeFields } from 'core/models/fridge/fridge-fields.interface';
 import { NumberValidators } from 'core/validators/number/number.validators';
-import { ComboErrorStateMatcher } from 'core/classes/combo-error-state-matcher/combo-error-state-matcher.class';
 import { EarlyErrorStateMatcher } from 'core/classes/early-error-state-matcher/early-error-state-matcher.class';
 import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 import { FridgesActions } from 'app/state/fridges/fridges.actions';
@@ -31,6 +30,9 @@ interface FridgeDialogData {
   templateUrl: './fridge-form.component.html',
   styleUrls: ['./fridge-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: EarlyErrorStateMatcher, useClass: EarlyErrorStateMatcher },
+  ],
 })
 export class FridgeFormComponent implements OnInit, OnDestroy {
   private fridge = this.data?.fridge;
@@ -67,9 +69,6 @@ export class FridgeFormComponent implements OnInit, OnDestroy {
   private get mode(): FormMode {
     return this.fridge ? FormMode.Edit : FormMode.Create;
   }
-
-  public earlyErrorStateMatcher = new EarlyErrorStateMatcher();
-  public comboErrorStateMatcher = new ComboErrorStateMatcher();
 
   private pristine$ = this.form.valueChanges.pipe(
     map((): boolean => {
@@ -113,6 +112,7 @@ export class FridgeFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private store: Store,
     public dialogRef: MatDialogRef<FridgeFormComponent>,
+    public earlyErrorStateMatcher: EarlyErrorStateMatcher,
     @Inject(MAT_DIALOG_DATA) private data?: FridgeDialogData
   ) {}
 

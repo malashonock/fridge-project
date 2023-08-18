@@ -1,6 +1,8 @@
+import { Injectable } from '@angular/core';
 import { AbstractControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
+@Injectable()
 export class EarlyErrorStateMatcher implements ErrorStateMatcher {
   public isErrorState(
     control: AbstractControl | null,
