@@ -5,6 +5,7 @@ import { Observable, Subject } from 'rxjs';
 
 import { Fridge } from 'core/models/fridge/fridge.interface';
 import { selectAllFridges } from 'app/state/fridges/fridges.selectors';
+import { FridgeFormComponent } from '../fridge-form/fridge-form.component';
 
 @Component({
   selector: 'app-fridges',
@@ -27,6 +28,6 @@ export class FridgesComponent {
   }
 
   public openAddFridgeDialog(): void {
-    // this.dialog.open(FridgeFormComponent);
+    this.dialog.open(FridgeFormComponent);
   }
 }

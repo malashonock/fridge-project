@@ -1,0 +1,177 @@
+<header class="header">
+  <h2 matDialogTitle>{{ title }}</h2>
+  <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
+</header>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-dialog-content class="form-fields">
+    <!-- Image -->
+    <mat-form-field
+      appearance="outline"
+      subscriptSizing="dynamic"
+      class="form-fields__image"
+    >
+      <mat-label i18n="@@fridgeImage">Fridge image</mat-label>
+      <app-image-uploader
+        id="image"
+        formControlName="image"
+      ></app-image-uploader>
+      <mat-error
+        *ngIf="controlHasError('image.fileType')"
+        i18n="@@imageErrorFileType"
+      >
+        The uploaded file is not a valid image
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-fields__text-intro">
+      <!-- Model -->
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="form-fields__model"
+      >
+        <mat-label i18n="@@fridgeModel">Fridge model</mat-label>
+        <input
+          matInput
+          id="model"
+          name="model"
+          formControlName="model"
+          cdkFocusInitial
+        />
+        <mat-error
+          *ngIf="controlHasError('model.required')"
+          i18n="@@fridgeModelErrorRequired"
+        >
+          Fridge model is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Description -->
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="form-fields__description"
+      >
+        <mat-label i18n="@@description">Description</mat-label>
+        <textarea
+          matInput
+          id="description"
+          name="description"
+          formControlName="description"
+          cdkTextareaAutosize
+        >
+        </textarea>
+      </mat-form-field>
+    </div>
+
+    <!-- Geolocation -->
+    <fieldset formGroupName="geolocation" class="form-fields__geolocation">
+      <legend i18n="@@geolocation">Geolocation</legend>
+
+      <!-- TODO: custom input -->
+    </fieldset>
+
+    <!-- Address -->
+    <fieldset formGroupName="address" class="form-fields__address">
+      <legend i18n="@@address">Address</legend>
+
+      <!-- Country -->
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="form-fields__country"
+      >
+        <mat-label i18n="@@country">Country</mat-label>
+        <input matInput id="country" name="country" formControlName="country" />
+      </mat-form-field>
+
+      <!-- City -->
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="form-fields__city"
+      >
+        <mat-label i18n="@@city">City</mat-label>
+        <input matInput id="city" name="city" formControlName="city" />
+      </mat-form-field>
+
+      <!-- Street -->
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="form-fields__street"
+      >
+        <mat-label i18n="@@street">Street</mat-label>
+        <input matInput id="street" name="street" formControlName="street" />
+      </mat-form-field>
+
+      <!-- Building # -->
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="form-fields__buildingNo"
+      >
+        <mat-label i18n="@@buildingNo">Bldg. #</mat-label>
+        <input
+          matInput
+          id="buildingNo"
+          name="buildingNo"
+          formControlName="buildingNo"
+        />
+      </mat-form-field>
+
+      <!-- Floor # -->
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="form-fields__floorNo"
+      >
+        <mat-label i18n="@@floorNo">Floor #</mat-label>
+        <input
+          type="text"
+          appNumericInput
+          id="floorNo"
+          name="floorNo"
+          formControlName="floorNo"
+          [errorStateMatcher]="earlyErrorStateMatcher"
+        />
+      </mat-form-field>
+
+      <!-- Room # -->
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="form-fields__roomNo"
+      >
+        <mat-label i18n="@@roomNo">Room #</mat-label>
+        <input matInput id="roomNo" name="roomNo" formControlName="roomNo" />
+      </mat-form-field>
+
+      <mat-error
+        *ngIf="controlHasError('address.floorNo.fractionOverflow')"
+        i18n="@@fridgeAddressFloorErrorInteger"
+      >
+        Floor number must be an integer
+      </mat-error>
+    </fieldset>
+
+    <!-- Products -->
+    <fieldset formGroupName="products" class="form-fields__products">
+      <legend i18n="@@products">Products</legend>
+
+      <!-- TODO: custom input -->
+    </fieldset>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="center">
+    <button
+      mat-raised-button
+      type="submit"
+      [disabled]="submitDisabled$ | async"
+      color="primary"
+    >
+      {{ submitText }}
+    </button>
+  </mat-dialog-actions>
+</form>

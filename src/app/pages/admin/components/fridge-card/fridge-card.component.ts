@@ -7,6 +7,7 @@ import { Fridge } from 'core/models/fridge/fridge.interface';
 import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 import { StaticAssetService } from 'core/services/static-asset/static-asset.service';
 import { ConfirmDeleteComponent } from 'shared/components/confirm-delete/confirm-delete.component';
+import { FridgeFormComponent } from '../fridge-form/fridge-form.component';
 
 @Component({
   selector: 'app-fridge-card',
@@ -38,9 +39,9 @@ export class FridgeCardComponent {
     event?.stopPropagation();
 
     this.fetchFridgeImage().subscribe((image: FileWithUrl | null): void => {
-      // this.dialog.open(FridgeFormComponent, {
-      //   data: { fridge, image },
-      // });
+      this.dialog.open(FridgeFormComponent, {
+        data: { fridge: this.fridge, image },
+      });
     });
   }
 
