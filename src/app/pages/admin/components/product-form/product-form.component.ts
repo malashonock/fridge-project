@@ -28,15 +28,11 @@ import { NUTRIENTS } from 'core/configs/nutrient.config';
 import { Nutrient } from 'core/models/product/nutrient.enum';
 import { PERIODS } from 'core/configs/periods.config';
 import { Period } from 'core/models/product/period.enum';
+import { FormMode } from 'core/models/ui/form-mode.enum';
 
 interface ProductDialogData {
   product?: Product;
   image?: FileWithUrl | null;
-}
-
-enum FormMode {
-  Create,
-  Edit,
 }
 
 @Component({
@@ -48,7 +44,6 @@ enum FormMode {
 export class ProductFormComponent implements OnInit, OnDestroy {
   private product = this.data?.product;
   private productImage = this.data?.image;
-  private initialProductImageUrl = this.product?.imageUrl;
 
   public form = this.formBuilder.group({
     name: [this.product?.name, [Validators.required]],
