@@ -1,4 +1,6 @@
+import { Product } from '../product/product.interface';
+
 export interface ProductQuantity {
-  productId: string;
+  product: Product;
   quantity: number;
 }
