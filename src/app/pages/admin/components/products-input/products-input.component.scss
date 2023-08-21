@@ -1,0 +1,20 @@
+.nodata-row {
+  position: relative;
+  height: 10rem; // 160px
+  color: rgba($color: black, $alpha: 0.87);
+  text-align: center;
+
+  &::after {
+    position: absolute;
+    content: "";
+    background-image: url('/assets/images/mouse-hung.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.2;
+  }
+}
