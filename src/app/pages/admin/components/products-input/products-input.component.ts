@@ -101,13 +101,13 @@ export class ProductsInputComponent
   }
 
   public registerOnChange(
-    changeEventHandler: ChangeEventHandler<ProductQuantity[]>
+    onChangeCallback: ChangeEventHandler<ProductQuantity[]>
   ): void {
-    this.notifyChangeListener = changeEventHandler;
+    this.notifyChangeListener = onChangeCallback;
   }
 
-  public registerOnTouched(touchedEventHandler: VoidFunction): void {
-    this.notifyTouchedListener = touchedEventHandler;
+  public registerOnTouched(onTouchedCallback: VoidFunction): void {
+    this.notifyTouchedListener = onTouchedCallback;
   }
 
   public setDisabledState?(isDisabled: boolean): void {
