@@ -14,10 +14,7 @@ import {
   NG_VALUE_ACCESSOR,
   Validators,
 } from '@angular/forms';
-
-import { ProductQuantityDto } from 'core/models/fridge/product-quantity-dto.interface';
-import { ProductQuantity } from 'core/models/fridge/product-quantity.interface';
-import { NumberValidators } from 'core/validators/number/number.validators';
+import { MatTableDataSource } from '@angular/material/table';
 import {
   Subject,
   distinctUntilChanged,
@@ -26,6 +23,9 @@ import {
   take,
   takeUntil,
 } from 'rxjs';
+
+import { ProductQuantity } from 'core/models/fridge/product-quantity.interface';
+import { NumberValidators } from 'core/validators/number/number.validators';
 import { ChangeEventHandler } from 'utils/form/form.utils';
 
 @Component({
@@ -44,6 +44,9 @@ import { ChangeEventHandler } from 'utils/form/form.utils';
 export class ProductsInputComponent
   implements ControlValueAccessor, OnInit, OnDestroy
 {
+  public dataSource = new MatTableDataSource<ProductQuantity>([]);
+  public tableColumns = ['product', 'quantity'];
+
   public form = this.formBuilder.group({
     productQuantities: this.formBuilder.array([] as FormGroup[]),
   });
@@ -52,16 +55,21 @@ export class ProductsInputComponent
     return this.form.get('productQuantities') as FormArray;
   }
 
-  public get productQuantities(): ProductQuantity[] {
-    return this.productEntries.value;
-  }
-
-  private notifyChangeListener: ChangeEventHandler<
-    ProductQuantityDto[]
-  > | null = null;
+  private notifyChangeListener: ChangeEventHandler<ProductQuantity[]> | null =
+    null;
   private notifyTouchedListener: VoidFunction | null = null;
 
   private destroy$ = new Subject();
+
+  private touched$ = this.form.valueChanges.pipe(
+    map((): boolean => {
+      return this.form.touched;
+    }),
+    distinctUntilChanged(),
+    filter((touched: boolean): boolean => {
+      return touched === true;
+    })
+  );
 
   public constructor(private formBuilder: FormBuilder) {
     this.addProductEntry = this.addProductEntry.bind(this);
@@ -71,21 +79,12 @@ export class ProductsInputComponent
     this.form.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(({ productQuantities }): void => {
+        this.dataSource.data = productQuantities ?? [];
         productQuantities && this.notifyChangeListener?.(productQuantities);
       });
 
-    this.form.valueChanges
-      .pipe(
-        takeUntil(this.destroy$),
-        map((): boolean => {
-          return this.form.touched;
-        }),
-        distinctUntilChanged(),
-        filter((touched: boolean): boolean => {
-          return touched === true;
-        }),
-        take(1)
-      )
+    this.touched$
+      .pipe(takeUntil(this.destroy$), take(1))
       .subscribe((): void => {
         this.notifyTouchedListener?.();
       });
@@ -102,7 +101,7 @@ export class ProductsInputComponent
   }
 
   public registerOnChange(
-    changeEventHandler: ChangeEventHandler<ProductQuantityDto[]>
+    changeEventHandler: ChangeEventHandler<ProductQuantity[]>
   ): void {
     this.notifyChangeListener = changeEventHandler;
   }
