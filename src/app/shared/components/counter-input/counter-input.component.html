@@ -1,0 +1,21 @@
+<button
+  mat-mini-fab
+  #decrementBtn
+  (click)="decrement()"
+  matTooltip="Decrease by 1"
+>
+  <mat-icon>remove</mat-icon>
+</button>
+
+<mat-form-field appearance="outline" subscriptSizing="dynamic">
+  <input type="text" appNumericInput [formControl]="formControl" />
+</mat-form-field>
+
+<button
+  mat-mini-fab
+  #incrementBtn
+  (click)="increment()"
+  matTooltip="Increase by 1"
+>
+  <mat-icon>add</mat-icon>
+</button>

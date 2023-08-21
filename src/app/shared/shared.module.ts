@@ -30,6 +30,7 @@ import { ShelfLifeLabelPipe } from './pipes/label/shelf-life/shelf-life-label.pi
 import { StaticAssetUrlPipe } from './pipes/static-asset-url/static-asset-url.pipe';
 import { AddressLabelPipe } from './pipes/label/address/address-label.pipe';
 import { OrPipe } from './pipes/or/or.pipe';
+import { CounterInputComponent } from './components/counter-input/counter-input.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { OrPipe } from './pipes/or/or.pipe';
     StaticAssetUrlPipe,
     AddressLabelPipe,
     OrPipe,
+    CounterInputComponent,
   ],
   exports: [
     CommonModule,
@@ -86,6 +88,7 @@ import { OrPipe } from './pipes/or/or.pipe';
     StaticAssetUrlPipe,
     AddressLabelPipe,
     OrPipe,
+    CounterInputComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
   providers: [AnyPipe],

@@ -1,5 +1,10 @@
 <form [formGroup]="form">
-  <table mat-table [dataSource]="dataSource" formArrayName="productQuantities">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    formArrayName="productQuantities"
+    [trackBy]="productQtyTrackBy"
+  >
     <!-- Column definitions -->
     <ng-container matColumnDef="product">
       <th mat-header-cell *matHeaderCellDef>Product</th>
@@ -19,9 +24,7 @@
         *matCellDef="let productQty; let i = index"
         [formGroupName]="i"
       >
-        <mat-form-field appearance="outline" subscriptSizing="dynamic">
-          <input type="text" appNumericInput formControlName="quantity" />
-        </mat-form-field>
+        <app-counter-input formControlName="quantity"></app-counter-input>
       </td>
     </ng-container>
 
