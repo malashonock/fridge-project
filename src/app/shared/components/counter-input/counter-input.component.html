@@ -4,12 +4,23 @@
   (click)="decrement()"
   i18n-matTooltip="@@decrement"
   matTooltip="Decrease by 1"
+  class="control-btn"
+  color="primary"
 >
   <mat-icon>remove</mat-icon>
 </button>
 
-<mat-form-field appearance="outline" subscriptSizing="dynamic">
-  <input type="text" appNumericInput [formControl]="formControl" />
+<mat-form-field
+  appearance="outline"
+  subscriptSizing="dynamic"
+  class="counter-field"
+>
+  <input
+    type="text"
+    class="counter-input"
+    appNumericInput
+    [formControl]="formControl"
+  />
 </mat-form-field>
 
 <button
@@ -18,6 +29,8 @@
   (click)="increment()"
   i18n-matTooltip="@@increment"
   matTooltip="Increase by 1"
+  class="control-btn"
+  color="primary"
 >
   <mat-icon>add</mat-icon>
 </button>

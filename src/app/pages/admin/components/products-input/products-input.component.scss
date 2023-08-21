@@ -18,3 +18,10 @@
     opacity: 0.2;
   }
 }
+
+.fridge-products {
+  .mat-column-quantity {
+    text-align: center;
+    width: 5rem; // Set to fit content width
+  }
+}
