@@ -9,6 +9,11 @@
           <context context-type="sourcefile">src/app/core/configs/admin-page-menu.config.ts</context>
           <context context-type="linenumber">7</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">167</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="fridges" datatype="html">
         <source>Fridges</source>
@@ -209,7 +214,16 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-card/fridge-card.component.ts</context>
-          <context context-type="linenumber">50</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fridgeImage" datatype="html">
+        <source>Fridge image</source>
+        <target>Изображение холодильника</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="noFridgesMatchingFilter" datatype="html">
@@ -235,6 +249,11 @@
       <trans-unit id="createFridge" datatype="html">
         <source>Create fridge</source>
         <target>Создать холодильник</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.ts</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridges/fridges.component.html</context>
@@ -273,8 +292,148 @@
         <target>Загруженный файл не является изображением</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fridgeModel" datatype="html">
+        <source>Fridge model</source>
+        <target>Модель холодильника</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fridgeModelErrorRequired" datatype="html">
+        <source> Fridge model is required </source>
+        <target>Необходимо ввести модель холодильника</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="description" datatype="html">
+        <source>Description</source>
+        <target>Описание</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="geolocation" datatype="html">
+        <source>Geolocation</source>
+        <target>Геолокация</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="address" datatype="html">
+        <source>Address</source>
+        <target>Адрес</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="country" datatype="html">
+        <source>Country</source>
+        <target>Страна</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="city" datatype="html">
+        <source>City</source>
+        <target>Город</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">95</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="street" datatype="html">
+        <source>Street</source>
+        <target>Улица</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="buildingNo" datatype="html">
+        <source>Bldg. #</source>
+        <target>№ дома</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="floorNo" datatype="html">
+        <source>Floor #</source>
+        <target>№ этажа</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">130</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fridgeAddressFloorErrorNaN" datatype="html">
+        <source> Floor number must be a number </source>
+        <target>Номер этажа должен быть числом</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">144</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fridgeAddressFloorErrorInteger" datatype="html">
+        <source> Floor number must be an integer </source>
+        <target>Номер этажа должен быть целым числом</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">150</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="roomNo" datatype="html">
+        <source>Room #</source>
+        <target>№ пом.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">160</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editFridgeHeader" datatype="html">
+        <source>Edit fridge</source>
+        <target>Редактирование холодильника</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createFridgeHeader" datatype="html">
+        <source>Add new fridge</source>
+        <target>Создание нового холодильника</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.ts</context>
+          <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="productName" datatype="html">
@@ -553,7 +712,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">119</context>
+          <context context-type="linenumber">118</context>
         </context-group>
       </trans-unit>
       <trans-unit id="createProductHeader" datatype="html">
@@ -562,7 +721,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">120</context>
+          <context context-type="linenumber">119</context>
         </context-group>
       </trans-unit>
       <trans-unit id="saveChanges" datatype="html">
@@ -570,8 +729,13 @@
         <target>Сохранить изменения</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
+            src/app/pages/admin/components/fridge-form/fridge-form.component.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">125</context>
+          <context context-type="linenumber">124</context>
         </context-group>
       </trans-unit>
       <trans-unit id="createProduct" datatype="html">
@@ -580,12 +744,21 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.ts</context>
-          <context context-type="linenumber">126</context>
+          <context context-type="linenumber">125</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/products/products.component.html</context>
           <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="productHeader" datatype="html">
+        <source>Product</source>
+        <target>Продукт</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products-input/products-input.component.html</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="soups" datatype="html">
@@ -787,6 +960,24 @@
           <context context-type="sourcefile">
             src/app/pages/admin/components/products-table/products-table.component.ts</context>
           <context context-type="linenumber">181</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="quantityShort" datatype="html">
+        <source>Qty</source>
+        <target>Кол-во</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products-input/products-input.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="noFridgeProducts" datatype="html">
+        <source> There are no products in this fridge yet </source>
+        <target>В этом холодильнике еще нет продуктов</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/products-input/products-input.component.html</context>
+          <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="productsPageHeader" datatype="html">
@@ -1158,6 +1349,24 @@
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="decrement" datatype="html">
+        <source>Decrease by 1</source>
+        <target>Уменьшить на 1</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/shared/components/counter-input/counter-input.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="increment" datatype="html">
+        <source>Increase by 1</source>
+        <target>Увеличить на 1</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/shared/components/counter-input/counter-input.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="discardImage" datatype="html">
         <source> Discard image </source>
         <target>Удалить изображение</target>
@@ -1173,7 +1382,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/shared/components/image-uploader/image-uploader.component.ts</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="search" datatype="html">
