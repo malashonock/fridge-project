@@ -1,4 +1,9 @@
 <form [formGroup]="form">
+  <app-product-autocomplete
+    (selectProduct)="upsertProduct($event)"
+    (autocompleteClosed)="onAutocompleteClose()"
+  ></app-product-autocomplete>
+
   <table
     mat-table
     [dataSource]="dataSource"

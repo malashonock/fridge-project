@@ -4,7 +4,10 @@ import {
   Component,
   OnDestroy,
   OnInit,
+  QueryList,
   TrackByFunction,
+  ViewChild,
+  ViewChildren,
   forwardRef,
 } from '@angular/core';
 import {
@@ -30,6 +33,9 @@ import { ProductQuantity } from 'core/models/fridge/product-quantity.interface';
 import { NumberValidators } from 'core/validators/number/number.validators';
 import { ChangeEventHandler } from 'utils/form/form.utils';
 import { ConfirmDeleteComponent } from 'shared/components/confirm-delete/confirm-delete.component';
+import { Product } from 'core/models/product/product.interface';
+import { ProductAutocompleteComponent } from '../product-autocomplete/product-autocomplete.component';
+import { CounterInputComponent } from 'shared/components/counter-input/counter-input.component';
 
 @Component({
   selector: 'app-products-input',
@@ -73,6 +79,14 @@ export class ProductsInputComponent
       return touched === true;
     })
   );
+
+  private pendingFocusIndex: number | null = null;
+
+  @ViewChild(ProductAutocompleteComponent)
+  private productAutocomplete: ProductAutocompleteComponent;
+
+  @ViewChildren(CounterInputComponent)
+  private quantityInputs: QueryList<CounterInputComponent>;
 
   public constructor(
     private formBuilder: FormBuilder,
@@ -162,5 +176,35 @@ export class ProductsInputComponent
           this.removeProductEntry(index);
         }
       });
+  }
+
+  public upsertProduct(product: Product): void {
+    let productIndex = (
+      this.productEntries.value as ProductQuantity[]
+    ).findIndex((productQty: ProductQuantity): boolean => {
+      return productQty.product?.id === product.id;
+    });
+
+    if (productIndex < 0) {
+      // Add new product entry
+      // By default, quantity is initialized to 1
+      this.addProductEntry({ product, quantity: 1 });
+      this.viewRef.detectChanges(); // update this.quantityInputs QueryList
+      productIndex = this.productEntries.length - 1;
+    }
+
+    // Save quantity input index to focus
+    // Need to enqueue because autocomplete intercepts focus on close
+    this.pendingFocusIndex = productIndex;
+
+    this.productAutocomplete?.reset();
+  }
+
+  public onAutocompleteClose(): void {
+    if (this.pendingFocusIndex !== null) {
+      const inputToFocus = this.quantityInputs.get(this.pendingFocusIndex);
+      inputToFocus?.focus();
+      this.pendingFocusIndex = null;
+    }
   }
 }
