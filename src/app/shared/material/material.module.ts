@@ -18,6 +18,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { A11yModule } from '@angular/cdk/a11y';
 import { MatCardModule } from '@angular/material/card';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { matPaginatorIntl } from './configs/mat-paginator-intl.config';
 
@@ -38,6 +39,7 @@ const materialModules = [
   MatDialogModule,
   A11yModule,
   MatCardModule,
+  MatAutocompleteModule,
 ];
 
 @NgModule({

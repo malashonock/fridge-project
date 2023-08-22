@@ -1,0 +1,16 @@
+<app-search-box
+  name="product-autocomplete"
+  label="Add or update product"
+  placeholder="Start typing product name..."
+  (searchQueryChange)="productQuery$.next($event)"
+  [autocomplete]="auto"
+></app-search-box>
+
+<mat-autocomplete #auto autoActiveFirstOption [displayWith]="productDisplayFn">
+  <mat-option
+    *ngFor="let product of filteredProducts$ | async | or : []"
+    [value]="product"
+  >
+    {{ product.name }}
+  </mat-option>
+</mat-autocomplete>
