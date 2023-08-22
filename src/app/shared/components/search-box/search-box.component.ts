@@ -9,6 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatAutocomplete } from '@angular/material/autocomplete';
 import {
   Observable,
   Subject,
@@ -29,6 +30,7 @@ export class SearchBoxComponent implements AfterViewInit, OnDestroy {
   @Input() public name = 'search-box';
   @Input() public label = $localize`:@@search:Search`;
   @Input() public placeholder = '';
+  @Input() public autocomplete: MatAutocomplete;
 
   public searchControl = this.formBuilder.control('');
 
@@ -46,8 +48,8 @@ export class SearchBoxComponent implements AfterViewInit, OnDestroy {
     return this.searchControl.valueChanges.pipe(
       debounceTime(500),
       startWith(this.searchControl.value),
-      map((rawQuery: string | null) => {
-        return rawQuery?.trim().toLowerCase() || '';
+      map((query: string | null): string => {
+        return query ?? '';
       })
     );
   }
@@ -77,5 +79,9 @@ export class SearchBoxComponent implements AfterViewInit, OnDestroy {
             break;
         }
       });
+  }
+
+  public reset(): void {
+    this.searchControl.reset('');
   }
 }
