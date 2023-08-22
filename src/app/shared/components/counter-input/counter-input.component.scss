@@ -1,11 +1,12 @@
 @import 'styles/_mixins';
 
-:host {
+.input-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 0.5rem; // 8px
   padding: 0.5rem; // 8px
+  padding-bottom: 0;
   max-width: 10rem; // 160px
 }
 
@@ -25,5 +26,10 @@
 
 .control-btn {
   @include mat-icon-btn-resize(2rem); // 32px
+}
+
+.errors {
+  font-size: 0.75rem; // 12px
+  padding-bottom: 0.5rem; // 8px
 }
 

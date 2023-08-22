@@ -581,21 +581,21 @@
         <source>Product</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/products-input/products-input.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="quantityShort" datatype="html">
         <source>Qty</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/products-input/products-input.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="noFridgeProducts" datatype="html">
         <source> There are no products in this fridge yet. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/products-input/products-input.component.html</context>
-          <context context-type="linenumber">40,42</context>
+          <context context-type="linenumber">41,43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="actions" datatype="html">
@@ -881,14 +881,35 @@
         <source>Decrease by 1</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/counter-input/counter-input.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="increment" datatype="html">
         <source>Increase by 1</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/counter-input/counter-input.component.html</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="counterErrorNaN" datatype="html">
+        <source> Input value must be a number </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/counter-input/counter-input.component.html</context>
+          <context context-type="linenumber">42,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="counterErrorInteger" datatype="html">
+        <source> Input value must be an integer </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/counter-input/counter-input.component.html</context>
+          <context context-type="linenumber">48,50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="counterErrorNegative" datatype="html">
+        <source> Input value cannot be negative </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/counter-input/counter-input.component.html</context>
+          <context context-type="linenumber">51,53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="discardImage" datatype="html">

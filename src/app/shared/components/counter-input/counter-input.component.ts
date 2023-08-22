@@ -14,6 +14,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatMiniFabButton } from '@angular/material/button';
+
+import { EarlyErrorStateMatcher } from 'core/classes/early-error-state-matcher/early-error-state-matcher.class';
 import { NumberValidators } from 'core/validators/number/number.validators';
 import {
   BehaviorSubject,
@@ -27,7 +29,6 @@ import {
   takeUntil,
 } from 'rxjs';
 import { NumericInputDirective } from 'shared/directives/numeric-input/numeric-input.directive';
-
 import { ChangeEventHandler } from 'utils/form/form.utils';
 
 @Component({
@@ -65,8 +66,7 @@ export class CounterInputComponent
 
   private lowerBoundHit$ = this.valueChanges$.pipe(
     map((value: number | null): boolean => {
-      console.log('value in lowerBoundHit', value);
-      return (value ?? 0) <= 0; // WHY?
+      return (value ?? 0) <= 0;
     }),
     distinctUntilChanged()
   );
@@ -109,6 +109,8 @@ export class CounterInputComponent
 
   @ViewChild('decrementBtn', { read: MatMiniFabButton })
   private decrementBtn: MatMiniFabButton;
+
+  public constructor(public earlyErrorStateMatcher: EarlyErrorStateMatcher) {}
 
   public ngOnInit(): void {
     this.valueChanges$
