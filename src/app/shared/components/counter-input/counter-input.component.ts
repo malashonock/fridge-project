@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -14,9 +15,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatMiniFabButton } from '@angular/material/button';
-
-import { EarlyErrorStateMatcher } from 'core/classes/early-error-state-matcher/early-error-state-matcher.class';
-import { NumberValidators } from 'core/validators/number/number.validators';
 import {
   BehaviorSubject,
   Observable,
@@ -28,6 +26,9 @@ import {
   startWith,
   takeUntil,
 } from 'rxjs';
+
+import { EarlyErrorStateMatcher } from 'core/classes/early-error-state-matcher/early-error-state-matcher.class';
+import { NumberValidators } from 'core/validators/number/number.validators';
 import { NumericInputDirective } from 'shared/directives/numeric-input/numeric-input.directive';
 import { ChangeEventHandler } from 'utils/form/form.utils';
 
@@ -101,8 +102,10 @@ export class CounterInputComponent
 
   private destroy$ = new Subject();
 
+  @ViewChild('counterInput') private input: ElementRef;
+
   @ViewChild(NumericInputDirective, { static: true })
-  private input: NumericInputDirective;
+  private inputDirective: NumericInputDirective;
 
   @ViewChild('incrementBtn', { read: MatMiniFabButton })
   private incrementBtn: MatMiniFabButton;
@@ -124,7 +127,7 @@ export class CounterInputComponent
     this.inputDisabled$
       .pipe(takeUntil(this.destroy$))
       .subscribe((isDisabled: boolean): void => {
-        this.input.disabled = isDisabled;
+        this.inputDirective.disabled = isDisabled;
       });
 
     this.buttonsDisabled$
@@ -156,7 +159,7 @@ export class CounterInputComponent
   }
 
   public registerOnTouched(onTouchedCallback: VoidFunction): void {
-    this.input.registerOnTouched(onTouchedCallback);
+    this.inputDirective.registerOnTouched(onTouchedCallback);
   }
 
   public setDisabledState(isDisabled: boolean): void {
@@ -169,5 +172,10 @@ export class CounterInputComponent
 
   public decrement(): void {
     this.formControl.setValue((this.formControl.value ?? 0) - 1);
+  }
+
+  public focus(): void {
+    this.input?.nativeElement.select();
+    this.input?.nativeElement.scrollIntoView();
   }
 }
