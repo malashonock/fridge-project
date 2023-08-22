@@ -15,6 +15,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 import {
   Subject,
   distinctUntilChanged,
@@ -27,6 +28,7 @@ import {
 import { ProductQuantity } from 'core/models/fridge/product-quantity.interface';
 import { NumberValidators } from 'core/validators/number/number.validators';
 import { ChangeEventHandler } from 'utils/form/form.utils';
+import { ConfirmDeleteComponent } from 'shared/components/confirm-delete/confirm-delete.component';
 
 @Component({
   selector: 'app-products-input',
@@ -45,7 +47,7 @@ export class ProductsInputComponent
   implements ControlValueAccessor, OnInit, OnDestroy
 {
   public dataSource = new MatTableDataSource<ProductQuantity>([]);
-  public tableColumns = ['product', 'quantity'];
+  public tableColumns = ['product', 'quantity', 'actions'];
 
   public form = this.formBuilder.group({
     productQuantities: this.formBuilder.array([] as FormGroup[]),
@@ -71,7 +73,10 @@ export class ProductsInputComponent
     })
   );
 
-  public constructor(private formBuilder: FormBuilder) {
+  public constructor(
+    private formBuilder: FormBuilder,
+    private dialog: MatDialog
+  ) {
     this.addProductEntry = this.addProductEntry.bind(this);
   }
 
@@ -128,5 +133,22 @@ export class ProductsInputComponent
     });
 
     this.productEntries.push(productEntry);
+  }
+
+  public openDeleteProductQtyDialog(productQty: ProductQuantity): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      data: {
+        itemType: $localize`:@@product:product`,
+      },
+    });
+
+    dialogRef
+      .afterClosed()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((deleteConfirmed: boolean) => {
+        if (deleteConfirmed) {
+          // this.removeProductEntry(productQty);
+        }
+      });
   }
 }
