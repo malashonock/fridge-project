@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   OnDestroy,
   OnInit,
@@ -47,7 +48,7 @@ export class ProductsInputComponent
   implements ControlValueAccessor, OnInit, OnDestroy
 {
   public dataSource = new MatTableDataSource<ProductQuantity>([]);
-  public tableColumns = ['product', 'quantity', 'actions'];
+  public tableColumns: string[] = ['product', 'quantity', 'actions'];
 
   public form = this.formBuilder.group({
     productQuantities: this.formBuilder.array([] as FormGroup[]),
@@ -75,7 +76,8 @@ export class ProductsInputComponent
 
   public constructor(
     private formBuilder: FormBuilder,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private viewRef: ChangeDetectorRef
   ) {
     this.addProductEntry = this.addProductEntry.bind(this);
   }
@@ -135,7 +137,17 @@ export class ProductsInputComponent
     this.productEntries.push(productEntry);
   }
 
-  public openDeleteProductQtyDialog(productQty: ProductQuantity): void {
+  private removeProductEntry(index: number): void {
+    this.productEntries.removeAt(index);
+
+    if (this.productEntries.length === 0) {
+      // Force matNoDataRow template update,
+      // otherwise colspan binding is not updated
+      this.viewRef.detectChanges();
+    }
+  }
+
+  public openDeleteProductQtyDialog(index: number): void {
     const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
       data: {
         itemType: $localize`:@@product:product`,
@@ -147,7 +159,7 @@ export class ProductsInputComponent
       .pipe(takeUntil(this.destroy$))
       .subscribe((deleteConfirmed: boolean) => {
         if (deleteConfirmed) {
-          // this.removeProductEntry(productQty);
+          this.removeProductEntry(index);
         }
       });
   }
