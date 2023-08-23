@@ -10,18 +10,16 @@
     <mat-error
       *ngIf="controlHasError('userName.required')"
       i18n="@@userNameErrorRequired"
+      >User name is required</mat-error
     >
-      User name is required
-    </mat-error>
     <mat-error
       *ngIf="controlHasError('userName.minlength')"
       i18n="@@userNameErrorMinLength"
-    >
-      User name must be no shorter than
+      >User name must be no shorter than
       {{ getControlError("userName.minlength", "requiredLength") }}
       {getControlError('userName.minlength.requiredLength'), plural, =1 {symbol}
-      other {symbols}}
-    </mat-error>
+      other {symbols}}</mat-error
+    >
   </mat-form-field>
 
   <mat-form-field appearance="outline" subscriptSizing="dynamic">
@@ -36,9 +34,8 @@
     <mat-error
       *ngIf="controlHasError('password.required')"
       i18n="@@passwordErrorRequired"
+      >Password is required</mat-error
     >
-      Password is required
-    </mat-error>
   </mat-form-field>
 
   <button

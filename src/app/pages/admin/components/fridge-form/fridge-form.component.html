@@ -21,9 +21,8 @@
       <mat-error
         *ngIf="controlHasError('image.fileType')"
         i18n="@@imageErrorFileType"
+        >The uploaded file is not a valid image</mat-error
       >
-        The uploaded file is not a valid image
-      </mat-error>
     </mat-form-field>
 
     <div class="form-fields__text-intro">
@@ -44,9 +43,8 @@
         <mat-error
           *ngIf="controlHasError('model.required')"
           i18n="@@fridgeModelErrorRequired"
+          >Fridge model is required</mat-error
         >
-          Fridge model is required
-        </mat-error>
       </mat-form-field>
 
       <!-- Description -->
@@ -142,15 +140,13 @@
         <mat-error
           *ngIf="controlHasError('address.floorNo.isNaN')"
           i18n="@@fridgeAddressFloorErrorNaN"
+          >Floor number must be a number</mat-error
         >
-          Floor number must be a number
-        </mat-error>
         <mat-error
           *ngIf="controlHasError('address.floorNo.fractionOverflow')"
           i18n="@@fridgeAddressFloorErrorInteger"
+          >Floor number must be an integer</mat-error
         >
-          Floor number must be an integer
-        </mat-error>
       </mat-form-field>
 
       <!-- Room # -->
