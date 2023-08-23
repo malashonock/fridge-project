@@ -10,17 +10,16 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table';
-import {
-  MatPaginatorIntl,
-  MatPaginatorModule,
-} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { A11yModule } from '@angular/cdk/a11y';
 import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
-import { matPaginatorIntl } from './configs/mat-paginator-intl.config';
+import { matPaginatorIntlProvider } from './configs/mat-paginator-intl.config';
+import { matAutocompleteScrollStrategyProvider } from './configs/mat-autocomplete-scroll-strategy.config';
 
 const materialModules = [
   MatFormFieldModule,
@@ -40,11 +39,12 @@ const materialModules = [
   A11yModule,
   MatCardModule,
   MatAutocompleteModule,
+  ScrollingModule,
 ];
 
 @NgModule({
   imports: [...materialModules],
   exports: [...materialModules],
-  providers: [{ provide: MatPaginatorIntl, useValue: matPaginatorIntl }],
+  providers: [matPaginatorIntlProvider, matAutocompleteScrollStrategyProvider],
 })
 export class MaterialModule {}
