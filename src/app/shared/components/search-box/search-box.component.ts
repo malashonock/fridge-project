@@ -30,7 +30,7 @@ export class SearchBoxComponent implements AfterViewInit, OnDestroy {
   @Input() public name = 'search-box';
   @Input() public label = $localize`:@@search:Search`;
   @Input() public placeholder = '';
-  @Input() public autocomplete: MatAutocomplete;
+  @Input() public autocomplete?: MatAutocomplete;
 
   public searchControl = this.formBuilder.control('');
 

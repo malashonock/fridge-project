@@ -11,7 +11,8 @@
     [id]="name"
     [name]="name"
     [placeholder]="placeholder"
-    [matAutocomplete]="autocomplete"
+    [matAutocompleteDisabled]="!autocomplete"
+    [matAutocomplete]="autocomplete!"
   />
   <mat-icon *ngIf="isBlank$ | async" matSuffix>search</mat-icon>
   <button
