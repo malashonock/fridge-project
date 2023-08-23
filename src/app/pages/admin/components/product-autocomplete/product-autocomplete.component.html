@@ -1,6 +1,8 @@
 <app-search-box
   name="product-autocomplete"
+  i18n-label="@@addProduct"
   label="Add product"
+  i18n-placeholder="@@productNameAutocomplete"
   placeholder="Start typing product name..."
   (searchQueryChange)="productQuery$.next($event)"
   [autocomplete]="auto"
