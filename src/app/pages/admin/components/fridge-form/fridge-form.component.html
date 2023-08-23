@@ -1,6 +1,8 @@
 <header class="header">
   <h2 matDialogTitle>{{ title }}</h2>
-  <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
+  <button class="close-btn" mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
 </header>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">

@@ -57,3 +57,11 @@ fieldset {
   border: 1px solid rgba($color: black, $alpha: 0.38);
   border-radius: 0.25rem; // 4px
 }
+
+.mdc-dialog .mdc-dialog__content {
+  padding: 1rem !important; // 16px
+}
+
+.mat-mdc-form-field-infix {
+  width: 100% !important;
+}

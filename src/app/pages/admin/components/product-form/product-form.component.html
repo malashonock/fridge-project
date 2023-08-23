@@ -1,6 +1,8 @@
 <header class="header">
   <h2 matDialogTitle>{{ title }}</h2>
-  <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
+  <button class="close-btn" mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
 </header>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -141,75 +143,80 @@
         <span i18n="@@grams">g</span>
       </legend>
 
-      <mat-form-field
-        *ngFor="let nutrient of nutrients"
-        appearance="outline"
-        subscriptSizing="dynamic"
-        [class]="'form-fields__nutrient nutrients__' + nutrient"
-      >
-        <mat-label>{{ nutrient | nutrientLabel }}</mat-label>
-        <input
-          type="text"
-          appNumericInput
-          [id]="'nutrient-' + nutrient"
-          [name]="'nutrient-' + nutrient"
-          [formControlName]="nutrient"
-          [errorStateMatcher]="earlyErrorStateMatcher"
-        />
-        <mat-error
-          *ngIf="controlHasError('nutrients.' + nutrient + '.isNaN')"
-          i18n="@@nutrientErrorNaN"
+      <div class="nutrients-fields">
+        <mat-form-field
+          *ngFor="let nutrient of nutrients"
+          appearance="outline"
+          subscriptSizing="dynamic"
+          [class]="'nutrients-fields__' + nutrient"
         >
-          {{ nutrient | nutrientLabel : "genitive" }} content must be a valid
-          number
-        </mat-error>
-        <mat-error
-          *ngIf="controlHasError('nutrients.' + nutrient + '.min')"
-          i18n="@@nutrientErrorNegative"
-        >
-          {{ nutrient | nutrientLabel : "genitive" }} content cannot be negative
-        </mat-error>
-      </mat-form-field>
+          <mat-label>{{ nutrient | nutrientLabel }}</mat-label>
+          <input
+            type="text"
+            appNumericInput
+            [id]="'nutrient-' + nutrient"
+            [name]="'nutrient-' + nutrient"
+            [formControlName]="nutrient"
+            [errorStateMatcher]="earlyErrorStateMatcher"
+          />
+          <mat-error
+            *ngIf="controlHasError('nutrients.' + nutrient + '.isNaN')"
+            i18n="@@nutrientErrorNaN"
+          >
+            {{ nutrient | nutrientLabel : "genitive" }} content must be a valid
+            number
+          </mat-error>
+          <mat-error
+            *ngIf="controlHasError('nutrients.' + nutrient + '.min')"
+            i18n="@@nutrientErrorNegative"
+          >
+            {{ nutrient | nutrientLabel : "genitive" }} content cannot be
+            negative
+          </mat-error>
+        </mat-form-field>
+      </div>
     </fieldset>
 
     <!-- Weight -->
     <fieldset formGroupName="weight" class="form-fields__weight">
       <legend i18n="@@weight">Weight</legend>
 
-      <mat-form-field
-        appearance="outline"
-        subscriptSizing="dynamic"
-        class="form-fields__weight-value combo-field-segment"
-      >
-        <mat-label i18n="@@value">Value</mat-label>
-        <input
-          type="text"
-          appNumericInput
-          id="weight-value"
-          name="weight-value"
-          formControlName="value"
-          [errorStateMatcher]="comboErrorStateMatcher"
-        />
-      </mat-form-field>
-
-      <mat-form-field
-        appearance="outline"
-        subscriptSizing="dynamic"
-        class="form-fields__weight-unit combo-field-segment"
-      >
-        <mat-label i18n="@@unit">Unit</mat-label>
-        <mat-select
-          id="weight-unit"
-          formControlName="unit"
-          [errorStateMatcher]="comboErrorStateMatcher"
+      <div class="weight-fields">
+        <mat-form-field
+          appearance="outline"
+          subscriptSizing="dynamic"
+          class="weight-fields__value combo-field-segment"
         >
-          <mat-option
-            *ngFor="let weightUnit of weightUnits"
-            [value]="weightUnit"
-            >{{ weightUnit | weightUnitLabel }}</mat-option
+          <mat-label i18n="@@value">Value</mat-label>
+          <input
+            type="text"
+            appNumericInput
+            id="weight-value"
+            name="weight-value"
+            formControlName="value"
+            [errorStateMatcher]="comboErrorStateMatcher"
+          />
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
+          subscriptSizing="dynamic"
+          class="weight-fields__unit combo-field-segment"
+        >
+          <mat-label i18n="@@unit">Unit</mat-label>
+          <mat-select
+            id="weight-unit"
+            formControlName="unit"
+            [errorStateMatcher]="comboErrorStateMatcher"
           >
-        </mat-select>
-      </mat-form-field>
+            <mat-option
+              *ngFor="let weightUnit of weightUnits"
+              [value]="weightUnit"
+              >{{ weightUnit | weightUnitLabel }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
 
       <div class="combo-field-errors">
         <ng-container *ngIf="controlHasError('weight.partiallyFilled')">
@@ -288,22 +295,24 @@
     <fieldset formGroupName="shelfLife" class="form-fields__shelf-life">
       <legend i18n="@@shelfLife">Shelf life</legend>
 
-      <mat-form-field
-        *ngFor="let period of periods"
-        appearance="outline"
-        subscriptSizing="dynamic"
-        [class]="['shelf-life__' + period, 'combo-field-segment']"
-      >
-        <mat-label>{{ period | periodLabel }}</mat-label>
-        <input
-          type="text"
-          appNumericInput
-          [id]="'shelf-life' + period"
-          [name]="'shelf-life' + period"
-          [formControlName]="period"
-          [errorStateMatcher]="earlyErrorStateMatcher"
-        />
-      </mat-form-field>
+      <div class="shelf-life-fields">
+        <mat-form-field
+          *ngFor="let period of periods"
+          appearance="outline"
+          subscriptSizing="dynamic"
+          [class]="['shelf-life-fields__' + period, 'combo-field-segment']"
+        >
+          <mat-label>{{ period | periodLabel }}</mat-label>
+          <input
+            type="text"
+            appNumericInput
+            [id]="'shelf-life' + period"
+            [name]="'shelf-life' + period"
+            [formControlName]="period"
+            [errorStateMatcher]="earlyErrorStateMatcher"
+          />
+        </mat-form-field>
+      </div>
 
       <div class="combo-field-errors">
         <ng-container *ngFor="let period of periods">
