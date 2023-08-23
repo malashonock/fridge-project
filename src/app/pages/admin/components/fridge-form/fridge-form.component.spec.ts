@@ -7,6 +7,8 @@ import '@angular/localize/init';
 import { FridgeFormComponent } from './fridge-form.component';
 import { SharedModule } from 'shared/shared.module';
 import { CoreModule } from 'core/core.module';
+import { ProductsInputComponent } from '../products-input/products-input.component';
+import { ProductAutocompleteComponent } from '../product-autocomplete/product-autocomplete.component';
 
 describe('FridgeFormComponent', () => {
   let component: FridgeFormComponent;
@@ -14,7 +16,11 @@ describe('FridgeFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FridgeFormComponent],
+      declarations: [
+        FridgeFormComponent,
+        ProductsInputComponent,
+        ProductAutocompleteComponent,
+      ],
       imports: [SharedModule, NoopAnimationsModule, CoreModule],
       providers: [
         { provide: MatDialogRef, useValue: {} },
