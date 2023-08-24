@@ -6,14 +6,8 @@ import {
   OnDestroy,
   OnInit,
   ViewChild,
-  forwardRef,
 } from '@angular/core';
-import {
-  ControlValueAccessor,
-  FormControl,
-  NG_VALUE_ACCESSOR,
-  Validators,
-} from '@angular/forms';
+import { ControlValueAccessor, FormControl, Validators } from '@angular/forms';
 import { MatMiniFabButton } from '@angular/material/button';
 import {
   BehaviorSubject,
@@ -30,20 +24,17 @@ import {
 import { EarlyErrorStateMatcher } from 'core/classes/early-error-state-matcher/early-error-state-matcher.class';
 import { NumberValidators } from 'core/validators/number/number.validators';
 import { NumericInputDirective } from 'shared/directives/numeric-input/numeric-input.directive';
-import { ChangeEventHandler } from 'utils/form/form.utils';
+import {
+  ChangeEventHandler,
+  ngValueAccessorProvider,
+} from 'utils/form/form.utils';
 
 @Component({
   selector: 'app-counter-input',
   templateUrl: './counter-input.component.html',
   styleUrls: ['./counter-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CounterInputComponent),
-      multi: true,
-    },
-  ],
+  providers: [ngValueAccessorProvider(CounterInputComponent)],
 })
 export class CounterInputComponent
   implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy

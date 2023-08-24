@@ -3,14 +3,8 @@ import {
   Component,
   OnInit,
   ViewChild,
-  forwardRef,
 } from '@angular/core';
-import {
-  ControlValueAccessor,
-  FormBuilder,
-  NG_VALUE_ACCESSOR,
-  Validators,
-} from '@angular/forms';
+import { ControlValueAccessor, FormBuilder, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 
 import { EarlyErrorStateMatcher } from 'core/classes/early-error-state-matcher/early-error-state-matcher.class';
@@ -20,6 +14,7 @@ import {
   ChangeEventHandler,
   controlHasError,
   getControlError,
+  ngValueAccessorProvider,
 } from 'utils/form/form.utils';
 import { NumericInputDirective } from 'shared/directives/numeric-input/numeric-input.directive';
 
@@ -30,11 +25,7 @@ import { NumericInputDirective } from 'shared/directives/numeric-input/numeric-i
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     EarlyErrorStateMatcher,
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => GeolocationInputComponent),
-      multi: true,
-    },
+    ngValueAccessorProvider(GeolocationInputComponent),
   ],
 })
 export class GeolocationInputComponent implements ControlValueAccessor, OnInit {
