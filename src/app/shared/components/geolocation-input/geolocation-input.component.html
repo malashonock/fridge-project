@@ -1,0 +1,47 @@
+<div id="map"></div>
+
+<form [formGroup]="form" class="coords">
+  <!-- Latitude -->
+  <mat-form-field
+    appearance="outline"
+    subscriptSizing="dynamic"
+    class="coord coords__lat"
+  >
+    <mat-label>Latitude</mat-label>
+    <input
+      #latitudeInput
+      type="text"
+      appNumericInput
+      formControlName="latitude"
+      [errorStateMatcher]="earlyErrorStateMatcher"
+    />
+    <mat-error *ngIf="controlHasError('latitude.required')"
+      >Latitude is required</mat-error
+    >
+    <mat-error *ngIf="controlHasError('latitude.isNaN')"
+      >Latitude must be a decimal number</mat-error
+    >
+  </mat-form-field>
+
+  <!-- Longitude -->
+  <mat-form-field
+    appearance="outline"
+    subscriptSizing="dynamic"
+    class="coord coords__lat"
+  >
+    <mat-label>Longitude</mat-label>
+    <input
+      #longitudeInput
+      type="text"
+      appNumericInput
+      formControlName="longitude"
+      [errorStateMatcher]="earlyErrorStateMatcher"
+    />
+    <mat-error *ngIf="controlHasError('longitude.required')"
+      >Longitude is required</mat-error
+    >
+    <mat-error *ngIf="controlHasError('longitude.isNaN')"
+      >Longitude must be a decimal number</mat-error
+    >
+  </mat-form-field>
+</form>
