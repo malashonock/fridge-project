@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -28,10 +29,20 @@ import { NumericInputDirective } from 'shared/directives/numeric-input/numeric-i
     ngValueAccessorProvider(GeolocationInputComponent),
   ],
 })
-export class GeolocationInputComponent implements ControlValueAccessor, OnInit {
+export class GeolocationInputComponent
+  implements ControlValueAccessor, OnInit, OnDestroy
+{
   public form = this.formBuilder.group({
-    latitude: [0, [Validators.required, NumberValidators.number]],
-    longitude: [0, [Validators.required, NumberValidators.number]],
+    mapCoords: [
+      {
+        latitude: 0,
+        longitude: 0,
+      },
+    ],
+    textCoords: this.formBuilder.group({
+      latitude: [0, [Validators.required, NumberValidators.number]],
+      longitude: [0, [Validators.required, NumberValidators.number]],
+    }),
   });
 
   private destroy$ = new Subject();
@@ -48,14 +59,21 @@ export class GeolocationInputComponent implements ControlValueAccessor, OnInit {
   ) {}
 
   public ngOnInit(): void {
+    this.syncInputs();
+  }
+
+  public ngOnDestroy(): void {
     this.destroy$.next(null);
     this.destroy$.complete();
   }
 
   public writeValue(value: GeolocationCoords): void {
     this.form.setValue({
-      latitude: value?.latitude ?? 0,
-      longitude: value?.longitude ?? 0,
+      mapCoords: value,
+      textCoords: {
+        latitude: value?.latitude ?? 0,
+        longitude: value?.longitude ?? 0,
+      },
     });
   }
 
@@ -64,10 +82,10 @@ export class GeolocationInputComponent implements ControlValueAccessor, OnInit {
   ): void {
     this.form.valueChanges
       .pipe(takeUntil(this.destroy$))
-      .subscribe(({ latitude, longitude }): void => {
+      .subscribe((value): void => {
         onChangeCallback({
-          latitude: latitude ?? 0,
-          longitude: longitude ?? 0,
+          latitude: value.textCoords?.latitude ?? 0,
+          longitude: value.textCoords?.longitude ?? 0,
         });
       });
   }
@@ -86,4 +104,55 @@ export class GeolocationInputComponent implements ControlValueAccessor, OnInit {
 
   public controlHasError = controlHasError.bind(this.form);
   public getControlError = getControlError.bind(this.form);
+
+  private syncInputs(): void {
+    // Text inputs to map input
+    this.form
+      .get('textCoords')
+      ?.valueChanges.pipe(takeUntil(this.destroy$))
+      .subscribe((value): void => {
+        const mapCoords = this.form.get('mapCoords');
+
+        if (!mapCoords) {
+          return;
+        }
+
+        const valueChanged =
+          mapCoords.value?.latitude !== value.latitude ||
+          mapCoords.value.longitude !== value.longitude;
+
+        if (!valueChanged) {
+          return;
+        }
+
+        mapCoords.setValue({
+          latitude: value.latitude ?? 0,
+          longitude: value.longitude ?? 0,
+        });
+      });
+
+    // Map input to text inputs
+    this.form
+      .get('mapCoords')
+      ?.valueChanges.pipe(takeUntil(this.destroy$))
+      .subscribe((value): void => {
+        const latitudeTextInput = this.form.get('textCoords.latitude');
+        const longitudeTextInput = this.form.get('textCoords.longitude');
+
+        if (!latitudeTextInput || !longitudeTextInput) {
+          return;
+        }
+
+        const valueChanged =
+          latitudeTextInput.value !== value?.latitude ||
+          longitudeTextInput.value !== value.longitude;
+
+        if (!valueChanged) {
+          return;
+        }
+
+        latitudeTextInput.setValue(value?.latitude ?? 0, { emitEvent: false });
+        longitudeTextInput.setValue(value?.longitude ?? 0);
+      });
+  }
 }
