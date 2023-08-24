@@ -13,9 +13,7 @@ describe('CounterInputComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [CounterInputComponent],
       imports: [SharedModule, NoopAnimationsModule],
-      providers: [
-        { provide: EarlyErrorStateMatcher, useClass: EarlyErrorStateMatcher },
-      ],
+      providers: [EarlyErrorStateMatcher],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CounterInputComponent);

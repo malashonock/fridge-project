@@ -29,7 +29,7 @@ import { NumericInputDirective } from 'shared/directives/numeric-input/numeric-i
   styleUrls: ['./geolocation-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: EarlyErrorStateMatcher, useClass: EarlyErrorStateMatcher },
+    EarlyErrorStateMatcher,
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => GeolocationInputComponent),

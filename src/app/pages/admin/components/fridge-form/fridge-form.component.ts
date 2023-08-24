@@ -32,9 +32,7 @@ interface FridgeDialogData {
   templateUrl: './fridge-form.component.html',
   styleUrls: ['./fridge-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: EarlyErrorStateMatcher, useClass: EarlyErrorStateMatcher },
-  ],
+  providers: [EarlyErrorStateMatcher],
 })
 export class FridgeFormComponent implements OnInit, OnDestroy {
   private fridge = this.data?.fridge;

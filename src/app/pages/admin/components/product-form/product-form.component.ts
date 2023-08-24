@@ -40,10 +40,7 @@ interface ProductDialogData {
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: EarlyErrorStateMatcher, useClass: EarlyErrorStateMatcher },
-    { provide: ComboErrorStateMatcher, useClass: ComboErrorStateMatcher },
-  ],
+  providers: [EarlyErrorStateMatcher, ComboErrorStateMatcher],
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
   private product = this.data?.product;
