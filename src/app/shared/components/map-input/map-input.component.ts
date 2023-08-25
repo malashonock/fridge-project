@@ -27,6 +27,8 @@ L.Marker.prototype.options.icon = L.icon({
   shadowSize: [41, 41],
 });
 
+const MAX_COORDS_PRECISION = 5; // decimal places
+
 @Component({
   selector: 'app-map-input',
   templateUrl: './map-input.component.html',
@@ -59,6 +61,9 @@ export class MapInputComponent
 
   public ngAfterViewInit(): void {
     this.initMap();
+    this.registerOnMapDrag();
+    this.registerOnMapDragEnd();
+    this.registerOnMapZoomEnd();
   }
 
   public ngOnDestroy(): void {
@@ -66,10 +71,13 @@ export class MapInputComponent
     this.destroy$.complete();
   }
 
-  public writeValue(value: GeolocationCoords): void {
+  public writeValue({ latitude, longitude }: GeolocationCoords): void {
+    this.map?.setView([latitude, longitude]);
+    this.marker?.setLatLng([latitude, longitude]);
+
     this.formControl.setValue({
-      latitude: value.latitude,
-      longitude: value.longitude,
+      latitude,
+      longitude,
     });
 
     this.changeDetector.detectChanges();
@@ -89,24 +97,82 @@ export class MapInputComponent
   }
 
   public registerOnTouched(onTouchedCallback: VoidFunction): void {
-    // TODO: wire to map interactions
+    this.map?.on('moveend', (): void => {
+      onTouchedCallback();
+    });
   }
 
   public setDisabledState(isDisabled: boolean): void {
-    // TODO: disable map interactions
+    isDisabled ? this.map?.dragging.disable() : this.map?.dragging.enable();
   }
 
   private initMap(): void {
+    // Create an empty map
     this.map = L.map('map', {
       center: [this.latitude, this.longitude],
       zoom: 16,
+      minZoom: 1,
+      scrollWheelZoom: 'center',
+      touchZoom: 'center',
     });
 
+    // Draw the OpenStreetMap layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(this.map);
 
+    // Create the location marker
     this.marker = L.marker([this.latitude, this.longitude]).addTo(this.map);
+  }
+
+  private registerOnMapDrag(): void {
+    this.map?.on('move', (event: L.LeafletEvent): void => {
+      // Abort if not a drag event
+      if (
+        !Object.hasOwn(event, 'originalEvent') ||
+        (event as L.LeafletMouseEvent).originalEvent.type !== 'mousemove'
+      ) {
+        return;
+      }
+
+      if (!this.map || !this.marker) {
+        return;
+      }
+
+      const { lat, lng } = this.map.getCenter();
+
+      this.marker.setLatLng([
+        Number(lat.toFixed(MAX_COORDS_PRECISION)),
+        Number(lng.toFixed(MAX_COORDS_PRECISION)),
+      ]);
+    });
+  }
+
+  private registerOnMapDragEnd(): void {
+    this.map?.on('moveend', (): void => {
+      if (!this.marker) {
+        return;
+      }
+
+      const { lat, lng } = this.marker.getLatLng();
+
+      this.formControl.setValue({
+        latitude: lat,
+        longitude: lng,
+      });
+    });
+  }
+
+  private registerOnMapZoomEnd(): void {
+    this.map?.on('zoomend', (): void => {
+      if (!this.map || !this.marker) {
+        return;
+      }
+
+      // Leaflet scrolling isn't centered precisely,
+      // so need to fine-tune map position after zoom
+      this.map.panTo(this.marker.getLatLng());
+    });
   }
 }
