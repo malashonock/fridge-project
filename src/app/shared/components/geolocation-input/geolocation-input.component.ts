@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, Validators } from '@angular/forms';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, distinctUntilChanged, takeUntil } from 'rxjs';
 
 import { EarlyErrorStateMatcher } from 'core/classes/early-error-state-matcher/early-error-state-matcher.class';
 import { GeolocationCoords } from 'core/models/fridge/geolocation-coords.interface';
@@ -16,6 +16,7 @@ import {
   controlHasError,
   getControlError,
   ngValueAccessorProvider,
+  valuesLooselyEqual,
 } from 'utils/form/form.utils';
 import { NumericInputDirective } from 'shared/directives/numeric-input/numeric-input.directive';
 
@@ -36,11 +37,11 @@ export class GeolocationInputComponent
     mapCoords: [null as GeolocationCoords | null],
     textCoords: this.formBuilder.group({
       latitude: [
-        0 as number | null,
+        null as number | null,
         [Validators.required, NumberValidators.number],
       ],
       longitude: [
-        0 as number | null,
+        null as number | null,
         [Validators.required, NumberValidators.number],
       ],
     }),
@@ -81,24 +82,31 @@ export class GeolocationInputComponent
   public registerOnChange(
     onChangeCallback: ChangeEventHandler<GeolocationCoords>
   ): void {
-    this.form.valueChanges
-      .pipe(takeUntil(this.destroy$))
+    this.form
+      .get('mapCoords')
+      ?.valueChanges.pipe(
+        takeUntil(this.destroy$),
+        distinctUntilChanged((prev, curr): boolean => {
+          return (
+            prev?.latitude == curr?.latitude &&
+            prev?.longitude == curr?.longitude
+          );
+        })
+      )
       .subscribe((value): void => {
         onChangeCallback({
-          latitude: value.textCoords?.latitude || 0,
-          longitude: value.textCoords?.longitude || 0,
+          latitude: value?.latitude || 0,
+          longitude: value?.longitude || 0,
         });
       });
   }
 
   public registerOnTouched(onTouchedCallback: VoidFunction): void {
-    // TODO: wire to map interactions
     this.latitudeInput?.registerOnTouched(onTouchedCallback);
     this.longitudeInput?.registerOnTouched(onTouchedCallback);
   }
 
   public setDisabledState(isDisabled: boolean): void {
-    // TODO: disable map interactions
     this.latitudeInput && (this.latitudeInput.disabled = isDisabled);
     this.longitudeInput && (this.longitudeInput.disabled = isDisabled);
   }
@@ -119,16 +127,20 @@ export class GeolocationInputComponent
         }
 
         const valueChanged =
-          mapCoords.value?.latitude !== value.latitude ||
-          mapCoords.value?.longitude !== value.longitude;
+          !valuesLooselyEqual(mapCoords.value?.latitude, value.latitude) ||
+          !valuesLooselyEqual(mapCoords.value?.longitude, value.longitude);
 
         if (!valueChanged) {
           return;
         }
 
         mapCoords.setValue({
-          latitude: value.latitude || 0,
-          longitude: value.longitude || 0,
+          latitude: this.form.get('textCoords.latitude')?.valid
+            ? value.latitude || 0
+            : 0,
+          longitude: this.form.get('textCoords.longitude')?.valid
+            ? value.longitude || 0
+            : 0,
         });
       });
 
@@ -145,15 +157,17 @@ export class GeolocationInputComponent
         }
 
         const valueChanged =
-          latitudeTextInput.value !== value?.latitude ||
-          longitudeTextInput.value !== value?.longitude;
+          !valuesLooselyEqual(latitudeTextInput.value, value?.latitude) ||
+          !valuesLooselyEqual(longitudeTextInput.value, value?.longitude);
 
         if (!valueChanged) {
           return;
         }
 
-        latitudeTextInput.setValue(value?.latitude ?? 0, { emitEvent: false });
-        longitudeTextInput.setValue(value?.longitude ?? 0);
+        this.form.get('textCoords')?.setValue({
+          latitude: value?.latitude ?? null,
+          longitude: value?.longitude ?? null,
+        });
       });
   }
 }

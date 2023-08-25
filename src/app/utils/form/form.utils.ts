@@ -55,3 +55,7 @@ export const ngValueAccessorProvider = (
     multi: true,
   };
 };
+
+export const valuesLooselyEqual = (val1: any, val2: any): boolean => {
+  return (val1 || 0) === (val2 || 0);
+};

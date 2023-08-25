@@ -6,7 +6,7 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl } from '@angular/forms';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, distinctUntilChanged, takeUntil } from 'rxjs';
 import * as L from 'leaflet';
 
 import { GeolocationCoords } from 'core/models/fridge/geolocation-coords.interface';
@@ -75,14 +75,13 @@ export class MapInputComponent
     const latitude = value?.latitude ?? 0;
     const longitude = value?.longitude ?? 0;
 
-    this.map?.setView([latitude, longitude]);
-    this.marker?.setLatLng([latitude, longitude]);
-
     this.formControl.setValue({
       latitude,
       longitude,
     });
 
+    this.marker?.setLatLng([latitude, longitude]);
+    this.map?.setView([latitude, longitude]);
     this.changeDetector.detectChanges();
   }
 
@@ -90,7 +89,15 @@ export class MapInputComponent
     onChangeCallback: ChangeEventHandler<GeolocationCoords>
   ): void {
     this.formControl.valueChanges
-      .pipe(takeUntil(this.destroy$))
+      .pipe(
+        takeUntil(this.destroy$),
+        distinctUntilChanged((prev, curr): boolean => {
+          return (
+            prev?.latitude == curr?.latitude &&
+            prev?.longitude == curr?.longitude
+          );
+        })
+      )
       .subscribe((value): void => {
         onChangeCallback({
           latitude: value?.latitude ?? 0,
