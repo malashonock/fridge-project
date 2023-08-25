@@ -33,15 +33,16 @@ export class GeolocationInputComponent
   implements ControlValueAccessor, OnInit, OnDestroy
 {
   public form = this.formBuilder.group({
-    mapCoords: [
-      {
-        latitude: 0,
-        longitude: 0,
-      },
-    ],
+    mapCoords: [null as GeolocationCoords | null],
     textCoords: this.formBuilder.group({
-      latitude: [0, [Validators.required, NumberValidators.number]],
-      longitude: [0, [Validators.required, NumberValidators.number]],
+      latitude: [
+        0 as number | null,
+        [Validators.required, NumberValidators.number],
+      ],
+      longitude: [
+        0 as number | null,
+        [Validators.required, NumberValidators.number],
+      ],
     }),
   });
 
@@ -67,12 +68,12 @@ export class GeolocationInputComponent
     this.destroy$.complete();
   }
 
-  public writeValue(value: GeolocationCoords): void {
+  public writeValue(value: GeolocationCoords | null): void {
     this.form.setValue({
       mapCoords: value,
       textCoords: {
-        latitude: value?.latitude ?? 0,
-        longitude: value?.longitude ?? 0,
+        latitude: value?.latitude ?? null,
+        longitude: value?.longitude ?? null,
       },
     });
   }
@@ -84,8 +85,8 @@ export class GeolocationInputComponent
       .pipe(takeUntil(this.destroy$))
       .subscribe((value): void => {
         onChangeCallback({
-          latitude: value.textCoords?.latitude ?? 0,
-          longitude: value.textCoords?.longitude ?? 0,
+          latitude: value.textCoords?.latitude || 0,
+          longitude: value.textCoords?.longitude || 0,
         });
       });
   }
@@ -119,15 +120,15 @@ export class GeolocationInputComponent
 
         const valueChanged =
           mapCoords.value?.latitude !== value.latitude ||
-          mapCoords.value.longitude !== value.longitude;
+          mapCoords.value?.longitude !== value.longitude;
 
         if (!valueChanged) {
           return;
         }
 
         mapCoords.setValue({
-          latitude: value.latitude ?? 0,
-          longitude: value.longitude ?? 0,
+          latitude: value.latitude || 0,
+          longitude: value.longitude || 0,
         });
       });
 
@@ -145,7 +146,7 @@ export class GeolocationInputComponent
 
         const valueChanged =
           latitudeTextInput.value !== value?.latitude ||
-          longitudeTextInput.value !== value.longitude;
+          longitudeTextInput.value !== value?.longitude;
 
         if (!valueChanged) {
           return;

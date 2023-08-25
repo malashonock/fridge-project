@@ -42,7 +42,7 @@ export class MapInputComponent
   public formControl = new FormControl({
     latitude: 0,
     longitude: 0,
-  });
+  } as GeolocationCoords | null);
 
   private map?: L.Map;
   private marker?: L.Marker;
@@ -71,7 +71,10 @@ export class MapInputComponent
     this.destroy$.complete();
   }
 
-  public writeValue({ latitude, longitude }: GeolocationCoords): void {
+  public writeValue(value: GeolocationCoords | undefined): void {
+    const latitude = value?.latitude ?? 0;
+    const longitude = value?.longitude ?? 0;
+
     this.map?.setView([latitude, longitude]);
     this.marker?.setLatLng([latitude, longitude]);
 
@@ -110,7 +113,10 @@ export class MapInputComponent
     // Create an empty map
     this.map = L.map('map', {
       center: [this.latitude, this.longitude],
-      zoom: 16,
+      zoom:
+        !this.formControl.value || (this.latitude === 0 && this.longitude === 0)
+          ? 2
+          : 16,
       minZoom: 1,
       scrollWheelZoom: 'center',
       touchZoom: 'center',
