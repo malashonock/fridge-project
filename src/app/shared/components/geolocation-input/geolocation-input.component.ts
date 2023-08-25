@@ -5,7 +5,13 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, FormBuilder, Validators } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Subject, distinctUntilChanged, takeUntil } from 'rxjs';
 
 import { EarlyErrorStateMatcher } from 'core/classes/early-error-state-matcher/early-error-state-matcher.class';
@@ -46,6 +52,22 @@ export class GeolocationInputComponent
       ],
     }),
   });
+
+  private get mapControl(): FormControl {
+    return this.form.controls['mapCoords'];
+  }
+
+  private get textControls(): FormGroup {
+    return this.form.controls['textCoords'];
+  }
+
+  private get latitudeControl(): FormControl {
+    return this.form.controls['textCoords'].controls['latitude'];
+  }
+
+  private get longitudeControl(): FormControl {
+    return this.form.controls['textCoords'].controls['longitude'];
+  }
 
   private destroy$ = new Subject();
 
@@ -116,57 +138,54 @@ export class GeolocationInputComponent
 
   private syncInputs(): void {
     // Text inputs to map input
-    this.form
-      .get('textCoords')
-      ?.valueChanges.pipe(takeUntil(this.destroy$))
-      .subscribe((value): void => {
-        const mapCoords = this.form.get('mapCoords');
-
-        if (!mapCoords) {
-          return;
-        }
-
+    this.textControls.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((textControlsValue: Partial<GeolocationCoords>): void => {
         const valueChanged =
-          !valuesLooselyEqual(mapCoords.value?.latitude, value.latitude) ||
-          !valuesLooselyEqual(mapCoords.value?.longitude, value.longitude);
+          !valuesLooselyEqual(
+            this.mapControl.value?.latitude,
+            textControlsValue.latitude
+          ) ||
+          !valuesLooselyEqual(
+            this.mapControl.value?.longitude,
+            textControlsValue.longitude
+          );
 
         if (!valueChanged) {
           return;
         }
 
-        mapCoords.setValue({
-          latitude: this.form.get('textCoords.latitude')?.valid
-            ? value.latitude || 0
+        this.mapControl.setValue({
+          latitude: this.latitudeControl.valid
+            ? textControlsValue.latitude || 0
             : 0,
-          longitude: this.form.get('textCoords.longitude')?.valid
-            ? value.longitude || 0
+          longitude: this.longitudeControl.valid
+            ? textControlsValue.longitude || 0
             : 0,
         });
       });
 
     // Map input to text inputs
-    this.form
-      .get('mapCoords')
-      ?.valueChanges.pipe(takeUntil(this.destroy$))
-      .subscribe((value): void => {
-        const latitudeTextInput = this.form.get('textCoords.latitude');
-        const longitudeTextInput = this.form.get('textCoords.longitude');
-
-        if (!latitudeTextInput || !longitudeTextInput) {
-          return;
-        }
-
+    this.mapControl.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((mapControlValue: GeolocationCoords | null): void => {
         const valueChanged =
-          !valuesLooselyEqual(latitudeTextInput.value, value?.latitude) ||
-          !valuesLooselyEqual(longitudeTextInput.value, value?.longitude);
+          !valuesLooselyEqual(
+            this.latitudeControl.value,
+            mapControlValue?.latitude
+          ) ||
+          !valuesLooselyEqual(
+            this.longitudeControl.value,
+            mapControlValue?.longitude
+          );
 
         if (!valueChanged) {
           return;
         }
 
-        this.form.get('textCoords')?.setValue({
-          latitude: value?.latitude ?? null,
-          longitude: value?.longitude ?? null,
+        this.textControls.setValue({
+          latitude: mapControlValue?.latitude ?? null,
+          longitude: mapControlValue?.longitude ?? null,
         });
       });
   }
