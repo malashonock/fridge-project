@@ -44,11 +44,21 @@ export class GeolocationInputComponent
     textCoords: this.formBuilder.group({
       latitude: [
         null as number | null,
-        [Validators.required, NumberValidators.number],
+        [
+          Validators.required,
+          NumberValidators.number,
+          Validators.min(-90),
+          Validators.max(90),
+        ],
       ],
       longitude: [
         null as number | null,
-        [Validators.required, NumberValidators.number],
+        [
+          Validators.required,
+          NumberValidators.number,
+          Validators.min(-180),
+          Validators.max(180),
+        ],
       ],
     }),
   });
@@ -151,17 +161,13 @@ export class GeolocationInputComponent
             textControlsValue.longitude
           );
 
-        if (!valueChanged) {
+        if (!valueChanged || this.textControls.invalid) {
           return;
         }
 
         this.mapControl.setValue({
-          latitude: this.latitudeControl.valid
-            ? textControlsValue.latitude || 0
-            : 0,
-          longitude: this.longitudeControl.valid
-            ? textControlsValue.longitude || 0
-            : 0,
+          latitude: textControlsValue.latitude || 0,
+          longitude: textControlsValue.longitude || 0,
         });
       });
 
@@ -179,7 +185,7 @@ export class GeolocationInputComponent
             mapControlValue?.longitude
           );
 
-        if (!valueChanged) {
+        if (!valueChanged || this.textControls.invalid) {
           return;
         }
 

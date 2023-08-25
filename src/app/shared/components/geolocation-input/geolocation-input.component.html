@@ -22,6 +22,13 @@
       <mat-error *ngIf="controlHasError('textCoords.latitude.isNaN')"
         >Latitude must be a decimal number</mat-error
       >
+      <mat-error
+        *ngIf="
+          controlHasError('textCoords.latitude.min') ||
+          controlHasError('textCoords.latitude.max')
+        "
+        >Latitude must be in range from -90 to 90</mat-error
+      >
     </mat-form-field>
 
     <!-- Longitude -->
@@ -43,6 +50,13 @@
       >
       <mat-error *ngIf="controlHasError('textCoords.longitude.isNaN')"
         >Longitude must be a decimal number</mat-error
+      >
+      <mat-error
+        *ngIf="
+          controlHasError('textCoords.longitude.min') ||
+          controlHasError('textCoords.longitude.max')
+        "
+        >Longitude must be in range from -180 to 180</mat-error
       >
     </mat-form-field>
   </div>
