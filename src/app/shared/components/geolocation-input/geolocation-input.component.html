@@ -8,7 +8,7 @@
       subscriptSizing="dynamic"
       class="coord coords__lat"
     >
-      <mat-label>Latitude</mat-label>
+      <mat-label i18n="@@latitude">Latitude</mat-label>
       <input
         #latitudeInput
         type="text"
@@ -16,10 +16,14 @@
         formControlName="latitude"
         [errorStateMatcher]="earlyErrorStateMatcher"
       />
-      <mat-error *ngIf="controlHasError('textCoords.latitude.required')"
+      <mat-error
+        *ngIf="controlHasError('textCoords.latitude.required')"
+        i18n="@@latitudeErrorRequired"
         >Latitude is required</mat-error
       >
-      <mat-error *ngIf="controlHasError('textCoords.latitude.isNaN')"
+      <mat-error
+        *ngIf="controlHasError('textCoords.latitude.isNaN')"
+        i18n="@@latitudeErrorNaN"
         >Latitude must be a decimal number</mat-error
       >
       <mat-error
@@ -27,6 +31,7 @@
           controlHasError('textCoords.latitude.min') ||
           controlHasError('textCoords.latitude.max')
         "
+        i18n="@@latitudeErrorRange"
         >Latitude must be in range from -90 to 90</mat-error
       >
     </mat-form-field>
@@ -37,7 +42,7 @@
       subscriptSizing="dynamic"
       class="coord coords__lat"
     >
-      <mat-label>Longitude</mat-label>
+      <mat-label i18n="@@longitude">Longitude</mat-label>
       <input
         #longitudeInput
         type="text"
@@ -45,10 +50,14 @@
         formControlName="longitude"
         [errorStateMatcher]="earlyErrorStateMatcher"
       />
-      <mat-error *ngIf="controlHasError('textCoords.longitude.required')"
+      <mat-error
+        *ngIf="controlHasError('textCoords.longitude.required')"
+        i18n="@@longitudeErrorRequired"
         >Longitude is required</mat-error
       >
-      <mat-error *ngIf="controlHasError('textCoords.longitude.isNaN')"
+      <mat-error
+        *ngIf="controlHasError('textCoords.longitude.isNaN')"
+        i18n="@@longitudeErrorNaN"
         >Longitude must be a decimal number</mat-error
       >
       <mat-error
@@ -56,6 +65,7 @@
           controlHasError('textCoords.longitude.min') ||
           controlHasError('textCoords.longitude.max')
         "
+        i18n="@@longitudeErrorRange"
         >Longitude must be in range from -180 to 180</mat-error
       >
     </mat-form-field>
