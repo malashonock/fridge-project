@@ -71,7 +71,7 @@ export class MapInputComponent
     this.destroy$.complete();
   }
 
-  public writeValue(value: GeolocationCoords | undefined): void {
+  public writeValue(value: GeolocationCoords | null): void {
     const latitude = value?.latitude ?? 0;
     const longitude = value?.longitude ?? 0;
 
@@ -163,7 +163,12 @@ export class MapInputComponent
   }
 
   private registerOnMapDragEnd(): void {
-    this.map?.on('moveend', (): void => {
+    this.map?.on('moveend', (event: L.LeafletEvent): void => {
+      // Abort if not a drag event
+      if (!event.target.dragging?.moved?.()) {
+        return;
+      }
+
       if (!this.marker) {
         return;
       }

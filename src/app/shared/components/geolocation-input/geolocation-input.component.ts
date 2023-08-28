@@ -10,6 +10,8 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
+  ValidationErrors,
+  Validator,
   Validators,
 } from '@angular/forms';
 import { Subject, distinctUntilChanged, takeUntil } from 'rxjs';
@@ -21,8 +23,8 @@ import {
   ChangeEventHandler,
   controlHasError,
   getControlError,
+  ngValidatorsProvider,
   ngValueAccessorProvider,
-  valuesLooselyEqual,
 } from 'utils/form/form.utils';
 import { NumericInputDirective } from 'shared/directives/numeric-input/numeric-input.directive';
 
@@ -34,16 +36,17 @@ import { NumericInputDirective } from 'shared/directives/numeric-input/numeric-i
   providers: [
     EarlyErrorStateMatcher,
     ngValueAccessorProvider(GeolocationInputComponent),
+    ngValidatorsProvider(GeolocationInputComponent),
   ],
 })
 export class GeolocationInputComponent
-  implements ControlValueAccessor, OnInit, OnDestroy
+  implements ControlValueAccessor, Validator, OnInit, OnDestroy
 {
   public form = this.formBuilder.group({
-    mapCoords: [null as GeolocationCoords | null],
+    mapCoords: [null as GeolocationCoords | null, [Validators.required]],
     textCoords: this.formBuilder.group({
       latitude: [
-        0 as number | null,
+        null as number | null,
         [
           Validators.required,
           NumberValidators.number,
@@ -52,7 +55,7 @@ export class GeolocationInputComponent
         ],
       ],
       longitude: [
-        0 as number | null,
+        null as number | null,
         [
           Validators.required,
           NumberValidators.number,
@@ -105,18 +108,17 @@ export class GeolocationInputComponent
     this.form.setValue({
       mapCoords: value,
       textCoords: {
-        latitude: value?.latitude || 0,
-        longitude: value?.longitude || 0,
+        latitude: value?.latitude ?? null,
+        longitude: value?.longitude ?? null,
       },
     });
   }
 
   public registerOnChange(
-    onChangeCallback: ChangeEventHandler<GeolocationCoords>
+    onChangeCallback: ChangeEventHandler<GeolocationCoords | null>
   ): void {
-    this.form
-      .get('mapCoords')
-      ?.valueChanges.pipe(
+    this.mapControl.valueChanges
+      .pipe(
         takeUntil(this.destroy$),
         distinctUntilChanged((prev, curr): boolean => {
           return (
@@ -125,11 +127,15 @@ export class GeolocationInputComponent
           );
         })
       )
-      .subscribe((value): void => {
-        onChangeCallback({
-          latitude: value?.latitude || 0,
-          longitude: value?.longitude || 0,
-        });
+      .subscribe((value: GeolocationCoords | null): void => {
+        onChangeCallback(
+          value && this.textControls.valid
+            ? {
+                latitude: value?.latitude,
+                longitude: value?.longitude,
+              }
+            : null
+        );
       });
   }
 
@@ -143,6 +149,34 @@ export class GeolocationInputComponent
     this.longitudeInput && (this.longitudeInput.disabled = isDisabled);
   }
 
+  public validate(): ValidationErrors | null {
+    return this.form.valid
+      ? null
+      : {
+          mapControl: this.mapControl.errors
+            ? { ...this.mapControl.errors }
+            : null,
+          textControls: {
+            latitude: this.latitudeControl.errors
+              ? { ...this.latitudeControl.errors }
+              : null,
+            longitude: this.longitudeControl.errors
+              ? { ...this.longitudeControl.errors }
+              : null,
+          },
+        };
+  }
+
+  public registerOnValidatorChange(
+    onValidatorChangedCallback: VoidFunction
+  ): void {
+    this.form.statusChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((): void => {
+        onValidatorChangedCallback();
+      });
+  }
+
   public controlHasError = controlHasError.bind(this.form);
   public getControlError = getControlError.bind(this.form);
 
@@ -152,14 +186,8 @@ export class GeolocationInputComponent
       .pipe(takeUntil(this.destroy$))
       .subscribe((textControlsValue: Partial<GeolocationCoords>): void => {
         const valueChanged =
-          !valuesLooselyEqual(
-            this.mapControl.value?.latitude,
-            textControlsValue.latitude
-          ) ||
-          !valuesLooselyEqual(
-            this.mapControl.value?.longitude,
-            textControlsValue.longitude
-          );
+          this.mapControl.value?.latitude != textControlsValue.latitude ||
+          this.mapControl.value?.longitude != textControlsValue.longitude;
 
         if (!valueChanged || this.textControls.invalid) {
           return;
@@ -176,22 +204,16 @@ export class GeolocationInputComponent
       .pipe(takeUntil(this.destroy$))
       .subscribe((mapControlValue: GeolocationCoords | null): void => {
         const valueChanged =
-          !valuesLooselyEqual(
-            this.latitudeControl.value,
-            mapControlValue?.latitude
-          ) ||
-          !valuesLooselyEqual(
-            this.longitudeControl.value,
-            mapControlValue?.longitude
-          );
+          this.latitudeControl.value != mapControlValue?.latitude ||
+          this.longitudeControl.value != mapControlValue?.longitude;
 
-        if (!valueChanged || this.textControls.invalid) {
+        if (!valueChanged) {
           return;
         }
 
         this.textControls.setValue({
-          latitude: mapControlValue?.latitude || 0,
-          longitude: mapControlValue?.longitude || 0,
+          latitude: mapControlValue?.latitude ?? null,
+          longitude: mapControlValue?.longitude ?? null,
         });
       });
   }

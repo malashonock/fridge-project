@@ -2,7 +2,9 @@ import { Provider, forwardRef } from '@angular/core';
 import {
   ControlValueAccessor,
   FormGroup,
+  NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
+  Validator,
 } from '@angular/forms';
 
 export type ChangeEventHandler<T> = (value: T) => void;
@@ -46,6 +48,8 @@ export type ControlValueAccessorImplementor = new (
   ...args: any[]
 ) => ControlValueAccessor;
 
+export type ValidatorImplementor = new (...args: any[]) => Validator;
+
 export const ngValueAccessorProvider = (
   implementorClass: ControlValueAccessorImplementor
 ): Provider => {
@@ -56,6 +60,12 @@ export const ngValueAccessorProvider = (
   };
 };
 
-export const valuesLooselyEqual = (val1: any, val2: any): boolean => {
-  return (val1 || 0) === (val2 || 0);
+export const ngValidatorsProvider = (
+  implementorClass: ValidatorImplementor
+): Provider => {
+  return {
+    provide: NG_VALIDATORS,
+    useExisting: forwardRef(() => implementorClass),
+    multi: true,
+  };
 };
