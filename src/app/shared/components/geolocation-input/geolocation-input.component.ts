@@ -43,7 +43,7 @@ export class GeolocationInputComponent
     mapCoords: [null as GeolocationCoords | null],
     textCoords: this.formBuilder.group({
       latitude: [
-        null as number | null,
+        0 as number | null,
         [
           Validators.required,
           NumberValidators.number,
@@ -52,7 +52,7 @@ export class GeolocationInputComponent
         ],
       ],
       longitude: [
-        null as number | null,
+        0 as number | null,
         [
           Validators.required,
           NumberValidators.number,
@@ -105,8 +105,8 @@ export class GeolocationInputComponent
     this.form.setValue({
       mapCoords: value,
       textCoords: {
-        latitude: value?.latitude ?? null,
-        longitude: value?.longitude ?? null,
+        latitude: value?.latitude || 0,
+        longitude: value?.longitude || 0,
       },
     });
   }
@@ -190,8 +190,8 @@ export class GeolocationInputComponent
         }
 
         this.textControls.setValue({
-          latitude: mapControlValue?.latitude ?? null,
-          longitude: mapControlValue?.longitude ?? null,
+          latitude: mapControlValue?.latitude || 0,
+          longitude: mapControlValue?.longitude || 0,
         });
       });
   }
