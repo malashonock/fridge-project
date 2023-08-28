@@ -22,6 +22,24 @@ export const fridgesFeature = createFeature({
     on(
       FridgesActions.fetchFridgesSuccess,
       FridgesActionReducers.fetchFridgesSuccessReducer
+    ),
+    on(
+      FridgesActions.createFridgeSuccess,
+      FridgesActionReducers.createFridgeSuccessReducer
+    ),
+    on(
+      FridgesActions.updateFridgeSuccess,
+      FridgesActionReducers.updateFridgeSuccessReducer
+    ),
+    on(
+      FridgesActions.deleteFridgeSuccess,
+      FridgesActionReducers.deleteFridgeSuccessReducer
+    ),
+    on(FridgesActions.submit, FridgesActionReducers.submitReducer),
+    on(
+      FridgesActions.submitSuccess,
+      FridgesActions.submitFailure,
+      FridgesActionReducers.submitFinishReducer
     )
   ),
 });
