@@ -11,15 +11,16 @@ import { Subject, combineLatest, map, startWith, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { Fridge } from 'core/models/fridge/fridge.interface';
-// import { FridgeFields } from 'core/models/fridge/fridge-fields.interface';
+import { FridgeFields } from 'core/models/fridge/fridge-fields.interface';
 import { NumberValidators } from 'core/validators/number/number.validators';
 import { EarlyErrorStateMatcher } from 'core/classes/early-error-state-matcher/early-error-state-matcher.class';
 import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 import { FridgesActions } from 'app/state/fridges/fridges.actions';
-// import { selectFridgeSubmitting } from 'app/state/fridges/fridges.selectors';
+import { selectFridgeSubmitting } from 'app/state/fridges/fridges.selectors';
 import { controlHasError, getControlError } from 'utils/form/form.utils';
 import { FormMode } from 'core/models/ui/form-mode.enum';
 import { ProductQuantity } from 'core/models/fridge/product-quantity.interface';
+import { ProductQuantityDto } from 'core/models/fridge/product-quantity-dto.interface';
 
 interface FridgeDialogData {
   fridge?: Fridge;
@@ -36,7 +37,7 @@ interface FridgeDialogData {
 })
 export class FridgeFormComponent implements OnInit, OnDestroy {
   private fridge = this.data?.fridge;
-  private fridgeProducts = this.data?.products;
+  private fridgeProducts = this.data?.products || [];
   private fridgeImage = this.data?.image;
 
   public form = this.formBuilder.group({
@@ -54,7 +55,7 @@ export class FridgeFormComponent implements OnInit, OnDestroy {
       ],
       roomNo: [this.fridge?.address.roomNo],
     }),
-    products: [this.fridgeProducts],
+    products: this.formBuilder.control(this.fridgeProducts),
     image: [this.fridgeImage],
   });
 
@@ -91,7 +92,7 @@ export class FridgeFormComponent implements OnInit, OnDestroy {
   private submitted$ = new Subject<boolean>();
 
   private submitting$ = this.store
-    // .select(selectFridgeSubmitting(this.fridge?.id || null))
+    .select(selectFridgeSubmitting(this.fridge?.id || null))
     .pipe(startWith(false));
 
   public submitDisabled$ = combineLatest([
@@ -143,25 +144,34 @@ export class FridgeFormComponent implements OnInit, OnDestroy {
 
     const fridgeData = {
       ...this.form.value,
+      products:
+        this.form.value.products?.map(
+          ({ product, quantity }: ProductQuantity): ProductQuantityDto => {
+            return {
+              productId: product?.id || '',
+              quantity,
+            };
+          }
+        ) || [],
       imageUrl: this.form.value.image?.url || null,
-    }; /* as FridgeFields */
+    } as FridgeFields;
 
     switch (this.mode) {
       case FormMode.Create:
-        // this.store.dispatch(
-        //   FridgesActions.createFridge({
-        //     fridgeData,
-        //   })
-        // );
+        this.store.dispatch(
+          FridgesActions.createFridge({
+            fridgeData,
+          })
+        );
         break;
       case FormMode.Edit:
-        // this.store.dispatch(
-        //   FridgesActions.updateFridge({
-        //     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        //     id: this.fridge!.id,
-        //     fridgeData,
-        //   })
-        // );
+        this.store.dispatch(
+          FridgesActions.updateFridge({
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            id: this.fridge!.id,
+            fridgeData,
+          })
+        );
         break;
       default:
         throw new Error('Unsupported form mode');
