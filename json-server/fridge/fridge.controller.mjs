@@ -94,6 +94,12 @@ class FridgeController {
     });
     this.db.write();
 
+    if (fridge.imageUrl) {
+      // Delete fridge image
+      const path = PUBLIC_FOLDER + fridge.imageUrl;
+      deleteFile(path);
+    }
+
     res.status(200).send({ id });
   };
 }

@@ -94,6 +94,12 @@ class ProductController {
     });
     this.db.write();
 
+    if (product.imageUrl) {
+      // Delete product image
+      const path = PUBLIC_FOLDER + product.imageUrl;
+      deleteFile(path);
+    }
+
     res.status(200).send({ id });
   };
 }
