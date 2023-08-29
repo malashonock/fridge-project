@@ -1,15 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ShelfLife } from 'core/models/product/shelf-life.interface';
+import { ShelfLife } from 'core/models';
 
 @Pipe({
   name: 'shelfLife',
 })
 export class ShelfLifePipe implements PipeTransform {
-  transform(shelfLife: ShelfLife): string {
+  public transform(shelfLife: ShelfLife): string {
     return Object.entries(shelfLife)
       .map(([key, value]): string => {
-        return `${value}${key[0]}`;
+        return value ? `${value}${key[0]}` : '';
       })
+      .filter((chunk: string): boolean => !!chunk)
       .join(' ');
   }
 }

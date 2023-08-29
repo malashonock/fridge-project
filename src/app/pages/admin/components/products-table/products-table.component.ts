@@ -18,10 +18,17 @@ import {
   MatPaginator,
 } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, catchError, of, takeUntil } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { Product } from 'core/models';
+import { ProductFormComponent } from '../product-form/product-form.component';
+import { StaticAssetService } from 'core/services';
+import { FileWithUrl } from 'core/classes';
+import { ConfirmDeleteComponent } from 'shared/components';
+import { ProductsActions } from 'app/state/products';
 
 @Component({
   selector: 'app-products-table',
@@ -68,6 +75,12 @@ export class ProductsTableComponent
   @ViewChild(MatSort) private sort!: MatSort;
   @ViewChild(MatPaginator) private paginator!: MatPaginator;
 
+  public constructor(
+    private dialog: MatDialog,
+    private staticAssetService: StaticAssetService,
+    private store: Store
+  ) {}
+
   public ngOnInit(): void {
     this.subscribeToProductsChanges();
     this.subscribeToSearchQueryChanges();
@@ -106,8 +119,8 @@ export class ProductsTableComponent
       filter: string
     ): boolean => {
       return (
-        product.name.toLowerCase().includes(filter) ||
-        product.ingredients.toLowerCase().includes(filter)
+        product.ingredients?.toLowerCase().includes(filter) ||
+        product.name.toLowerCase().includes(filter)
       );
     };
   }
@@ -124,8 +137,6 @@ export class ProductsTableComponent
         case 'category':
         case 'price':
           return item[name];
-        case 'weight':
-          return item.weight.value;
         default:
           throw new Error(
             `Sorting data accessor not implemented for "${name}" column`
@@ -141,5 +152,47 @@ export class ProductsTableComponent
   public toggleExpandProduct(product: Product): void {
     this.expandedProduct =
       product.id === this.expandedProduct?.id ? null : product;
+  }
+
+  private fetchProductImage({
+    imageUrl,
+  }: Product): Observable<FileWithUrl | null> {
+    return imageUrl
+      ? this.staticAssetService.fetchAsset(imageUrl).pipe(
+          takeUntil(this.destroy$),
+          catchError(() => of(null))
+        )
+      : of(null);
+  }
+
+  public openEditProductDialog(product: Product, event?: MouseEvent): void {
+    event?.stopPropagation();
+
+    this.fetchProductImage(product).subscribe(
+      (image: FileWithUrl | null): void => {
+        this.dialog.open(ProductFormComponent, {
+          data: { product, image },
+        });
+      }
+    );
+  }
+
+  public openDeleteProductDialog({ id }: Product, event?: MouseEvent): void {
+    event?.stopPropagation();
+
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      data: {
+        itemType: 'product',
+      },
+    });
+
+    dialogRef
+      .afterClosed()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((deleteConfirmed: boolean) => {
+        if (deleteConfirmed) {
+          this.store.dispatch(ProductsActions.deleteProduct({ id }));
+        }
+      });
   }
 }

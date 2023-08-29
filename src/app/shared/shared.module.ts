@@ -12,9 +12,16 @@ import {
   BurgerButtonComponent,
   MapComponent,
   SearchBoxComponent,
+  ImageUploaderComponent,
+  ConfirmDeleteComponent,
 } from './components';
-import { InitialsPipe, MoneyPipe, ShelfLifePipe } from './pipes';
-import { MobileMenuDirective, FixedHeaderDirective } from './directives';
+import { InitialsPipe, MoneyPipe, KeysPipe, AnyPipe } from './pipes';
+import {
+  MobileMenuDirective,
+  FixedHeaderDirective,
+  FileInputDirective,
+  NumericInputDirective,
+} from './directives';
 
 @NgModule({
   declarations: [
@@ -29,7 +36,12 @@ import { MobileMenuDirective, FixedHeaderDirective } from './directives';
     MapComponent,
     SearchBoxComponent,
     MoneyPipe,
-    ShelfLifePipe,
+    KeysPipe,
+    ImageUploaderComponent,
+    FileInputDirective,
+    NumericInputDirective,
+    AnyPipe,
+    ConfirmDeleteComponent,
   ],
   exports: [
     CommonModule,
@@ -42,7 +54,12 @@ import { MobileMenuDirective, FixedHeaderDirective } from './directives';
     MapComponent,
     SearchBoxComponent,
     MoneyPipe,
-    ShelfLifePipe,
+    KeysPipe,
+    ImageUploaderComponent,
+    FileInputDirective,
+    NumericInputDirective,
+    AnyPipe,
+    ConfirmDeleteComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
 })

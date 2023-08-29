@@ -11,3 +11,8 @@ export const selectAllProducts = createSelector(
     return Object.values(state.entities) as Product[];
   }
 );
+
+export const selectProductSubmitting = (id: string | null) =>
+  createSelector(selectProductsState, (state: ProductsState): boolean => {
+    return state.submitting.includes(id);
+  });

@@ -15,8 +15,12 @@ export class UrlInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
+    const urlPrefix = request.url.includes('/images/')
+      ? environment.STATIC_ASSETS_BASE_URL
+      : environment.API_BASE_URL;
+
     const enhancedRequest = request.clone({
-      url: environment.API_BASE_URL + request.url,
+      url: urlPrefix + request.url,
     });
 
     return next.handle(enhancedRequest);

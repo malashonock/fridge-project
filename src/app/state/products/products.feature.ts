@@ -5,11 +5,14 @@ import { ProductsActions } from './products.actions';
 import { Product } from 'core/models';
 import { ProductsActionReducers } from './products.reducers';
 
-export type ProductsState = EntityState<Product>;
+export type ProductsState = EntityState<Product> & {
+  submitting: (string | null)[];
+};
 
 export const initialState: ProductsState = {
   ids: [],
   entities: {},
+  submitting: [],
 };
 
 export const productsFeature = createFeature({
@@ -19,6 +22,24 @@ export const productsFeature = createFeature({
     on(
       ProductsActions.fetchProductsSuccess,
       ProductsActionReducers.fetchProductsSuccessReducer
+    ),
+    on(
+      ProductsActions.createProductSuccess,
+      ProductsActionReducers.createProductSuccessReducer
+    ),
+    on(
+      ProductsActions.updateProductSuccess,
+      ProductsActionReducers.updateProductSuccessReducer
+    ),
+    on(
+      ProductsActions.deleteProductSuccess,
+      ProductsActionReducers.deleteProductSuccessReducer
+    ),
+    on(ProductsActions.submit, ProductsActionReducers.submitReducer),
+    on(
+      ProductsActions.submitSuccess,
+      ProductsActions.submitFailure,
+      ProductsActionReducers.submitFinishReducer
     )
   ),
 });

@@ -1,22 +1,30 @@
 <div class="brief-intro">
   <img
+    *ngIf="product?.imageUrl; else imgPlaceholder"
     class="photo"
-    [src]="imageServerUrl + product?.imageUrl"
-    [alt]="product?.name + ' photo'"
+    [src]="imageServerUrl + product.imageUrl"
+    [alt]="product.name + ' photo'"
   />
-  <div class="energy-value">
-    <strong>Energy value:</strong> {{ product?.kiloCalories }} kcal
-    <p><strong>Nutrients:</strong></p>
-    <ul>
-      <li><strong>Protein:</strong> {{ product?.nutrients?.protein }} g</li>
-      <li><strong>Fat:</strong> {{ product?.nutrients?.fat }} g</li>
-      <li>
-        <strong>Carbohydrates:</strong>
-        {{ product?.nutrients?.carbs }} g
-      </li>
-    </ul>
+  <div class="nutritional-facts">
+    <p class="energy-value" *ngIf="product?.kiloCalories as kiloCalories">
+      <strong>Energy value:</strong>
+      {{ kiloCalories }} kcal
+    </p>
+    <div class="nutrients" *ngIf="product?.nutrients | any as nutrients">
+      <p><strong>Nutrients (per 100 g):</strong></p>
+      <ul>
+        <li *ngFor="let nutrientName of product.nutrients! | keys">
+          <strong>{{ nutrientName | titlecase }}:</strong>
+          {{ product.nutrients![nutrientName] }} g
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
-<p class="ingredients">
-  <strong>Ingredients:</strong> {{ product?.ingredients }}
+<p *ngIf="product?.ingredients as ingredients" class="ingredients">
+  <strong>Ingredients:</strong> {{ ingredients }}
 </p>
+
+<ng-template #imgPlaceholder>
+  <div class="photo placeholder">No photo</div>
+</ng-template>

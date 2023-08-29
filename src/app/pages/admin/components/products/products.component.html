@@ -1,7 +1,12 @@
 <h1>Manage products</h1>
 
 <div class="controls">
-  <button mat-fab matTooltip="Add new product" class="add-product-btn">
+  <button
+    (click)="openAddProductDialog()"
+    mat-fab
+    matTooltip="Add new product"
+    class="add-product-btn"
+  >
     <mat-icon>add</mat-icon>
   </button>
 

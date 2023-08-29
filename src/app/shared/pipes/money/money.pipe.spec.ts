@@ -4,7 +4,7 @@ describe('MoneyPipe', () => {
   let pipe: MoneyPipe;
 
   beforeEach(() => {
-    pipe = new MoneyPipe();
+    pipe = new MoneyPipe('en-US');
   });
 
   it('create an instance', () => {

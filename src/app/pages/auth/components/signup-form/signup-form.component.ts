@@ -2,14 +2,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { UserRole } from 'core/models';
+import { UserRole, SelectOption } from 'core/models';
 import { EmailValidator, PasswordValidator } from 'core/validators';
 import { AuthActions } from 'app/state/auth';
-
-interface SelectOption {
-  value: string;
-  label: string;
-}
 
 @Component({
   selector: 'app-signup-form',
@@ -20,9 +15,10 @@ interface SelectOption {
 export class SignupFormComponent {
   public form: FormGroup;
 
+  // TODO: fetch on startup and select from store
   public roles: SelectOption[] = [
-    { value: 'user', label: 'User' },
-    { value: 'admin', label: 'Admin' },
+    { value: UserRole.User, label: 'User' },
+    { value: UserRole.Admin, label: 'Admin' },
   ];
 
   public constructor(formBuilder: FormBuilder, private store: Store) {

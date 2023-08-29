@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 
 import { FixedHeaderDirective } from './fixed-header.directive';
 import { SharedModule } from 'shared/shared.module';
-import { ResizeObserverSpies } from 'rootDir/setup-jest';
+import { ResizeObserverSpies } from 'rootDir/jest-global-mocks';
 
 @Component({
   template: `

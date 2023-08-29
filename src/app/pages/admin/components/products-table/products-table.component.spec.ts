@@ -3,24 +3,27 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRowHarness } from '@angular/material/table/testing';
 import { HarnessLoader } from '@angular/cdk/testing';
+import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
+import { By } from '@angular/platform-browser';
+import { Subject } from 'rxjs';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { ProductsTableComponent } from './products-table.component';
 import { SharedModule } from 'shared/shared.module';
-import { Subject } from 'rxjs';
 import { Product, ProductCategory } from 'core/models';
 import {
   mockProduct1,
   mockProducts1,
   mockProducts2,
 } from 'mocks/product.mocks';
-import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { By } from '@angular/platform-browser';
+import { ShelfLifePipe } from '../../pipes';
 
 @Component({
   selector: 'app-product-details',
 })
 class ProductDetailsStubComponent {
-  @Input() product!: Product;
+  @Input() public product!: Product;
 }
 
 describe('ProductsTableComponent', () => {
@@ -40,8 +43,13 @@ describe('ProductsTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductsTableComponent, ProductDetailsStubComponent],
-      imports: [SharedModule, NoopAnimationsModule],
+      declarations: [
+        ProductsTableComponent,
+        ProductDetailsStubComponent,
+        ShelfLifePipe,
+      ],
+      imports: [SharedModule, NoopAnimationsModule, HttpClientTestingModule],
+      providers: [provideMockStore()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProductsTableComponent);
@@ -109,16 +117,13 @@ describe('ProductsTableComponent', () => {
       ({ sortingDataAccessor } = component.dataSource);
     });
 
-    it('should recognize name, price, category and weight fields', () => {
+    it('should recognize name, price and category fields', () => {
       expect(sortingDataAccessor(mockProduct1, 'name')).toBe(mockProduct1.name);
       expect(sortingDataAccessor(mockProduct1, 'price')).toBe(
         mockProduct1.price
       );
       expect(sortingDataAccessor(mockProduct1, 'category')).toBe(
         mockProduct1.category
-      );
-      expect(sortingDataAccessor(mockProduct1, 'weight')).toBe(
-        mockProduct1.weight.value
       );
     });
 

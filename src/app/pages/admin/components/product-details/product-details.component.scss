@@ -19,4 +19,12 @@
   width: $photo-size;
   height: $photo-size;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+
+  &.placeholder {
+    border: 2px solid black;
+  }
 }

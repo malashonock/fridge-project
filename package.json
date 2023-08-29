@@ -55,6 +55,7 @@
     "jest-marbles": "^3.0.3",
     "jest-preset-angular": "^13.1.1",
     "json-server": "^0.17.3",
+    "multer": "^1.4.5-lts.1",
     "nodemon": "^3.0.1",
     "prettier": "^2.8.8",
     "prettier-eslint": "^15.0.1",

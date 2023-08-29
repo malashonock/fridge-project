@@ -31,7 +31,19 @@ describe('UrlInterceptor', () => {
     expect(urlInterceptor).toBeTruthy();
   });
 
-  it('should intercept HTTP requests', () => {
+  it('given a path like /images/*, should append bare server url', () => {
+    const relativeUrl = '/images/some-image.png';
+    const fullUrl = environment.STATIC_ASSETS_BASE_URL + relativeUrl;
+
+    httpClient.get(relativeUrl).subscribe();
+
+    const req = httpTestingController.expectOne(fullUrl);
+
+    req.flush(null);
+    httpTestingController.verify();
+  });
+
+  it('given other paths, should append server API url', () => {
     const relativeUrl = '/auth';
     const fullUrl = environment.API_BASE_URL + relativeUrl;
 

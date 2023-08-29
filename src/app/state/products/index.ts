@@ -5,4 +5,8 @@ export {
   initialState,
   productsFeature,
 } from './products.feature';
-export { selectProductsState, selectAllProducts } from './products.selectors';
+export {
+  selectProductsState,
+  selectAllProducts,
+  selectProductSubmitting,
+} from './products.selectors';
