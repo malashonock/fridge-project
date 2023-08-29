@@ -12,7 +12,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">167</context>
+          <context context-type="linenumber">171</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fridges" datatype="html">
@@ -214,7 +214,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-card/fridge-card.component.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fridgeImage" datatype="html">
@@ -252,7 +252,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.ts</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">71</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
@@ -397,7 +397,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">118</context>
         </context-group>
       </trans-unit>
       <trans-unit id="floorNo" datatype="html">
@@ -406,7 +406,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">132</context>
+          <context context-type="linenumber">133</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fridgeAddressFloorErrorNaN" datatype="html">
@@ -415,7 +415,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">145</context>
+          <context context-type="linenumber">158</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fridgeAddressFloorErrorInteger" datatype="html">
@@ -424,7 +424,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">150</context>
+          <context context-type="linenumber">163</context>
         </context-group>
       </trans-unit>
       <trans-unit id="roomNo" datatype="html">
@@ -433,7 +433,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">160</context>
+          <context context-type="linenumber">150</context>
         </context-group>
       </trans-unit>
       <trans-unit id="editFridgeHeader" datatype="html">
@@ -442,7 +442,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.ts</context>
-          <context context-type="linenumber">63</context>
+          <context context-type="linenumber">64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="createFridgeHeader" datatype="html">
@@ -451,7 +451,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.ts</context>
-          <context context-type="linenumber">64</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="productName" datatype="html">
@@ -623,7 +623,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">221</context>
+          <context context-type="linenumber">220</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weightUnitErrorRequired" datatype="html">
@@ -632,7 +632,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">231</context>
+          <context context-type="linenumber">230</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weightValueErrorNaN" datatype="html">
@@ -641,7 +641,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">237</context>
+          <context context-type="linenumber">236</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weightValueErrorNegative" datatype="html">
@@ -650,7 +650,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">242</context>
+          <context context-type="linenumber">241</context>
         </context-group>
       </trans-unit>
       <trans-unit id="energyValueErrorNaN" datatype="html">
@@ -692,7 +692,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">306</context>
+          <context context-type="linenumber">305</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shelfLifePeriodErrorInteger" datatype="html">
@@ -702,7 +702,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">312</context>
+          <context context-type="linenumber">313</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shelfLifePeriodErrorNegative" datatype="html">
@@ -712,7 +712,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">318</context>
+          <context context-type="linenumber">319</context>
         </context-group>
       </trans-unit>
       <trans-unit id="editProductHeader" datatype="html">
@@ -739,7 +739,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">70</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
