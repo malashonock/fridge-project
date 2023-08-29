@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Id, Product, ProductFields } from 'core/models';
+import { Product } from 'core/models/product/product.interface';
+import { ProductFields } from 'core/models/product/product-fields.interface';
+import { WithId } from 'core/models/id/with-id.interface';
 import { FormDataService } from '../form-data/form-data.service';
 
 @Injectable({
@@ -31,7 +33,7 @@ export class ProductService {
     return this.httpClient.put<Product>(`/products/${id}`, formData);
   }
 
-  public deleteProduct(id: string): Observable<Id> {
-    return this.httpClient.delete<Id>(`/products/${id}`);
+  public deleteProduct(id: string): Observable<WithId> {
+    return this.httpClient.delete<WithId>(`/products/${id}`);
   }
 }

@@ -17,8 +17,10 @@ import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 
 import { SharedModule } from 'shared/shared.module';
 import { SignupFormComponent } from './signup-form.component';
-import { AuthActions } from 'app/state/auth';
-import { SignupCredentials, UserRole } from 'core/models';
+import { AuthActions } from 'app/state/auth/auth.actions';
+import { SignupCredentials } from 'core/models/auth/signup.interface';
+import { UserRole } from 'core/models/user/user-role.enum';
+import { CoreModule } from 'core/core.module';
 
 describe('SignupFormComponent', () => {
   let component: SignupFormComponent;
@@ -47,6 +49,7 @@ describe('SignupFormComponent', () => {
         MatButtonModule,
         MatIconModule,
         RouterTestingModule,
+        CoreModule,
       ],
       providers: [provideMockStore()],
     }).compileComponents();
@@ -104,7 +107,7 @@ describe('SignupFormComponent', () => {
     });
     expect(await userNameInputHarness.getValue()).toBe('');
     expect(await emailInputHarness.getValue()).toBe('');
-    expect(await roleSelectHarness.getValueText()).toBe('Role');
+    expect(await roleSelectHarness.getValueText()).toBe('');
     expect(await passwordInputHarness.getValue()).toBe('');
     expect(await passwordConfirmInputHarness.getValue()).toBe('');
   });

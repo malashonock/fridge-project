@@ -1,9 +1,7 @@
-import {
-  Product,
-  ProductCategory,
-  ProductFields,
-  UnitOfWeight,
-} from 'core/models';
+import { Product } from 'core/models/product/product.interface';
+import { ProductCategory } from 'core/models/product/product-category.enum';
+import { ProductFields } from 'core/models/product/product-fields.interface';
+import { UnitOfWeight } from 'core/models/product/unit-of-weight.enum';
 
 export const mockProduct1: Product = {
   id: '5',

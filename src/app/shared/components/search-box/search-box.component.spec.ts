@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { By } from '@angular/platform-browser';
 
 import { SearchBoxComponent } from './search-box.component';
 import { SharedModule } from 'shared/shared.module';
-import { By } from '@angular/platform-browser';
 
 describe('SearchBoxComponent', () => {
   let component: SearchBoxComponent;

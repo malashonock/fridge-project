@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   Input,
   OnDestroy,
@@ -23,12 +24,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Observable, Subject, catchError, of, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { Product } from 'core/models';
+import { Product } from 'core/models/product/product.interface';
 import { ProductFormComponent } from '../product-form/product-form.component';
-import { StaticAssetService } from 'core/services';
-import { FileWithUrl } from 'core/classes';
-import { ConfirmDeleteComponent } from 'shared/components';
-import { ProductsActions } from 'app/state/products';
+import { StaticAssetService } from 'core/services/static-asset/static-asset.service';
+import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
+import { ConfirmDeleteComponent } from 'shared/components/confirm-delete/confirm-delete.component';
+import { ProductsActions } from 'app/state/products/products.actions';
 
 @Component({
   selector: 'app-products-table',
@@ -52,12 +53,13 @@ import { ProductsActions } from 'app/state/products';
       },
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsTableComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
-  @Input() public products$?: Observable<Product[]>;
-  @Input() public searchQuery$?: Observable<string>;
+  @Input() public products$: Observable<Product[]>;
+  @Input() public searchQuery$: Observable<string>;
 
   public dataSource = new MatTableDataSource<Product>([]);
   public tableColumns: string[] = [
@@ -182,7 +184,7 @@ export class ProductsTableComponent
 
     const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
       data: {
-        itemType: 'product',
+        itemType: $localize`:@@product:product`,
       },
     });
 

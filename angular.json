@@ -26,9 +26,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/fridge-project",
             "index": "src/index.html",
-            "localize": false,
+            "localize": true,
             "main": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -59,7 +58,8 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "outputPath": "dist/fridge-project/prod"
             },
             "development": {
               "buildOptimizer": false,
@@ -73,7 +73,15 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.development.ts"
                 }
-              ]
+              ],
+              "outputPath": "dist/fridge-project/dev",
+              "localize": true
+            },
+            "en": {
+              "localize": ["en-US"]
+            },
+            "ru": {
+              "localize": ["ru"]
             }
           },
           "defaultConfiguration": "production"
@@ -81,14 +89,20 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "browserTarget": "fridge-project:build:production"
+            "production_en": {
+              "browserTarget": "fridge-project:build:production,en"
             },
-            "development": {
-              "browserTarget": "fridge-project:build:development"
+            "production_ru": {
+              "browserTarget": "fridge-project:build:production,ru"
+            },
+            "development_en": {
+              "browserTarget": "fridge-project:build:development,en"
+            },
+            "development_ru": {
+              "browserTarget": "fridge-project:build:development,ru"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development_en"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

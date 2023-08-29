@@ -8,7 +8,8 @@ import { MemoizedSelector } from '@ngrx/store';
 
 import { BurgerButtonComponent } from './burger-button.component';
 import { SharedModule } from 'shared/shared.module';
-import { UiActions, selectShowSideMenu } from 'app/state/ui';
+import { UiActions } from 'app/state/ui/ui.actions';
+import { selectShowSideMenu } from 'app/state/ui/ui.selectors';
 
 describe('BurgerButtonComponent', () => {
   let component: BurgerButtonComponent;

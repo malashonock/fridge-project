@@ -1,39 +1,42 @@
 <form (ngSubmit)="onSubmit()" class="form" [formGroup]="form">
   <header class="header">
     <mat-icon class="account-icon" fontIcon="account_circle"></mat-icon>
-    <h2 class="title">Log in</h2>
+    <h2 class="title" i18n="@@logIn">Log in</h2>
   </header>
 
   <mat-form-field appearance="outline" subscriptSizing="dynamic">
-    <mat-label>User name</mat-label>
-    <input
-      matInput
-      id="userName"
-      name="userName"
-      formControlName="userName"
-      placeholder="User name"
-    />
-    <mat-error *ngIf="form.controls['userName'].hasError('required')">
+    <mat-label i18n="@@userName">User name</mat-label>
+    <input matInput id="userName" name="userName" formControlName="userName" />
+    <mat-error
+      *ngIf="controlHasError('userName.required')"
+      i18n="@@userNameErrorRequired"
+    >
       User name is required
     </mat-error>
-    <mat-error *ngIf="form.controls['userName'].hasError('minlength')">
+    <mat-error
+      *ngIf="controlHasError('userName.minlength')"
+      i18n="@@userNameErrorMinLength"
+    >
       User name must be no shorter than
-      {{ form.controls["userName"].errors!["minlength"].requiredLength }}
-      symbols
+      {{ getControlError("userName.minlength", "requiredLength") }}
+      {getControlError('userName.minlength.requiredLength'), plural, =1 {symbol}
+      other {symbols}}
     </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline" subscriptSizing="dynamic">
-    <mat-label>Password</mat-label>
+    <mat-label i18n="@@password">Password</mat-label>
     <input
       matInput
       type="password"
       id="password"
       name="password"
       formControlName="password"
-      placeholder="Password"
     />
-    <mat-error *ngIf="form.controls['password'].hasError('required')">
+    <mat-error
+      *ngIf="controlHasError('password.required')"
+      i18n="@@passwordErrorRequired"
+    >
       Password is required
     </mat-error>
   </mat-form-field>
@@ -43,12 +46,13 @@
     color="primary"
     type="submit"
     [disabled]="form.invalid"
+    i18n="@@logIn"
   >
     Log in
   </button>
 
   <p class="signup-link">
-    <span>Don't have an account yet? </span>
-    <a routerLink="/auth/signup">Sign up</a>
+    <span i18n="@@signUpPrompt">Don't have an account yet? </span>
+    <a routerLink="/auth/signup" i18n="@@signUpLink">Sign up</a>
   </p>
 </form>

@@ -1,4 +1,5 @@
-import { User, UserRole } from 'core/models';
+import { User } from 'core/models/user/user.interface';
+import { UserRole } from 'core/models/user/user-role.enum';
 import { AuthActionReducers } from './auth.reducers';
 import { AuthSession } from './auth.feature';
 import { AuthActions } from './auth.actions';

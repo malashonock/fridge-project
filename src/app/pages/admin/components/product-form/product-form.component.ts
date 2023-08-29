@@ -1,23 +1,33 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { FormBuilder, FormControlStatus, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subject, combineLatest, map, startWith, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import {
-  Product,
-  ProductCategory,
-  UnitOfWeight,
-  SelectOption,
-  ProductFields,
-} from 'core/models';
-import { ComboFieldValidator, NumberValidator } from 'core/validators';
-import {
-  ComboErrorStateMatcher,
-  EarlyErrorStateMatcher,
-  FileWithUrl,
-} from 'core/classes';
-import { ProductsActions, selectProductSubmitting } from 'app/state/products';
+import { Product } from 'core/models/product/product.interface';
+import { ProductFields } from 'core/models/product/product-fields.interface';
+import { ProductCategory } from 'core/models/product/product-category.enum';
+import { UnitOfWeight } from 'core/models/product/unit-of-weight.enum';
+import { ComboFieldValidators } from 'core/validators/combo-field/combo-field.validators';
+import { NumberValidators } from 'core/validators/number/number.validators';
+import { ComboErrorStateMatcher } from 'core/classes/combo-error-state-matcher/combo-error-state-matcher.class';
+import { EarlyErrorStateMatcher } from 'core/classes/early-error-state-matcher/early-error-state-matcher.class';
+import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
+import { ProductsActions } from 'app/state/products/products.actions';
+import { selectProductSubmitting } from 'app/state/products/products.selectors';
+import { controlHasError, getControlError } from 'utils/form/form.utils';
+import { PRODUCT_CATEGORIES } from 'core/configs/product-categories.config';
+import { WEIGHT_UNITS } from 'core/configs/weight-units.config';
+import { NUTRIENTS } from 'core/configs/nutrient.config';
+import { Nutrient } from 'core/models/product/nutrient.enum';
+import { PERIODS } from 'core/configs/periods.config';
+import { Period } from 'core/models/product/period.enum';
 
 interface ProductDialogData {
   product?: Product;
@@ -33,6 +43,7 @@ enum FormMode {
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
   private product = this.data?.product;
@@ -47,89 +58,77 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       this.product?.price,
       [
         Validators.required,
-        NumberValidator.number,
+        NumberValidators.number,
         Validators.min(0),
-        NumberValidator.maxFractionDigits(2),
+        NumberValidators.maxFractionDigits(2),
       ],
     ],
     weight: this.formBuilder.group(
       {
         value: [
           this.product?.weight?.value,
-          [NumberValidator.number, Validators.min(0)],
+          [NumberValidators.number, Validators.min(0)],
         ],
         unit: [this.product?.weight?.unit],
       },
       {
-        validators: [ComboFieldValidator.allOrNone],
+        validators: [ComboFieldValidators.allOrNone],
       }
     ),
     nutrients: this.formBuilder.group({
       proteins: [
         this.product?.nutrients?.proteins,
-        [NumberValidator.number, Validators.min(0)],
+        [NumberValidators.number, Validators.min(0)],
       ],
       fats: [
         this.product?.nutrients?.fats,
-        [NumberValidator.number, Validators.min(0)],
+        [NumberValidators.number, Validators.min(0)],
       ],
       carbs: [
         this.product?.nutrients?.carbs,
-        [NumberValidator.number, Validators.min(0)],
+        [NumberValidators.number, Validators.min(0)],
       ],
     }),
     kiloCalories: [
       this.product?.kiloCalories,
-      [NumberValidator.number, Validators.min(0)],
+      [NumberValidators.number, Validators.min(0)],
     ],
     shelfLife: this.formBuilder.group({
       months: [
         this.product?.shelfLife?.months,
-        [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
+        [NumberValidators.number, NumberValidators.integer, Validators.min(0)],
       ],
       weeks: [
         this.product?.shelfLife?.weeks,
-        [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
+        [NumberValidators.number, NumberValidators.integer, Validators.min(0)],
       ],
       days: [
         this.product?.shelfLife?.days,
-        [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
+        [NumberValidators.number, NumberValidators.integer, Validators.min(0)],
       ],
       hours: [
         this.product?.shelfLife?.hours,
-        [NumberValidator.number, NumberValidator.integer, Validators.min(0)],
+        [NumberValidators.number, NumberValidators.integer, Validators.min(0)],
       ],
     }),
     image: [this.productImage],
   });
 
   public get title(): string {
-    return this.product ? 'Edit product' : 'Add new product';
+    return this.product
+      ? $localize`:@@editProductHeader:Edit product`
+      : $localize`:@@createProductHeader:Add new product`;
   }
 
   public get submitText(): string {
-    return this.product ? 'Save changes' : 'Create product';
+    return this.product
+      ? $localize`:@@saveChanges:Save changes`
+      : $localize`:@@createProduct:Create product`;
   }
 
   private get mode(): FormMode {
     return this.product ? FormMode.Edit : FormMode.Create;
   }
-
-  // TODO: fetch on startup and select from store
-  public productCategories: SelectOption[] = [
-    { value: ProductCategory.Soups, label: 'Soups' },
-    { value: ProductCategory.SecondCourses, label: 'Second courses' },
-    { value: ProductCategory.Salads, label: 'Salads' },
-    { value: ProductCategory.Snacks, label: 'Snacks' },
-    { value: ProductCategory.Drinks, label: 'Drinks' },
-    { value: ProductCategory.Desserts, label: 'Desserts' },
-  ];
-
-  // TODO: fetch on startup and select from store
-  public weightUnits: SelectOption[] = [
-    { value: UnitOfWeight.Grams, label: 'g' },
-    { value: UnitOfWeight.Milliliters, label: 'ml' },
-  ];
 
   public earlyErrorStateMatcher = new EarlyErrorStateMatcher();
   public comboErrorStateMatcher = new ComboErrorStateMatcher();
@@ -176,6 +175,10 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private store: Store,
     public dialogRef: MatDialogRef<ProductFormComponent>,
+    @Inject(PRODUCT_CATEGORIES) public productCategories: ProductCategory[],
+    @Inject(WEIGHT_UNITS) public weightUnits: UnitOfWeight[],
+    @Inject(NUTRIENTS) public nutrients: Nutrient[],
+    @Inject(PERIODS) public periods: Period[],
     @Inject(MAT_DIALOG_DATA) private data?: ProductDialogData
   ) {}
 
@@ -228,4 +231,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
     this.submitted$.next(true);
   }
+
+  public controlHasError = controlHasError.bind(this.form);
+  public getControlError = getControlError.bind(this.form);
 }

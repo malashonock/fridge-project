@@ -1,11 +1,19 @@
 import { InjectionToken, Provider } from '@angular/core';
 
-import { MenuItemConfig } from 'shared/components';
+import { MenuItemConfig } from 'shared/components/menu-item/menu-item.component';
 
 export const adminPageMenuConfig: MenuItemConfig[] = [
-  { text: 'Products', href: 'products', matIconCode: 'fastfood' },
-  { text: 'Fridges', href: 'fridges', matIconCode: 'kitchen' },
-  { text: 'Map', href: 'map', matIconCode: 'map' },
+  {
+    text: $localize`:@@products:Products`,
+    href: 'products',
+    matIconCode: 'fastfood',
+  },
+  {
+    text: $localize`:@@fridges:Fridges`,
+    href: 'fridges',
+    matIconCode: 'kitchen',
+  },
+  { text: $localize`:@@map:Map`, href: 'map', matIconCode: 'map' },
 ];
 
 export const ADMIN_PAGE_MENU_CONFIG = new InjectionToken<MenuItemConfig[]>(

@@ -3,9 +3,9 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import {
   MenuItemConfig,
   MenuItemVariant,
-  menuItemTrackBy,
-} from 'shared/components';
-import { ADMIN_PAGE_MENU_CONFIG } from 'core/configs';
+} from 'shared/components/menu-item/menu-item.component';
+import { menuItemTrackBy } from 'utils/menu-item/menu-item.utils';
+import { ADMIN_PAGE_MENU_CONFIG } from 'core/configs/admin-page-menu.config';
 
 @Component({
   selector: 'app-admin-index',

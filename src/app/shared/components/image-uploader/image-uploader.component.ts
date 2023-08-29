@@ -17,9 +17,9 @@ import { MatFormFieldControl } from '@angular/material/form-field';
 import { Subject, takeUntil } from 'rxjs';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 
-import { FileWithUrl } from 'core/classes';
-import { FileInputDirective } from 'shared/directives';
-import { FileValidator } from 'core/validators';
+import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
+import { FileInputDirective } from 'shared/directives/file-input/file-input.directive';
+import { FileValidators } from 'core/validators/file/file.validators';
 
 type VoidEventHandler = () => void;
 type ChangeEventHandler = (image: FileWithUrl | null) => void;
@@ -45,12 +45,12 @@ export class ImageUploaderComponent
     OnDestroy
 {
   public formControl = new FormControl<FileWithUrl | null>(null, [
-    FileValidator.type('image/*'),
+    FileValidators.type('image/*'),
   ]);
 
   @Input() public id = '';
 
-  private _placehoder = 'Select image';
+  private _placehoder = $localize`:@@selectImage:Select image`;
   public get placeholder(): string {
     return this._placehoder;
   }

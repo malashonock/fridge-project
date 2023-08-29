@@ -6,7 +6,7 @@ import {
 
 import { StaticAssetService } from './static-asset.service';
 import { environment } from 'environments/environment';
-import { FileWithUrl } from 'core/classes';
+import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UrlInterceptor } from 'core/interceptors/url/url.interceptor';
 

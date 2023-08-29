@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { AuthActions } from 'app/state/auth';
+import { AuthActions } from 'app/state/auth/auth.actions';
+import { LoginCredentials } from 'core/models/auth/login.interface';
+import { controlHasError, getControlError } from 'utils/form/form.utils';
 
 @Component({
   selector: 'app-login-form',
@@ -11,14 +13,12 @@ import { AuthActions } from 'app/state/auth';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginFormComponent {
-  public form: FormGroup;
+  public form = this.formBuilder.group({
+    userName: ['', [Validators.required, Validators.minLength(2)]],
+    password: ['', [Validators.required]],
+  });
 
-  public constructor(formBuilder: FormBuilder, private store: Store) {
-    this.form = formBuilder.group({
-      userName: ['', [Validators.required, Validators.minLength(2)]],
-      password: ['', [Validators.required]],
-    });
-  }
+  public constructor(private formBuilder: FormBuilder, private store: Store) {}
 
   public onSubmit(): void {
     if (this.form.invalid) {
@@ -27,8 +27,11 @@ export class LoginFormComponent {
 
     this.store.dispatch(
       AuthActions.login({
-        credentials: this.form.value,
+        credentials: this.form.value as LoginCredentials,
       })
     );
   }
+
+  public controlHasError = controlHasError.bind(this.form);
+  public getControlError = getControlError.bind(this.form);
 }

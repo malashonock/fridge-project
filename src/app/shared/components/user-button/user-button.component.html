@@ -2,6 +2,6 @@
   {{ userName$ | async | toInitials }}
 </button>
 <mat-menu #userMenu>
-  <a mat-menu-item>Settings</a>
-  <button mat-menu-item (click)="logout()">Logout</button>
+  <a mat-menu-item i18n="@@settings">Settings</a>
+  <button mat-menu-item (click)="logout()" i18n="@@logOut">Log out</button>
 </mat-menu>

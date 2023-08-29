@@ -6,45 +6,47 @@ import {
   OnInit,
   Renderer2,
 } from '@angular/core';
-import { BehaviorSubject, distinctUntilChanged } from 'rxjs';
+import {
+  BehaviorSubject,
+  Subject,
+  distinctUntilChanged,
+  takeUntil,
+} from 'rxjs';
 
 @Directive({
   selector: '[appFixedHeader]',
 })
 export class FixedHeaderDirective implements OnInit, OnDestroy {
-  private headerHeight$: BehaviorSubject<number>;
-  private headerHeightObserver: ResizeObserver;
+  private headerHeight$ = new BehaviorSubject(
+    this.elementRef.nativeElement.getBoundingClientRect().height
+  );
+
+  private headerHeightObserver = new ResizeObserver(
+    (entries: ResizeObserverEntry[]) => {
+      // Angular zone hasn't monkey patched ResizeObserver yet,
+      // so we gotta force the callback to run in Angular zone
+      this.zone.run(() => {
+        const headerHeight = entries[0].borderBoxSize[0].blockSize;
+        this.headerHeight$.next(headerHeight);
+      });
+    }
+  );
+
+  private destroy$ = new Subject();
 
   public constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
     private zone: NgZone
-  ) {
+  ) {}
+
+  public ngOnInit(): void {
     // Make header fixed
     this.setHeaderStyles();
 
-    // Create header height observable
-    this.headerHeight$ = new BehaviorSubject(
-      this.elementRef.nativeElement.getBoundingClientRect().height
-    );
-
-    // Create header height observer
-    this.headerHeightObserver = new ResizeObserver(
-      (entries: ResizeObserverEntry[]) => {
-        // Angular zone hasn't monkey patched ResizeObserver yet,
-        // so we gotta force the callback to run in Angular zone
-        this.zone.run(() => {
-          const headerHeight = entries[0].borderBoxSize[0].blockSize;
-          this.headerHeight$.next(headerHeight);
-        });
-      }
-    );
-  }
-
-  public ngOnInit(): void {
     // Subscribe to header height observable
     this.headerHeight$
-      .pipe(distinctUntilChanged())
+      .pipe(takeUntil(this.destroy$), distinctUntilChanged())
       .subscribe((headerHeight: number) => {
         this.setContentStyles(headerHeight);
       });
@@ -56,6 +58,8 @@ export class FixedHeaderDirective implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.headerHeightObserver.unobserve(this.elementRef.nativeElement);
     this.headerHeight$.complete();
+    this.destroy$.next(null);
+    this.destroy$.complete();
   }
 
   private setHeaderStyles(): void {

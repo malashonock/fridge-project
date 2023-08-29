@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { FileWithUrl } from 'core/classes';
+import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 
 type VoidEventHandler = () => void;
 type ChangeEventHandler = (file: FileWithUrl | null) => void;

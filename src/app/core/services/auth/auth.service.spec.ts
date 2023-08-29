@@ -6,14 +6,12 @@ import {
 import { HttpClient } from '@angular/common/http';
 
 import { AuthService } from './auth.service';
-import { LocalStorageService } from 'core/services';
-import { AuthSession } from 'app/state/auth';
-import {
-  User,
-  UserRole,
-  LoginCredentials,
-  SignupCredentials,
-} from 'core/models';
+import { LocalStorageService } from 'core/services/local-storage/local-storage.service';
+import { AuthSession } from 'app/state/auth/auth.feature';
+import { User } from 'core/models/user/user.interface';
+import { UserRole } from 'core/models/user/user-role.enum';
+import { LoginCredentials } from 'core/models/auth/login.interface';
+import { SignupCredentials } from 'core/models/auth/signup.interface';
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -201,6 +199,17 @@ describe('AuthService', () => {
 
       const req = httpTestingController.expectOne(logoutEndpointUrl);
       req.flush(null);
+    });
+
+    it('upon logout failure, should still clear session from local storage', () => {
+      const spyOnClearSession = jest.spyOn(authService, 'clearSession');
+
+      authService.logout().subscribe(() => {
+        expect(spyOnClearSession).toHaveBeenCalledTimes(1);
+      });
+
+      const req = httpTestingController.expectOne(logoutEndpointUrl);
+      req.flush(new Error('Server error'));
     });
   });
 });

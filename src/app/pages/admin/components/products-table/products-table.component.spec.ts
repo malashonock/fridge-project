@@ -11,13 +11,14 @@ import { provideMockStore } from '@ngrx/store/testing';
 
 import { ProductsTableComponent } from './products-table.component';
 import { SharedModule } from 'shared/shared.module';
-import { Product, ProductCategory } from 'core/models';
+import { Product } from 'core/models/product/product.interface';
+import { ProductCategory } from 'core/models/product/product-category.enum';
 import {
   mockProduct1,
   mockProducts1,
   mockProducts2,
 } from 'mocks/product.mocks';
-import { ShelfLifePipe } from '../../pipes';
+import { ShelfLifeLabelPipe } from '../../../../shared/pipes/label/shelf-life/shelf-life-label.pipe';
 
 @Component({
   selector: 'app-product-details',
@@ -46,7 +47,7 @@ describe('ProductsTableComponent', () => {
       declarations: [
         ProductsTableComponent,
         ProductDetailsStubComponent,
-        ShelfLifePipe,
+        ShelfLifeLabelPipe,
       ],
       imports: [SharedModule, NoopAnimationsModule, HttpClientTestingModule],
       providers: [provideMockStore()],

@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 
-import { selectMobileMode } from 'app/state/ui';
+import { selectMobileMode } from 'app/state/ui/ui.selectors';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +10,7 @@ import { selectMobileMode } from 'app/state/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  public mobileMode$: Observable<boolean>;
+  public mobileMode$ = this.store.select(selectMobileMode);
 
-  public constructor(private store: Store) {
-    this.mobileMode$ = this.store.select(selectMobileMode);
-  }
+  public constructor(private store: Store) {}
 }

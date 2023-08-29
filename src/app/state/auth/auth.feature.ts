@@ -1,6 +1,6 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 
-import { User } from 'core/models';
+import { User } from 'core/models/user/user.interface';
 import { AuthActions } from './auth.actions';
 import { AuthActionReducers } from './auth.reducers';
 

@@ -1,10 +1,10 @@
 import { Component, ElementRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { FileInputDirective } from './file-input.directive';
 import { SharedModule } from 'shared/shared.module';
-import { By } from '@angular/platform-browser';
-import { FileWithUrl } from 'core/classes';
+import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 
 @Component({
   template: '<input type="file" />',

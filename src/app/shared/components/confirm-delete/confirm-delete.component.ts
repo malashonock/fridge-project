@@ -12,6 +12,10 @@ interface ConfirmDeleteDialogData {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfirmDeleteComponent {
+  public get itemType(): string {
+    return this.data?.itemType || $localize`:@@item:item`;
+  }
+
   public constructor(
     @Inject(MAT_DIALOG_DATA) public data?: ConfirmDeleteDialogData
   ) {}

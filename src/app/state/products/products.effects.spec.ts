@@ -7,7 +7,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ProductsEffects } from './products.effects';
 import { CoreModule } from 'core/core.module';
-import { ProductService } from 'core/services';
+import { ProductService } from 'core/services/product/product.service';
 import { ProductsActions } from './products.actions';
 import {
   mockProduct1,

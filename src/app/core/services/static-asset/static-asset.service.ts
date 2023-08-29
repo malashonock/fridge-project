@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
-import { FileWithUrl } from 'core/classes';
+import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 import { environment } from 'environments/environment';
 
 @Injectable({

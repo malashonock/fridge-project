@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
 
-import { ProductService } from 'core/services';
+import { ProductService } from 'core/services/product/product.service';
 import { ProductsActions } from './products.actions';
-import { Id, Product } from 'core/models';
+import { Product } from 'core/models/product/product.interface';
+import { WithId } from 'core/models/id/with-id.interface';
 
 @Injectable()
 export class ProductsEffects {
@@ -82,7 +83,7 @@ export class ProductsEffects {
       ofType(ProductsActions.deleteProduct),
       switchMap(({ id }: ReturnType<typeof ProductsActions.deleteProduct>) => {
         return this.productService.deleteProduct(id).pipe(
-          map(({ id }: Id) => {
+          map(({ id }: WithId) => {
             return ProductsActions.deleteProductSuccess({ id });
           }),
           catchError((error) => {

@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  TrackByFunction,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 export interface MenuItemConfig {
   text: string;
@@ -16,13 +11,6 @@ export enum MenuItemVariant {
   Tile = 'menu-item--tile',
 }
 
-export const menuItemTrackBy: TrackByFunction<MenuItemConfig> = (
-  index: number,
-  menuItemConfig: MenuItemConfig
-): string => {
-  return menuItemConfig.text;
-};
-
 @Component({
   selector: 'app-menu-item',
   templateUrl: './menu-item.component.html',
@@ -30,6 +18,6 @@ export const menuItemTrackBy: TrackByFunction<MenuItemConfig> = (
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuItemComponent {
-  @Input() public config?: MenuItemConfig;
+  @Input() public config: MenuItemConfig;
   @Input() public variant = MenuItemVariant.Row;
 }

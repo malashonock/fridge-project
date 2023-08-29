@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 
-import { AuthService } from 'core/services';
-import { User, UserRole } from 'core/models';
+import { AuthService } from 'core/services/auth/auth.service';
+import { User } from 'core/models/user/user.interface';
+import { UserRole } from 'core/models/user/user-role.enum';
 import { AuthActions } from './auth.actions';
 import { AuthSession } from './auth.feature';
 
@@ -101,10 +102,10 @@ export class AuthEffects {
     )
   );
 
-  public logoutSuccess$ = createEffect(
+  public logoutFinish$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(AuthActions.logoutSuccess),
+        ofType(AuthActions.logoutSuccess, AuthActions.logoutFailure),
         tap(() => this.router.navigateByUrl('/auth/login'))
       ),
     { dispatch: false }
