@@ -1,3 +1,5 @@
+@import 'styles/global.scss';
+
 :host {
   display: block;
 }
@@ -53,14 +55,9 @@
 
   &__address {
     grid-area: address;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas:
-      "country    country country"
-      "city       city    city"
-      "street     street  street"
-      "buildingNo floorNo roomNo";
   }
 
   &__country {
@@ -75,6 +72,14 @@
     grid-area: street;
   }
 
+  &__address-numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "buildingNo floorNo roomNo"
+      "errors     errors  errors";
+  }
+
   &__buildingNo {
     grid-area: buildingNo;
   }
@@ -85,6 +90,12 @@
 
   &__roomNo {
     grid-area: roomNo;
+  }
+
+  .combo-field {
+    &__errors {
+      grid-area: errors;
+    }
   }
 
   &__products {
@@ -106,17 +117,16 @@
 
 @media (max-width: 32rem /* 512px */) {
   .form-fields {
-    &__address {
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "country"
-        "city"
-        "street"
-        "buildingNo"
-        "floorNo"
-        "roomNo";
-
+    &__address-numbers {
+      display: flex;
+      flex-direction: column;
       gap: 1rem; // 16px
+    }
+
+    .combo-field {
+      &__errors {
+        margin-top: -1rem; // -16px
+      }
     }
   }
 }
