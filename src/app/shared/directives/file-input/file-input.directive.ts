@@ -10,9 +10,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
-
-type VoidEventHandler = () => void;
-type ChangeEventHandler = (file: FileWithUrl | null) => void;
+import { ChangeEventHandler } from 'utils/form/form.utils';
 
 @Directive({
   selector: 'input[type="file"]',
@@ -33,8 +31,9 @@ export class FileInputDirective implements ControlValueAccessor {
     }
   }
 
-  private notifyChangeListener: ChangeEventHandler | null = null;
-  private notifyTouchedListener: VoidEventHandler | null = null;
+  private notifyChangeListener: ChangeEventHandler<FileWithUrl | null> | null =
+    null;
+  private notifyTouchedListener: VoidFunction | null = null;
 
   @HostListener('change', ['$event.target.files[0]']) private onChange(
     file?: File
@@ -64,11 +63,13 @@ export class FileInputDirective implements ControlValueAccessor {
     );
   }
 
-  public registerOnChange(onChangeCallback: ChangeEventHandler): void {
+  public registerOnChange(
+    onChangeCallback: ChangeEventHandler<FileWithUrl | null>
+  ): void {
     this.notifyChangeListener = onChangeCallback;
   }
 
-  public registerOnTouched(onTouchedCallback: VoidEventHandler): void {
+  public registerOnTouched(onTouchedCallback: VoidFunction): void {
     this.notifyTouchedListener = onTouchedCallback;
   }
 

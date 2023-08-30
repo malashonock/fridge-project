@@ -1,0 +1,57 @@
+@import 'styles/_mixins';
+
+$action-btn-size: 2rem; // 32px
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 0;
+  min-width: 100%;
+}
+
+.nodata-row {
+  position: relative;
+  height: 10rem; // 160px
+  color: rgba($color: black, $alpha: 0.87);
+  text-align: center;
+
+  &::after {
+    position: absolute;
+    content: "";
+    background-image: url('/assets/images/mouse-hung.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.2;
+  }
+}
+
+.fridge-products {
+  .mat-column-quantity {
+    width: 5rem; // Set to fit content width
+  }
+
+  .mat-column-actions {
+    width: 5rem; // Set to fit content width
+  }
+}
+
+.align-center {
+  text-align: center;
+}
+
+.action-btn-container {
+  min-width: $action-btn-size;
+}
+
+.action-btn {
+  @include mat-icon-btn-resize($action-btn-size);
+}
+
+.table-container {
+  overflow-x: auto;
+}

@@ -1,6 +1,7 @@
+import { Provider } from '@angular/core';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 
-export const matPaginatorIntl = new MatPaginatorIntl();
+const matPaginatorIntl = new MatPaginatorIntl();
 
 // https://github.com/angular/components/blob/main/src/material/paginator/paginator-intl.ts
 matPaginatorIntl.firstPageLabel = $localize`:@@paginatorFirstPage:First page`;
@@ -31,4 +32,9 @@ matPaginatorIntl.getRangeLabel = (
       : startIndex + pageSize;
 
   return `${startIndex + 1} – ${endIndex} ${of} ${length}`;
+};
+
+export const matPaginatorIntlProvider: Provider = {
+  provide: MatPaginatorIntl,
+  useValue: matPaginatorIntl,
 };

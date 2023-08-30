@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import {
   AbstractControl,
   FormGroupDirective,
@@ -7,6 +8,7 @@ import {
 
 import { EarlyErrorStateMatcher } from '../early-error-state-matcher/early-error-state-matcher.class';
 
+@Injectable()
 export class ComboErrorStateMatcher extends EarlyErrorStateMatcher {
   public constructor() {
     super();

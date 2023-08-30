@@ -1,9 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+import '@angular/localize/init';
 
 import { FridgeCardComponent } from './fridge-card.component';
 import { SharedModule } from 'shared/shared.module';
-import { provideMockStore } from '@ngrx/store/testing';
+import { mockFridge1 } from 'mocks/fridge.mocks';
 
 describe('FridgeCardComponent', () => {
   let component: FridgeCardComponent;
@@ -18,6 +20,7 @@ describe('FridgeCardComponent', () => {
 
     fixture = TestBed.createComponent(FridgeCardComponent);
     component = fixture.componentInstance;
+    component.fridge = mockFridge1;
     fixture.detectChanges();
   });
 

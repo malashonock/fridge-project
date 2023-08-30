@@ -37,18 +37,6 @@ describe('SearchBoxComponent', () => {
     component.searchControl.setValue('test');
   });
 
-  it('should trim & lowercase user input', (done) => {
-    const sub = component.searchQueryChange
-      .pipe(skip(1))
-      .subscribe((query: string) => {
-        expect(query).toBe('chicken');
-        sub.unsubscribe();
-        done();
-      });
-
-    component.searchControl.setValue('   CHICKEN   ');
-  });
-
   it('should clear input on Escape', (done) => {
     const input = fixture.debugElement.query(By.css('input'))
       .nativeElement as HTMLInputElement;

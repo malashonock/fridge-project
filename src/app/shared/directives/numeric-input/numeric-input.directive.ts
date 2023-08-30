@@ -110,7 +110,7 @@ export class NumericInputDirective
     this.notifyTouchedListener = onTouchedCallback;
   }
 
-  public setDisabledState?(isDisabled: boolean): void {
+  public setDisabledState(isDisabled: boolean): void {
     this.renderer.setProperty(
       this.elementRef.nativeElement,
       'disabled',

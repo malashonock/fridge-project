@@ -28,15 +28,11 @@ import { NUTRIENTS } from 'core/configs/nutrient.config';
 import { Nutrient } from 'core/models/product/nutrient.enum';
 import { PERIODS } from 'core/configs/periods.config';
 import { Period } from 'core/models/product/period.enum';
+import { FormMode } from 'core/models/ui/form-mode.enum';
 
 interface ProductDialogData {
   product?: Product;
   image?: FileWithUrl | null;
-}
-
-enum FormMode {
-  Create,
-  Edit,
 }
 
 @Component({
@@ -44,11 +40,14 @@ enum FormMode {
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: EarlyErrorStateMatcher, useClass: EarlyErrorStateMatcher },
+    { provide: ComboErrorStateMatcher, useClass: ComboErrorStateMatcher },
+  ],
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
   private product = this.data?.product;
   private productImage = this.data?.image;
-  private initialProductImageUrl = this.product?.imageUrl;
 
   public form = this.formBuilder.group({
     name: [this.product?.name, [Validators.required]],
@@ -130,9 +129,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     return this.product ? FormMode.Edit : FormMode.Create;
   }
 
-  public earlyErrorStateMatcher = new EarlyErrorStateMatcher();
-  public comboErrorStateMatcher = new ComboErrorStateMatcher();
-
   private pristine$ = this.form.valueChanges.pipe(
     map((): boolean => {
       return this.form.pristine;
@@ -175,6 +171,8 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private store: Store,
     public dialogRef: MatDialogRef<ProductFormComponent>,
+    public earlyErrorStateMatcher: EarlyErrorStateMatcher,
+    public comboErrorStateMatcher: ComboErrorStateMatcher,
     @Inject(PRODUCT_CATEGORIES) public productCategories: ProductCategory[],
     @Inject(WEIGHT_UNITS) public weightUnits: UnitOfWeight[],
     @Inject(NUTRIENTS) public nutrients: Nutrient[],
