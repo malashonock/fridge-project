@@ -10,7 +10,8 @@ import { GeolocationCoords } from 'core/models/fridge/geolocation-coords.interfa
 import { Store } from '@ngrx/store';
 import { selectAllFridges } from 'app/state/fridges/fridges.selectors';
 import { Fridge } from 'core/models/fridge/fridge.interface';
-import { Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, Subject, skip, take, takeUntil } from 'rxjs';
+import { NavigatorService } from 'core/services/navigator/navigator.service';
 
 @Component({
   selector: 'app-fridges-map',
@@ -20,21 +21,72 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class FridgesMapComponent implements OnInit, OnDestroy {
   private map?: L.Map;
-  private userLocation?: GeolocationCoords;
   private markers: L.Marker[] = [];
+
+  private userLocation$ = new BehaviorSubject<GeolocationCoords>({
+    latitude: 0,
+    longitude: 0,
+  });
 
   private destroy$ = new Subject();
 
-  public constructor(private store: Store) {}
+  public constructor(
+    private store: Store,
+    private navigatorService: NavigatorService
+  ) {}
 
   public ngOnInit(): void {
+    this.initUserLocation();
     this.initMap();
+    this.subscribeToUserLocationChanges();
     this.subscribeMarkersToStoreFridges();
   }
 
   public ngOnDestroy(): void {
     this.destroy$.next(null);
     this.destroy$.complete();
+  }
+
+  private initUserLocation(): void {
+    this.navigatorService
+      .getUserLocation()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (coords: GeolocationCoords): void => {
+          this.userLocation$.next(coords);
+        },
+        error: (error: Error): void => {
+          console.error(error.message);
+        },
+      });
+  }
+
+  private initMap(): void {
+    this.userLocation$
+      .pipe(take(1))
+      .subscribe(({ latitude, longitude }: GeolocationCoords): void => {
+        // Create an empty map
+        this.map = L.map('map', {
+          center: [latitude, longitude],
+          zoom: 2,
+          minZoom: 2,
+        });
+
+        // Draw the OpenStreetMap layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution:
+            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        }).addTo(this.map);
+      });
+  }
+
+  private subscribeToUserLocationChanges(): void {
+    this.userLocation$
+      .pipe(takeUntil(this.destroy$), skip(1) /* Skip initial value */)
+      .subscribe(({ latitude, longitude }: GeolocationCoords): void => {
+        // Pan and zoom map to user location
+        this.map?.flyTo([latitude, longitude], 12);
+      });
   }
 
   private subscribeMarkersToStoreFridges(): void {
@@ -54,23 +106,5 @@ export class FridgesMapComponent implements OnInit, OnDestroy {
           this.markers.push(marker);
         });
       });
-  }
-
-  private initMap(): void {
-    // Create an empty map
-    this.map = L.map('map', {
-      center: [
-        this.userLocation?.latitude ?? 0,
-        this.userLocation?.longitude ?? 0,
-      ],
-      zoom: this.userLocation ? 16 : 2,
-      minZoom: 2,
-    });
-
-    // Draw the OpenStreetMap layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution:
-        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    }).addTo(this.map);
   }
 }
