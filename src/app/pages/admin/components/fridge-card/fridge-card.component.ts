@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
+  OnDestroy,
   OnInit,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -22,7 +23,7 @@ import { selectFridgeProducts } from 'app/state/fridges/fridges.selectors';
   styleUrls: ['./fridge-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FridgeCardComponent implements OnInit {
+export class FridgeCardComponent implements OnInit, OnDestroy {
   @Input() public fridge: Fridge;
 
   private fridgeProducts: ProductQuantity[] | undefined;
@@ -42,6 +43,11 @@ export class FridgeCardComponent implements OnInit {
       .subscribe((products: ProductQuantity[] | undefined): void => {
         this.fridgeProducts = products;
       });
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next(null);
+    this.destroy$.complete();
   }
 
   private fetchFridgeImage(): Observable<FileWithUrl | null> {

@@ -15,7 +15,6 @@ import { FridgeFormComponent } from '../fridge-form/fridge-form.component';
 })
 export class FridgesComponent {
   public searchQuery$ = new Subject<string>();
-  private destroy$ = new Subject();
 
   public constructor(private store: Store, private dialog: MatDialog) {}
 
