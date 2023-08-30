@@ -23,6 +23,80 @@
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="fridgeImageAltText" datatype="html">
+        <source>Fridge photo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/fridge-card/fridge-card.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editFridge" datatype="html">
+        <source>Edit fridge</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/fridge-card/fridge-card.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deleteFridge" datatype="html">
+        <source>Delete fridge</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/fridge-card/fridge-card.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="noPhoto" datatype="html">
+        <source>No photo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/fridge-card/fridge-card.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fridge" datatype="html">
+        <source>fridge</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/fridge-card/fridge-card.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="noFridgesMatchingFilter" datatype="html">
+        <source> No fridges matching the filter &quot;<x id="INTERPOLATION" equiv-text="{{ searchQuery }}"/>&quot; </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/fridges-grid/fridges-grid.component.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fridgesPageHeader" datatype="html">
+        <source>Manage fridges</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/fridges/fridges.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createFridge" datatype="html">
+        <source>Create fridge</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/fridges/fridges.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="searchFridges" datatype="html">
+        <source>Search fridges</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/fridges/fridges.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fridgesSearchBoxPlaceholder" datatype="html">
+        <source>Search in fridge model, description or address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/fridges/fridges.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="productImageAltText" datatype="html">
         <source>Product photo</source>
         <context-group purpose="location">
@@ -128,13 +202,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
           <context context-type="linenumber">125</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="noPhoto" datatype="html">
-        <source>No photo</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/product-details/product-details.component.html</context>
-          <context context-type="linenumber">42</context>
         </context-group>
       </trans-unit>
       <trans-unit id="productImage" datatype="html">
@@ -403,7 +470,7 @@
           <context context-type="linenumber">114</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="noDataMatchingFilter" datatype="html">
+      <trans-unit id="noProductsMatchingFilter" datatype="html">
         <source> No products matching the filter &quot;<x id="INTERPOLATION" equiv-text="{{ dataSource.filter }}"/>&quot; </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.html</context>
@@ -414,7 +481,7 @@
         <source>product</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/products-table/products-table.component.ts</context>
-          <context context-type="linenumber">187</context>
+          <context context-type="linenumber">181</context>
         </context-group>
       </trans-unit>
       <trans-unit id="productsPageHeader" datatype="html">
@@ -424,11 +491,18 @@
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="searchProducts" datatype="html">
+        <source>Search products</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/products/products.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="productsSearchBoxPlaceholder" datatype="html">
         <source>Search in product name or description</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/products/products.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="logIn" datatype="html">
@@ -668,11 +742,11 @@
           <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="searchProducts" datatype="html">
-        <source>Search products</source>
+      <trans-unit id="search" datatype="html">
+        <source>Search</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/components/search-box/search-box.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="sourcefile">src/app/shared/components/search-box/search-box.component.ts</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="settings" datatype="html">
@@ -729,6 +803,27 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/material/configs/mat-paginator-intl.config.ts</context>
           <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="buildingPrefix" datatype="html">
+        <source>bldg.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/pipes/label/address/address-label.pipe.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="floor" datatype="html">
+        <source>floor</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/pipes/label/address/address-label.pipe.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="roomPrefix" datatype="html">
+        <source>room</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/pipes/label/address/address-label.pipe.ts</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="proteinsGenitive" datatype="html">

@@ -27,6 +27,9 @@ import { NutrientLabelPipe } from './pipes/label/nutrient/nutrient-label.pipe';
 import { PeriodLabelPipe } from './pipes/label/period/period-label.pipe';
 import { ProductCategoryLabelPipe } from './pipes/label/product-category/product-category-label.pipe';
 import { ShelfLifeLabelPipe } from './pipes/label/shelf-life/shelf-life-label.pipe';
+import { StaticAssetUrlPipe } from './pipes/static-asset-url/static-asset-url.pipe';
+import { AddressLabelPipe } from './pipes/label/address/address-label.pipe';
+import { OrPipe } from './pipes/or/or.pipe';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,9 @@ import { ShelfLifeLabelPipe } from './pipes/label/shelf-life/shelf-life-label.pi
     PeriodLabelPipe,
     ProductCategoryLabelPipe,
     ShelfLifeLabelPipe,
+    StaticAssetUrlPipe,
+    AddressLabelPipe,
+    OrPipe,
   ],
   exports: [
     CommonModule,
@@ -77,7 +83,11 @@ import { ShelfLifeLabelPipe } from './pipes/label/shelf-life/shelf-life-label.pi
     PeriodLabelPipe,
     ProductCategoryLabelPipe,
     ShelfLifeLabelPipe,
+    StaticAssetUrlPipe,
+    AddressLabelPipe,
+    OrPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
+  providers: [AnyPipe],
 })
 export class SharedModule {}

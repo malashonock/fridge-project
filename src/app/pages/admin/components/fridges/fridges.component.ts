@@ -1,4 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { Observable, Subject } from 'rxjs';
+
+import { Fridge } from 'core/models/fridge/fridge.interface';
+import { selectAllFridges } from 'app/state/fridges/fridges.selectors';
 
 @Component({
   selector: 'app-fridges',
@@ -6,4 +12,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./fridges.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FridgesComponent {}
+export class FridgesComponent {
+  public searchQuery$ = new Subject<string>();
+  private destroy$ = new Subject();
+
+  public constructor(private store: Store, private dialog: MatDialog) {}
+
+  public get fridges$(): Observable<Fridge[]> {
+    return this.store.select(selectAllFridges);
+  }
+
+  public onSearchQueryChange(query: string): void {
+    this.searchQuery$.next(query);
+  }
+
+  public openAddFridgeDialog(): void {
+    // this.dialog.open(FridgeFormComponent);
+  }
+}

@@ -221,5 +221,123 @@
       },
       "imageUrl": "/images/tiramisu.png"
     }
+  ],
+  "fridges": [
+    {
+      "id": 1,
+      "model": "Briskly M5",
+      "imageUrl": "/images/briskly-m5.png",
+      "description": "Business center \"Krasavik\", 3rd floor, kitchen",
+      "address": {
+        "country": "Belarus",
+        "city": "Minsk",
+        "street": "Zhukava Ave.",
+        "buildingNo": "29",
+        "floorNo": 3,
+        "roomNo": "321"
+      },
+      "geolocation": {
+        "latitude": 53.88488,
+        "longitude": 27.50476
+      },
+      "products": [
+        {
+          "productId": 1,
+          "quantity": 5
+        },
+        {
+          "productId": 2,
+          "quantity": 5
+        },
+        {
+          "productId": 3,
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "model": "Briskly M7",
+      "imageUrl": "/images/briskly-m7.png",
+      "description": "Trade center \"Globo\", 1st floor, food court",
+      "address": {
+        "country": "Belarus",
+        "city": "Minsk",
+        "street": "Umanskaya St.",
+        "buildingNo": "54",
+        "floorNo": 1,
+        "roomNo": null
+      },
+      "geolocation": {
+        "latitude": 53.87529,
+        "longitude": 27.49829
+      },
+      "products": [
+        {
+          "productId": 4,
+          "quantity": 7
+        },
+        {
+          "productId": 5,
+          "quantity": 7
+        },
+        {
+          "productId": 6,
+          "quantity": 7
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "model": "Briskly M8 Slide",
+      "imageUrl": "/images/briskly-m8-slide.png",
+      "description": "Central railway station, ground floor lobby",
+      "address": {
+        "country": "Belarus",
+        "city": "Minsk",
+        "street": "Pryvakzalnaya Sq.",
+        "buildingNo": "5",
+        "floorNo": -1,
+        "roomNo": null
+      },
+      "geolocation": {
+        "latitude": 53.8909,
+        "longitude": 27.5508
+      },
+      "products": [
+        {
+          "productId": 1,
+          "quantity": 3
+        },
+        {
+          "productId": 2,
+          "quantity": 3
+        },
+        {
+          "productId": 3,
+          "quantity": 3
+        },
+        {
+          "productId": 4,
+          "quantity": 3
+        },
+        {
+          "productId": 5,
+          "quantity": 3
+        },
+        {
+          "productId": 6,
+          "quantity": 3
+        },
+        {
+          "productId": 7,
+          "quantity": 3
+        },
+        {
+          "productId": 8,
+          "quantity": 3
+        }
+      ]
+    }
   ]
 }

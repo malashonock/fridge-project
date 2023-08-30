@@ -3,6 +3,7 @@
   [routerLink]="config?.href"
   routerLinkActive="active"
   [class]="['menu-item', variant]"
+  (click)="closeHostMenu()"
 >
   <mat-icon
     *ngIf="!!config?.matIconCode"

@@ -15,6 +15,7 @@ import {
   debounceTime,
   fromEvent,
   map,
+  startWith,
   takeUntil,
 } from 'rxjs';
 
@@ -26,15 +27,25 @@ import {
 })
 export class SearchBoxComponent implements AfterViewInit, OnDestroy {
   @Input() public name = 'search-box';
+  @Input() public label = $localize`:@@search:Search`;
   @Input() public placeholder = '';
 
   public searchControl = this.formBuilder.control('');
 
   private destroy$ = new Subject();
 
+  public isBlank$ = this.searchControl.valueChanges.pipe(
+    startWith(this.searchControl.value),
+    takeUntil(this.destroy$),
+    map((query: string | null): boolean => {
+      return !query;
+    })
+  );
+
   @Output() public get searchQueryChange(): Observable<string> {
     return this.searchControl.valueChanges.pipe(
       debounceTime(500),
+      startWith(this.searchControl.value),
       map((rawQuery: string | null) => {
         return rawQuery?.trim().toLowerCase() || '';
       })

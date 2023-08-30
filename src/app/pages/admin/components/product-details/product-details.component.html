@@ -2,7 +2,7 @@
   <img
     *ngIf="product?.imageUrl; else imgPlaceholder"
     class="photo"
-    [src]="imageServerUrl + product.imageUrl"
+    [src]="product.imageUrl | staticAssetUrl"
     i18n-alt="@@productImageAltText"
     alt="Product photo"
   />

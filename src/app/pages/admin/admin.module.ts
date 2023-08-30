@@ -11,6 +11,8 @@ import { ProductsTableComponent } from './components/products-table/products-tab
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { MobilePageDirective } from 'shared/directives/mobile/page/mobile-page.directive';
 import { adminPageMenuConfigProvider } from 'core/configs/admin-page-menu.config';
+import { FridgeCardComponent } from './components/fridge-card/fridge-card.component';
+import { FridgesGridComponent } from './components/fridges-grid/fridges-grid.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { adminPageMenuConfigProvider } from 'core/configs/admin-page-menu.config
     ProductDetailsComponent,
     ProductsTableComponent,
     ProductFormComponent,
+    FridgeCardComponent,
+    FridgesGridComponent,
   ],
   exports: [AdminPageComponent],
   imports: [SharedModule, AdminRoutingModule, MobilePageDirective],

@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthSessionInitializer } from 'core/services/app-initializer/auth-session.initializer';
 import { ProductsInitializer } from 'core/services/app-initializer/products.initializer';
+import { FridgesInitializer } from 'core/services/app-initializer/fridges.initializer';
 import { httpInterceptorProviders } from 'core/interceptors';
 import { authFeature } from './state/auth/auth.feature';
 import { AuthEffects } from './state/auth/auth.effects';
@@ -20,6 +21,8 @@ import { uiFeature } from './state/ui/ui.feature';
 import { UiEffects } from './state/ui/ui.effects';
 import { productsFeature } from './state/products/products.feature';
 import { ProductsEffects } from './state/products/products.effects';
+import { fridgesFeature } from './state/fridges/fridges.feature';
+import { FridgesEffects } from './state/fridges/fridges.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,16 +38,23 @@ import { ProductsEffects } from './state/products/products.effects';
         [authFeature.name]: authFeature.reducer,
         [uiFeature.name]: uiFeature.reducer,
         [productsFeature.name]: productsFeature.reducer,
+        [fridgesFeature.name]: fridgesFeature.reducer,
       },
       {}
     ),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([AuthEffects, UiEffects, ProductsEffects]),
+    EffectsModule.forRoot([
+      AuthEffects,
+      UiEffects,
+      ProductsEffects,
+      FridgesEffects,
+    ]),
   ],
   providers: [
     AuthSessionInitializer,
     ProductsInitializer,
+    FridgesInitializer,
     httpInterceptorProviders,
   ],
   bootstrap: [AppComponent],

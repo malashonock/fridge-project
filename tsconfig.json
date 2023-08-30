@@ -8,6 +8,7 @@
       "shared/*": ["./app/shared/*"],
       "utils/*": ["./app/utils/*"],
       "mocks/*": ["./app/mocks/*"],
+      "styles/*": ["./styles/*"],
       "rootDir/*": ["../*"]
     },
     "outDir": "./dist/out-tsc",

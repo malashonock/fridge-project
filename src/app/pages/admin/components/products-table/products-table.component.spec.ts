@@ -1,13 +1,13 @@
-import { Component, DebugElement, Input } from '@angular/core';
+import { Component, DebugElement, Input, SimpleChange } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRowHarness } from '@angular/material/table/testing';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { By } from '@angular/platform-browser';
-import { Subject } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { provideMockStore } from '@ngrx/store/testing';
+import '@angular/localize/init';
 
 import { ProductsTableComponent } from './products-table.component';
 import { SharedModule } from 'shared/shared.module';
@@ -18,7 +18,7 @@ import {
   mockProducts1,
   mockProducts2,
 } from 'mocks/product.mocks';
-import { ShelfLifeLabelPipe } from '../../../../shared/pipes/label/shelf-life/shelf-life-label.pipe';
+import { ShelfLifeLabelPipe } from 'shared/pipes/label/shelf-life/shelf-life-label.pipe';
 
 @Component({
   selector: 'app-product-details',
@@ -62,47 +62,35 @@ describe('ProductsTableComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should mirror changes made to input products observable', () => {
-    const products$ = new Subject<Product[]>();
-    component.products$ = products$;
-    fixture.detectChanges();
-
-    products$.next(mockProducts1);
-    expect(component.dataSource.data).toEqual(mockProducts1);
-
-    products$.next(mockProducts2);
-    expect(component.dataSource.data).toEqual(mockProducts2);
-  });
-
-  it('should mirror changes made to search query observable', () => {
-    const searchQuery$ = new Subject<string>();
-    component.searchQuery$ = searchQuery$;
-    fixture.detectChanges();
-
-    searchQuery$.next('chick');
-    expect(component.dataSource.filter).toEqual('chick');
-
-    searchQuery$.next('');
-    expect(component.dataSource.filter).toEqual('');
-  });
-
   it('should filter products only by name & ingredients', async () => {
-    const products$ = new Subject<Product[]>();
-    const searchQuery$ = new Subject<string>();
-    component.products$ = products$;
-    component.searchQuery$ = searchQuery$;
-    fixture.detectChanges();
-
-    products$.next(mockProducts2);
+    component.products = mockProducts2;
+    component.searchQuery = '';
+    component.ngOnChanges({
+      products: new SimpleChange(undefined, mockProducts2, true),
+      searchQuery: new SimpleChange(undefined, '', true),
+    });
     expect((await getMainRows()).length).toBe(2);
 
-    searchQuery$.next('sandwich');
+    component.searchQuery = 'sandwich';
+    component.ngOnChanges({
+      searchQuery: new SimpleChange('', 'sandwich', false),
+    });
     expect((await getMainRows()).length).toBe(1);
 
-    searchQuery$.next('cherry tomatoes');
+    component.searchQuery = 'cherry tomatoes';
+    component.ngOnChanges({
+      searchQuery: new SimpleChange('sandwich', 'cherry tomatoes', false),
+    });
     expect((await getMainRows()).length).toBe(1);
 
-    searchQuery$.next(ProductCategory.Salads);
+    component.searchQuery = ProductCategory.Salads;
+    component.ngOnChanges({
+      searchQuery: new SimpleChange(
+        'cherry tomatoes',
+        ProductCategory.Salads,
+        false
+      ),
+    });
     expect((await getMainRows()).length).toBe(0);
     expect(getNoDataRow()).not.toBeNull();
   });
@@ -136,15 +124,16 @@ describe('ProductsTableComponent', () => {
   });
 
   it('should keep reference of the currently expanded row', async () => {
-    const products$ = new Subject<Product[]>();
-    component.products$ = products$;
-    fixture.detectChanges();
     expect(component.expandedProduct).toBeNull();
 
-    products$.next(mockProducts1);
+    component.products = mockProducts1;
+    component.ngOnChanges({
+      products: new SimpleChange(undefined, mockProducts1, true),
+    });
     expect(component.expandedProduct).toBeNull();
 
     // Test via click on the main row
+    fixture.detectChanges();
     fixture.debugElement
       .query(By.css('.main-row'))
       .triggerEventHandler('click');
