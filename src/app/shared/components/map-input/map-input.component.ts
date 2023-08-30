@@ -15,18 +15,6 @@ import {
   ngValueAccessorProvider,
 } from 'utils/form/form.utils';
 
-// Fix Leaflet bug
-L.Marker.prototype.options.icon = L.icon({
-  iconRetinaUrl: 'assets/marker-icon-2x.png',
-  iconUrl: 'assets/marker-icon.png',
-  shadowUrl: 'assets/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  tooltipAnchor: [16, -28],
-  shadowSize: [41, 41],
-});
-
 const MAX_COORDS_PRECISION = 5; // decimal places
 
 @Component({

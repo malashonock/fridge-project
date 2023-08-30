@@ -23,6 +23,7 @@ import { productsFeature } from './state/products/products.feature';
 import { ProductsEffects } from './state/products/products.effects';
 import { fridgesFeature } from './state/fridges/fridges.feature';
 import { FridgesEffects } from './state/fridges/fridges.effects';
+import { LeafletInitializer } from 'core/services/app-initializer/leaflet.initializer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -55,6 +56,7 @@ import { FridgesEffects } from './state/fridges/fridges.effects';
     AuthSessionInitializer,
     ProductsInitializer,
     FridgesInitializer,
+    LeafletInitializer,
     httpInterceptorProviders,
   ],
   bootstrap: [AppComponent],
