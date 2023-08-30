@@ -16,6 +16,7 @@ import { FridgesGridComponent } from './components/fridges-grid/fridges-grid.com
 import { FridgeFormComponent } from './components/fridge-form/fridge-form.component';
 import { ProductsInputComponent } from './components/products-input/products-input.component';
 import { ProductAutocompleteComponent } from './components/product-autocomplete/product-autocomplete.component';
+import { FridgesMapComponent } from './components/fridges-map/fridges-map.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ProductAutocompleteComponent } from './components/product-autocomplete/
     FridgeFormComponent,
     ProductsInputComponent,
     ProductAutocompleteComponent,
+    FridgesMapComponent,
   ],
   exports: [AdminPageComponent],
   imports: [SharedModule, AdminRoutingModule, MobilePageDirective],
