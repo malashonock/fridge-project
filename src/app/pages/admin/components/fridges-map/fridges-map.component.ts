@@ -1,6 +1,10 @@
 import {
+  ApplicationRef,
   ChangeDetectionStrategy,
   Component,
+  ComponentFactoryResolver,
+  ComponentRef,
+  Injector,
   OnDestroy,
   OnInit,
 } from '@angular/core';
@@ -12,6 +16,14 @@ import { selectAllFridges } from 'app/state/fridges/fridges.selectors';
 import { Fridge } from 'core/models/fridge/fridge.interface';
 import { BehaviorSubject, Subject, skip, take, takeUntil } from 'rxjs';
 import { NavigatorService } from 'core/services/navigator/navigator.service';
+import { FridgeCardComponent } from '../fridge-card/fridge-card.component';
+
+interface FridgeMarker {
+  fridge: Fridge;
+  marker: L.Marker;
+  popup?: L.Popup;
+  fridgeCard?: ComponentRef<FridgeCardComponent>;
+}
 
 @Component({
   selector: 'app-fridges-map',
@@ -21,7 +33,7 @@ import { NavigatorService } from 'core/services/navigator/navigator.service';
 })
 export class FridgesMapComponent implements OnInit, OnDestroy {
   private map?: L.Map;
-  private markers: L.Marker[] = [];
+  private fridgeMarkers: FridgeMarker[] = [];
 
   private userLocation$ = new BehaviorSubject<GeolocationCoords>({
     latitude: 0,
@@ -32,7 +44,10 @@ export class FridgesMapComponent implements OnInit, OnDestroy {
 
   public constructor(
     private store: Store,
-    private navigatorService: NavigatorService
+    private navigatorService: NavigatorService,
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private injector: Injector,
+    private appRef: ApplicationRef
   ) {}
 
   public ngOnInit(): void {
@@ -98,13 +113,69 @@ export class FridgesMapComponent implements OnInit, OnDestroy {
           return;
         }
 
-        this.markers = [];
+        this.fridgeMarkers = [];
 
         fridges.forEach((fridge: Fridge): void => {
           const { latitude, longitude } = fridge.geolocation;
+
+          // Create marker
           const marker = L.marker([latitude, longitude]).addTo(this.map!);
-          this.markers.push(marker);
+          const fridgeMarker: FridgeMarker = {
+            fridge,
+            marker,
+          };
+
+          // Bind popup
+          const popup = L.popup();
+          fridgeMarker.popup = popup;
+          popup.on('add', () => this.createEmbeddedFridgeCard(fridgeMarker));
+          popup.on('remove', () =>
+            this.destroyEmbeddedFridgeCard(fridgeMarker)
+          );
+          marker.bindPopup(popup);
+
+          this.fridgeMarkers.push(fridgeMarker);
         });
       });
+  }
+
+  private createEmbeddedFridgeCard(fridgeMarker: FridgeMarker): void {
+    const { fridge, popup } = fridgeMarker;
+
+    if (!popup) {
+      return;
+    }
+
+    // Create fridge card
+    const fridgeCardFactory =
+      this.componentFactoryResolver.resolveComponentFactory(
+        FridgeCardComponent
+      );
+    const fridgeCard = fridgeCardFactory.create(this.injector);
+    fridgeMarker.fridgeCard = fridgeCard;
+
+    // Initialize fridge card inputs
+    fridgeCard.instance.fridge = fridge;
+
+    // Wire up to Angular app
+    this.appRef.attachView(fridgeCard.hostView);
+
+    // Place fridge card inside popup
+    popup.setContent(fridgeCard.location.nativeElement);
+  }
+
+  private destroyEmbeddedFridgeCard(fridgeMarker: FridgeMarker): void {
+    const { fridgeCard } = fridgeMarker;
+
+    if (!fridgeCard) {
+      return;
+    }
+
+    // Unmount from Angular view hierarchy
+    this.appRef.detachView(fridgeCard.hostView);
+
+    // Remove reference from fridge marker
+    // to enable garbage collection
+    delete fridgeMarker.fridgeCard;
   }
 }
