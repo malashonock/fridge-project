@@ -38,10 +38,10 @@ export class SearchBoxComponent implements AfterViewInit, OnDestroy {
 
   public isBlank$ = this.searchControl.valueChanges.pipe(
     startWith(this.searchControl.value),
-    takeUntil(this.destroy$),
     map((query: string | null): boolean => {
       return !query;
-    })
+    }),
+    takeUntil(this.destroy$)
   );
 
   @Output() public get searchQueryChange(): Observable<string> {

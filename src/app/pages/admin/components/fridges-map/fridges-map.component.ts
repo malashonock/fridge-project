@@ -97,7 +97,7 @@ export class FridgesMapComponent implements OnInit, OnDestroy {
 
   private subscribeToUserLocationChanges(): void {
     this.userLocation$
-      .pipe(takeUntil(this.destroy$), skip(1) /* Skip initial value */)
+      .pipe(skip(1) /* Skip initial value */, takeUntil(this.destroy$))
       .subscribe(({ latitude, longitude }: GeolocationCoords): void => {
         // Pan and zoom map to user location
         this.map?.flyTo([latitude, longitude], 12);

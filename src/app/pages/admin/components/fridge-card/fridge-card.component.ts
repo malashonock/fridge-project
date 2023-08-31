@@ -54,8 +54,8 @@ export class FridgeCardComponent implements OnInit, OnDestroy {
   private fetchFridgeImage(): Observable<FileWithUrl | null> {
     return this.fridge?.imageUrl
       ? this.staticAssetService.fetchAsset(this.fridge.imageUrl).pipe(
-          takeUntil(this.destroy$),
-          catchError(() => of(null))
+          catchError(() => of(null)),
+          takeUntil(this.destroy$)
         )
       : of(null);
   }

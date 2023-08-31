@@ -78,13 +78,13 @@ export class MapInputComponent
   ): void {
     this.formControl.valueChanges
       .pipe(
-        takeUntil(this.destroy$),
         distinctUntilChanged((prev, curr): boolean => {
           return (
             prev?.latitude == curr?.latitude &&
             prev?.longitude == curr?.longitude
           );
-        })
+        }),
+        takeUntil(this.destroy$)
       )
       .subscribe((value): void => {
         onChangeCallback({

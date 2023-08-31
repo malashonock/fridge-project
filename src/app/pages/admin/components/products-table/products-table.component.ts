@@ -155,8 +155,8 @@ export class ProductsTableComponent
   }: Product): Observable<FileWithUrl | null> {
     return imageUrl
       ? this.staticAssetService.fetchAsset(imageUrl).pipe(
-          takeUntil(this.destroy$),
-          catchError(() => of(null))
+          catchError(() => of(null)),
+          takeUntil(this.destroy$)
         )
       : of(null);
   }
