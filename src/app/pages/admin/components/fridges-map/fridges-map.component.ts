@@ -126,11 +126,13 @@ export class FridgesMapComponent implements OnInit, OnDestroy {
           };
 
           // Bind popup
-          const popup = L.popup();
+          const popup = L.popup({
+            closeButton: false,
+          });
           fridgeMarker.popup = popup;
           popup.on('add', () => this.createEmbeddedFridgeCard(fridgeMarker));
           popup.on('remove', () =>
-            this.destroyEmbeddedFridgeCard(fridgeMarker)
+            setTimeout(() => this.destroyEmbeddedFridgeCard(fridgeMarker), 200)
           );
           marker.bindPopup(popup);
 
