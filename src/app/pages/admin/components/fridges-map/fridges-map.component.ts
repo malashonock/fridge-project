@@ -171,11 +171,9 @@ export class FridgesMapComponent implements OnInit, OnDestroy {
       return;
     }
 
-    // Unmount from Angular view hierarchy
+    // Clean up resources
     this.appRef.detachView(fridgeCard.hostView);
-
-    // Remove reference from fridge marker
-    // to enable garbage collection
     delete fridgeMarker.fridgeCard;
+    fridgeCard.destroy();
   }
 }

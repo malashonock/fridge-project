@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { FridgesMapComponent } from './fridges-map.component';
 
@@ -9,6 +10,7 @@ describe('FridgesMapComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FridgesMapComponent],
+      providers: [provideMockStore()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FridgesMapComponent);
