@@ -9,12 +9,19 @@ import {
   OnInit,
 } from '@angular/core';
 import * as L from 'leaflet';
+import { Store } from '@ngrx/store';
+import {
+  BehaviorSubject,
+  Subject,
+  debounce,
+  skip,
+  take,
+  takeUntil,
+} from 'rxjs';
 
 import { GeolocationCoords } from 'core/models/fridge/geolocation-coords.interface';
-import { Store } from '@ngrx/store';
 import { selectAllFridges } from 'app/state/fridges/fridges.selectors';
 import { Fridge } from 'core/models/fridge/fridge.interface';
-import { BehaviorSubject, Subject, skip, take, takeUntil } from 'rxjs';
 import { NavigatorService } from 'core/services/navigator/navigator.service';
 import { FridgeCardComponent } from '../fridge-card/fridge-card.component';
 
@@ -24,6 +31,8 @@ interface FridgeMarker {
   popup?: L.Popup;
   fridgeCard?: ComponentRef<FridgeCardComponent>;
 }
+
+const LEAFLET_POPUP_TRANSITION_DURATION = 200; // ms
 
 @Component({
   selector: 'app-fridges-map',
@@ -107,38 +116,54 @@ export class FridgesMapComponent implements OnInit, OnDestroy {
   private subscribeMarkersToStoreFridges(): void {
     this.store
       .select(selectAllFridges)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((fridges: Fridge[]): void => {
-        if (!this.map) {
-          return;
-        }
-
-        this.fridgeMarkers = [];
-
-        fridges.forEach((fridge: Fridge): void => {
-          const { latitude, longitude } = fridge.geolocation;
-
-          // Create marker
-          const marker = L.marker([latitude, longitude]).addTo(this.map!);
-          const fridgeMarker: FridgeMarker = {
-            fridge,
-            marker,
-          };
-
-          // Bind popup
-          const popup = L.popup({
-            closeButton: false,
-          });
-          fridgeMarker.popup = popup;
-          popup.on('add', () => this.createEmbeddedFridgeCard(fridgeMarker));
-          popup.on('remove', () =>
-            setTimeout(() => this.destroyEmbeddedFridgeCard(fridgeMarker), 200)
-          );
-          marker.bindPopup(popup);
-
-          this.fridgeMarkers.push(fridgeMarker);
-        });
+      .pipe(
+        debounce(async (): Promise<void[]> => await this.closeAllPopups()),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(async (fridges: Fridge[]): Promise<void> => {
+        this.destroyFridgeMarkers();
+        this.createFridgeMarkers(fridges);
       });
+  }
+
+  private createFridgeMarkers(fridges: Fridge[]): void {
+    if (!this.map) {
+      return;
+    }
+
+    fridges.forEach((fridge: Fridge): void => {
+      const { latitude, longitude } = fridge.geolocation;
+
+      // Create marker
+      const marker = L.marker([latitude, longitude]).addTo(this.map!);
+      const fridgeMarker: FridgeMarker = {
+        fridge,
+        marker,
+      };
+
+      // Bind popup
+      const popup = L.popup({
+        closeButton: false,
+      });
+      fridgeMarker.popup = popup;
+      popup.on('add', () => this.createEmbeddedFridgeCard(fridgeMarker));
+      popup.on('remove', () =>
+        setTimeout(() => {
+          this.destroyEmbeddedFridgeCard(fridgeMarker);
+        }, LEAFLET_POPUP_TRANSITION_DURATION)
+      );
+      marker.bindPopup(popup);
+
+      this.fridgeMarkers.push(fridgeMarker);
+    });
+  }
+
+  private destroyFridgeMarkers(): void {
+    this.fridgeMarkers.forEach(({ marker }: FridgeMarker): void => {
+      marker.remove();
+    });
+
+    this.fridgeMarkers = [];
   }
 
   private createEmbeddedFridgeCard(fridgeMarker: FridgeMarker): void {
@@ -177,5 +202,27 @@ export class FridgesMapComponent implements OnInit, OnDestroy {
     this.appRef.detachView(fridgeCard.hostView);
     delete fridgeMarker.fridgeCard;
     fridgeCard.destroy();
+  }
+
+  private async closeAllPopups(): Promise<void[]> {
+    return Promise.all(
+      this.fridgeMarkers
+        .map(({ popup }: FridgeMarker): L.Popup | undefined => {
+          return popup;
+        })
+        .filter((popup: L.Popup | undefined): boolean => {
+          return popup?.isOpen() ?? false;
+        })
+        .map((popup: L.Popup | undefined): Promise<void> => {
+          return new Promise((resolve, reject) => {
+            try {
+              popup!.close();
+              setTimeout(resolve, LEAFLET_POPUP_TRANSITION_DURATION);
+            } catch (error) {
+              reject(error);
+            }
+          });
+        })
+    );
   }
 }
