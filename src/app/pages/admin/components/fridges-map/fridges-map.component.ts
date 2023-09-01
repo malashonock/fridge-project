@@ -90,7 +90,7 @@ export class FridgesMapComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe(({ latitude, longitude }: GeolocationCoords): void => {
         // Create an empty map
-        this.map = L.map('map', {
+        this.map = L.map('fridges-map', {
           center: [latitude, longitude],
           zoom: 2,
           minZoom: 2,

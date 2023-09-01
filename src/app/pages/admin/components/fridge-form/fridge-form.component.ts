@@ -36,7 +36,7 @@ interface FridgeDialogData {
   providers: [EarlyErrorStateMatcher],
 })
 export class FridgeFormComponent implements OnInit, OnDestroy {
-  private fridge = this.data?.fridge;
+  public fridge = this.data?.fridge;
   private fridgeProducts = this.data?.products || [];
   private fridgeImage = this.data?.image;
 

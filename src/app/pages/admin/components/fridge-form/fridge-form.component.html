@@ -70,6 +70,7 @@
       <legend i18n="@@geolocation">Geolocation</legend>
 
       <app-geolocation-input
+        [id]="fridge?.id ?? 'new-fridge'"
         formControlName="geolocation"
       ></app-geolocation-input>
     </fieldset>

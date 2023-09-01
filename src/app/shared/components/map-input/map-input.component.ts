@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  Input,
   OnDestroy,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl } from '@angular/forms';
@@ -27,6 +28,8 @@ const MAX_COORDS_PRECISION = 5; // decimal places
 export class MapInputComponent
   implements ControlValueAccessor, AfterViewInit, OnDestroy
 {
+  @Input() public id = '';
+
   public formControl = new FormControl({
     latitude: 0,
     longitude: 0,
@@ -106,7 +109,7 @@ export class MapInputComponent
 
   private initMap(): void {
     // Create an empty map
-    this.map = L.map('map', {
+    this.map = L.map(`map-${this.id}`, {
       center: [this.latitude, this.longitude],
       zoom:
         !this.formControl.value || (this.latitude === 0 && this.longitude === 0)
