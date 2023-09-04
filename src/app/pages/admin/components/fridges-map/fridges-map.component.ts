@@ -109,6 +109,12 @@ export class FridgesMapComponent implements OnInit, AfterViewInit, OnDestroy {
           minZoom: 2,
         });
 
+        this.map.on('keydown', (event: L.LeafletKeyboardEvent) => {
+          if (event.originalEvent.key === 'Escape') {
+            this.map?.closePopup();
+          }
+        });
+
         // Draw the OpenStreetMap layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution:
