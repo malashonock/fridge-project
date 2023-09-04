@@ -8,14 +8,12 @@ import {
   TrackByFunction,
   ViewChild,
   ViewChildren,
-  forwardRef,
 } from '@angular/core';
 import {
   ControlValueAccessor,
   FormArray,
   FormBuilder,
   FormGroup,
-  NG_VALUE_ACCESSOR,
   Validators,
 } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
@@ -31,7 +29,10 @@ import {
 
 import { ProductQuantity } from 'core/models/fridge/product-quantity.interface';
 import { NumberValidators } from 'core/validators/number/number.validators';
-import { ChangeEventHandler } from 'utils/form/form.utils';
+import {
+  ChangeEventHandler,
+  ngValueAccessorProvider,
+} from 'utils/form/form.utils';
 import { ConfirmDeleteComponent } from 'shared/components/confirm-delete/confirm-delete.component';
 import { Product } from 'core/models/product/product.interface';
 import { ProductAutocompleteComponent } from '../product-autocomplete/product-autocomplete.component';
@@ -42,13 +43,7 @@ import { CounterInputComponent } from 'shared/components/counter-input/counter-i
   templateUrl: './products-input.component.html',
   styleUrls: ['./products-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ProductsInputComponent),
-      multi: true,
-    },
-  ],
+  providers: [ngValueAccessorProvider(ProductsInputComponent)],
 })
 export class ProductsInputComponent
   implements ControlValueAccessor, OnInit, OnDestroy

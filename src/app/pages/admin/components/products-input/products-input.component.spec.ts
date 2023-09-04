@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import '@angular/localize/init';
 
 import { ProductsInputComponent } from './products-input.component';
 import { SharedModule } from 'shared/shared.module';

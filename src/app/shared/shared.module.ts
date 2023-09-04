@@ -31,6 +31,8 @@ import { StaticAssetUrlPipe } from './pipes/static-asset-url/static-asset-url.pi
 import { AddressLabelPipe } from './pipes/label/address/address-label.pipe';
 import { OrPipe } from './pipes/or/or.pipe';
 import { CounterInputComponent } from './components/counter-input/counter-input.component';
+import { GeolocationInputComponent } from './components/geolocation-input/geolocation-input.component';
+import { MapInputComponent } from './components/map-input/map-input.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { CounterInputComponent } from './components/counter-input/counter-input.
     AddressLabelPipe,
     OrPipe,
     CounterInputComponent,
+    GeolocationInputComponent,
+    MapInputComponent,
   ],
   exports: [
     CommonModule,
@@ -89,6 +93,8 @@ import { CounterInputComponent } from './components/counter-input/counter-input.
     AddressLabelPipe,
     OrPipe,
     CounterInputComponent,
+    GeolocationInputComponent,
+    MapInputComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule],
   providers: [AnyPipe],

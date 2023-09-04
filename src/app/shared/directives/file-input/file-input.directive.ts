@@ -1,26 +1,17 @@
 /* eslint-disable @angular-eslint/directive-selector */
 
-import {
-  Directive,
-  ElementRef,
-  HostListener,
-  Renderer2,
-  forwardRef,
-} from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
 
 import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
-import { ChangeEventHandler } from 'utils/form/form.utils';
+import {
+  ChangeEventHandler,
+  ngValueAccessorProvider,
+} from 'utils/form/form.utils';
 
 @Directive({
   selector: 'input[type="file"]',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FileInputDirective),
-      multi: true,
-    },
-  ],
+  providers: [ngValueAccessorProvider(FileInputDirective)],
 })
 export class FileInputDirective implements ControlValueAccessor {
   private touched = false;

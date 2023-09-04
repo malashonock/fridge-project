@@ -1,4 +1,9 @@
-import { FormGroup } from '@angular/forms';
+import { Provider, forwardRef } from '@angular/core';
+import {
+  ControlValueAccessor,
+  FormGroup,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 
 export type ChangeEventHandler<T> = (value: T) => void;
 
@@ -36,3 +41,21 @@ export function getControlError(
   }
   return errorPropValue;
 }
+
+export type ControlValueAccessorImplementor = new (
+  ...args: any[]
+) => ControlValueAccessor;
+
+export const ngValueAccessorProvider = (
+  implementorClass: ControlValueAccessorImplementor
+): Provider => {
+  return {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => implementorClass),
+    multi: true,
+  };
+};
+
+export const valuesLooselyEqual = (val1: any, val2: any): boolean => {
+  return (val1 || 0) === (val2 || 0);
+};

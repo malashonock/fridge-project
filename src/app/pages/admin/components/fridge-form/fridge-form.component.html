@@ -66,10 +66,12 @@
     </div>
 
     <!-- Geolocation -->
-    <fieldset formGroupName="geolocation" class="form-fields__geolocation">
+    <fieldset class="form-fields__geolocation">
       <legend i18n="@@geolocation">Geolocation</legend>
 
-      <!-- TODO: custom input -->
+      <app-geolocation-input
+        formControlName="geolocation"
+      ></app-geolocation-input>
     </fieldset>
 
     <!-- Address -->
