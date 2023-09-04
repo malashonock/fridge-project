@@ -1,12 +1,15 @@
 import {
+  AfterViewInit,
   ApplicationRef,
   ChangeDetectionStrategy,
   Component,
   ComponentFactoryResolver,
   ComponentRef,
+  ElementRef,
   Injector,
   OnDestroy,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import * as L from 'leaflet';
 import { Store } from '@ngrx/store';
@@ -40,7 +43,7 @@ const LEAFLET_POPUP_TRANSITION_DURATION = 200; // ms
   styleUrls: ['./fridges-map.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FridgesMapComponent implements OnInit, OnDestroy {
+export class FridgesMapComponent implements OnInit, AfterViewInit, OnDestroy {
   private map?: L.Map;
   private fridgeMarkers: FridgeMarker[] = [];
 
@@ -50,6 +53,11 @@ export class FridgesMapComponent implements OnInit, OnDestroy {
   });
 
   private destroy$ = new Subject();
+
+  @ViewChild('map') private mapContainer: ElementRef;
+  private mapContainerObserver = new ResizeObserver(() => {
+    this.map?.invalidateSize();
+  });
 
   public constructor(
     private store: Store,
@@ -66,7 +74,12 @@ export class FridgesMapComponent implements OnInit, OnDestroy {
     this.subscribeMarkersToStoreFridges();
   }
 
+  public ngAfterViewInit(): void {
+    this.mapContainerObserver.observe(this.mapContainer.nativeElement);
+  }
+
   public ngOnDestroy(): void {
+    this.mapContainerObserver.unobserve(this.mapContainer.nativeElement);
     this.destroy$.next(null);
     this.destroy$.complete();
   }
