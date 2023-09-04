@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
+import '@angular/localize/init';
 
 import { FridgesMapComponent } from './fridges-map.component';
 
