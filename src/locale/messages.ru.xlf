@@ -12,7 +12,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">171</context>
+          <context context-type="linenumber">172</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fridges" datatype="html">
@@ -214,7 +214,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-card/fridge-card.component.ts</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fridgeImage" datatype="html">
@@ -235,6 +235,15 @@
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridges-grid/fridges-grid.component.html</context>
           <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="mapPageHeader" datatype="html">
+        <source>Fridges nearby</source>
+        <target>Холодильники поблизости</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/pages/admin/components/fridges-map/fridges-map.component.html</context>
+          <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fridgesPageHeader" datatype="html">
@@ -361,7 +370,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">80</context>
         </context-group>
       </trans-unit>
       <trans-unit id="country" datatype="html">
@@ -370,7 +379,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">87</context>
+          <context context-type="linenumber">88</context>
         </context-group>
       </trans-unit>
       <trans-unit id="city" datatype="html">
@@ -379,7 +388,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">97</context>
+          <context context-type="linenumber">98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="street" datatype="html">
@@ -388,7 +397,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">107</context>
+          <context context-type="linenumber">108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="buildingNo" datatype="html">
@@ -397,7 +406,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">118</context>
+          <context context-type="linenumber">119</context>
         </context-group>
       </trans-unit>
       <trans-unit id="floorNo" datatype="html">
@@ -406,7 +415,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">133</context>
+          <context context-type="linenumber">134</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fridgeAddressFloorErrorNaN" datatype="html">
@@ -415,7 +424,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">158</context>
+          <context context-type="linenumber">159</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fridgeAddressFloorErrorInteger" datatype="html">
@@ -424,7 +433,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">163</context>
+          <context context-type="linenumber">164</context>
         </context-group>
       </trans-unit>
       <trans-unit id="roomNo" datatype="html">
@@ -433,7 +442,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">
             src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">150</context>
+          <context context-type="linenumber">151</context>
         </context-group>
       </trans-unit>
       <trans-unit id="editFridgeHeader" datatype="html">
