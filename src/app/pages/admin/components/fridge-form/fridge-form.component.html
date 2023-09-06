@@ -108,58 +108,62 @@
         <input matInput id="street" name="street" formControlName="street" />
       </mat-form-field>
 
-      <!-- Building # -->
-      <mat-form-field
-        appearance="outline"
-        subscriptSizing="dynamic"
-        class="form-fields__buildingNo"
-      >
-        <mat-label i18n="@@buildingNo">Bldg. #</mat-label>
-        <input
-          matInput
-          id="buildingNo"
-          name="buildingNo"
-          formControlName="buildingNo"
-        />
-      </mat-form-field>
-
-      <!-- Floor # -->
-      <mat-form-field
-        appearance="outline"
-        subscriptSizing="dynamic"
-        class="form-fields__floorNo"
-      >
-        <mat-label i18n="@@floorNo">Floor #</mat-label>
-        <input
-          type="text"
-          appNumericInput
-          id="floorNo"
-          name="floorNo"
-          formControlName="floorNo"
-          [errorStateMatcher]="earlyErrorStateMatcher"
-        />
-        <!-- TODO: convert to a combo-field -->
-        <mat-error
-          *ngIf="controlHasError('address.floorNo.isNaN')"
-          i18n="@@fridgeAddressFloorErrorNaN"
-          >Floor number must be a number</mat-error
+      <div class="form-fields__address-numbers combo-field">
+        <!-- Building # -->
+        <mat-form-field
+          appearance="outline"
+          subscriptSizing="dynamic"
+          class="form-fields__buildingNo combo-field__segment"
         >
-        <mat-error
-          *ngIf="controlHasError('address.floorNo.fractionOverflow')"
-          i18n="@@fridgeAddressFloorErrorInteger"
-          >Floor number must be an integer</mat-error
-        >
-      </mat-form-field>
+          <mat-label i18n="@@buildingNo">Bldg. #</mat-label>
+          <input
+            matInput
+            id="buildingNo"
+            name="buildingNo"
+            formControlName="buildingNo"
+          />
+        </mat-form-field>
 
-      <!-- Room # -->
-      <mat-form-field
-        appearance="outline"
-        subscriptSizing="dynamic"
-        class="form-fields__roomNo"
-      >
-        <mat-label i18n="@@roomNo">Room #</mat-label>
-        <input matInput id="roomNo" name="roomNo" formControlName="roomNo" />
-      </mat-form-field>
+        <!-- Floor # -->
+        <mat-form-field
+          appearance="outline"
+          subscriptSizing="dynamic"
+          class="form-fields__floorNo combo-field__segment"
+        >
+          <mat-label i18n="@@floorNo">Floor #</mat-label>
+          <input
+            type="text"
+            appNumericInput
+            id="floorNo"
+            name="floorNo"
+            formControlName="floorNo"
+            [errorStateMatcher]="earlyErrorStateMatcher"
+          />
+        </mat-form-field>
+
+        <!-- Room # -->
+        <mat-form-field
+          appearance="outline"
+          subscriptSizing="dynamic"
+          class="form-fields__roomNo combo-field__segment"
+        >
+          <mat-label i18n="@@roomNo">Room #</mat-label>
+          <input matInput id="roomNo" name="roomNo" formControlName="roomNo" />
+        </mat-form-field>
+
+        <div class="combo-field__errors">
+          <mat-error
+            *ngIf="controlHasError('address.floorNo.isNaN')"
+            i18n="@@fridgeAddressFloorErrorNaN"
+            >Floor number must be a number</mat-error
+          >
+          <mat-error
+            *ngIf="controlHasError('address.floorNo.fractionOverflow')"
+            i18n="@@fridgeAddressFloorErrorInteger"
+            >Floor number must be an integer</mat-error
+          >
+        </div>
+      </div>
     </fieldset>
 
     <!-- Products -->

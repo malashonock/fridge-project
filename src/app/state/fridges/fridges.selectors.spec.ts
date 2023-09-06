@@ -1,6 +1,6 @@
 import { mockFridge1, mockFridge2 } from 'mocks/fridge.mocks';
 import { FridgesState } from './fridges.feature';
-import { selectAllFridges } from './fridges.selectors';
+import { selectAllFridges, selectFridgeSubmitting } from './fridges.selectors';
 
 describe('Fridges feature selectors', () => {
   describe('selectAllFridges', () => {
@@ -18,6 +18,40 @@ describe('Fridges feature selectors', () => {
         mockFridge1,
         mockFridge2,
       ]);
+    });
+  });
+
+  describe('selectFridgeSubmitting', () => {
+    it('for a given id, should return a boolean showing if it is submitting', () => {
+      let mockFridgesState: FridgesState = {
+        ids: [],
+        entities: {},
+        submitting: [mockFridge1.id],
+      };
+      expect(
+        selectFridgeSubmitting(mockFridge1.id).projector(mockFridgesState)
+      ).toBe(true);
+      expect(selectFridgeSubmitting(null).projector(mockFridgesState)).toBe(
+        false
+      );
+      expect(
+        selectFridgeSubmitting(mockFridge2.id).projector(mockFridgesState)
+      ).toBe(false);
+
+      mockFridgesState = {
+        ids: [],
+        entities: {},
+        submitting: [null],
+      };
+      expect(selectFridgeSubmitting(null).projector(mockFridgesState)).toBe(
+        true
+      );
+      expect(
+        selectFridgeSubmitting(mockFridge1.id).projector(mockFridgesState)
+      ).toBe(false);
+      expect(
+        selectFridgeSubmitting(mockFridge2.id).projector(mockFridgesState)
+      ).toBe(false);
     });
   });
 });

@@ -49,3 +49,8 @@ export const selectFridgeProducts = (id: string) =>
       );
     }
   );
+
+export const selectFridgeSubmitting = (id: string | null) =>
+  createSelector(selectFridgesState, (state: FridgesState): boolean => {
+    return state.submitting.includes(id);
+  });

@@ -1,3 +1,5 @@
+@import 'styles/global.scss';
+
 :host {
   display: block;
 }
@@ -77,7 +79,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "value  unit";
+    "value  unit"
+    "errors errors";
   
   &__value {
     grid-area: value;
@@ -92,7 +95,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
-    "months weeks  days   hours";
+    "months weeks  days   hours"
+    "errors errors errors errors";
   
   &__months {
     grid-area: months;
@@ -111,40 +115,10 @@
   }
 }
 
-@media (min-width: 32rem /* 512px */) {
-  .combo-field-segment {
-    &:first-of-type {
-      ::ng-deep .mdc-notched-outline__trailing {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-    }
-    
-    &:last-of-type {
-      ::ng-deep .mdc-notched-outline__leading {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-    }
-  
-    &:not(:first-of-type):not(:last-of-type) {
-      ::ng-deep .mdc-notched-outline__trailing {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-  
-      ::ng-deep .mdc-notched-outline__leading {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-    }
+.combo-field {
+  &__errors {
+    grid-area: errors;
   }
-}
-
-.combo-field-errors {
-  font-size: 75%;
-  line-height: calc(100% + 0.5rem); // 20px
-  padding: 0 1rem; // 0 16px
 }
 
 @media (max-width: 48rem /* 768px */) {
@@ -162,23 +136,16 @@
 }
 
 @media (max-width: 32rem /* 512px */) {
-  .weight-fields {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "value"
-      "unit";
-
+  .weight-fields,
+  .shelf-life-fields {
+    display: flex;
+    flex-direction: column;
     gap: 1rem; // 16px
   }
 
-  .shelf-life-fields {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "months"
-      "weeks"
-      "days"
-      "hours";
-
-    gap: 1rem; // 16px
+  .combo-field {
+    &__errors {
+      margin-top: -1rem; // -16px
+    }
   }
 }

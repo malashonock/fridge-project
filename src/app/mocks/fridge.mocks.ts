@@ -1,3 +1,4 @@
+import { FridgeFields } from 'core/models/fridge/fridge-fields.interface';
 import { Fridge } from 'core/models/fridge/fridge.interface';
 
 export const mockFridge1: Fridge = {
@@ -68,3 +69,13 @@ export const mockFridge2: Fridge = {
 
 export const mockFridges1: Fridge[] = [mockFridge1];
 export const mockFridges2: Fridge[] = [mockFridge1, mockFridge2];
+
+export const mockFridge1Data: FridgeFields = {
+  model: mockFridge1.model,
+  description: mockFridge1.description,
+  address: mockFridge1.address,
+  geolocation: mockFridge1.geolocation,
+  products: mockFridge1.products,
+  imageUrl: 'blob:https://localhost:4200/abc-def',
+  image: new File(['test'], 'test.png'),
+};

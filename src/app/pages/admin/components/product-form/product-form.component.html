@@ -170,11 +170,11 @@
     <fieldset formGroupName="weight" class="form-fields__weight">
       <legend i18n="@@weight">Weight</legend>
 
-      <div class="weight-fields">
+      <div class="weight-fields combo-field">
         <mat-form-field
           appearance="outline"
           subscriptSizing="dynamic"
-          class="weight-fields__value combo-field-segment"
+          class="weight-fields__value combo-field__segment"
         >
           <mat-label i18n="@@value">Value</mat-label>
           <input
@@ -190,7 +190,7 @@
         <mat-form-field
           appearance="outline"
           subscriptSizing="dynamic"
-          class="weight-fields__unit combo-field-segment"
+          class="weight-fields__unit combo-field__segment"
         >
           <mat-label i18n="@@unit">Unit</mat-label>
           <mat-select
@@ -206,41 +206,41 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-      </div>
 
-      <div class="combo-field-errors">
-        <ng-container *ngIf="controlHasError('weight.partiallyFilled')">
+        <div class="combo-field__errors">
+          <ng-container *ngIf="controlHasError('weight.partiallyFilled')">
+            <mat-error
+              *ngIf="
+                getControlError(
+                  'weight.partiallyFilled',
+                  'emptySubcontrols'
+                )?.includes('value')
+              "
+              i18n="@@weightValueErrorRequired"
+              >Weight value is required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                getControlError(
+                  'weight.partiallyFilled',
+                  'emptySubcontrols'
+                )?.includes('unit')
+              "
+              i18n="@@weightUnitErrorRequired"
+              >Weight unit is required</mat-error
+            >
+          </ng-container>
           <mat-error
-            *ngIf="
-              getControlError(
-                'weight.partiallyFilled',
-                'emptySubcontrols'
-              )?.includes('value')
-            "
-            i18n="@@weightValueErrorRequired"
-            >Weight value is required</mat-error
+            *ngIf="controlHasError('weight.value.isNaN')"
+            i18n="@@weightValueErrorNaN"
+            >Weight value must be a valid number</mat-error
           >
           <mat-error
-            *ngIf="
-              getControlError(
-                'weight.partiallyFilled',
-                'emptySubcontrols'
-              )?.includes('unit')
-            "
-            i18n="@@weightUnitErrorRequired"
-            >Weight unit is required</mat-error
+            *ngIf="controlHasError('weight.value.min')"
+            i18n="@@weightValueErrorNegative"
+            >Weight value cannot be negative</mat-error
           >
-        </ng-container>
-        <mat-error
-          *ngIf="controlHasError('weight.value.isNaN')"
-          i18n="@@weightValueErrorNaN"
-          >Weight value must be a valid number</mat-error
-        >
-        <mat-error
-          *ngIf="controlHasError('weight.value.min')"
-          i18n="@@weightValueErrorNegative"
-          >Weight value cannot be negative</mat-error
-        >
+        </div>
       </div>
     </fieldset>
 
@@ -279,12 +279,12 @@
     <fieldset formGroupName="shelfLife" class="form-fields__shelf-life">
       <legend i18n="@@shelfLife">Shelf life</legend>
 
-      <div class="shelf-life-fields">
+      <div class="shelf-life-fields combo-field">
         <mat-form-field
           *ngFor="let period of periods"
           appearance="outline"
           subscriptSizing="dynamic"
-          [class]="['shelf-life-fields__' + period, 'combo-field-segment']"
+          [class]="['shelf-life-fields__' + period, 'combo-field__segment']"
         >
           <mat-label>{{ period | periodLabel }}</mat-label>
           <input
@@ -296,29 +296,31 @@
             [errorStateMatcher]="earlyErrorStateMatcher"
           />
         </mat-form-field>
-      </div>
 
-      <div class="combo-field-errors">
-        <ng-container *ngFor="let period of periods">
-          <mat-error
-            *ngIf="controlHasError('shelfLife.' + period + '.isNaN')"
-            i18n="@@shelfLifePeriodErrorNaN"
-            >{{ period | periodLabel : "genitive" }} value must be a valid
-            number</mat-error
-          >
-          <mat-error
-            *ngIf="controlHasError('shelfLife.' + period + '.fractionOverflow')"
-            i18n="@@shelfLifePeriodErrorInteger"
-            >{{ period | periodLabel : "genitive" }} value must be an
-            integer</mat-error
-          >
-          <mat-error
-            *ngIf="controlHasError('shelfLife.' + period + '.min')"
-            i18n="@@shelfLifePeriodErrorNegative"
-            >{{ period | periodLabel : "genitive" }} value cannot be
-            negative</mat-error
-          >
-        </ng-container>
+        <div class="combo-field__errors">
+          <ng-container *ngFor="let period of periods">
+            <mat-error
+              *ngIf="controlHasError('shelfLife.' + period + '.isNaN')"
+              i18n="@@shelfLifePeriodErrorNaN"
+              >{{ period | periodLabel : "genitive" }} value must be a valid
+              number</mat-error
+            >
+            <mat-error
+              *ngIf="
+                controlHasError('shelfLife.' + period + '.fractionOverflow')
+              "
+              i18n="@@shelfLifePeriodErrorInteger"
+              >{{ period | periodLabel : "genitive" }} value must be an
+              integer</mat-error
+            >
+            <mat-error
+              *ngIf="controlHasError('shelfLife.' + period + '.min')"
+              i18n="@@shelfLifePeriodErrorNegative"
+              >{{ period | periodLabel : "genitive" }} value cannot be
+              negative</mat-error
+            >
+          </ng-container>
+        </div>
       </div>
     </fieldset>
   </mat-dialog-content>

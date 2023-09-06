@@ -65,3 +65,43 @@ fieldset {
 .mat-mdc-form-field-infix {
   width: 100% !important;
 }
+
+.combo-field {
+  &__errors {
+    font-size: 75%;
+    line-height: calc(100% + 0.5rem); // 20px
+    padding: 0 1rem; // 0 16px
+  }
+}
+
+@media (min-width: 32rem /* 512px */) {
+  .combo-field {
+    &__segment {
+      &:first-of-type {
+        ::ng-deep .mdc-notched-outline__trailing {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+      
+      &:last-of-type {
+        ::ng-deep .mdc-notched-outline__leading {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+    
+      &:not(:first-of-type):not(:last-of-type) {
+        ::ng-deep .mdc-notched-outline__trailing {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+    
+        ::ng-deep .mdc-notched-outline__leading {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+    }
+  }
+}

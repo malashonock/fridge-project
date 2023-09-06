@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 
 import { FridgeService } from './fridge.service';
-import { mockFridges1 } from 'mocks/fridge.mocks';
+import { mockFridge1, mockFridge1Data, mockFridges1 } from 'mocks/fridge.mocks';
 
 describe('FridgeService', () => {
   let service: FridgeService;
@@ -39,6 +39,51 @@ describe('FridgeService', () => {
       const req = httpTestingController.expectOne(resourceUrl);
 
       req.flush(mockFridges1);
+    });
+  });
+
+  describe('createFridge() method', () => {
+    it('should make a proper HTTP request', (done) => {
+      service.createFridge(mockFridge1Data).subscribe((response) => {
+        expect(response).toEqual(mockFridge1);
+        done();
+      });
+
+      const req = httpTestingController.expectOne(resourceUrl);
+
+      req.flush(mockFridge1);
+    });
+  });
+
+  describe('updateFridge() method', () => {
+    it('should make a proper HTTP request', (done) => {
+      service
+        .updateFridge(mockFridge1.id, mockFridge1Data)
+        .subscribe((response) => {
+          expect(response).toEqual(mockFridge1);
+          done();
+        });
+
+      const req = httpTestingController.expectOne(
+        `${resourceUrl}/${mockFridge1.id}`
+      );
+
+      req.flush(mockFridge1);
+    });
+  });
+
+  describe('deleteFridge() method', () => {
+    it('should make a proper HTTP request', (done) => {
+      service.deleteFridge(mockFridge1.id).subscribe((response) => {
+        expect(response).toEqual({ id: mockFridge1.id });
+        done();
+      });
+
+      const req = httpTestingController.expectOne(
+        `${resourceUrl}/${mockFridge1.id}`
+      );
+
+      req.flush({ id: mockFridge1.id });
     });
   });
 });

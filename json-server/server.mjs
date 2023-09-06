@@ -3,6 +3,7 @@ import multer from 'multer';
 
 import authRouter from './auth/auth.route.mjs';
 import productRouter from './product/product.route.mjs';
+import fridgeRouter from './fridge/fridge.route.mjs';
 import { PORT, IMAGES_FOLDER } from './constants.mjs';
 
 const server = jsonServer.create();
@@ -23,6 +24,8 @@ server.use(
 server.use('/auth', authRouter(db));
 server.get('/products', defaultRouter);
 server.use('/products', productRouter(db, upload));
+server.get('/fridges', defaultRouter);
+server.use('/fridges', fridgeRouter(db, upload));
 server.use('/', defaultRouter);
 
 server.listen(PORT, () => {

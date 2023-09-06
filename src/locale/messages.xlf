@@ -10,7 +10,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">167</context>
+          <context context-type="linenumber">171</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fridges" datatype="html">
@@ -63,7 +63,7 @@
         <source>fridge</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/fridge-card/fridge-card.component.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fridgeImage" datatype="html">
@@ -144,56 +144,56 @@
         <source>Bldg. #</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">118</context>
         </context-group>
       </trans-unit>
       <trans-unit id="floorNo" datatype="html">
         <source>Floor #</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">132</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="fridgeAddressFloorErrorNaN" datatype="html">
-        <source>Floor number must be a number</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">145</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="fridgeAddressFloorErrorInteger" datatype="html">
-        <source>Floor number must be an integer</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">150</context>
+          <context context-type="linenumber">133</context>
         </context-group>
       </trans-unit>
       <trans-unit id="roomNo" datatype="html">
         <source>Room #</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
-          <context context-type="linenumber">160</context>
+          <context context-type="linenumber">150</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fridgeAddressFloorErrorNaN" datatype="html">
+        <source>Floor number must be a number</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">158</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fridgeAddressFloorErrorInteger" datatype="html">
+        <source>Floor number must be an integer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/admin/components/fridge-form/fridge-form.component.html</context>
+          <context context-type="linenumber">163</context>
         </context-group>
       </trans-unit>
       <trans-unit id="editFridgeHeader" datatype="html">
         <source>Edit fridge</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/fridge-form/fridge-form.component.ts</context>
-          <context context-type="linenumber">63</context>
+          <context context-type="linenumber">64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="createFridgeHeader" datatype="html">
         <source>Add new fridge</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/fridge-form/fridge-form.component.ts</context>
-          <context context-type="linenumber">64</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="saveChanges" datatype="html">
         <source>Save changes</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/fridge-form/fridge-form.component.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">70</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.ts</context>
@@ -204,7 +204,7 @@
         <source>Create fridge</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/fridge-form/fridge-form.component.ts</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">71</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/fridges/fridges.component.html</context>
@@ -496,28 +496,28 @@
         <source>Weight value is required</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">221</context>
+          <context context-type="linenumber">220</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weightUnitErrorRequired" datatype="html">
         <source>Weight unit is required</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">231</context>
+          <context context-type="linenumber">230</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weightValueErrorNaN" datatype="html">
         <source>Weight value must be a valid number</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">237</context>
+          <context context-type="linenumber">236</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weightValueErrorNegative" datatype="html">
         <source>Weight value cannot be negative</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">242</context>
+          <context context-type="linenumber">241</context>
         </context-group>
       </trans-unit>
       <trans-unit id="energyValueErrorNaN" datatype="html">
@@ -549,21 +549,21 @@
         <source><x id="INTERPOLATION"/> value must be a valid number</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">306,307</context>
+          <context context-type="linenumber">305,306</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shelfLifePeriodErrorInteger" datatype="html">
         <source><x id="INTERPOLATION" equiv-text="val"/> value must be an integer</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">312,313</context>
+          <context context-type="linenumber">313,314</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shelfLifePeriodErrorNegative" datatype="html">
         <source><x id="INTERPOLATION" equiv-text="valu"/> value cannot be negative</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/admin/components/product-form/product-form.component.html</context>
-          <context context-type="linenumber">318,319</context>
+          <context context-type="linenumber">319,320</context>
         </context-group>
       </trans-unit>
       <trans-unit id="editProductHeader" datatype="html">

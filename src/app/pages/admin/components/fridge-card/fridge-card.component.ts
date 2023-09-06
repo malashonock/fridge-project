@@ -16,6 +16,7 @@ import { ConfirmDeleteComponent } from 'shared/components/confirm-delete/confirm
 import { FridgeFormComponent } from '../fridge-form/fridge-form.component';
 import { ProductQuantity } from 'core/models/fridge/product-quantity.interface';
 import { selectFridgeProducts } from 'app/state/fridges/fridges.selectors';
+import { FridgesActions } from 'app/state/fridges/fridges.actions';
 
 @Component({
   selector: 'app-fridge-card',
@@ -80,8 +81,10 @@ export class FridgeCardComponent implements OnInit, OnDestroy {
       .afterClosed()
       .pipe(takeUntil(this.destroy$))
       .subscribe((deleteConfirmed: boolean) => {
-        if (deleteConfirmed) {
-          // this.store.dispatch(FridgesActions.deleteFridge({ id }));
+        if (deleteConfirmed && this.fridge) {
+          this.store.dispatch(
+            FridgesActions.deleteFridge({ id: this.fridge.id })
+          );
         }
       });
   }
