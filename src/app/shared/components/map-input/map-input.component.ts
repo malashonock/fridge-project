@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  Input,
   OnDestroy,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl } from '@angular/forms';
@@ -14,18 +15,6 @@ import {
   ChangeEventHandler,
   ngValueAccessorProvider,
 } from 'utils/form/form.utils';
-
-// Fix Leaflet bug
-L.Marker.prototype.options.icon = L.icon({
-  iconRetinaUrl: 'assets/marker-icon-2x.png',
-  iconUrl: 'assets/marker-icon.png',
-  shadowUrl: 'assets/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  tooltipAnchor: [16, -28],
-  shadowSize: [41, 41],
-});
 
 const MAX_COORDS_PRECISION = 5; // decimal places
 
@@ -39,6 +28,8 @@ const MAX_COORDS_PRECISION = 5; // decimal places
 export class MapInputComponent
   implements ControlValueAccessor, AfterViewInit, OnDestroy
 {
+  @Input() public id = '';
+
   public formControl = new FormControl({
     latitude: 0,
     longitude: 0,
@@ -90,13 +81,13 @@ export class MapInputComponent
   ): void {
     this.formControl.valueChanges
       .pipe(
-        takeUntil(this.destroy$),
         distinctUntilChanged((prev, curr): boolean => {
           return (
             prev?.latitude == curr?.latitude &&
             prev?.longitude == curr?.longitude
           );
-        })
+        }),
+        takeUntil(this.destroy$)
       )
       .subscribe((value): void => {
         onChangeCallback({
@@ -118,7 +109,7 @@ export class MapInputComponent
 
   private initMap(): void {
     // Create an empty map
-    this.map = L.map('map', {
+    this.map = L.map(`map-${this.id}`, {
       center: [this.latitude, this.longitude],
       zoom:
         !this.formControl.value || (this.latitude === 0 && this.longitude === 0)

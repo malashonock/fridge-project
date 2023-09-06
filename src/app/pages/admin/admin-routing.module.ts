@@ -5,7 +5,7 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
 import { AdminIndexComponent } from './components/admin-index/admin-index.component';
 import { ProductsComponent } from './components/products/products.component';
 import { FridgesComponent } from './components/fridges/fridges.component';
-import { MapComponent } from 'shared/components/map/map.component';
+import { FridgesMapComponent } from './components/fridges-map/fridges-map.component';
 
 const routes: Routes = [
   {
@@ -27,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: 'map',
-        component: MapComponent,
+        component: FridgesMapComponent,
       },
     ],
   },

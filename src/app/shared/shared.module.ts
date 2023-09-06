@@ -9,7 +9,6 @@ import { LogoComponent } from './components/logo/logo.component';
 import { UserButtonComponent } from './components/user-button/user-button.component';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
-import { MapComponent } from './components/map/map.component';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-delete.component';
@@ -44,7 +43,6 @@ import { MapInputComponent } from './components/map-input/map-input.component';
     BurgerButtonComponent,
     MobileMenuDirective,
     FixedHeaderDirective,
-    MapComponent,
     SearchBoxComponent,
     MoneyPipe,
     KeysPipe,
@@ -74,7 +72,6 @@ import { MapInputComponent } from './components/map-input/map-input.component';
     MenuItemComponent,
     MobileMenuDirective,
     FixedHeaderDirective,
-    MapComponent,
     SearchBoxComponent,
     MoneyPipe,
     KeysPipe,

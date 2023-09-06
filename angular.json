@@ -24,7 +24,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "index": "src/index.html",
             "localize": true,
@@ -81,7 +81,10 @@
                 }
               ],
               "outputPath": "dist/fridge-project/dev",
-              "localize": true
+              "localize": true,
+              "customWebpackConfig": {
+                "path": "development.config.js"
+              }
             },
             "en": {
               "localize": ["en-US"]
@@ -93,7 +96,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production_en": {
               "browserTarget": "fridge-project:build:production,en"

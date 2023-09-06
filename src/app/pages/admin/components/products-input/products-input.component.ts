@@ -100,7 +100,7 @@ export class ProductsInputComponent
       });
 
     this.touched$
-      .pipe(takeUntil(this.destroy$), take(1))
+      .pipe(take(1), takeUntil(this.destroy$))
       .subscribe((): void => {
         this.notifyTouchedListener?.();
       });

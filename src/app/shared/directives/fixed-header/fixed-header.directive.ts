@@ -46,7 +46,7 @@ export class FixedHeaderDirective implements OnInit, OnDestroy {
 
     // Subscribe to header height observable
     this.headerHeight$
-      .pipe(takeUntil(this.destroy$), distinctUntilChanged())
+      .pipe(distinctUntilChanged(), takeUntil(this.destroy$))
       .subscribe((headerHeight: number) => {
         this.setContentStyles(headerHeight);
       });

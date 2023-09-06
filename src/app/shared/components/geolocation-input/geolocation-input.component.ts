@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  Input,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -42,6 +43,8 @@ import { NumericInputDirective } from 'shared/directives/numeric-input/numeric-i
 export class GeolocationInputComponent
   implements ControlValueAccessor, Validator, OnInit, OnDestroy
 {
+  @Input() public id = '';
+
   public form = this.formBuilder.group({
     mapCoords: [null as GeolocationCoords | null, [Validators.required]],
     textCoords: this.formBuilder.group({
