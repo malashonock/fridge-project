@@ -1,6 +1,12 @@
 import { mockFridge1, mockFridge2 } from 'mocks/fridge.mocks';
 import { FridgesState } from './fridges.feature';
-import { selectAllFridges, selectFridgeSubmitting } from './fridges.selectors';
+import {
+  selectAllFridges,
+  selectFridge,
+  selectFridgeProducts,
+  selectFridgeSubmitting,
+} from './fridges.selectors';
+import { mockProduct1, mockProduct2 } from 'mocks/product.mocks';
 
 describe('Fridges feature selectors', () => {
   describe('selectAllFridges', () => {
@@ -17,6 +23,48 @@ describe('Fridges feature selectors', () => {
       expect(selectAllFridges.projector(mockFridgesState)).toEqual([
         mockFridge1,
         mockFridge2,
+      ]);
+    });
+  });
+
+  describe('selectFridge', () => {
+    it('should return the fridge from store by its id', () => {
+      expect(selectFridge(mockFridge1.id).projector([mockFridge1])).toEqual(
+        mockFridge1
+      );
+    });
+  });
+
+  describe('selectFridgeProducts', () => {
+    it('given no fridge with the given id is found, should return undefined', () => {
+      expect(
+        selectFridgeProducts('invalid-id').projector(undefined, [
+          mockProduct1,
+          mockProduct2,
+        ])
+      ).toBeUndefined();
+    });
+
+    it('given a fridge with the given id is found, should return the products within', () => {
+      const mockFridge = {
+        ...mockFridge1,
+        products: [
+          {
+            productId: mockProduct1.id,
+            quantity: 1,
+          },
+        ],
+      };
+
+      expect(
+        selectFridgeProducts(mockFridge.id).projector(mockFridge, [
+          mockProduct1,
+        ])
+      ).toEqual([
+        {
+          product: mockProduct1,
+          quantity: 1,
+        },
       ]);
     });
   });
