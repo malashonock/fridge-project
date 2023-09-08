@@ -14,7 +14,7 @@ import { MatButtonHarness } from '@angular/material/button/testing';
 import { SharedModule } from 'shared/shared.module';
 import { LoginFormComponent } from './login-form.component';
 import { AuthActions } from 'app/state/auth/auth.actions';
-import { LoginCredentials } from 'core/models/auth/login.interface';
+import { mockLoginCredentials } from 'mocks/auth.mocks';
 
 describe('LoginFormComponent', () => {
   let component: LoginFormComponent;
@@ -128,25 +128,21 @@ describe('LoginFormComponent', () => {
     });
 
     it('given valid form values, should dispatch login action', async () => {
-      const testCredentials: LoginCredentials = {
-        userName: 'user',
-        password: '12345',
-      };
       const spyOnStoreDispatch = jest.spyOn(store, 'dispatch');
 
       expect(
         await (await submitButtonHarness.host()).getProperty('disabled')
       ).toBe(true);
 
-      await userNameInputHarness.setValue(testCredentials.userName);
-      await passwordInputHarness.setValue(testCredentials.password);
+      await userNameInputHarness.setValue(mockLoginCredentials.userName);
+      await passwordInputHarness.setValue(mockLoginCredentials.password);
       expect(
         await (await submitButtonHarness.host()).getProperty('disabled')
       ).toBe(false);
 
       await submitButtonHarness.click();
       const expectedAction = AuthActions.login({
-        credentials: testCredentials,
+        credentials: mockLoginCredentials,
       });
 
       expect(spyOnStoreDispatch).toHaveBeenCalledTimes(1);
