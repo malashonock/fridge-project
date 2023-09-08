@@ -18,9 +18,8 @@ import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { SharedModule } from 'shared/shared.module';
 import { SignupFormComponent } from './signup-form.component';
 import { AuthActions } from 'app/state/auth/auth.actions';
-import { SignupCredentials } from 'core/models/auth/signup.interface';
-import { UserRole } from 'core/models/user/user-role.enum';
 import { CoreModule } from 'core/core.module';
+import { mockSignupCredentials } from 'mocks/auth.mocks';
 
 describe('SignupFormComponent', () => {
   let component: SignupFormComponent;
@@ -237,25 +236,18 @@ describe('SignupFormComponent', () => {
     });
 
     it('given valid form values, should dispatch signup action', async () => {
-      const testCredentials: SignupCredentials = {
-        userName: 'user',
-        email: 'user@domain.com',
-        role: UserRole.User,
-        password: '12345',
-        passwordConfirm: '12345',
-      };
       const spyOnStoreDispatch = jest.spyOn(store, 'dispatch');
 
       expect(
         await (await submitButtonHarness.host()).getProperty('disabled')
       ).toBe(true);
 
-      await userNameInputHarness.setValue(testCredentials.userName);
-      await emailInputHarness.setValue(testCredentials.email);
+      await userNameInputHarness.setValue(mockSignupCredentials.userName);
+      await emailInputHarness.setValue(mockSignupCredentials.email);
       await roleSelectHarness.clickOptions({ text: 'User' });
-      await passwordInputHarness.setValue(testCredentials.password);
+      await passwordInputHarness.setValue(mockSignupCredentials.password);
       await passwordConfirmInputHarness.setValue(
-        testCredentials.passwordConfirm
+        mockSignupCredentials.passwordConfirm
       );
       expect(
         await (await submitButtonHarness.host()).getProperty('disabled')
@@ -263,7 +255,7 @@ describe('SignupFormComponent', () => {
 
       await submitButtonHarness.click();
       const expectedAction = AuthActions.signup({
-        credentials: testCredentials,
+        credentials: mockSignupCredentials,
       });
 
       expect(spyOnStoreDispatch).toHaveBeenCalledTimes(1);

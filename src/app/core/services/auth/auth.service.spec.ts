@@ -7,11 +7,10 @@ import { HttpClient } from '@angular/common/http';
 
 import { AuthService } from './auth.service';
 import { LocalStorageService } from 'core/services/local-storage/local-storage.service';
-import { AuthSession } from 'app/state/auth/auth.feature';
-import { User } from 'core/models/user/user.interface';
-import { UserRole } from 'core/models/user/user-role.enum';
 import { LoginCredentials } from 'core/models/auth/login.interface';
 import { SignupCredentials } from 'core/models/auth/signup.interface';
+import { mockUserSession } from 'mocks/auth.mocks';
+import { mockUser } from 'mocks/user.mocks';
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -30,18 +29,6 @@ describe('AuthService', () => {
     LocalStorageService.prototype,
     'removeItem'
   );
-
-  const mockUser: User = {
-    id: '1',
-    name: 'John Doe',
-    role: UserRole.User,
-  };
-
-  const mockAuthSession: AuthSession = {
-    user: mockUser,
-    token: '001@1234567890',
-    expiresAt: new Date(),
-  };
 
   beforeEach(() => {
     jest.resetAllMocks();
@@ -73,8 +60,8 @@ describe('AuthService', () => {
     });
 
     it('given LocalStorageService#getItem() returns a truthy value, should return it unchanged', () => {
-      spyOnLocalStorageGetItem.mockReturnValue(mockAuthSession);
-      expect(authService.restoreSession()).toEqual(mockAuthSession);
+      spyOnLocalStorageGetItem.mockReturnValue(mockUserSession);
+      expect(authService.restoreSession()).toEqual(mockUserSession);
     });
 
     it('given LocalStorageService#getItem() returns a falsy value, should return it unchanged', () => {
@@ -85,16 +72,16 @@ describe('AuthService', () => {
 
   describe('saveSession() method', () => {
     it('should call setItem() method of the LocalStorageService with the correct arguments', () => {
-      authService.saveSession(mockAuthSession);
+      authService.saveSession(mockUserSession);
       expect(spyOnLocalStorageSetItem).toHaveBeenCalledTimes(1);
       expect(spyOnLocalStorageSetItem).toHaveBeenCalledWith(
         'auth',
-        mockAuthSession
+        mockUserSession
       );
     });
 
     it('should return undefined', () => {
-      expect(authService.saveSession(mockAuthSession)).toBe(undefined);
+      expect(authService.saveSession(mockUserSession)).toBe(undefined);
     });
   });
 
@@ -159,11 +146,11 @@ describe('AuthService', () => {
     it('should make a proper HTTP request', () => {
       authService
         .login(credentials)
-        .subscribe((response) => expect(response).toEqual(mockAuthSession));
+        .subscribe((response) => expect(response).toEqual(mockUserSession));
 
       const req = httpTestingController.expectOne(loginEndpointUrl);
 
-      req.flush(mockAuthSession);
+      req.flush(mockUserSession);
     });
 
     it('upon successful login, should save session to local storage', () => {
@@ -171,11 +158,11 @@ describe('AuthService', () => {
 
       authService.login(credentials).subscribe(() => {
         expect(spyOnSaveSession).toHaveBeenCalledTimes(1);
-        expect(spyOnSaveSession).toHaveBeenCalledWith(mockAuthSession);
+        expect(spyOnSaveSession).toHaveBeenCalledWith(mockUserSession);
       });
 
       const req = httpTestingController.expectOne(loginEndpointUrl);
-      req.flush(mockAuthSession);
+      req.flush(mockUserSession);
     });
   });
 

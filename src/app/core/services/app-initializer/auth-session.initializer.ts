@@ -5,7 +5,7 @@ import { AuthService } from '../auth/auth.service';
 import { AuthActions } from 'app/state/auth/auth.actions';
 
 // Restore session data from local storage on app startup
-const initializeAuthSessionFactory =
+export const initializeAuthSessionFactory =
   (authService: AuthService, store: Store) => (): void => {
     const sessionData = authService.restoreSession();
     store.dispatch(
