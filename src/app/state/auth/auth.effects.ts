@@ -75,7 +75,8 @@ export class AuthEffects {
           /* Redirect depending on user role */
           ({ sessionData }: ReturnType<typeof AuthActions.loginSuccess>) => {
             const { user } = sessionData;
-            const redirectTo = user.role === UserRole.Admin ? '/admin' : 'user';
+            const redirectTo =
+              user.role === UserRole.Admin ? '/admin' : '/user';
             // If the user has simply reloaded a protected page, try keeping the current url
             // NB! router.url returns "/" -> location.pathname was used
             const currentUrl: string = window.location.pathname;
