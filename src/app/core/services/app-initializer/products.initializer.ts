@@ -4,7 +4,7 @@ import { APP_INITIALIZER, Provider } from '@angular/core';
 import { ProductsActions } from 'app/state/products/products.actions';
 
 // Fetch products on app startup
-const initializeProductsFactory = (store: Store) => (): void => {
+export const initializeProductsFactory = (store: Store) => (): void => {
   store.dispatch(ProductsActions.fetchProducts());
 };
 
