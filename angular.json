@@ -92,10 +92,14 @@
               }
             },
             "en": {
-              "localize": ["en-US"]
+              "localize": [
+                "en-US"
+              ]
             },
             "ru": {
-              "localize": ["ru"]
+              "localize": [
+                "ru"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -130,6 +134,52 @@
             "lintFilePatterns": [
               "projects/fridge-shell-app/src/**/*.ts",
               "projects/fridge-shell-app/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "fridge-shared-lib": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "ru": {
+            "translation": "projects/fridge-shared-lib/src/locale/messages.ru.xlf"
+          }
+        }
+      },
+      "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        }
+      },
+      "root": "projects/fridge-shared-lib",
+      "sourceRoot": "projects/fridge-shared-lib/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/fridge-shared-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/fridge-shared-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/fridge-shared-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/fridge-shared-lib/**/*.ts",
+              "projects/fridge-shared-lib/**/*.html"
             ]
           }
         }

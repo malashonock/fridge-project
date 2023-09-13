@@ -32,7 +32,12 @@
       "@shell/mocks/*": ["./fridge-shell-app/src/app/mocks/*"],
       "@shell/styles/*": ["./fridge-shell-app/src/styles/*"],
       "@shell/environments/*": ["./fridge-shell-app/src/environments/*"],
-      "@shell/*": ["./fridge-shell-app/src/*"],
+      "@shell/*": [
+        "./fridge-shell-app/src/*"
+      ],
+      "fridge-shared-lib": [
+        "dist/fridge-shared-lib"
+      ],
       "rootDir/*": ["../*"],
     },
   },
