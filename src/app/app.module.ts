@@ -8,14 +8,14 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { CoreModule } from 'core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { authFeature } from './state/auth/auth.feature';
-import { AuthEffects } from './state/auth/auth.effects';
-import { uiFeature } from './state/ui/ui.feature';
-import { UiEffects } from './state/ui/ui.effects';
-import { productsFeature } from './state/products/products.feature';
-import { ProductsEffects } from './state/products/products.effects';
-import { fridgesFeature } from './state/fridges/fridges.feature';
-import { FridgesEffects } from './state/fridges/fridges.effects';
+import { authFeature } from 'store/auth/auth.feature';
+import { AuthEffects } from 'store/auth/auth.effects';
+import { uiFeature } from 'store/ui/ui.feature';
+import { UiEffects } from 'store/ui/ui.effects';
+import { productsFeature } from 'store/products/products.feature';
+import { ProductsEffects } from 'store/products/products.effects';
+import { fridgesFeature } from 'store/fridges/fridges.feature';
+import { FridgesEffects } from 'store/fridges/fridges.effects';
 
 @NgModule({
   declarations: [AppComponent],

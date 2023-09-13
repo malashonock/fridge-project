@@ -3,7 +3,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { Store } from '@ngrx/store';
 
 import { initializeFridgesFactory } from './fridges.initializer';
-import { FridgesActions } from 'app/state/fridges/fridges.actions';
+import { FridgesActions } from 'store/fridges/fridges.actions';
 
 describe('Fridges initializer', () => {
   let mockStore: Store;

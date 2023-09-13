@@ -9,7 +9,7 @@ import {
 } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { AuthSessionState } from 'app/state/auth/auth.feature';
+import { AuthSessionState } from 'store/auth/auth.feature';
 import { UserRole } from 'core/models/user/user-role.enum';
 import { AuthenticationGuard } from './authentication.guard';
 

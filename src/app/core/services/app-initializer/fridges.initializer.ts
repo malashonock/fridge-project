@@ -1,7 +1,7 @@
 import { Store } from '@ngrx/store';
 import { APP_INITIALIZER, Provider } from '@angular/core';
 
-import { FridgesActions } from 'app/state/fridges/fridges.actions';
+import { FridgesActions } from 'store/fridges/fridges.actions';
 
 // Fetch fridges on app startup
 export const initializeFridgesFactory = (store: Store) => (): void => {

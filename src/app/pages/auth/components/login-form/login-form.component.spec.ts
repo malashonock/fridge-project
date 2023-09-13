@@ -13,7 +13,7 @@ import { MatButtonHarness } from '@angular/material/button/testing';
 
 import { SharedModule } from 'shared/shared.module';
 import { LoginFormComponent } from './login-form.component';
-import { AuthActions } from 'app/state/auth/auth.actions';
+import { AuthActions } from 'store/auth/auth.actions';
 import { mockLoginCredentials } from 'mocks/auth.mocks';
 
 describe('LoginFormComponent', () => {

@@ -1,4 +1,4 @@
-import { AuthSession } from 'app/state/auth/auth.feature';
+import { AuthSession } from 'store/auth/auth.feature';
 import { mockAdmin, mockUser } from './user.mocks';
 import { SignupCredentials } from 'core/models/auth/signup.interface';
 import { LoginCredentials } from 'core/models/auth/login.interface';

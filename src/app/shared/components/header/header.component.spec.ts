@@ -3,7 +3,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { HeaderComponent } from './header.component';
-import * as uiFeature from 'app/state/ui/ui.feature';
+import * as uiFeature from 'store/ui/ui.feature';
 import { SharedModule } from 'shared/shared.module';
 
 describe('HeaderComponent', () => {

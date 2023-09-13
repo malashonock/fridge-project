@@ -6,6 +6,7 @@
     "paths": {
       "core/*": ["./app/core/*"],
       "shared/*": ["./app/shared/*"],
+      "store/*": ["./app/store/*"],
       "utils/*": ["./app/utils/*"],
       "mocks/*": ["./app/mocks/*"],
       "styles/*": ["./styles/*"],

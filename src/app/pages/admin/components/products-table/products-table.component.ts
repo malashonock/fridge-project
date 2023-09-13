@@ -31,7 +31,7 @@ import { ProductFormComponent } from '../product-form/product-form.component';
 import { StaticAssetService } from 'core/services/static-asset/static-asset.service';
 import { FileWithUrl } from 'core/classes/file-with-url/file-with-url.class';
 import { ConfirmDeleteComponent } from 'shared/components/confirm-delete/confirm-delete.component';
-import { ProductsActions } from 'app/state/products/products.actions';
+import { ProductsActions } from 'store/products/products.actions';
 
 @Component({
   selector: 'app-products-table',

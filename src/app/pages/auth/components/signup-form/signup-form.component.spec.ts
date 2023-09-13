@@ -17,7 +17,7 @@ import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 
 import { SharedModule } from 'shared/shared.module';
 import { SignupFormComponent } from './signup-form.component';
-import { AuthActions } from 'app/state/auth/auth.actions';
+import { AuthActions } from 'store/auth/auth.actions';
 import { CoreModule } from 'core/core.module';
 import { mockSignupCredentials } from 'mocks/auth.mocks';
 

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { AuthActions } from 'app/state/auth/auth.actions';
+import { AuthActions } from 'store/auth/auth.actions';
 import { LoginCredentials } from 'core/models/auth/login.interface';
 import { controlHasError, getControlError } from 'utils/form/form.utils';
 

@@ -15,8 +15,8 @@ import { StaticAssetService } from 'core/services/static-asset/static-asset.serv
 import { ConfirmDeleteComponent } from 'shared/components/confirm-delete/confirm-delete.component';
 import { FridgeFormComponent } from '../fridge-form/fridge-form.component';
 import { ProductQuantity } from 'core/models/fridge/product-quantity.interface';
-import { selectFridgeProducts } from 'app/state/fridges/fridges.selectors';
-import { FridgesActions } from 'app/state/fridges/fridges.actions';
+import { selectFridgeProducts } from 'store/fridges/fridges.selectors';
+import { FridgesActions } from 'store/fridges/fridges.actions';
 
 @Component({
   selector: 'app-fridge-card',

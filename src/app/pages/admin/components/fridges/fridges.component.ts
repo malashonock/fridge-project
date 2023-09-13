@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 
 import { Fridge } from 'core/models/fridge/fridge.interface';
-import { selectAllFridges } from 'app/state/fridges/fridges.selectors';
+import { selectAllFridges } from 'store/fridges/fridges.selectors';
 import { FridgeFormComponent } from '../fridge-form/fridge-form.component';
 
 @Component({

@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { AuthService } from '../auth/auth.service';
 import { initializeAuthSessionFactory } from './auth-session.initializer';
-import { AuthActions } from 'app/state/auth/auth.actions';
+import { AuthActions } from 'store/auth/auth.actions';
 import { mockUserSession } from 'mocks/auth.mocks';
 
 describe('Auth session initializer', () => {

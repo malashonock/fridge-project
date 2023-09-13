@@ -9,7 +9,7 @@ import {
 import { Store } from '@ngrx/store';
 import { Subject, combineLatest, map, startWith, takeUntil } from 'rxjs';
 
-import { selectAllProducts } from 'app/state/products/products.selectors';
+import { selectAllProducts } from 'store/products/products.selectors';
 import { Product } from 'core/models/product/product.interface';
 import { MatAutocomplete } from '@angular/material/autocomplete';
 import { SearchBoxComponent } from 'shared/components/search-box/search-box.component';

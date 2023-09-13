@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { UserRole } from 'core/models/user/user-role.enum';
 import { EmailValidators } from 'core/validators/email/email.validators';
 import { PasswordValidators } from 'core/validators/password/password.validators';
-import { AuthActions } from 'app/state/auth/auth.actions';
+import { AuthActions } from 'store/auth/auth.actions';
 import { SignupCredentials } from 'core/models/auth/signup.interface';
 import { controlHasError, getControlError } from 'utils/form/form.utils';
 import { USER_ROLES } from 'core/configs/user-roles.config';

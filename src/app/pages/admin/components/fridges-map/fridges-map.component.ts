@@ -23,7 +23,7 @@ import {
 } from 'rxjs';
 
 import { GeolocationCoords } from 'core/models/fridge/geolocation-coords.interface';
-import { selectAllFridges } from 'app/state/fridges/fridges.selectors';
+import { selectAllFridges } from 'store/fridges/fridges.selectors';
 import { Fridge } from 'core/models/fridge/fridge.interface';
 import { NavigatorService } from 'core/services/navigator/navigator.service';
 import { FridgeCardComponent } from '../fridge-card/fridge-card.component';

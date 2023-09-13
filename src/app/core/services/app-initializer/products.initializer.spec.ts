@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import { Store } from '@ngrx/store';
 
-import { ProductsActions } from 'app/state/products/products.actions';
+import { ProductsActions } from 'store/products/products.actions';
 import { initializeProductsFactory } from './products.initializer';
 
 describe('Products initializer', () => {

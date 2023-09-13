@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 
-import * as uiFeature from 'app/state/ui/ui.feature';
+import * as uiFeature from 'store/ui/ui.feature';
 import { MobilePageDirective } from './mobile-page.directive';
 
 @Component({
