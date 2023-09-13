@@ -11,7 +11,7 @@
     "start:server": "cd json-server && nodemon server.mjs --ignore db.json --ignore 'public/*'",
     "start:shell": "ng serve fridge-shell-app",
     "start:shell:ru": "ng serve fridge-shell-app --configuration=development_ru --port=4201",
-    "xi18n:shell": "cd projects/fridge-shell-app && ng extract-i18n --output-path=./src/locale && xliffmerge --profile ../../xliffmerge.json ru"
+    "xi18n:shell": "cd ./projects/fridge-shell-app && ng extract-i18n fridge-shell-app --output-path=./projects/fridge-shell-app/src/locale && xliffmerge --profile xliffmerge.json ru"
   },
   "private": true,
   "dependencies": {
