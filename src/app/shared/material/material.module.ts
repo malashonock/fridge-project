@@ -17,6 +17,7 @@ import { A11yModule } from '@angular/cdk/a11y';
 import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { matPaginatorIntlProvider } from './configs/mat-paginator-intl.config';
 import { matAutocompleteScrollStrategyProvider } from './configs/mat-autocomplete-scroll-strategy.config';
@@ -40,6 +41,7 @@ const materialModules = [
   MatCardModule,
   MatAutocompleteModule,
   ScrollingModule,
+  LayoutModule,
 ];
 
 @NgModule({
