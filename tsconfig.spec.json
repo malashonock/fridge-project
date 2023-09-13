@@ -3,7 +3,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "target": "ES2016",
-    "outDir": "./out-tsc/spec",
+    "outDir": "./out-tsc/fridge-project-spec",
     "module": "CommonJS",
     "types": [
       "jest",

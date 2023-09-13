@@ -2,17 +2,15 @@
   "name": "fridge-project",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "start:ru": "ng serve --configuration=development_ru --port=4201",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "prepare": "husky install",
     "test": "jest",
     "test:watch": "jest --watch --coverage",
     "lint": "ng lint --fix",
-    "prepare": "husky install",
+    "build:shell": "ng build fridge-shell-app",
     "start:server": "cd json-server && nodemon server.mjs --ignore db.json --ignore 'public/*'",
-    "i18n:extract": "ng extract-i18n --output-path=./src/locale && xliffmerge --profile xliffmerge.json ru"
+    "start:shell": "ng serve fridge-shell-app",
+    "start:shell:ru": "ng serve fridge-shell-app --configuration=development_ru --port=4201",
+    "xi18n:shell": "cd projects/fridge-shell-app && ng extract-i18n --output-path=./src/locale && xliffmerge --profile ../../xliffmerge.json ru"
   },
   "private": true,
   "dependencies": {

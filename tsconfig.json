@@ -2,16 +2,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./src",
-    "paths": {
-      "core/*": ["./app/core/*"],
-      "shared/*": ["./app/shared/*"],
-      "store/*": ["./app/store/*"],
-      "utils/*": ["./app/utils/*"],
-      "mocks/*": ["./app/mocks/*"],
-      "styles/*": ["./styles/*"],
-      "rootDir/*": ["../*"]
-    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -32,7 +22,19 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "baseUrl": "./projects",
+    "paths": {
+      "@shell/core/*": ["./fridge-shell-app/src/app/core/*"],
+      "@shell/shared/*": ["./fridge-shell-app/src/app/shared/*"],
+      "@shell/store/*": ["./fridge-shell-app/src/app/store/*"],
+      "@shell/utils/*": ["./fridge-shell-app/src/app/utils/*"],
+      "@shell/mocks/*": ["./fridge-shell-app/src/app/mocks/*"],
+      "@shell/styles/*": ["./fridge-shell-app/src/styles/*"],
+      "@shell/environments/*": ["./fridge-shell-app/src/environments/*"],
+      "@shell/*": ["./fridge-shell-app/src/*"],
+      "rootDir/*": ["../*"],
+    },
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

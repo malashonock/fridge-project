@@ -3,12 +3,12 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "fridge-project": {
+    "fridge-shell-app": {
       "i18n": {
         "sourceLocale": "en-US",
         "locales": {
           "ru": {
-            "translation": "src/locale/messages.ru.xlf"
+            "translation": "projects/fridge-shell-app/src/locale/messages.ru.xlf"
           }
         }
       },
@@ -19,24 +19,24 @@
           "changeDetection": "OnPush"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "projects/fridge-shell-app",
+      "sourceRoot": "projects/fridge-shell-app/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "index": "src/index.html",
+            "index": "projects/fridge-shell-app/src/index.html",
             "localize": true,
-            "main": "src/main.ts",
+            "main": "projects/fridge-shell-app/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "tsconfig.app.json",
+            "tsConfig": "projects/fridge-shell-app/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-              "src/assets",
+              "projects/fridge-shell-app/src/favicon.ico",
+              "projects/fridge-shell-app/src/assets",
               {
                 "glob": "**/*",
                 "input": "node_modules/leaflet/dist/images/",
@@ -46,8 +46,13 @@
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/leaflet/dist/leaflet.css",
-              "src/styles/index.scss"
+              "projects/fridge-shell-app/src/styles/index.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/fridge-shell-app/src/styles"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -65,7 +70,7 @@
                 }
               ],
               "outputHashing": "all",
-              "outputPath": "dist/fridge-project/prod"
+              "outputPath": "dist/fridge-shell-app/prod"
             },
             "development": {
               "buildOptimizer": false,
@@ -76,11 +81,11 @@
               "namedChunks": true,
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.development.ts"
+                  "replace": "projects/fridge-shell-app/src/environments/environment.ts",
+                  "with": "projects/fridge-shell-app/src/environments/environment.development.ts"
                 }
               ],
-              "outputPath": "dist/fridge-project/dev",
+              "outputPath": "dist/fridge-shell-app/dev",
               "localize": true,
               "customWebpackConfig": {
                 "path": "development.config.js"
@@ -99,16 +104,16 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production_en": {
-              "browserTarget": "fridge-project:build:production,en"
+              "browserTarget": "fridge-shell-app:build:production,en"
             },
             "production_ru": {
-              "browserTarget": "fridge-project:build:production,ru"
+              "browserTarget": "fridge-shell-app:build:production,ru"
             },
             "development_en": {
-              "browserTarget": "fridge-project:build:development,en"
+              "browserTarget": "fridge-shell-app:build:development,en"
             },
             "development_ru": {
-              "browserTarget": "fridge-project:build:development,ru"
+              "browserTarget": "fridge-shell-app:build:development,ru"
             }
           },
           "defaultConfiguration": "development_en"
@@ -116,15 +121,15 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "fridge-project:build"
+            "browserTarget": "fridge-shell-app:build"
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
+              "projects/fridge-shell-app/src/**/*.ts",
+              "projects/fridge-shell-app/src/**/*.html"
             ]
           }
         }
