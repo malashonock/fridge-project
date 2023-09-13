@@ -33,67 +33,65 @@ import { CounterInputComponent } from './components/counter-input/counter-input.
 import { GeolocationInputComponent } from './components/geolocation-input/geolocation-input.component';
 import { MapInputComponent } from './components/map-input/map-input.component';
 
+const exportedComponents = [
+  HeaderComponent,
+  MenuItemComponent,
+  SearchBoxComponent,
+  ImageUploaderComponent,
+  ConfirmDeleteComponent,
+  CounterInputComponent,
+  GeolocationInputComponent,
+  MapInputComponent,
+];
+
+const components = [
+  ...exportedComponents,
+  LogoComponent,
+  UserButtonComponent,
+  BurgerButtonComponent,
+];
+
+const exportedDirectives = [
+  MobileMenuDirective,
+  FixedHeaderDirective,
+  FileInputDirective,
+  NumericInputDirective,
+];
+
+const directives = [...exportedDirectives];
+
+const labelPipes = [
+  UserRoleLabelPipe,
+  WeightUnitLabelPipe,
+  NutrientLabelPipe,
+  PeriodLabelPipe,
+  ProductCategoryLabelPipe,
+  ShelfLifeLabelPipe,
+  AddressLabelPipe,
+];
+
+const exportedPipes = [
+  MoneyPipe,
+  KeysPipe,
+  AnyPipe,
+  OrPipe,
+  StaticAssetUrlPipe,
+  ...labelPipes,
+];
+
+const pipes = [...exportedPipes, InitialsPipe];
+
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    LogoComponent,
-    UserButtonComponent,
-    InitialsPipe,
-    MenuItemComponent,
-    BurgerButtonComponent,
-    MobileMenuDirective,
-    FixedHeaderDirective,
-    SearchBoxComponent,
-    MoneyPipe,
-    KeysPipe,
-    ImageUploaderComponent,
-    FileInputDirective,
-    NumericInputDirective,
-    AnyPipe,
-    ConfirmDeleteComponent,
-    UserRoleLabelPipe,
-    WeightUnitLabelPipe,
-    NutrientLabelPipe,
-    PeriodLabelPipe,
-    ProductCategoryLabelPipe,
-    ShelfLifeLabelPipe,
-    StaticAssetUrlPipe,
-    AddressLabelPipe,
-    OrPipe,
-    CounterInputComponent,
-    GeolocationInputComponent,
-    MapInputComponent,
-  ],
+  declarations: [components, directives, pipes],
   exports: [
+    exportedComponents,
+    exportedDirectives,
+    exportedPipes,
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
-    HeaderComponent,
-    MenuItemComponent,
-    MobileMenuDirective,
-    FixedHeaderDirective,
-    SearchBoxComponent,
-    MoneyPipe,
-    KeysPipe,
-    ImageUploaderComponent,
-    FileInputDirective,
-    NumericInputDirective,
-    AnyPipe,
-    ConfirmDeleteComponent,
-    UserRoleLabelPipe,
-    WeightUnitLabelPipe,
-    NutrientLabelPipe,
-    PeriodLabelPipe,
-    ProductCategoryLabelPipe,
-    ShelfLifeLabelPipe,
-    StaticAssetUrlPipe,
-    AddressLabelPipe,
-    OrPipe,
-    CounterInputComponent,
-    GeolocationInputComponent,
-    MapInputComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, MaterialModule],
+  imports: [CommonModule, ReactiveFormsModule, MaterialModule, RouterLink],
   providers: [AnyPipe],
 })
 export class SharedModule {}
