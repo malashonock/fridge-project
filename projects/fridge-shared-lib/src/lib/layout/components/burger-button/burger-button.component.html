@@ -1,0 +1,8 @@
+<button
+  mat-icon-button
+  [ngSwitch]="showMobileMenu$ | async"
+  (click)="toggleMobileMenu()"
+>
+  <mat-icon *ngSwitchCase="false">menu</mat-icon>
+  <mat-icon *ngSwitchCase="true">close</mat-icon>
+</button>
