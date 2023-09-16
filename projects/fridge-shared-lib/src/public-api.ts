@@ -13,6 +13,7 @@ export { MaterialModule } from './lib/modules/material/material.module';
 export { LayoutComponent } from './lib/modules/layout/components/layout/layout.component';
 export { ConfirmDeleteComponent } from './lib/components/confirm-delete/confirm-delete.component';
 export { CounterInputComponent } from './lib/components/counter-input/counter-input.component';
+export { MapInputComponent } from './lib/modules/geolocation/components/map-input/map-input.component';
 export { GeolocationInputComponent } from './lib/modules/geolocation/components/geolocation-input/geolocation-input.component';
 export { ImageUploaderComponent } from './lib/modules/file-upload/components/image-uploader/image-uploader.component';
 export { MenuItemComponent } from './lib/components/menu-item/menu-item.component';
@@ -21,6 +22,7 @@ export { SearchBoxComponent } from './lib/components/search-box/search-box.compo
 // Directives
 export { NumericInputDirective } from './lib/directives/numeric-input/numeric-input.directive';
 export { FileInputDirective } from './lib/modules/file-upload/directives/file-input/file-input.directive';
+export { MobilePageDirective } from './lib/modules/layout/directives/mobile-page/mobile-page.directive';
 
 // Pipes
 export { MoneyPipe } from './lib/pipes/money/money.pipe';

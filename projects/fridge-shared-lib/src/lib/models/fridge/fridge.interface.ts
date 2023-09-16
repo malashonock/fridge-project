@@ -1,5 +1,5 @@
-import { Address } from '@shared/models/location/address.interface';
-import { GeolocationCoords } from '@shared/models/location/geolocation-coords.interface';
+import { GeolocationCoords } from '@shared/modules/geolocation/models/geolocation-coords.interface';
+import { Address } from './address.interface';
 import { ProductQuantityDto } from './product-quantity-dto.interface';
 
 export interface Fridge {

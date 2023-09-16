@@ -6,7 +6,7 @@ import { httpInterceptorProviders } from './interceptors';
 import { RootStoreModule } from './store/root-store.module';
 
 @NgModule({
-  exports: [RootStoreModule, InitializersModule, HttpClientModule],
+  imports: [RootStoreModule, InitializersModule, HttpClientModule],
   providers: [httpInterceptorProviders],
 })
 export class CoreModule {
