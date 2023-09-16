@@ -25,12 +25,11 @@
     ],
     "baseUrl": "./projects",
     "paths": {
+      "@shared/*": ["./fridge-shared-lib/src/lib/*"],
       "@shell/core/*": ["./fridge-shell-app/src/app/core/*"],
-      "@shell/shared/*": ["./fridge-shell-app/src/app/shared/*"],
       "@shell/store/*": ["./fridge-shell-app/src/app/store/*"],
       "@shell/utils/*": ["./fridge-shell-app/src/app/utils/*"],
       "@shell/mocks/*": ["./fridge-shell-app/src/app/mocks/*"],
-      "@shell/styles/*": ["./fridge-shell-app/src/styles/*"],
       "@shell/environments/*": ["./fridge-shell-app/src/environments/*"],
       "@shell/*": [
         "./fridge-shell-app/src/*"

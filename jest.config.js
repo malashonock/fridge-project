@@ -18,6 +18,7 @@ module.exports = {
     "^@shell/environments/(.*)": [
       "<rootDir>/projects/fridge-shell-app/src/environments/$1",
     ],
+    "^@shared/(.*)": ["<rootDir>/projects/fridge-shared-lib/src/lib/$1"],
     "^@shell/(.*)": ["<rootDir>/projects/fridge-shell-app/src/app/$1"],
     "^rootDir/(.*)": ["<rootDir>/$1"],
   },
