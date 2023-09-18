@@ -6,6 +6,7 @@ import {
   AddressLabelPipe,
   AnyPipe,
   ConfirmDeleteComponent,
+  CounterInputComponent,
   FileUploadModule,
   GeolocationModule,
   LayoutModule,
@@ -78,6 +79,7 @@ import { FridgesMapComponent } from './components/fridges-map/fridges-map.compon
     ConfirmDeleteComponent,
     FileUploadModule,
     GeolocationModule,
+    CounterInputComponent,
   ],
   providers: [adminPageMenuConfigProvider, AnyPipe],
 })

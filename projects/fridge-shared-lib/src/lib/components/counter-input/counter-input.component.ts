@@ -14,7 +14,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatMiniFabButton } from '@angular/material/button';
+import { MatButtonModule, MatMiniFabButton } from '@angular/material/button';
 import {
   BehaviorSubject,
   Observable,
@@ -47,6 +47,7 @@ import {
   imports: [
     CommonModule,
     MatIconModule,
+    MatButtonModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     NumericInputDirective,
