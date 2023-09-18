@@ -14,12 +14,14 @@ import { FixedHeaderDirective } from './directives/fixed-header/fixed-header.dir
 import { MobilePageDirective } from './directives/mobile-page/mobile-page.directive';
 import { MobileMenuDirective } from './directives/mobile-menu/mobile-menu.directive';
 import { InitialsPipe } from './pipes/initials/initials.pipe';
+import { MatButtonModule } from '@angular/material/button';
 
 const materialModules = [
   MatIconModule,
   MatToolbarModule,
   MatMenuModule,
   MatSidenavModule,
+  MatButtonModule,
 ];
 
 @NgModule({

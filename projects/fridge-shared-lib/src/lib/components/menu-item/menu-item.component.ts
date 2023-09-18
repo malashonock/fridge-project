@@ -7,6 +7,7 @@ import {
   SkipSelf,
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenav } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 
@@ -21,13 +22,15 @@ export enum MenuItemVariant {
   Tile = 'menu-item--tile',
 }
 
+const materialModules = [MatIconModule, MatMenuModule];
+
 @Component({
   selector: 'app-menu-item',
   templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, RouterModule, MatIconModule],
+  imports: [CommonModule, RouterModule, materialModules],
 })
 export class MenuItemComponent {
   @Input() public config: MenuItemConfig;
