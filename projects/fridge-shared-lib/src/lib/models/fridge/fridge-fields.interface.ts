@@ -1,4 +1,4 @@
-import { GeolocationCoords } from '@shared/modules/geolocation/models/geolocation-coords.interface';
+import { GeolocationCoords } from '../../modules/geolocation/models/geolocation-coords.interface';
 import { Address } from './address.interface';
 import { ProductQuantityDto } from './product-quantity-dto.interface';
 

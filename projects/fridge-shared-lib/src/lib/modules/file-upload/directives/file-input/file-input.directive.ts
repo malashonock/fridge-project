@@ -7,7 +7,7 @@ import { FileWithUrl } from '../../classes/file-with-url/file-with-url.class';
 import {
   ChangeEventHandler,
   ngValueAccessorProvider,
-} from '@shared/utils/form/form.utils';
+} from '../../../../utils/form/form.utils';
 
 @Directive({
   selector: 'input[type="file"]',

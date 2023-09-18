@@ -18,16 +18,16 @@ import {
 import { Subject, distinctUntilChanged, takeUntil } from 'rxjs';
 
 import { GeolocationCoords } from '../../models/geolocation-coords.interface';
-import { EarlyErrorStateMatcher } from '@shared/classes/early-error-state-matcher/early-error-state-matcher.class';
-import { NumberValidators } from '@shared/validators/number/number.validators';
+import { EarlyErrorStateMatcher } from '../../../../classes/early-error-state-matcher/early-error-state-matcher.class';
+import { NumberValidators } from '../../../../validators/number/number.validators';
 import {
   ChangeEventHandler,
   controlHasError,
   getControlError,
   ngValidatorsProvider,
   ngValueAccessorProvider,
-} from '@shared/utils/form/form.utils';
-import { NumericInputDirective } from '@shared/directives/numeric-input/numeric-input.directive';
+} from '../../../../utils/form/form.utils';
+import { NumericInputDirective } from '../../../../directives/numeric-input/numeric-input.directive';
 
 @Component({
   selector: 'app-geolocation-input',

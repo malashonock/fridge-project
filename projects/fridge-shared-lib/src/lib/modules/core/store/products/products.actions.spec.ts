@@ -2,7 +2,7 @@ import {
   mockProduct1,
   mockProduct1Data,
   mockProducts1,
-} from '@shared/mocks/product.mocks';
+} from '../../../../mocks/product.mocks';
 import { ProductsActions } from './products.actions';
 
 describe('UI action creators', () => {

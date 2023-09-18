@@ -7,7 +7,7 @@ import {
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 
-import { UiActions } from '@shared/modules/core/store/ui/ui.actions';
+import { UiActions } from '../../../../modules/core/store/ui/ui.actions';
 
 @Directive({
   selector: '[appMobilePage]',

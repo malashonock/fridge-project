@@ -6,7 +6,7 @@
     "test": "jest",
     "test:watch": "jest --watch --coverage",
     "lint": "ng lint --fix",
-    "build:shared": "ng build fridge-shared-lib",
+    "build:shared": "ng build fridge-shared-lib --watch",
     "build:shell": "ng build fridge-shell-app",
     "start:server": "cd json-server && nodemon server.mjs --ignore db.json --ignore 'public/*'",
     "start:shell": "ng serve fridge-shell-app",

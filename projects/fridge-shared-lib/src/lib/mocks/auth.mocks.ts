@@ -1,7 +1,7 @@
-import { AuthSession } from '@shared/modules/core/store/auth/auth.feature';
+import { AuthSession } from '../modules/core/store/auth/auth.feature';
 import { mockAdmin, mockUser } from './user.mocks';
-import { SignupCredentials } from '@shared/models/auth/signup.interface';
-import { LoginCredentials } from '@shared/models/auth/login.interface';
+import { SignupCredentials } from '../models/auth/signup.interface';
+import { LoginCredentials } from '../models/auth/login.interface';
 
 export const mockUserSession: AuthSession = {
   user: mockUser,

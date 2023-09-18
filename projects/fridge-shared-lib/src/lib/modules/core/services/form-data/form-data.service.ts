@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { CoreModule } from '@shared/modules/core/core.module';
-
-@Injectable({
-  providedIn: CoreModule,
-})
+@Injectable()
 export class FormDataService {
   public buildFormData<T extends object>(fields: T): FormData {
     const formData = new FormData();

@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { Address } from '@shared/models/fridge/address.interface';
+import { Address } from '../../../models/fridge/address.interface';
 import { AnyPipe } from '../../any/any.pipe';
 
 @Pipe({

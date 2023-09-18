@@ -9,7 +9,7 @@ import {
   minCount,
   startWith,
   endWith,
-} from '@shared/utils/regex/regex.utils';
+} from '../../utils/regex/regex.utils';
 
 export class EmailValidators {
   public static valid(control: AbstractControl): ValidationErrors | null {

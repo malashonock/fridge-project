@@ -1,5 +1,5 @@
-import { UserRole } from '@shared/models/user/user-role.enum';
-import { User } from '@shared/models/user/user.interface';
+import { UserRole } from '../models/user/user-role.enum';
+import { User } from '../models/user/user.interface';
 
 export const mockUser: User = {
   id: '1',

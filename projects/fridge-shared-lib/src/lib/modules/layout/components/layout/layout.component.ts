@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { MobilePageDirective } from '@shared/modules/layout/directives/mobile-page/mobile-page.directive';
+import { MobilePageDirective } from '../../directives/mobile-page/mobile-page.directive';
 
 @Component({
   selector: 'app-layout',

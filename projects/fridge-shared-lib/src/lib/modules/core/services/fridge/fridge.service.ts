@@ -2,15 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Fridge } from '@shared/models/fridge/fridge.interface';
-import { FridgeFields } from '@shared/models/fridge/fridge-fields.interface';
+import { Fridge } from '../../../../models/fridge/fridge.interface';
+import { FridgeFields } from '../../../../models/fridge/fridge-fields.interface';
 import { FormDataService } from '../form-data/form-data.service';
-import { WithId } from '@shared/models/id/with-id.interface';
-import { CoreModule } from '@shared/modules/core/core.module';
+import { WithId } from '../../../../models/id/with-id.interface';
 
-@Injectable({
-  providedIn: CoreModule,
-})
+@Injectable()
 export class FridgeService {
   public constructor(
     private httpClient: HttpClient,

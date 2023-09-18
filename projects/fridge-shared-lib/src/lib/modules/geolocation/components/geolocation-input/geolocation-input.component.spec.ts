@@ -7,8 +7,8 @@ import '@angular/localize/init';
 
 import { GeolocationInputComponent } from './geolocation-input.component';
 import { MapInputComponent } from '../map-input/map-input.component';
-import { EarlyErrorStateMatcher } from '@shared/classes/early-error-state-matcher/early-error-state-matcher.class';
-import { NumericInputDirective } from '@shared/directives/numeric-input/numeric-input.directive';
+import { EarlyErrorStateMatcher } from '../../../../classes/early-error-state-matcher/early-error-state-matcher.class';
+import { NumericInputDirective } from '../../../../directives/numeric-input/numeric-input.directive';
 
 describe('GeolocationInputComponent', () => {
   let component: GeolocationInputComponent;

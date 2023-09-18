@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { FixedHeaderDirective } from './fixed-header.directive';
-import { SharedModule } from '@shared/shared.module';
+import { MaterialModule } from '../../../../modules/material/material.module';
 import { ResizeObserverSpies } from 'rootDir/jest-global-mocks';
 
 @Component({
@@ -23,7 +23,7 @@ describe('FixedHeaderDirective', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HostComponent],
-      imports: [SharedModule],
+      imports: [MaterialModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HostComponent);

@@ -3,8 +3,8 @@ import {
   selectLoggedUser,
   selectSessionExpirationTime,
 } from './auth.selectors';
-import { mockUser } from '@shared/mocks/user.mocks';
-import { mockUserSession } from '@shared/mocks/auth.mocks';
+import { mockUser } from '../../../../mocks/user.mocks';
+import { mockUserSession } from '../../../../mocks/auth.mocks';
 
 describe('Auth feature selectors', () => {
   describe('selectLoggedUser', () => {

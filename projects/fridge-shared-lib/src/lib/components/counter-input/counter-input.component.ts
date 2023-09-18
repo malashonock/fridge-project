@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -28,14 +29,13 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-import { EarlyErrorStateMatcher } from '@shared/classes/early-error-state-matcher/early-error-state-matcher.class';
-import { NumberValidators } from '@shared/validators/number/number.validators';
-import { NumericInputDirective } from '@shared/directives/numeric-input/numeric-input.directive';
+import { EarlyErrorStateMatcher } from '../../classes/early-error-state-matcher/early-error-state-matcher.class';
+import { NumberValidators } from '../../validators/number/number.validators';
+import { NumericInputDirective } from '../../directives/numeric-input/numeric-input.directive';
 import {
   ChangeEventHandler,
   ngValueAccessorProvider,
-} from '@shared/utils/form/form.utils';
-import { CommonModule } from '@angular/common';
+} from '../../utils/form/form.utils';
 
 @Component({
   selector: 'app-counter-input',

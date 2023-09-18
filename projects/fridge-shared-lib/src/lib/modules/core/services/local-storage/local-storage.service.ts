@@ -2,11 +2,7 @@
 
 import { Injectable } from '@angular/core';
 
-import { CoreModule } from '@shared/modules/core/core.module';
-
-@Injectable({
-  providedIn: CoreModule,
-})
+@Injectable()
 export class LocalStorageService {
   public getItem(key: string, parsableDateFields: string[] = []): any {
     const itemAsText = window.localStorage.getItem(key);

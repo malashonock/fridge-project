@@ -16,7 +16,11 @@ export { CounterInputComponent } from './lib/components/counter-input/counter-in
 export { MapInputComponent } from './lib/modules/geolocation/components/map-input/map-input.component';
 export { GeolocationInputComponent } from './lib/modules/geolocation/components/geolocation-input/geolocation-input.component';
 export { ImageUploaderComponent } from './lib/modules/file-upload/components/image-uploader/image-uploader.component';
-export { MenuItemComponent } from './lib/components/menu-item/menu-item.component';
+export {
+  MenuItemComponent,
+  MenuItemConfig,
+  MenuItemVariant,
+} from './lib/components/menu-item/menu-item.component';
 export { SearchBoxComponent } from './lib/components/search-box/search-box.component';
 
 // Directives
@@ -45,10 +49,29 @@ export { ProductsActions } from './lib/modules/core/store/products/products.acti
 export { UiActions } from './lib/modules/core/store/ui/ui.actions';
 
 // Store - selectors
-export * from './lib/modules/core/store/auth/auth.selectors';
-export * from './lib/modules/core/store/fridges/fridges.selectors';
-export * from './lib/modules/core/store/products/products.selectors';
-export * from './lib/modules/core/store/ui/ui.selectors';
+export {
+  selectAuthState,
+  selectAuthToken,
+  selectLoggedUser,
+  selectSessionExpirationTime,
+} from './lib/modules/core/store/auth/auth.selectors';
+export {
+  selectAllFridges,
+  selectFridge,
+  selectFridgeProducts,
+  selectFridgeSubmitting,
+  selectFridgesState,
+} from './lib/modules/core/store/fridges/fridges.selectors';
+export {
+  selectAllProducts,
+  selectProductSubmitting,
+  selectProductsState,
+} from './lib/modules/core/store/products/products.selectors';
+export {
+  selectMobileMode,
+  selectShowSideMenu,
+  selectUiState,
+} from './lib/modules/core/store/ui/ui.selectors';
 
 // Services
 export { NavigatorService } from './lib/modules/geolocation/services/navigator/navigator.service';
@@ -94,13 +117,46 @@ export { PasswordValidators } from './lib/validators/password/password.validator
 
 // Utils
 export {
-  controlHasError,
-  getControlError,
   ChangeEventHandler,
   ControlValueAccessorImplementor,
   ValidatorImplementor,
+  controlHasError,
+  getControlError,
   ngValidatorsProvider,
   ngValueAccessorProvider,
 } from './lib/utils/form/form.utils';
 export { menuItemTrackBy } from './lib/utils/menu-item/menu-item.utils';
 export { getDecimalSeparator } from './lib/utils/i18n/i18n.utils';
+
+// Mocks
+export {
+  mockAdminSession,
+  mockLoginCredentials,
+  mockSignupCredentials,
+  mockUserSession,
+} from './lib/mocks/auth.mocks';
+export {
+  mockFridge1,
+  mockFridge2,
+  mockFridges1,
+  mockFridges2,
+  mockFridge1Data,
+} from './lib/mocks/fridge.mocks';
+export {
+  mockProduct1,
+  mockProduct2,
+  mockProducts1,
+  mockProducts2,
+  mockProduct1Data,
+} from './lib/mocks/product.mocks';
+export { mockAdmin, mockUser } from './lib/mocks/user.mocks';
+
+// Configs
+export { NUTRIENTS } from './lib/modules/core/initializers/configs/nutrient.config';
+export { PERIODS } from './lib/modules/core/initializers/configs/periods.config';
+export { PRODUCT_CATEGORIES } from './lib/modules/core/initializers/configs/product-categories.config';
+export {
+  USER_ROLES,
+  userRolesProvider,
+} from './lib/modules/core/initializers/configs/user-roles.config';
+export { WEIGHT_UNITS } from './lib/modules/core/initializers/configs/weight-units.config';

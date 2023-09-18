@@ -1,6 +1,6 @@
 import '@angular/localize/init';
 
-import { ProductCategory } from '@shared/models/product/product-category.enum';
+import { ProductCategory } from '../../../models/product/product-category.enum';
 import { ProductCategoryLabelPipe } from './product-category-label.pipe';
 
 describe('ProductCategoryLabelPipe', () => {

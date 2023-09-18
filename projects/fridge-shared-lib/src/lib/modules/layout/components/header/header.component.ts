@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { selectMobileMode } from '@shared/modules/core/store/ui/ui.selectors';
+import { selectMobileMode } from '../../../../modules/core/store/ui/ui.selectors';
 
 @Component({
   selector: 'app-header',

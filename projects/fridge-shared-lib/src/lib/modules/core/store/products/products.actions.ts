@@ -1,7 +1,7 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
-import { Product } from '@shared/models/product/product.interface';
-import { ProductFields } from '@shared/models/product/product-fields.interface';
+import { Product } from '../../../../models/product/product.interface';
+import { ProductFields } from '../../../../models/product/product-fields.interface';
 
 export const ProductsActions = createActionGroup({
   source: 'Products',

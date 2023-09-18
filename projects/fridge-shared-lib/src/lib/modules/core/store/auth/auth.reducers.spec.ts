@@ -1,6 +1,9 @@
 import { AuthActionReducers } from './auth.reducers';
 import { AuthActions } from './auth.actions';
-import { mockAdminSession, mockUserSession } from '@shared/mocks/auth.mocks';
+import {
+  mockAdminSession,
+  mockUserSession,
+} from '../../../../mocks/auth.mocks';
 
 describe('Auth action reducers', () => {
   describe('loginSuccessReducer', () => {

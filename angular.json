@@ -46,11 +46,11 @@
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/leaflet/dist/leaflet.css",
-              "projects/fridge-shell-app/src/styles/index.scss"
+              "projects/fridge-shell-app/src/index.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "projects/fridge-shell-app/src/styles"
+                "dist/fridge-shared-lib/src/styles"
               ]
             },
             "scripts": []
@@ -140,14 +140,6 @@
       }
     },
     "fridge-shared-lib": {
-      "i18n": {
-        "sourceLocale": "en-US",
-        "locales": {
-          "ru": {
-            "translation": "projects/fridge-shared-lib/src/locale/messages.ru.xlf"
-          }
-        }
-      },
       "projectType": "library",
       "schematics": {
         "@schematics/angular:component": {

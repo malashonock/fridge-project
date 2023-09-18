@@ -1,7 +1,7 @@
 import { createSelector } from '@ngrx/store';
 
 import { ProductsState, productsFeature } from './products.feature';
-import { Product } from '@shared/models/product/product.interface';
+import { Product } from '../../../../models/product/product.interface';
 
 export const { selectProductsState } = productsFeature;
 

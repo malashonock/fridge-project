@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
 
-import { FridgeService } from '@shared/modules/core/services/fridge/fridge.service';
+import { FridgeService } from '../../services/fridge/fridge.service';
 import { FridgesActions } from './fridges.actions';
-import { Fridge } from '@shared/models/fridge/fridge.interface';
-import { WithId } from '@shared/models/id/with-id.interface';
+import { Fridge } from '../../../../models/fridge/fridge.interface';
+import { WithId } from '../../../../models/id/with-id.interface';
 
 @Injectable()
 export class FridgesEffects {

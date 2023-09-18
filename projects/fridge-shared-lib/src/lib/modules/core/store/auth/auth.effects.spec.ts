@@ -8,16 +8,16 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AuthEffects } from './auth.effects';
-import { AuthService } from '@shared/modules/core/services/auth/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { AuthActions } from './auth.actions';
-import { mockUser } from '@shared/mocks/user.mocks';
+import { mockUser } from '../../../../mocks/user.mocks';
 import {
   mockAdminSession,
   mockLoginCredentials,
   mockSignupCredentials,
   mockUserSession,
-} from '@shared/mocks/auth.mocks';
-import { LocalStorageService } from '@shared/modules/core/services/local-storage/local-storage.service';
+} from '../../../../mocks/auth.mocks';
+import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 
 describe('Auth feature effects', () => {
   let actions$ = new Observable<Action>();

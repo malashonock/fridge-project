@@ -1,6 +1,6 @@
 import '@angular/localize/init';
 
-import { ShelfLife } from '@shared/models/product/shelf-life.type';
+import { ShelfLife } from '../../../models/product/shelf-life.type';
 import { ShelfLifeLabelPipe } from './shelf-life-label.pipe';
 
 describe('ShelfLifeLabelPipe', () => {

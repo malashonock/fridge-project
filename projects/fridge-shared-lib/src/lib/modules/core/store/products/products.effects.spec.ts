@@ -6,14 +6,14 @@ import { cold, hot } from 'jest-marbles';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ProductsEffects } from './products.effects';
-import { ProductService } from '@shared/modules/core/services/product/product.service';
+import { ProductService } from '../../services/product/product.service';
 import { ProductsActions } from './products.actions';
 import {
   mockProduct1,
   mockProduct1Data,
   mockProducts1,
-} from '@shared/mocks/product.mocks';
-import { FormDataService } from '@shared/modules/core/services/form-data/form-data.service';
+} from '../../../../mocks/product.mocks';
+import { FormDataService } from '../../services/form-data/form-data.service';
 
 describe('Products feature effects', () => {
   let actions$ = new Observable<Action>();

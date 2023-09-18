@@ -19,8 +19,8 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 
 import { FileWithUrl } from '../../classes/file-with-url/file-with-url.class';
 import { FileInputDirective } from '../../directives/file-input/file-input.directive';
-import { FileValidators } from '@shared/validators/file/file.validators';
-import { ChangeEventHandler } from '@shared/utils/form/form.utils';
+import { FileValidators } from '../../../../validators/file/file.validators';
+import { ChangeEventHandler } from '../../../../utils/form/form.utils';
 
 @Component({
   selector: 'app-image-uploader',

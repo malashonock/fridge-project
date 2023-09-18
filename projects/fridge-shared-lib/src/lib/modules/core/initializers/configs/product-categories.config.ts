@@ -1,6 +1,6 @@
 import { InjectionToken, Provider } from '@angular/core';
 
-import { ProductCategory } from '@shared/models/product/product-category.enum';
+import { ProductCategory } from '../../../../models/product/product-category.enum';
 
 export const productCategories: ProductCategory[] = [
   ProductCategory.Soups,

@@ -2,15 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Product } from '@shared/models/product/product.interface';
-import { ProductFields } from '@shared/models/product/product-fields.interface';
-import { WithId } from '@shared/models/id/with-id.interface';
+import { Product } from '../../../../models/product/product.interface';
+import { ProductFields } from '../../../../models/product/product-fields.interface';
+import { WithId } from '../../../../models/id/with-id.interface';
 import { FormDataService } from '../form-data/form-data.service';
-import { CoreModule } from '@shared/modules/core/core.module';
 
-@Injectable({
-  providedIn: CoreModule,
-})
+@Injectable()
 export class ProductService {
   public constructor(
     private httpClient: HttpClient,

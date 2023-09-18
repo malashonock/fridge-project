@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CounterInputComponent } from './counter-input.component';
-import { EarlyErrorStateMatcher } from '@shared/classes/early-error-state-matcher/early-error-state-matcher.class';
+import { EarlyErrorStateMatcher } from '../../classes/early-error-state-matcher/early-error-state-matcher.class';
 
 describe('CounterInputComponent', () => {
   let component: CounterInputComponent;

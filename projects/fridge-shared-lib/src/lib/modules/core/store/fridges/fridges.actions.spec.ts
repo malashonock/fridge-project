@@ -2,7 +2,7 @@ import {
   mockFridge1,
   mockFridge1Data,
   mockFridges1,
-} from '@shared/mocks/fridge.mocks';
+} from '../../../../mocks/fridge.mocks';
 import { FridgesActions } from './fridges.actions';
 
 describe('UI action creators', () => {

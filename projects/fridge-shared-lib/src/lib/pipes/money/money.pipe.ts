@@ -1,5 +1,6 @@
 import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
-import { getDecimalSeparator } from '@shared/utils/i18n/i18n.utils';
+
+import { getDecimalSeparator } from '../../utils/i18n/i18n.utils';
 
 @Pipe({
   name: 'money',

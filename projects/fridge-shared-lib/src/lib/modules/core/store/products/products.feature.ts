@@ -2,7 +2,7 @@ import { EntityState } from '@ngrx/entity';
 import { createFeature, createReducer, on } from '@ngrx/store';
 
 import { ProductsActions } from './products.actions';
-import { Product } from '@shared/models/product/product.interface';
+import { Product } from '../../../../models/product/product.interface';
 import { ProductsActionReducers } from './products.reducers';
 
 export type ProductsState = EntityState<Product> & {

@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 
-import { AuthService } from '@shared/modules/core/services/auth/auth.service';
-import { User } from '@shared/models/user/user.interface';
-import { UserRole } from '@shared/models/user/user-role.enum';
+import { AuthService } from '../../services/auth/auth.service';
+import { User } from '../../../../models/user/user.interface';
+import { UserRole } from '../../../../models/user/user-role.enum';
 import { AuthActions } from './auth.actions';
 import { AuthSession } from './auth.feature';
 

@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 
-import { User } from '@shared/models/user/user.interface';
-import { AuthActions } from '@shared/modules/core/store/auth/auth.actions';
-import { selectLoggedUser } from '@shared/modules/core/store/auth/auth.selectors';
+import { User } from '../../../../models/user/user.interface';
+import { AuthActions } from '../../../../modules/core/store/auth/auth.actions';
+import { selectLoggedUser } from '../../../../modules/core/store/auth/auth.selectors';
 
 @Component({
   selector: 'app-user-button',

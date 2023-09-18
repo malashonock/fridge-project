@@ -9,8 +9,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs';
 
 import { AuthorizationGuard } from './authorization.guard';
-import { AuthSessionState } from '@shared/modules/core/store/auth/auth.feature';
-import { UserRole } from '@shared/models/user/user-role.enum';
+import { AuthSessionState } from '../../store/auth/auth.feature';
+import { UserRole } from '../../../../models/user/user-role.enum';
 
 describe('AuthorizationGuard', () => {
   let router: Router;

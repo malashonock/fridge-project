@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
 
-import { RootStoreModule } from '@shared/modules/core/store/root-store.module';
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/logo/logo.component';
@@ -14,7 +14,6 @@ import { FixedHeaderDirective } from './directives/fixed-header/fixed-header.dir
 import { MobilePageDirective } from './directives/mobile-page/mobile-page.directive';
 import { MobileMenuDirective } from './directives/mobile-menu/mobile-menu.directive';
 import { InitialsPipe } from './pipes/initials/initials.pipe';
-import { MatMenuModule } from '@angular/material/menu';
 
 const materialModules = [
   MatIconModule,
@@ -34,12 +33,7 @@ const materialModules = [
     MobileMenuDirective,
     InitialsPipe,
   ],
-  imports: [
-    RootStoreModule,
-    CommonModule,
-    materialModules,
-    MobilePageDirective,
-  ],
+  imports: [CommonModule, materialModules, MobilePageDirective],
   exports: [LayoutComponent],
 })
 export class LayoutModule {}

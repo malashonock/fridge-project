@@ -1,7 +1,7 @@
 import '@angular/localize/init';
 
 import { NutrientLabelPipe } from './nutrient-label.pipe';
-import { Nutrient } from '@shared/models/product/nutrient.enum';
+import { Nutrient } from '../../../models/product/nutrient.enum';
 
 describe('NutrientLabelPipe', () => {
   let pipe: NutrientLabelPipe;

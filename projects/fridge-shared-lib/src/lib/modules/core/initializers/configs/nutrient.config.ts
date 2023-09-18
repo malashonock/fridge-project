@@ -1,6 +1,6 @@
 import { InjectionToken, Provider } from '@angular/core';
 
-import { Nutrient } from '@shared/models/product/nutrient.enum';
+import { Nutrient } from '../../../../models/product/nutrient.enum';
 
 export const nutrients: Nutrient[] = [
   Nutrient.Proteins,

@@ -3,9 +3,9 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { Store } from '@ngrx/store';
 
 import { initializeAuthSessionFactory } from './auth-session.initializer';
-import { AuthActions } from '@shared/modules/core/store/auth/auth.actions';
-import { mockUserSession } from '@shared/mocks/auth.mocks';
-import { AuthService } from '@shared/modules/core/services/auth/auth.service';
+import { AuthActions } from '../../store/auth/auth.actions';
+import { AuthService } from '../../services/auth/auth.service';
+import { mockUserSession } from '../../../../mocks/auth.mocks';
 
 describe('Auth session initializer', () => {
   const spyOnAuthServiceRestoreSession = jest.fn();

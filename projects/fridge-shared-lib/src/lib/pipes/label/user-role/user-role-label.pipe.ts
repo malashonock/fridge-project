@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { UserRole } from '@shared/models/user/user-role.enum';
+import { UserRole } from '../../../models/user/user-role.enum';
 
 @Pipe({
   name: 'userRoleLabel',

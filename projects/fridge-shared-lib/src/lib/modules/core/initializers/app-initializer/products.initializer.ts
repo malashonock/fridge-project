@@ -1,7 +1,7 @@
 import { Store } from '@ngrx/store';
 import { APP_INITIALIZER, Provider } from '@angular/core';
 
-import { ProductsActions } from '@shared/modules/core/store/products/products.actions';
+import { ProductsActions } from '../../../../modules/core/store/products/products.actions';
 
 // Fetch products on app startup
 export const initializeProductsFactory = (store: Store) => (): void => {

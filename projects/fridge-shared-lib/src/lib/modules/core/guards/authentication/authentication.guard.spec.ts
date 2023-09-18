@@ -9,8 +9,8 @@ import {
 } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { AuthSessionState } from '@shared/modules/core/store/auth/auth.feature';
-import { UserRole } from '@shared/models/user/user-role.enum';
+import { AuthSessionState } from '../../store/auth/auth.feature';
+import { UserRole } from '../../../../models/user/user-role.enum';
 import { AuthenticationGuard } from './authentication.guard';
 
 describe('AuthenticationGuard', () => {

@@ -1,4 +1,4 @@
-import { mockFridge1, mockFridges1 } from '@shared/mocks/fridge.mocks';
+import { mockFridge1, mockFridges1 } from '../../../../mocks/fridge.mocks';
 import { FridgesActions } from './fridges.actions';
 import { FridgesState } from './fridges.feature';
 import { FridgesActionReducers } from './fridges.reducers';

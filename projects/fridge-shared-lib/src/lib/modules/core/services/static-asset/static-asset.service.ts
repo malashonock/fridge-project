@@ -2,12 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
-import { FileWithUrl } from '@shared/modules/file-upload/classes/file-with-url/file-with-url.class';
-import { CoreModule } from '@shared/modules/core/core.module';
+import { FileWithUrl } from '../../../../modules/file-upload/classes/file-with-url/file-with-url.class';
 
-@Injectable({
-  providedIn: CoreModule,
-})
+@Injectable()
 export class StaticAssetService {
   public constructor(
     private httpClient: HttpClient,

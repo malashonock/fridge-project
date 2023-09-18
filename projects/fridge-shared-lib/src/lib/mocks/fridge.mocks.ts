@@ -1,5 +1,5 @@
-import { FridgeFields } from '@shared/models/fridge/fridge-fields.interface';
-import { Fridge } from '@shared/models/fridge/fridge.interface';
+import { FridgeFields } from '../models/fridge/fridge-fields.interface';
+import { Fridge } from '../models/fridge/fridge.interface';
 
 export const mockFridge1: Fridge = {
   id: '1',

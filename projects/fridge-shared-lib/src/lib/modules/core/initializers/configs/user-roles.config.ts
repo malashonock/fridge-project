@@ -1,6 +1,6 @@
 import { InjectionToken, Provider } from '@angular/core';
 
-import { UserRole } from '@shared/models/user/user-role.enum';
+import { UserRole } from '../../../../models/user/user-role.enum';
 
 export const userRoles: UserRole[] = [UserRole.User, UserRole.Admin];
 

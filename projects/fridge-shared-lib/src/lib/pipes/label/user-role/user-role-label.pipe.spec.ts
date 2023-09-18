@@ -1,6 +1,6 @@
 import '@angular/localize/init';
 
-import { UserRole } from '@shared/models/user/user-role.enum';
+import { UserRole } from '../../../models/user/user-role.enum';
 import { UserRoleLabelPipe } from './user-role-label.pipe';
 
 describe('UserRoleLabelPipe', () => {

@@ -7,12 +7,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { MatSidenavHarness } from '@angular/material/sidenav/testing';
+import '@angular/localize/init';
 
 import { MobileMenuDirective } from './mobile-menu.directive';
-import { SharedModule } from '@shared/shared.module';
-import { UiActions } from '@shared/modules/core/store/ui/ui.actions';
-import { uiFeature } from '@shared/modules/core/store/ui/ui.feature';
-import { UiEffects } from '@shared/modules/core/store/ui/ui.effects';
+import { UiActions } from '../../../../modules/core/store/ui/ui.actions';
+import { uiFeature } from '../../../../modules/core/store/ui/ui.feature';
+import { UiEffects } from '../../../../modules/core/store/ui/ui.effects';
+import { MaterialModule } from '../../../material/material.module';
 
 @Component({
   template: `
@@ -32,9 +33,9 @@ describe('MobileMenuDirective', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HostComponent],
+      declarations: [HostComponent, MobileMenuDirective],
       imports: [
-        SharedModule,
+        MaterialModule,
         BrowserAnimationsModule,
         StoreModule.forRoot({
           [uiFeature.name]: uiFeature.reducer,

@@ -1,7 +1,7 @@
-import { Product } from '@shared/models/product/product.interface';
-import { ProductCategory } from '@shared/models/product/product-category.enum';
-import { ProductFields } from '@shared/models/product/product-fields.interface';
-import { UnitOfWeight } from '@shared/models/product/unit-of-weight.enum';
+import { Product } from '../models/product/product.interface';
+import { ProductCategory } from '../models/product/product-category.enum';
+import { ProductFields } from '../models/product/product-fields.interface';
+import { UnitOfWeight } from '../models/product/unit-of-weight.enum';
 
 export const mockProduct1: Product = {
   id: '5',

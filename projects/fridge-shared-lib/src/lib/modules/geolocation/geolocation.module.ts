@@ -5,7 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MapInputComponent } from './components/map-input/map-input.component';
 import { GeolocationInputComponent } from './components/geolocation-input/geolocation-input.component';
-import { NumericInputDirective } from '@shared/directives/numeric-input/numeric-input.directive';
+import { NumericInputDirective } from '../../directives/numeric-input/numeric-input.directive';
 
 const materialModules = [MatFormFieldModule];
 

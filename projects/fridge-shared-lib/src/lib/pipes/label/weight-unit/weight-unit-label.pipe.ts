@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { UnitOfWeight } from '@shared/models/product/unit-of-weight.enum';
+import { UnitOfWeight } from '../../../models/product/unit-of-weight.enum';
 
 @Pipe({
   name: 'weightUnitLabel',

@@ -6,8 +6,8 @@ import {
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { StaticAssetService } from './static-asset.service';
-import { FileWithUrl } from '@shared/modules/file-upload/classes/file-with-url/file-with-url.class';
-import { UrlInterceptor } from '@shared/modules/core/interceptors/url/url.interceptor';
+import { FileWithUrl } from '../../../../modules/file-upload/classes/file-with-url/file-with-url.class';
+import { UrlInterceptor } from '../../interceptors/url/url.interceptor';
 
 describe('StaticAssetService', () => {
   let service: StaticAssetService;

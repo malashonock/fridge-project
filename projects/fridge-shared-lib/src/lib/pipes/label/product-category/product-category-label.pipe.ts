@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ProductCategory } from '@shared/models/product/product-category.enum';
+
+import { ProductCategory } from '../../../models/product/product-category.enum';
 
 @Pipe({
   name: 'productCategoryLabel',

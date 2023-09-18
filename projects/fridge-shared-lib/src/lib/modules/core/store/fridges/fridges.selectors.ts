@@ -1,11 +1,11 @@
 import { createSelector } from '@ngrx/store';
 
 import { FridgesState, fridgesFeature } from './fridges.feature';
-import { Fridge } from '@shared/models/fridge/fridge.interface';
+import { Fridge } from '../../../../models/fridge/fridge.interface';
 import { selectAllProducts } from '../products/products.selectors';
-import { Product } from '@shared/models/product/product.interface';
-import { ProductQuantityDto } from '@shared/models/fridge/product-quantity-dto.interface';
-import { ProductQuantity } from '@shared/models/fridge/product-quantity.interface';
+import { Product } from '../../../../models/product/product.interface';
+import { ProductQuantityDto } from '../../../../models/fridge/product-quantity-dto.interface';
+import { ProductQuantity } from '../../../../models/fridge/product-quantity.interface';
 
 export const { selectFridgesState } = fridgesFeature;
 

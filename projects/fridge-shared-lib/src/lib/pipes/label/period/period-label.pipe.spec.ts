@@ -1,7 +1,7 @@
 import '@angular/localize/init';
 
 import { PeriodLabelPipe } from './period-label.pipe';
-import { Period } from '@shared/models/product/period.enum';
+import { Period } from '../../../models/product/period.enum';
 
 describe('PeriodLabelPipe', () => {
   let pipe: PeriodLabelPipe;

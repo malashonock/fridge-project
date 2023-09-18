@@ -25,7 +25,6 @@
     ],
     "baseUrl": "./projects",
     "paths": {
-      "@shared/*": ["./fridge-shared-lib/src/lib/*"],
       "@shell/core/*": ["./fridge-shell-app/src/app/core/*"],
       "@shell/store/*": ["./fridge-shell-app/src/app/store/*"],
       "@shell/utils/*": ["./fridge-shell-app/src/app/utils/*"],
@@ -35,10 +34,10 @@
         "./fridge-shell-app/src/*"
       ],
       "fridge-shared-lib": [
-        "dist/fridge-shared-lib"
+        "../dist/fridge-shared-lib"
       ],
       "rootDir/*": ["../*"],
-    },
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

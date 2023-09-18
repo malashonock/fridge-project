@@ -9,8 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import '@angular/localize/init';
 
 import { BurgerButtonComponent } from './burger-button.component';
-import { UiActions } from '@shared/modules/core/store/ui/ui.actions';
-import { selectShowSideMenu } from '@shared/modules/core/store/ui/ui.selectors';
+import { UiActions } from '../../../../modules/core/store/ui/ui.actions';
+import { selectShowSideMenu } from '../../../../modules/core/store/ui/ui.selectors';
 
 describe('BurgerButtonComponent', () => {
   let component: BurgerButtonComponent;

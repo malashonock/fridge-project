@@ -1,4 +1,4 @@
-import { mockFridge1, mockFridge2 } from '@shared/mocks/fridge.mocks';
+import { mockFridge1, mockFridge2 } from '../../../../mocks/fridge.mocks';
 import { FridgesState } from './fridges.feature';
 import {
   selectAllFridges,
@@ -6,7 +6,7 @@ import {
   selectFridgeProducts,
   selectFridgeSubmitting,
 } from './fridges.selectors';
-import { mockProduct1, mockProduct2 } from '@shared/mocks/product.mocks';
+import { mockProduct1, mockProduct2 } from '../../../../mocks/product.mocks';
 
 describe('Fridges feature selectors', () => {
   describe('selectAllFridges', () => {

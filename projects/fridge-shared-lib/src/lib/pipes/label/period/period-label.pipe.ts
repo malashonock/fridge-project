@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { NounCase } from '@shared/models/i18n/noun-case.type';
-import { Period } from '@shared/models/product/period.enum';
+import { NounCase } from '../../../models/i18n/noun-case.type';
+import { Period } from '../../../models/product/period.enum';
 
 @Pipe({
   name: 'periodLabel',

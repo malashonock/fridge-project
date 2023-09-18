@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { NounCase } from '@shared/models/i18n/noun-case.type';
-import { Nutrient } from '@shared/models/product/nutrient.enum';
+import { NounCase } from '../../../models/i18n/noun-case.type';
+import { Nutrient } from '../../../models/product/nutrient.enum';
 
 @Pipe({
   name: 'nutrientLabel',

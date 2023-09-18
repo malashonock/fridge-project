@@ -1,6 +1,6 @@
 import { InjectionToken, Provider } from '@angular/core';
 
-import { Period } from '@shared/models/product/period.enum';
+import { Period } from '../../../../models/product/period.enum';
 
 export const periods: Period[] = [
   Period.Months,

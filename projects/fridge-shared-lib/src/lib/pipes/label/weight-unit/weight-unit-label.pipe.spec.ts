@@ -1,6 +1,6 @@
 import '@angular/localize/init';
 
-import { UnitOfWeight } from '@shared/models/product/unit-of-weight.enum';
+import { UnitOfWeight } from '../../../models/product/unit-of-weight.enum';
 import { WeightUnitLabelPipe } from './weight-unit-label.pipe';
 
 describe('WeightUnitLabelPipe', () => {

@@ -6,11 +6,11 @@ import {
 import { HttpClient } from '@angular/common/http';
 
 import { AuthService } from './auth.service';
-import { LocalStorageService } from '@shared/modules/core/services/local-storage/local-storage.service';
-import { LoginCredentials } from '@shared/models/auth/login.interface';
-import { SignupCredentials } from '@shared/models/auth/signup.interface';
-import { mockUserSession } from '@shared/mocks/auth.mocks';
-import { mockUser } from '@shared/mocks/user.mocks';
+import { LocalStorageService } from '../../services/local-storage/local-storage.service';
+import { LoginCredentials } from '../../../../models/auth/login.interface';
+import { SignupCredentials } from '../../../../models/auth/signup.interface';
+import { mockUserSession } from '../../../../mocks/auth.mocks';
+import { mockUser } from '../../../../mocks/user.mocks';
 
 describe('AuthService', () => {
   let authService: AuthService;

@@ -14,7 +14,7 @@ import { GeolocationCoords } from '../../models/geolocation-coords.interface';
 import {
   ChangeEventHandler,
   ngValueAccessorProvider,
-} from '@shared/utils/form/form.utils';
+} from '../../../../utils/form/form.utils';
 
 const MAX_COORDS_PRECISION = 5; // decimal places
 

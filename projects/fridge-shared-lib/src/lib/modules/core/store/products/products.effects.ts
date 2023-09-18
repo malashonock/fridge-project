@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
 
-import { ProductService } from '@shared/modules/core/services/product/product.service';
+import { ProductService } from '../../services/product/product.service';
 import { ProductsActions } from './products.actions';
-import { Product } from '@shared/models/product/product.interface';
-import { WithId } from '@shared/models/id/with-id.interface';
+import { Product } from '../../../../models/product/product.interface';
+import { WithId } from '../../../../models/id/with-id.interface';
 
 @Injectable()
 export class ProductsEffects {

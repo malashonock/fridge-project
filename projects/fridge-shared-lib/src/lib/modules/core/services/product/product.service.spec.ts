@@ -10,7 +10,7 @@ import {
   mockProduct1,
   mockProduct1Data,
   mockProducts1,
-} from '@shared/mocks/product.mocks';
+} from '../../../../mocks/product.mocks';
 
 describe('ProductService', () => {
   let service: ProductService;

@@ -1,4 +1,4 @@
-import { mockProduct1, mockProduct2 } from '@shared/mocks/product.mocks';
+import { mockProduct1, mockProduct2 } from '../../../../mocks/product.mocks';
 import { ProductsState } from './products.feature';
 import {
   selectAllProducts,

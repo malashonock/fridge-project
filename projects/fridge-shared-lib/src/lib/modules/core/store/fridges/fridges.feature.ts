@@ -1,7 +1,7 @@
 import { EntityState } from '@ngrx/entity';
 import { createFeature, createReducer, on } from '@ngrx/store';
 
-import { Fridge } from '@shared/models/fridge/fridge.interface';
+import { Fridge } from '../../../../models/fridge/fridge.interface';
 import { FridgesActions } from './fridges.actions';
 import { FridgesActionReducers } from './fridges.reducers';
 
