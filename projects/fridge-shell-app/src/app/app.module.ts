@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 
-import { CoreModule } from '@shell/core/core.module';
+import { CoreModule } from 'fridge-shared-lib';
+
 import { AppRoutingModule } from './app-routing.module';
-import { AppStoreModule } from '@shell/store/app-store.module';
 import { AppComponent } from './app.component';
+import { environment } from '@shell/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [CoreModule, AppRoutingModule, AppStoreModule],
+  imports: [CoreModule.forRoot(environment), AppRoutingModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

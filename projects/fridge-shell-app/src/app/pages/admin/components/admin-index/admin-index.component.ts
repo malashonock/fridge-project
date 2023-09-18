@@ -1,11 +1,9 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 
-import {
-  MenuItemConfig,
-  MenuItemVariant,
-} from '@shell/shared/components/menu-item/menu-item.component';
-import { menuItemTrackBy } from '@shell/utils/menu-item/menu-item.utils';
-import { ADMIN_PAGE_MENU_CONFIG } from '@shell/core/configs/admin-page-menu.config';
+import { menuItemTrackBy } from 'fridge-shared-lib';
+
+import { MenuItemConfig, MenuItemVariant } from 'fridge-shared-lib';
+import { ADMIN_PAGE_MENU_CONFIG } from '../../configs/admin-page-menu.config';
 
 @Component({
   selector: 'app-admin-index',

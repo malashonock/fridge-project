@@ -10,25 +10,28 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subject, combineLatest, map, startWith, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { Product } from '@shell/core/models/product/product.interface';
-import { ProductFields } from '@shell/core/models/product/product-fields.interface';
-import { ProductCategory } from '@shell/core/models/product/product-category.enum';
-import { UnitOfWeight } from '@shell/core/models/product/unit-of-weight.enum';
-import { ComboFieldValidators } from '@shell/core/validators/combo-field/combo-field.validators';
-import { NumberValidators } from '@shell/core/validators/number/number.validators';
-import { ComboErrorStateMatcher } from '@shell/core/classes/combo-error-state-matcher/combo-error-state-matcher.class';
-import { EarlyErrorStateMatcher } from '@shell/core/classes/early-error-state-matcher/early-error-state-matcher.class';
-import { FileWithUrl } from '@shell/core/classes/file-with-url/file-with-url.class';
-import { ProductsActions } from '@shell/store/products/products.actions';
-import { selectProductSubmitting } from '@shell/store/products/products.selectors';
-import { controlHasError, getControlError } from '@shell/utils/form/form.utils';
-import { PRODUCT_CATEGORIES } from '@shell/core/configs/product-categories.config';
-import { WEIGHT_UNITS } from '@shell/core/configs/weight-units.config';
-import { NUTRIENTS } from '@shell/core/configs/nutrient.config';
-import { Nutrient } from '@shell/core/models/product/nutrient.enum';
-import { PERIODS } from '@shell/core/configs/periods.config';
-import { Period } from '@shell/core/models/product/period.enum';
-import { FormMode } from '@shell/core/models/ui/form-mode.enum';
+import {
+  Product,
+  ProductFields,
+  ProductCategory,
+  UnitOfWeight,
+  ComboFieldValidators,
+  NumberValidators,
+  ComboErrorStateMatcher,
+  EarlyErrorStateMatcher,
+  FileWithUrl,
+  ProductsActions,
+  selectProductSubmitting,
+  controlHasError,
+  getControlError,
+  PRODUCT_CATEGORIES,
+  WEIGHT_UNITS,
+  NUTRIENTS,
+  PERIODS,
+  Nutrient,
+  Period,
+  FormMode,
+} from 'fridge-shared-lib';
 
 interface ProductDialogData {
   product?: Product;

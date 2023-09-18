@@ -2,9 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import '@angular/localize/init';
 
+import { MaterialModule } from 'fridge-shared-lib';
+
 import { AdminIndexComponent } from './admin-index.component';
-import { adminPageMenuConfigProvider } from '@shell/core/configs/admin-page-menu.config';
-import { SharedModule } from '@shell/shared/shared.module';
+import { adminPageMenuConfigProvider } from '../../configs/admin-page-menu.config';
 
 describe('AdminIndexComponent', () => {
   let component: AdminIndexComponent;
@@ -13,7 +14,7 @@ describe('AdminIndexComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AdminIndexComponent],
-      imports: [SharedModule, RouterTestingModule],
+      imports: [MaterialModule, RouterTestingModule],
       providers: [adminPageMenuConfigProvider],
     }).compileComponents();
 

@@ -12,11 +12,14 @@ import { MatSelectHarness } from '@angular/material/select/testing';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 
-import { SharedModule } from '@shell/shared/shared.module';
+import {
+  MaterialModule,
+  AuthActions,
+  mockSignupCredentials,
+  userRolesProvider,
+} from 'fridge-shared-lib';
+
 import { SignupFormComponent } from './signup-form.component';
-import { AuthActions } from '@shell/store/auth/auth.actions';
-import { mockSignupCredentials } from '@shell/mocks/auth.mocks';
-import { userRolesProvider } from '@shell/core/configs/user-roles.config';
 
 describe('SignupFormComponent', () => {
   let component: SignupFormComponent;
@@ -38,7 +41,7 @@ describe('SignupFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SignupFormComponent],
-      imports: [NoopAnimationsModule, RouterTestingModule, SharedModule],
+      imports: [NoopAnimationsModule, RouterTestingModule, MaterialModule],
       providers: [provideMockStore(), userRolesProvider],
     }).compileComponents();
 

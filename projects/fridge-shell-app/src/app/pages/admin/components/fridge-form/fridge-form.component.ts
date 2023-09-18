@@ -10,17 +10,20 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subject, combineLatest, map, startWith, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { Fridge } from '@shell/core/models/fridge/fridge.interface';
-import { FridgeFields } from '@shell/core/models/fridge/fridge-fields.interface';
-import { NumberValidators } from '@shell/core/validators/number/number.validators';
-import { EarlyErrorStateMatcher } from '@shell/core/classes/early-error-state-matcher/early-error-state-matcher.class';
-import { FileWithUrl } from '@shell/core/classes/file-with-url/file-with-url.class';
-import { FridgesActions } from '@shell/store/fridges/fridges.actions';
-import { selectFridgeSubmitting } from '@shell/store/fridges/fridges.selectors';
-import { controlHasError, getControlError } from '@shell/utils/form/form.utils';
-import { FormMode } from '@shell/core/models/ui/form-mode.enum';
-import { ProductQuantity } from '@shell/core/models/fridge/product-quantity.interface';
-import { ProductQuantityDto } from '@shell/core/models/fridge/product-quantity-dto.interface';
+import {
+  Fridge,
+  FridgeFields,
+  NumberValidators,
+  EarlyErrorStateMatcher,
+  FileWithUrl,
+  FridgesActions,
+  selectFridgeSubmitting,
+  controlHasError,
+  getControlError,
+  FormMode,
+  ProductQuantity,
+  ProductQuantityDto,
+} from 'fridge-shared-lib';
 
 interface FridgeDialogData {
   fridge?: Fridge;

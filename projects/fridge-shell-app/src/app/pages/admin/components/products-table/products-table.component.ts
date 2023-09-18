@@ -26,12 +26,15 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Observable, Subject, catchError, of, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { Product } from '@shell/core/models/product/product.interface';
+import {
+  Product,
+  StaticAssetService,
+  FileWithUrl,
+  ConfirmDeleteComponent,
+  ProductsActions,
+} from 'fridge-shared-lib';
+
 import { ProductFormComponent } from '../product-form/product-form.component';
-import { StaticAssetService } from '@shell/core/services/static-asset/static-asset.service';
-import { FileWithUrl } from '@shell/core/classes/file-with-url/file-with-url.class';
-import { ConfirmDeleteComponent } from '@shell/shared/components/confirm-delete/confirm-delete.component';
-import { ProductsActions } from '@shell/store/products/products.actions';
 
 @Component({
   selector: 'app-products-table',

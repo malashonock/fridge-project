@@ -3,8 +3,9 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import '@angular/localize/init';
 
+import { MaterialModule } from 'fridge-shared-lib';
+
 import { FridgesComponent } from './fridges.component';
-import { SharedModule } from '@shell/shared/shared.module';
 import { FridgesGridComponent } from '../fridges-grid/fridges-grid.component';
 
 describe('FridgesComponent', () => {
@@ -14,7 +15,7 @@ describe('FridgesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FridgesComponent, FridgesGridComponent],
-      imports: [SharedModule, NoopAnimationsModule],
+      imports: [MaterialModule, NoopAnimationsModule],
       providers: [provideMockStore()],
     }).compileComponents();
 

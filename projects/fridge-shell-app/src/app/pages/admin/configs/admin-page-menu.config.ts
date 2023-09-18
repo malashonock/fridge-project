@@ -1,6 +1,6 @@
 import { InjectionToken, Provider } from '@angular/core';
 
-import { MenuItemConfig } from '@shell/shared/components/menu-item/menu-item.component';
+import { MenuItemConfig } from 'fridge-shared-lib';
 
 export const adminPageMenuConfig: MenuItemConfig[] = [
   {

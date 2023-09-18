@@ -3,9 +3,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import '@angular/localize/init';
 
+import { MaterialModule, mockFridge1 } from 'fridge-shared-lib';
+
 import { FridgeCardComponent } from './fridge-card.component';
-import { SharedModule } from '@shell/shared/shared.module';
-import { mockFridge1 } from '@shell/mocks/fridge.mocks';
 
 describe('FridgeCardComponent', () => {
   let component: FridgeCardComponent;
@@ -14,7 +14,7 @@ describe('FridgeCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FridgeCardComponent],
-      imports: [SharedModule, HttpClientTestingModule],
+      imports: [MaterialModule, HttpClientTestingModule],
       providers: [provideMockStore()],
     }).compileComponents();
 

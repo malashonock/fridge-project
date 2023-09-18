@@ -4,9 +4,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { provideMockStore } from '@ngrx/store/testing';
 import '@angular/localize/init';
 
+import { MaterialModule } from 'fridge-shared-lib';
+
 import { FridgeFormComponent } from './fridge-form.component';
-import { SharedModule } from '@shell/shared/shared.module';
-import { CoreModule } from '@shell/core/core.module';
 import { ProductsInputComponent } from '../products-input/products-input.component';
 import { ProductAutocompleteComponent } from '../product-autocomplete/product-autocomplete.component';
 
@@ -21,7 +21,7 @@ describe('FridgeFormComponent', () => {
         ProductsInputComponent,
         ProductAutocompleteComponent,
       ],
-      imports: [SharedModule, NoopAnimationsModule, CoreModule],
+      imports: [MaterialModule, NoopAnimationsModule],
       providers: [
         { provide: MatDialogRef, useValue: {} },
         { provide: MAT_DIALOG_DATA, useValue: undefined },

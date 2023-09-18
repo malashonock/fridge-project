@@ -1,7 +1,0 @@
-<button mat-icon-button class="user-button" [matMenuTriggerFor]="userMenu">
-  {{ userName$ | async | toInitials }}
-</button>
-<mat-menu #userMenu>
-  <a mat-menu-item i18n="@@settings">Settings</a>
-  <button mat-menu-item (click)="logout()" i18n="@@logOut">Log out</button>
-</mat-menu>

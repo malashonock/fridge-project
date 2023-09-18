@@ -3,8 +3,9 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import '@angular/localize/init';
 
+import { MaterialModule } from 'fridge-shared-lib';
+
 import { ProductsInputComponent } from './products-input.component';
-import { SharedModule } from '@shell/shared/shared.module';
 import { ProductAutocompleteComponent } from '../product-autocomplete/product-autocomplete.component';
 
 describe('ProductsInputComponent', () => {
@@ -14,7 +15,7 @@ describe('ProductsInputComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProductsInputComponent, ProductAutocompleteComponent],
-      imports: [SharedModule, NoopAnimationsModule],
+      imports: [MaterialModule, NoopAnimationsModule],
       providers: [provideMockStore()],
     }).compileComponents();
 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { Product } from '@shell/core/models/product/product.interface';
+import { Product } from 'fridge-shared-lib';
 
 @Component({
   selector: 'app-product-details',

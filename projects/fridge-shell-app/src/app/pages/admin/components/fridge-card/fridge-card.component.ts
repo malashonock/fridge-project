@@ -9,14 +9,17 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subject, catchError, of, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { Fridge } from '@shell/core/models/fridge/fridge.interface';
-import { FileWithUrl } from '@shell/core/classes/file-with-url/file-with-url.class';
-import { StaticAssetService } from '@shell/core/services/static-asset/static-asset.service';
-import { ConfirmDeleteComponent } from '@shell/shared/components/confirm-delete/confirm-delete.component';
+import {
+  Fridge,
+  ProductQuantity,
+  StaticAssetService,
+  selectFridgeProducts,
+  FridgesActions,
+  ConfirmDeleteComponent,
+  FileWithUrl,
+} from 'fridge-shared-lib';
+
 import { FridgeFormComponent } from '../fridge-form/fridge-form.component';
-import { ProductQuantity } from '@shell/core/models/fridge/product-quantity.interface';
-import { selectFridgeProducts } from '@shell/store/fridges/fridges.selectors';
-import { FridgesActions } from '@shell/store/fridges/fridges.actions';
 
 @Component({
   selector: 'app-fridge-card',

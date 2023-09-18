@@ -8,11 +8,13 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, combineLatest, map, startWith, takeUntil } from 'rxjs';
-
-import { selectAllProducts } from '@shell/store/products/products.selectors';
-import { Product } from '@shell/core/models/product/product.interface';
 import { MatAutocomplete } from '@angular/material/autocomplete';
-import { SearchBoxComponent } from '@shell/shared/components/search-box/search-box.component';
+
+import {
+  Product,
+  selectAllProducts,
+  SearchBoxComponent,
+} from 'fridge-shared-lib';
 
 @Component({
   selector: 'app-product-autocomplete',

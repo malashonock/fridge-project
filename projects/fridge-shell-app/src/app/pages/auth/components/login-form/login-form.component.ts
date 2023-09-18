@@ -2,9 +2,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { AuthActions } from '@shell/store/auth/auth.actions';
-import { LoginCredentials } from '@shell/core/models/auth/login.interface';
-import { controlHasError, getControlError } from '@shell/utils/form/form.utils';
+import {
+  LoginCredentials,
+  AuthActions,
+  controlHasError,
+  getControlError,
+} from 'fridge-shared-lib';
 
 @Component({
   selector: 'app-login-form',

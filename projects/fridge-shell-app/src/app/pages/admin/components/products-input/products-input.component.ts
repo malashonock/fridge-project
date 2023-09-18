@@ -27,16 +27,17 @@ import {
   takeUntil,
 } from 'rxjs';
 
-import { ProductQuantity } from '@shell/core/models/fridge/product-quantity.interface';
-import { NumberValidators } from '@shell/core/validators/number/number.validators';
 import {
+  Product,
+  ProductQuantity,
+  NumberValidators,
   ChangeEventHandler,
   ngValueAccessorProvider,
-} from '@shell/utils/form/form.utils';
-import { ConfirmDeleteComponent } from '@shell/shared/components/confirm-delete/confirm-delete.component';
-import { Product } from '@shell/core/models/product/product.interface';
+  ConfirmDeleteComponent,
+  CounterInputComponent,
+} from 'fridge-shared-lib';
+
 import { ProductAutocompleteComponent } from '../product-autocomplete/product-autocomplete.component';
-import { CounterInputComponent } from '@shell/shared/components/counter-input/counter-input.component';
 
 @Component({
   selector: 'app-products-input',

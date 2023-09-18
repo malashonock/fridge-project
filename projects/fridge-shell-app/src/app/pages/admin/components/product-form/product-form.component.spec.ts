@@ -4,9 +4,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { provideMockStore } from '@ngrx/store/testing';
 import '@angular/localize/init';
 
+import { MaterialModule } from 'fridge-shared-lib';
+
 import { ProductFormComponent } from './product-form.component';
-import { SharedModule } from '@shell/shared/shared.module';
-import { CoreModule } from '@shell/core/core.module';
 
 describe('ProductFormComponent', () => {
   let component: ProductFormComponent;
@@ -15,7 +15,7 @@ describe('ProductFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProductFormComponent],
-      imports: [SharedModule, NoopAnimationsModule, CoreModule],
+      imports: [MaterialModule, NoopAnimationsModule],
       providers: [
         { provide: MatDialogRef, useValue: {} },
         { provide: MAT_DIALOG_DATA, useValue: undefined },

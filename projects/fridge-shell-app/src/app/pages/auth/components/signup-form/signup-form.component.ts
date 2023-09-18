@@ -2,13 +2,16 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { UserRole } from '@shell/core/models/user/user-role.enum';
-import { EmailValidators } from '@shell/core/validators/email/email.validators';
-import { PasswordValidators } from '@shell/core/validators/password/password.validators';
-import { AuthActions } from '@shell/store/auth/auth.actions';
-import { SignupCredentials } from '@shell/core/models/auth/signup.interface';
-import { controlHasError, getControlError } from '@shell/utils/form/form.utils';
-import { USER_ROLES } from '@shell/core/configs/user-roles.config';
+import {
+  UserRole,
+  USER_ROLES,
+  EmailValidators,
+  PasswordValidators,
+  AuthActions,
+  SignupCredentials,
+  controlHasError,
+  getControlError,
+} from 'fridge-shared-lib';
 
 @Component({
   selector: 'app-signup-form',

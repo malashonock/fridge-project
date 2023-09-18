@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MaterialModule } from 'fridge-shared-lib';
+
 import { FridgesGridComponent } from './fridges-grid.component';
-import { SharedModule } from '@shell/shared/shared.module';
 
 describe('FridgesGridComponent', () => {
   let component: FridgesGridComponent;
@@ -10,7 +11,7 @@ describe('FridgesGridComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FridgesGridComponent],
-      imports: [SharedModule],
+      imports: [MaterialModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FridgesGridComponent);

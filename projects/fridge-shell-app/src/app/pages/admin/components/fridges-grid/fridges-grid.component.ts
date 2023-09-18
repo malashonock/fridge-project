@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { Fridge } from '@shell/core/models/fridge/fridge.interface';
+import { Fridge } from 'fridge-shared-lib';
 
 @Component({
   selector: 'app-fridges-grid',

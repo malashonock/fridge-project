@@ -9,16 +9,17 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import '@angular/localize/init';
 
-import { ProductsTableComponent } from './products-table.component';
-import { SharedModule } from '@shell/shared/shared.module';
-import { Product } from '@shell/core/models/product/product.interface';
-import { ProductCategory } from '@shell/core/models/product/product-category.enum';
 import {
+  MaterialModule,
+  Product,
+  ProductCategory,
   mockProduct1,
   mockProducts1,
   mockProducts2,
-} from '@shell/mocks/product.mocks';
-import { ShelfLifeLabelPipe } from '@shell/shared/pipes/label/shelf-life/shelf-life-label.pipe';
+  ShelfLifeLabelPipe,
+} from 'fridge-shared-lib';
+
+import { ProductsTableComponent } from './products-table.component';
 
 @Component({
   selector: 'app-product-details',
@@ -49,7 +50,7 @@ describe('ProductsTableComponent', () => {
         ProductDetailsStubComponent,
         ShelfLifeLabelPipe,
       ],
-      imports: [SharedModule, NoopAnimationsModule, HttpClientTestingModule],
+      imports: [MaterialModule, NoopAnimationsModule, HttpClientTestingModule],
       providers: [provideMockStore()],
     }).compileComponents();
 

@@ -8,10 +8,13 @@ import { MatInputHarness } from '@angular/material/input/testing';
 import { MatFormFieldHarness } from '@angular/material/form-field/testing';
 import { MatButtonHarness } from '@angular/material/button/testing';
 
-import { SharedModule } from '@shell/shared/shared.module';
+import {
+  MaterialModule,
+  AuthActions,
+  mockLoginCredentials,
+} from 'fridge-shared-lib';
+
 import { LoginFormComponent } from './login-form.component';
-import { AuthActions } from '@shell/store/auth/auth.actions';
-import { mockLoginCredentials } from '@shell/mocks/auth.mocks';
 
 describe('LoginFormComponent', () => {
   let component: LoginFormComponent;
@@ -27,7 +30,7 @@ describe('LoginFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LoginFormComponent],
-      imports: [NoopAnimationsModule, SharedModule, RouterTestingModule],
+      imports: [NoopAnimationsModule, MaterialModule, RouterTestingModule],
       providers: [provideMockStore()],
     }).compileComponents();
 

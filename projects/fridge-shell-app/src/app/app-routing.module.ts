@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthenticationGuard } from '@shell/core/guards/authentication/authentication.guard';
-import { AuthorizationGuard } from '@shell/core/guards/authorization/authorization.guard';
-import { UserRole } from '@shell/core/models/user/user-role.enum';
+import {
+  AuthenticationGuard,
+  AuthorizationGuard,
+  UserRole,
+} from 'fridge-shared-lib';
 
 const routes: Routes = [
   {

@@ -22,10 +22,13 @@ import {
   takeUntil,
 } from 'rxjs';
 
-import { GeolocationCoords } from '@shell/core/models/fridge/geolocation-coords.interface';
-import { selectAllFridges } from '@shell/store/fridges/fridges.selectors';
-import { Fridge } from '@shell/core/models/fridge/fridge.interface';
-import { NavigatorService } from '@shell/core/services/navigator/navigator.service';
+import {
+  GeolocationCoords,
+  Fridge,
+  selectAllFridges,
+  NavigatorService,
+} from 'fridge-shared-lib';
+
 import { FridgeCardComponent } from '../fridge-card/fridge-card.component';
 
 interface FridgeMarker {

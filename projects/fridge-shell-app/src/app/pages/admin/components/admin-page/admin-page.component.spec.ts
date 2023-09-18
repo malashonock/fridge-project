@@ -4,10 +4,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import '@angular/localize/init';
 
+import { MaterialModule } from 'fridge-shared-lib';
+
 import { AdminPageComponent } from './admin-page.component';
-import * as uiFeature from '@shell/store/ui/ui.feature';
-import { SharedModule } from '@shell/shared/shared.module';
-import { adminPageMenuConfigProvider } from '@shell/core/configs/admin-page-menu.config';
+import { adminPageMenuConfigProvider } from '../../configs/admin-page-menu.config';
 
 describe('AdminPageComponent', () => {
   let component: AdminPageComponent;
@@ -16,15 +16,8 @@ describe('AdminPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AdminPageComponent],
-      imports: [SharedModule, BrowserAnimationsModule, RouterTestingModule],
-      providers: [
-        provideMockStore({
-          initialState: {
-            ui: uiFeature.initialState,
-          },
-        }),
-        adminPageMenuConfigProvider,
-      ],
+      imports: [MaterialModule, BrowserAnimationsModule, RouterTestingModule],
+      providers: [provideMockStore(), adminPageMenuConfigProvider],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AdminPageComponent);

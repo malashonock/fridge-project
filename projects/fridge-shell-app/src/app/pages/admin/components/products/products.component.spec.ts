@@ -4,9 +4,9 @@ import { Component, Input } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import '@angular/localize/init';
 
+import { MaterialModule, Product } from 'fridge-shared-lib';
+
 import { ProductsComponent } from './products.component';
-import { SharedModule } from '@shell/shared/shared.module';
-import { Product } from '@shell/core/models/product/product.interface';
 
 @Component({
   selector: 'app-products-table',
@@ -23,7 +23,7 @@ describe('ProductsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProductsComponent, ProductsTableStubComponent],
-      imports: [SharedModule, NoopAnimationsModule],
+      imports: [MaterialModule, NoopAnimationsModule],
       providers: [provideMockStore()],
     }).compileComponents();
 

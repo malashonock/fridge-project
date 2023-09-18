@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 
-import { Fridge } from '@shell/core/models/fridge/fridge.interface';
-import { selectAllFridges } from '@shell/store/fridges/fridges.selectors';
+import { Fridge, selectAllFridges } from 'fridge-shared-lib';
+
 import { FridgeFormComponent } from '../fridge-form/fridge-form.component';
 
 @Component({
