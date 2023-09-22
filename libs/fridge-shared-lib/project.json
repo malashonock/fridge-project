@@ -1,0 +1,39 @@
+{
+  "name": "fridge-shared-lib",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss",
+      "changeDetection": "OnPush"
+    }
+  },
+  "sourceRoot": "libs/fridge-shared-lib/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "options": {
+        "project": "libs/fridge-shared-lib/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/fridge-shared-lib/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/fridge-shared-lib/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/fridge-shared-lib/**/*.ts",
+          "libs/fridge-shared-lib/**/*.html"
+        ]
+      }
+    }
+  }
+}

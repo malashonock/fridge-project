@@ -1,0 +1,129 @@
+{
+  "name": "fridge-shell-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "i18n": {
+    "sourceLocale": "en-US",
+    "locales": {
+      "ru": {
+        "translation": "apps/fridge-shell-app/src/locale/messages.ru.xlf"
+      }
+    }
+  },
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss",
+      "changeDetection": "OnPush"
+    }
+  },
+  "sourceRoot": "apps/fridge-shell-app/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-builders/custom-webpack:browser",
+      "options": {
+        "index": "apps/fridge-shell-app/src/index.html",
+        "localize": true,
+        "main": "apps/fridge-shell-app/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/fridge-shell-app/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/fridge-shell-app/src/favicon.ico",
+          "apps/fridge-shell-app/src/assets",
+          {
+            "glob": "**/*",
+            "input": "node_modules/leaflet/dist/images/",
+            "output": "./assets"
+          }
+        ],
+        "styles": [
+          "@angular/material/prebuilt-themes/indigo-pink.css",
+          "./node_modules/leaflet/dist/leaflet.css",
+          "apps/fridge-shell-app/src/index.scss"
+        ],
+        "stylePreprocessorOptions": {
+          "includePaths": ["dist/fridge-shared-lib/src/styles"]
+        },
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "outputPath": "dist/fridge-shell-app/prod"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/fridge-shell-app/src/environments/environment.ts",
+              "with": "apps/fridge-shell-app/src/environments/environment.development.ts"
+            }
+          ],
+          "outputPath": "dist/fridge-shell-app/dev",
+          "localize": true,
+          "customWebpackConfig": {
+            "path": "development.config.js"
+          }
+        },
+        "en": {
+          "localize": ["en-US"]
+        },
+        "ru": {
+          "localize": ["ru"]
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-builders/custom-webpack:dev-server",
+      "configurations": {
+        "production_en": {
+          "browserTarget": "fridge-shell-app:build:production,en"
+        },
+        "production_ru": {
+          "browserTarget": "fridge-shell-app:build:production,ru"
+        },
+        "development_en": {
+          "browserTarget": "fridge-shell-app:build:development,en"
+        },
+        "development_ru": {
+          "browserTarget": "fridge-shell-app:build:development,ru"
+        }
+      },
+      "defaultConfiguration": "development_en"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "fridge-shell-app:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/fridge-shell-app/**/*.ts",
+          "apps/fridge-shell-app/**/*.html"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": ["ES2022", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@shell/*": ["./apps/fridge-shell-app/src/*"],
+      "@shell/core/*": ["./apps/fridge-shell-app/src/app/core/*"],
+      "@shell/environments/*": ["./apps/fridge-shell-app/src/environments/*"],
+      "@shell/mocks/*": ["./apps/fridge-shell-app/src/app/mocks/*"],
+      "@shell/store/*": ["./apps/fridge-shell-app/src/app/store/*"],
+      "@shell/utils/*": ["./apps/fridge-shell-app/src/app/utils/*"],
+      "fridge-shared-lib": ["./dist/fridge-shared-lib"],
+      "rootDir/*": ["./*"]
+    },
+    "rootDir": "."
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "extendedDiagnostics": {
+      "checks": {
+        "optionalChainNotNullable": "suppress"
+      }
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

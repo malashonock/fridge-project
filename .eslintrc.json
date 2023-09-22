@@ -2,9 +2,7 @@
   "root": true,
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
@@ -16,10 +14,7 @@
         "@angular-eslint/component-class-suffix": [
           "error",
           {
-            "suffixes": [
-              "Page",
-              "Component"
-            ]
+            "suffixes": ["Page", "Component"]
           }
         ],
         "@angular-eslint/directive-selector": [
@@ -44,24 +39,14 @@
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "excludedFiles": [
-        "*inline-template-*.component.html"
-      ],
-      "extends": [
-        "plugin:prettier/recommended"
-      ],
+      "files": ["*.html"],
+      "excludedFiles": ["*inline-template-*.component.html"],
+      "extends": ["plugin:prettier/recommended"],
       "rules": {
         "prettier/prettier": [
           "error",
@@ -72,9 +57,7 @@
       }
     },
     {
-      "files": [
-        "json-server/**/*.{js,mjs}"
-      ],
+      "files": ["json-server/**/*.{js,mjs}"],
       "env": {
         "node": true
       },
@@ -82,10 +65,7 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
       },
-      "extends": [
-        "eslint:recommended",
-        "plugin:prettier/recommended"
-      ],
+      "extends": ["eslint:recommended", "plugin:prettier/recommended"],
       "rules": {
         "prettier/prettier": [
           "error",
@@ -94,9 +74,26 @@
           }
         ]
       }
+    },
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
-  "extends": [
-    "plugin:prettier/recommended"
-  ]
+  "extends": ["plugin:prettier/recommended"],
+  "plugins": ["@nx"]
 }
