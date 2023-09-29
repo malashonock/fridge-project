@@ -1,0 +1,11 @@
+{
+  "name": "product-ui",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/core": "^15.2.0",
+    "product-domain": "^0.0.1",
+    "shared-util-i18n": "^0.0.1"
+  },
+  "dependencies": {},
+  "sideEffects": false
+}

@@ -1,0 +1,17 @@
+{
+  "name": "user-feature-forms",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^15.2.0",
+    "@angular/core": "^15.2.0",
+    "@angular/forms": "^15.2.0",
+    "@ngrx/store": "^15.4.0",
+    "user-domain": "^0.0.1",
+    "user-data-access": "^0.0.1",
+    "user-ui": "^0.0.1",
+    "shared-util-forms": "^0.0.1",
+    "shared-ui": "^0.0.1"
+  },
+  "dependencies": {},
+  "sideEffects": false
+}
