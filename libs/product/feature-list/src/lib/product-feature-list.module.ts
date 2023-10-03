@@ -21,6 +21,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     ProductsTableComponent,
     ProductDetailsComponent,
   ],
+  exports: [ProductsComponent],
   imports: [
     CommonModule,
     MaterialModule,

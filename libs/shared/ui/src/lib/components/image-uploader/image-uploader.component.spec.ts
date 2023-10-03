@@ -4,6 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import '@angular/localize/init';
 
+import 'jest-global-mocks';
+
 import { ImageUploaderComponent } from './image-uploader.component';
 
 describe('ImageUploaderComponent', () => {

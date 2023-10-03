@@ -5,6 +5,7 @@ import { CounterInputComponent } from './components/counter-input/counter-input.
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NumericInputDirective } from './directives/numeric-input/numeric-input.directive';
 import { FileInputDirective } from './directives/file-input/file-input.directive';
 import { AnyPipe } from './pipes/any/any.pipe';
@@ -19,6 +20,7 @@ const components = [
   ImageUploaderComponent,
   MenuItemComponent,
   SearchBoxComponent,
+  PageNotFoundComponent,
 ];
 
 const directives = [FileInputDirective, NumericInputDirective];

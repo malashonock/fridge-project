@@ -7,10 +7,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { MenuItemComponent } from 'shared-ui';
+
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 import { HeaderComponent } from './components/header/header.component';
-import { HeaderLayoutComponent } from './components/header-layout/header-layout.component';
-import { MenuLayoutComponent } from './components/menu-layout/menu-layout.component';
+import { LayoutComponent } from './components/layout/layout.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { UserButtonComponent } from './components/user-button/user-button.component';
 import { FixedHeaderDirective } from './directives/fixed-header/fixed-header.directive';
@@ -31,13 +32,12 @@ const materialModules = [
     HeaderComponent,
     LogoComponent,
     UserButtonComponent,
-    HeaderLayoutComponent,
     FixedHeaderDirective,
     MobileMenuDirective,
     InitialsPipe,
-    MenuLayoutComponent,
+    LayoutComponent,
   ],
-  imports: [CommonModule, materialModules, RouterModule],
-  exports: [MenuLayoutComponent],
+  imports: [CommonModule, materialModules, RouterModule, MenuItemComponent],
+  exports: [LayoutComponent],
 })
 export class PrivateSharedFeatureLayoutModule {}

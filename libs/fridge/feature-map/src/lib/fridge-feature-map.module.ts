@@ -4,5 +4,6 @@ import { FridgesMapComponent } from './components/fridges-map/fridges-map.compon
 
 @NgModule({
   declarations: [FridgesMapComponent],
+  exports: [FridgesMapComponent],
 })
 export class FridgeFeatureMapModule {}

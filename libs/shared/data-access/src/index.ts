@@ -1,5 +1,6 @@
 // Modules
 export * from './lib/shared-data-access.module';
+export * from './lib/modules/root-store/root-store.module';
 
 // Models
 export * from './lib/models/with-id.interface';

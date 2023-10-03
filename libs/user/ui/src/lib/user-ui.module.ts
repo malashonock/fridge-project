@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { UserRoleLabelPipe } from './pipes/user-role-label.pipe';
+import { UserRoleLabelPipe } from './pipes/user-role-label/user-role-label.pipe';
 
 const pipes = [UserRoleLabelPipe];
 

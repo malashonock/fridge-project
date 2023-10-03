@@ -7,14 +7,17 @@ import { MenuItemComponent } from 'shared-ui';
 
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { AdminIndexComponent } from './components/admin-index/admin-index.component';
+import { adminPageMenuConfigProvider } from './configs/admin-page-menu.config';
 
 @NgModule({
   declarations: [AdminPageComponent, AdminIndexComponent],
+  exports: [AdminPageComponent, AdminIndexComponent],
   imports: [
     CommonModule,
     RouterModule,
     PrivateSharedFeatureLayoutModule,
     MenuItemComponent,
   ],
+  providers: [adminPageMenuConfigProvider],
 })
 export class PrivateAdminFeatureMainModule {}

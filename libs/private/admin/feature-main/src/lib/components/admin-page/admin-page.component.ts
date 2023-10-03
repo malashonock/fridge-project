@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 
-import { menuItemTrackBy, MenuItemConfig } from 'shared-ui';
+import { MenuItemConfig } from 'shared-ui';
 
 import { ADMIN_PAGE_MENU_CONFIG } from '../../configs/admin-page-menu.config';
 
@@ -14,6 +14,4 @@ export class AdminPageComponent {
   public constructor(
     @Inject(ADMIN_PAGE_MENU_CONFIG) public menuItemsConfig: MenuItemConfig[]
   ) {}
-
-  public menuItemTrackBy = menuItemTrackBy;
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
+  CounterInputComponent,
   ImageUploaderComponent,
   MaterialModule,
   NumericInputDirective,
@@ -28,6 +29,7 @@ import { ProductsInputComponent } from './components/products-input/products-inp
     SharedFeatureMapModule,
     ImageUploaderComponent,
     NumericInputDirective,
+    CounterInputComponent,
     SearchBoxComponent,
     OrPipe,
   ],

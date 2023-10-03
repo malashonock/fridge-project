@@ -11,6 +11,7 @@ import { FridgesComponent } from './components/fridges/fridges.component';
 
 @NgModule({
   declarations: [FridgeCardComponent, FridgesGridComponent, FridgesComponent],
+  exports: [FridgesComponent, FridgeCardComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -20,5 +21,6 @@ import { FridgesComponent } from './components/fridges/fridges.component';
     OrPipe,
     SearchBoxComponent,
   ],
+  providers: [AnyPipe],
 })
 export class FridgeFeatureListModule {}

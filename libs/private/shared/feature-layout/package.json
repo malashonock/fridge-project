@@ -12,7 +12,8 @@
     "@ngrx/store": "^15.4.0",
     "user-domain": "^0.0.1",
     "user-data-access": "^0.0.1",
-    "private-shared-data-access": "^0.0.1"
+    "private-shared-data-access": "^0.0.1",
+    "shared-ui": "^0.0.1"
   },
   "dependencies": {},
   "sideEffects": false

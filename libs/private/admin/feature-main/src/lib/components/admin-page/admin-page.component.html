@@ -1,12 +1,1 @@
-<lib-menu-layout>
-  <ng-container mainContent>
-    <router-outlet></router-outlet>
-  </ng-container>
-
-  <ng-container
-    sideMenu
-    *ngFor="let menuItemConfig of menuItemsConfig; trackBy: menuItemTrackBy"
-  >
-    <lib-menu-item sideMenu [config]="menuItemConfig"></lib-menu-item>
-  </ng-container>
-</lib-menu-layout>
+<lib-layout [menuItemsConfig]="menuItemsConfig"></lib-layout>
