@@ -1,17 +1,12 @@
 {
   "name": "fridge-project",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "prepare": "husky install",
     "test": "jest",
     "test:watch": "jest --watch --coverage",
     "lint": "nx run-many --targets=lint",
-    "build:shared": "nx build fridge-shared-lib --watch",
-    "build:shell": "nx build fridge-shell-app",
-    "start:server": "cd json-server && nodemon server.mjs --ignore db.json --ignore 'public/*'",
-    "start:shell": "nx serve fridge-shell-app",
-    "start:shell:ru": "nx serve fridge-shell-app --configuration=development_ru --port=4201",
-    "xi18n:shell": "cd ./apps/fridge-shell-app && nx extract-i18n fridge-shell-app --output-path=./apps/fridge-shell-app/src/locale && xliffmerge --profile xliffmerge.json ru"
+    "start:server": "cd json-server && nodemon server.mjs --ignore db.json --ignore 'public/*'"
   },
   "private": true,
   "dependencies": {

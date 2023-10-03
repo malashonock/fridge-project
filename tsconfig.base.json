@@ -33,7 +33,6 @@
       "fridge-feature-form": ["libs/fridge/feature-form/src/index.ts"],
       "fridge-feature-list": ["libs/fridge/feature-list/src/index.ts"],
       "fridge-feature-map": ["libs/fridge/feature-map/src/index.ts"],
-      "fridge-shared-lib": ["libs/fridge-shared-lib/src/public-api.ts"],
       "fridge-ui": ["libs/fridge/ui/src/index.ts"],
       "fridge-util-testing": ["libs/fridge/util-testing/src/index.ts"],
       "private-admin-feature-main": [
