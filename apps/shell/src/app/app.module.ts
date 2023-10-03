@@ -1,17 +1,35 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+
+import { AppRootModule, RootComponent } from 'shared-ui';
+import { UserDataAccessModule } from 'user-data-access';
+import { RootStoreModule, SharedDataAccessModule } from 'shared-data-access';
+import { FridgeDataAccessModule } from 'fridge-data-access';
+import { PrivateSharedDataAccessModule } from 'private-shared-data-access';
+import { ProductDataAccessModule } from 'product-data-access';
+import { SharedFeatureMapModule } from 'shared-feature-map';
+
 import { appRoutes } from './app.routes';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    AppRootModule,
+    HttpClientModule,
+    SharedDataAccessModule.forRoot(environment),
+    RootStoreModule,
+    UserDataAccessModule,
+    PrivateSharedDataAccessModule,
+    ProductDataAccessModule,
+    FridgeDataAccessModule,
+    SharedFeatureMapModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [RootComponent],
 })
 export class AppModule {}

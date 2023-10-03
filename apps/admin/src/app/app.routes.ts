@@ -6,10 +6,10 @@ export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'auth',
+    redirectTo: 'admin',
   },
   {
-    path: 'auth',
+    path: 'admin',
     loadChildren: () =>
       import('./modules/remote-entry/remote-entry.module').then(
         (m) => m.RemoteEntryModule

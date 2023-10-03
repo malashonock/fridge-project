@@ -1,4 +1,4 @@
 {
   "auth": "http://localhost:4201",
-  "private": "http://localhost:4202"
+  "admin": "http://localhost:4202"
 }
