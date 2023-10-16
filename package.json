@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "prepare": "husky install",
-    "test": "jest",
-    "test:watch": "jest --watch --coverage",
+    "test": "nx run-many --targets=test",
     "lint": "nx run-many --targets=lint",
     "start:server": "cd json-server && nodemon server.mjs --ignore db.json --ignore 'public/*'"
   },

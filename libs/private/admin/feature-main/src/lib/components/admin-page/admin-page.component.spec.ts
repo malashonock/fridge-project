@@ -6,6 +6,7 @@ import '@angular/localize/init';
 
 import { PrivateSharedFeatureLayoutModule } from 'private-shared-feature-layout';
 import { MaterialModule, MenuItemComponent } from 'shared-ui';
+import 'jest-global-mocks';
 
 import { AdminPageComponent } from './admin-page.component';
 import { adminPageMenuConfigProvider } from '../../configs/admin-page-menu.config';

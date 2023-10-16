@@ -21,12 +21,6 @@
     "lib": ["ES2022", "dom"],
     "baseUrl": ".",
     "paths": {
-      "@shell/*": ["./apps/fridge-shell-app/src/*"],
-      "@shell/core/*": ["./apps/fridge-shell-app/src/app/core/*"],
-      "@shell/environments/*": ["./apps/fridge-shell-app/src/environments/*"],
-      "@shell/mocks/*": ["./apps/fridge-shell-app/src/app/mocks/*"],
-      "@shell/store/*": ["./apps/fridge-shell-app/src/app/store/*"],
-      "@shell/utils/*": ["./apps/fridge-shell-app/src/app/utils/*"],
       "auth-feature-main": ["libs/auth/feature-main/src/index.ts"],
       "fridge-data-access": ["libs/fridge/data-access/src/index.ts"],
       "fridge-domain": ["libs/fridge/domain/src/index.ts"],
