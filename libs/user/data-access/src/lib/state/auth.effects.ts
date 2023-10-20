@@ -106,7 +106,11 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.logoutSuccess, AuthActions.logoutFailure),
-        tap(() => this.router.navigateByUrl('/auth/login'))
+        tap(() => {
+          if (!window.location.pathname.startsWith('/auth')) {
+            this.router.navigateByUrl('/auth/login');
+          }
+        })
       ),
     { dispatch: false }
   );
