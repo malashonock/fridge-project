@@ -21,7 +21,7 @@ import { environment } from '../environments/environment.development';
     SharedDataAccessModule.forRoot(environment),
     RootStoreModule,
     UserDataAccessModule,
-    SharedFeatureMapModule,
+    SharedFeatureMapModule.forRoot(),
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
   ],
   bootstrap: [RootComponent],

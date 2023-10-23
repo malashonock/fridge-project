@@ -8,6 +8,7 @@ import { ProductFeatureListModule } from 'product-feature-list';
 import { FridgeDataAccessModule } from 'fridge-data-access';
 import { FridgeFeatureListModule } from 'fridge-feature-list';
 import { FridgeFeatureMapModule } from 'fridge-feature-map';
+import { SharedFeatureMapModule } from 'shared-feature-map';
 
 import { remoteEntryRoutes } from './remote-entry.routes';
 
@@ -20,6 +21,7 @@ import { remoteEntryRoutes } from './remote-entry.routes';
     FridgeDataAccessModule,
     FridgeFeatureListModule,
     FridgeFeatureMapModule,
+    SharedFeatureMapModule,
     RouterModule.forChild(remoteEntryRoutes),
   ],
 })
