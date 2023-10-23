@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store';
-import { APP_INITIALIZER, Provider } from '@angular/core';
+import { APP_INITIALIZER, InjectionToken, Provider } from '@angular/core';
 
 import { FridgesActions } from '../state/fridges.actions';
 
@@ -8,9 +8,11 @@ export const initializeFridgesFactory = (store: Store) => (): void => {
   store.dispatch(FridgesActions.fetchFridges());
 };
 
-export const FridgesInitializer: Provider = {
-  provide: APP_INITIALIZER,
+export const provideFridgesInitializer = (
+  token: InjectionToken<any> = APP_INITIALIZER
+): Provider => ({
+  provide: token,
   multi: true,
   useFactory: initializeFridgesFactory,
   deps: [Store],
-};
+});
