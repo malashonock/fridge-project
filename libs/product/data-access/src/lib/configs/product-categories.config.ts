@@ -15,7 +15,7 @@ export const PRODUCT_CATEGORIES = new InjectionToken<ProductCategory[]>(
   'PRODUCT_CATEGORIES'
 );
 
-export const productCategoriesProvider: Provider = {
+export const provideProductCategories = (): Provider => ({
   provide: PRODUCT_CATEGORIES,
   useValue: productCategories,
-};
+});

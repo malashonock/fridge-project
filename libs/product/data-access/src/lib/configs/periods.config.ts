@@ -11,7 +11,7 @@ export const periods: Period[] = [
 
 export const PERIODS = new InjectionToken<string[]>('PERIODS');
 
-export const periodsProvider: Provider = {
+export const providePeriods = (): Provider => ({
   provide: PERIODS,
   useValue: periods,
-};
+});

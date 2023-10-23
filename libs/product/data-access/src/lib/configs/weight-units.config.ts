@@ -9,7 +9,7 @@ export const weightUnits: UnitOfWeight[] = [
 
 export const WEIGHT_UNITS = new InjectionToken<UnitOfWeight[]>('WEIGHT_UNITS');
 
-export const weightUnitsProvider: Provider = {
+export const provideWeightUnits = (): Provider => ({
   provide: WEIGHT_UNITS,
   useValue: weightUnits,
-};
+});

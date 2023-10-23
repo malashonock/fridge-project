@@ -10,7 +10,7 @@ export const nutrients: Nutrient[] = [
 
 export const NUTRIENTS = new InjectionToken<string[]>('NUTRIENTS');
 
-export const nutrientsProvider: Provider = {
+export const provideNutrients = (): Provider => ({
   provide: NUTRIENTS,
   useValue: nutrients,
-};
+});
