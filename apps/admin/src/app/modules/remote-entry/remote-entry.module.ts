@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { PrivateAdminFeatureMainModule } from 'private-admin-feature-main';
+import { PrivateSharedDataAccessModule } from 'private-shared-data-access';
 import { ProductDataAccessModule } from 'product-data-access';
 import { ProductFeatureListModule } from 'product-feature-list';
 import { FridgeDataAccessModule } from 'fridge-data-access';
@@ -13,6 +14,7 @@ import { remoteEntryRoutes } from './remote-entry.routes';
 @NgModule({
   imports: [
     PrivateAdminFeatureMainModule,
+    PrivateSharedDataAccessModule,
     ProductDataAccessModule,
     ProductFeatureListModule,
     FridgeDataAccessModule,

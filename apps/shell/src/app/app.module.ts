@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppRootModule, RootComponent } from 'shared-ui';
 import { UserDataAccessModule } from 'user-data-access';
 import { RootStoreModule, SharedDataAccessModule } from 'shared-data-access';
-import { PrivateSharedDataAccessModule } from 'private-shared-data-access';
 import { SharedFeatureMapModule } from 'shared-feature-map';
 
 import { appRoutes } from './app.routes';
@@ -22,7 +21,6 @@ import { environment } from '../environments/environment';
     SharedDataAccessModule.forRoot(environment),
     RootStoreModule,
     UserDataAccessModule,
-    PrivateSharedDataAccessModule,
     SharedFeatureMapModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
   ],
