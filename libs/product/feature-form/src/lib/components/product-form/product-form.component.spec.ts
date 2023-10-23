@@ -6,10 +6,10 @@ import '@angular/localize/init';
 
 import { ProductUiModule } from 'product-ui';
 import {
-  nutrientsProvider,
-  periodsProvider,
-  productCategoriesProvider,
-  weightUnitsProvider,
+  provideNutrients,
+  providePeriods,
+  provideProductCategories,
+  provideWeightUnits,
 } from 'product-data-access';
 import {
   ImageUploaderComponent,
@@ -39,10 +39,10 @@ describe('ProductFormComponent', () => {
       providers: [
         { provide: MatDialogRef, useValue: {} },
         { provide: MAT_DIALOG_DATA, useValue: undefined },
-        productCategoriesProvider,
-        weightUnitsProvider,
-        nutrientsProvider,
-        periodsProvider,
+        provideProductCategories(),
+        provideWeightUnits(),
+        provideNutrients(),
+        providePeriods(),
         provideMockStore(),
       ],
     }).compileComponents();

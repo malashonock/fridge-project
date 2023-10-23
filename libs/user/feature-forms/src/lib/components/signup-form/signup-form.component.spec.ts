@@ -14,7 +14,7 @@ import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { ReactiveFormsModule } from '@angular/forms';
 import '@angular/localize/init';
 
-import { AuthActions, userRolesProvider } from 'user-data-access';
+import { AuthActions, provideUserRoles } from 'user-data-access';
 import { mockSignupCredentials } from 'user-util-testing';
 import { UserRoleLabelPipe } from 'user-ui';
 import { MaterialModule } from 'shared-ui';
@@ -49,7 +49,7 @@ describe('SignupFormComponent', () => {
         MaterialModule,
         UserRoleLabelPipe,
       ],
-      providers: [provideMockStore(), userRolesProvider],
+      providers: [provideMockStore(), provideUserRoles()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SignupFormComponent);
