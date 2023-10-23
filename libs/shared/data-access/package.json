@@ -1,0 +1,16 @@
+{
+  "name": "shared-data-access",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^15.2.0",
+    "@angular/core": "^15.2.0",
+    "rxjs": "~7.8.0",
+    "@ngrx/store": "^15.4.0",
+    "@ngrx/router-store": "^15.4.0",
+    "@ngrx/store-devtools": "^15.4.0",
+    "@ngrx/effects": "^15.4.0",
+    "shared-util-forms": "^0.0.1"
+  },
+  "dependencies": {},
+  "sideEffects": false
+}

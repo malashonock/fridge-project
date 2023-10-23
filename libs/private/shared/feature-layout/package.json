@@ -1,0 +1,20 @@
+{
+  "name": "private-shared-feature-layout",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^15.2.0",
+    "@angular/core": "^15.2.0",
+    "@angular/platform-browser": "^15.2.0",
+    "@angular/material": "^15.2.9",
+    "@angular/cdk": "^15.2.9",
+    "@angular/router": "^15.2.0",
+    "rxjs": "~7.8.0",
+    "@ngrx/store": "^15.4.0",
+    "user-domain": "^0.0.1",
+    "user-data-access": "^0.0.1",
+    "private-shared-data-access": "^0.0.1",
+    "shared-ui": "^0.0.1"
+  },
+  "dependencies": {},
+  "sideEffects": false
+}
