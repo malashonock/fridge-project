@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store';
-import { APP_INITIALIZER, Provider } from '@angular/core';
+import { APP_INITIALIZER, InjectionToken, Provider } from '@angular/core';
 
 import { AuthActions } from '../state/auth.actions';
 import { AuthService } from '../services/auth.service';
@@ -15,9 +15,11 @@ export const initializeAuthSessionFactory =
     );
   };
 
-export const AuthSessionInitializer: Provider = {
+export const provideAuthSessionInitializer = (
+  token: InjectionToken<any> = APP_INITIALIZER
+): Provider => ({
   provide: APP_INITIALIZER,
   multi: true,
   useFactory: initializeAuthSessionFactory,
   deps: [AuthService, Store],
-};
+});

@@ -6,7 +6,7 @@ export const userRoles: UserRole[] = [UserRole.User, UserRole.Admin];
 
 export const USER_ROLES = new InjectionToken<UserRole[]>('USER_ROLES');
 
-export const userRolesProvider: Provider = {
+export const provideUserRoles = (): Provider => ({
   provide: USER_ROLES,
   useValue: userRoles,
-};
+});

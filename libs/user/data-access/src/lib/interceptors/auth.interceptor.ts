@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Provider } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
+  HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { Observable, exhaustMap, first } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -33,3 +34,9 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
 }
+
+export const provideAuthInterceptor = (): Provider => ({
+  provide: HTTP_INTERCEPTORS,
+  useClass: AuthInterceptor,
+  multi: true,
+});
