@@ -9,7 +9,6 @@ import { SharedDataAccessModule, RootStoreModule } from 'shared-data-access';
 import { UserDataAccessModule } from 'user-data-access';
 import { FridgeDataAccessModule } from 'fridge-data-access';
 import { PrivateSharedDataAccessModule } from 'private-shared-data-access';
-import { ProductDataAccessModule } from 'product-data-access';
 import { SharedFeatureMapModule } from 'shared-feature-map';
 
 import { appRoutes } from './app.routes';
@@ -25,7 +24,6 @@ import { environment } from '../environments/environment.development';
     RootStoreModule,
     UserDataAccessModule,
     PrivateSharedDataAccessModule,
-    ProductDataAccessModule,
     FridgeDataAccessModule,
     SharedFeatureMapModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
