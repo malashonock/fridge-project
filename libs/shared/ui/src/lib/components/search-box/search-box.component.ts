@@ -74,4 +74,8 @@ export class SearchBoxComponent implements OnDestroy {
     this.destroy$.next(null);
     this.destroy$.complete();
   }
+
+  public reset(): void {
+    this.searchControl.reset();
+  }
 }

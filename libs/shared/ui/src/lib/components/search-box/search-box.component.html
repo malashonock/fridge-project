@@ -12,7 +12,7 @@
     [placeholder]="placeholder"
     [matAutocompleteDisabled]="!autocomplete"
     [matAutocomplete]="autocomplete!"
-    (keyup.escape)="searchControl.reset()"
+    (keyup.escape)="reset()"
   />
   <mat-icon *ngIf="isBlank$ | async" matSuffix>search</mat-icon>
   <button
@@ -20,7 +20,7 @@
     matSuffix
     mat-icon-button
     type="button"
-    (click)="searchControl.reset()"
+    (click)="reset()"
   >
     <mat-icon>close</mat-icon>
   </button>
