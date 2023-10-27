@@ -58,11 +58,7 @@ describe('SearchBoxComponent', () => {
       sub1.unsubscribe();
     });
 
-    input.dispatchEvent(
-      new KeyboardEvent('keyup', {
-        code: 'a',
-      })
-    );
+    component.searchControl.setValue('a');
 
     const sub2 = component.searchControl.valueChanges.subscribe((value) => {
       expect(value).toBe('');
@@ -72,7 +68,7 @@ describe('SearchBoxComponent', () => {
 
     input.dispatchEvent(
       new KeyboardEvent('keyup', {
-        code: 'Escape',
+        key: 'Escape',
       })
     );
   });

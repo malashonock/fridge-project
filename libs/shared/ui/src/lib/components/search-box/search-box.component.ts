@@ -1,13 +1,10 @@
 import { CommonModule } from '@angular/common';
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   Input,
   OnDestroy,
   Output,
-  ViewChild,
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -22,7 +19,6 @@ import {
   Observable,
   Subject,
   debounceTime,
-  fromEvent,
   map,
   startWith,
   takeUntil,
@@ -44,7 +40,7 @@ const materialModules = [
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, materialModules],
 })
-export class SearchBoxComponent implements AfterViewInit, OnDestroy {
+export class SearchBoxComponent implements OnDestroy {
   @Input() public name = 'search-box';
   @Input() public label = $localize`:@@search:Search`;
   @Input() public placeholder = '';
@@ -72,34 +68,10 @@ export class SearchBoxComponent implements AfterViewInit, OnDestroy {
     );
   }
 
-  @ViewChild('searchInput') private searchInput!: ElementRef;
-
   public constructor(private formBuilder: FormBuilder) {}
-
-  public ngAfterViewInit(): void {
-    this.subscribeToSearchKeyboardEvents();
-  }
 
   public ngOnDestroy(): void {
     this.destroy$.next(null);
     this.destroy$.complete();
-  }
-
-  private subscribeToSearchKeyboardEvents(): void {
-    fromEvent<KeyboardEvent>(this.searchInput.nativeElement, 'keyup')
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((event: KeyboardEvent) => {
-        switch (event.code) {
-          case 'Escape':
-            this.searchControl.reset();
-            break;
-          default:
-            break;
-        }
-      });
-  }
-
-  public reset(): void {
-    this.searchControl.reset('');
   }
 }
