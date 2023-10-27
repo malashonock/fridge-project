@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { provideMockStore } from '@ngrx/store/testing';
+import { of } from 'rxjs';
 import '@angular/localize/init';
 
 import {
@@ -13,6 +14,7 @@ import {
   SearchBoxComponent,
 } from 'shared-ui';
 import { SharedFeatureMapModule } from 'shared-feature-map';
+import { FridgeFacade } from 'fridge-data-access';
 import 'jest-global-mocks';
 
 import { FridgeFormComponent } from './fridge-form.component';
@@ -43,7 +45,15 @@ describe('FridgeFormComponent', () => {
       providers: [
         { provide: MatDialogRef, useValue: {} },
         { provide: MAT_DIALOG_DATA, useValue: undefined },
-        provideMockStore(),
+        {
+          provide: FridgeFacade,
+          useValue: {
+            getFridgeSubmitting$: () => of(false),
+            createFridge: jest.fn(),
+            updateFridge: jest.fn(),
+          },
+        },
+        provideMockStore(), // TODO: remove after refactoring ProductAutoCompleteComponent
       ],
     }).compileComponents();
 

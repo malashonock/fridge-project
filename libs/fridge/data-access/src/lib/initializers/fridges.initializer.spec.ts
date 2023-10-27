@@ -1,28 +1,29 @@
 import { TestBed } from '@angular/core/testing';
-import { provideMockStore } from '@ngrx/store/testing';
-import { Store } from '@ngrx/store';
 
 import { initializeFridgesFactory } from './fridges.initializer';
-import { FridgesActions } from '../state/fridges.actions';
+import { FridgeFacade } from '../facade/fridge.facade';
+
+const spyOnFridgeFacadeLoadFridges = jest.fn();
 
 describe('Fridges initializer', () => {
-  let mockStore: Store;
-  let fridgesInitializer: () => void;
-  const mockFetchFridgesAction = FridgesActions.fetchFridges();
-
   beforeEach(() => {
+    jest.resetAllMocks();
+
     TestBed.configureTestingModule({
-      providers: [provideMockStore()],
+      providers: [
+        {
+          provide: FridgeFacade,
+          useValue: { loadFridges: spyOnFridgeFacadeLoadFridges },
+        },
+      ],
     });
-
-    mockStore = TestBed.inject(Store);
-    jest.spyOn(mockStore, 'dispatch');
-
-    fridgesInitializer = initializeFridgesFactory(mockStore);
   });
 
-  it('should dispatch a Fetch Fridges action', () => {
-    fridgesInitializer();
-    expect(mockStore.dispatch).toHaveBeenCalledWith(mockFetchFridgesAction);
+  it('should call loadFridges() method on the fridge facade', (done) => {
+    TestBed.runInInjectionContext(() => {
+      initializeFridgesFactory();
+      expect(spyOnFridgeFacadeLoadFridges).toHaveBeenCalledTimes(1);
+      done();
+    });
   });
 });

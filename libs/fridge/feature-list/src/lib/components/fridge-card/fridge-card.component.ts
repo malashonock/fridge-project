@@ -7,10 +7,9 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subject, catchError, of, takeUntil } from 'rxjs';
-import { Store } from '@ngrx/store';
 
 import { Fridge, ProductQuantity } from 'fridge-domain';
-import { selectFridgeProducts, FridgesActions } from 'fridge-data-access';
+import { FridgeFacade } from 'fridge-data-access';
 import { StaticAssetService } from 'shared-data-access';
 import { ConfirmDeleteComponent } from 'shared-ui';
 import { FileWithUrl } from 'shared-util-forms';
@@ -33,12 +32,12 @@ export class FridgeCardComponent implements OnInit, OnDestroy {
   public constructor(
     private dialog: MatDialog,
     private staticAssetService: StaticAssetService,
-    private store: Store
+    private fridgeFacade: FridgeFacade
   ) {}
 
   public ngOnInit(): void {
-    this.store
-      .select(selectFridgeProducts(this.fridge.id))
+    this.fridgeFacade
+      .getFridgeProducts$(this.fridge.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe((products: ProductQuantity[] | undefined): void => {
         this.fridgeProducts = products;
@@ -81,9 +80,7 @@ export class FridgeCardComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((deleteConfirmed: boolean) => {
         if (deleteConfirmed && this.fridge) {
-          this.store.dispatch(
-            FridgesActions.deleteFridge({ id: this.fridge.id })
-          );
+          this.fridgeFacade.deleteFridge(this.fridge.id);
         }
       });
   }

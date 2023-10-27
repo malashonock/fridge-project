@@ -4,7 +4,6 @@
   "peerDependencies": {
     "@angular/core": "^15.2.0",
     "rxjs": "~7.8.0",
-    "@ngrx/store": "^15.4.0",
     "leaflet": "^1.9.4",
     "fridge-domain": "^0.0.1",
     "shared-feature-map": "^0.0.1",

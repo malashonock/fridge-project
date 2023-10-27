@@ -12,7 +12,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import * as L from 'leaflet';
-import { Store } from '@ngrx/store';
 import {
   BehaviorSubject,
   Subject,
@@ -24,7 +23,7 @@ import {
 
 import { Fridge } from 'fridge-domain';
 import { FridgeCardComponent } from 'fridge-feature-list';
-import { selectAllFridges } from 'fridge-data-access';
+import { FridgeFacade } from 'fridge-data-access';
 import { GeolocationCoords, NavigatorService } from 'shared-feature-map';
 
 interface FridgeMarker {
@@ -59,7 +58,7 @@ export class FridgesMapComponent implements OnInit, AfterViewInit, OnDestroy {
   });
 
   public constructor(
-    private store: Store,
+    private fridgeFacade: FridgeFacade,
     private navigatorService: NavigatorService,
     private componentFactoryResolver: ComponentFactoryResolver,
     private injector: Injector,
@@ -132,8 +131,8 @@ export class FridgesMapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private subscribeMarkersToStoreFridges(): void {
-    this.store
-      .select(selectAllFridges)
+    this.fridgeFacade
+      .getAllFridges$()
       .pipe(
         debounce(async (): Promise<void[]> => await this.closeAllPopups()),
         takeUntil(this.destroy$)

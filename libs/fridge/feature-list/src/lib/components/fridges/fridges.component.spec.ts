@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideMockStore } from '@ngrx/store/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { of } from 'rxjs';
 import '@angular/localize/init';
 
 import { AnyPipe, MaterialModule, OrPipe, SearchBoxComponent } from 'shared-ui';
+import { FridgeFacade } from 'fridge-data-access';
 
 import { FridgesComponent } from './fridges.component';
 import { FridgesGridComponent } from '../fridges-grid/fridges-grid.component';
@@ -22,7 +23,14 @@ describe('FridgesComponent', () => {
         OrPipe,
         SearchBoxComponent,
       ],
-      providers: [provideMockStore()],
+      providers: [
+        {
+          provide: FridgeFacade,
+          useValue: {
+            getAllFridges$: () => of([]),
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FridgesComponent);

@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 
 import { Fridge } from 'fridge-domain';
-import { selectAllFridges } from 'fridge-data-access';
+import { FridgeFacade } from 'fridge-data-access';
 import { FridgeFormComponent } from 'fridge-feature-form';
 
 @Component({
@@ -17,10 +16,13 @@ export class FridgesComponent {
   private searchQuery = new Subject<string>();
   public searchQuery$ = this.searchQuery.asObservable();
 
-  public constructor(private store: Store, private dialog: MatDialog) {}
+  public constructor(
+    private fridgeFacade: FridgeFacade,
+    private dialog: MatDialog
+  ) {}
 
   public get fridges$(): Observable<Fridge[]> {
-    return this.store.select(selectAllFridges);
+    return this.fridgeFacade.getAllFridges$();
   }
 
   public onSearchQueryChange(query: string): void {

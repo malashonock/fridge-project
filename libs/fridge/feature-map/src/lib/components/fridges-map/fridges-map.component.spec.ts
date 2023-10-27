@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideMockStore } from '@ngrx/store/testing';
+import { of } from 'rxjs';
 import '@angular/localize/init';
 
+import { FridgeFacade } from 'fridge-data-access';
 import 'jest-global-mocks';
 
 import { FridgesMapComponent } from './fridges-map.component';
@@ -13,7 +14,14 @@ describe('FridgesMapComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FridgesMapComponent],
-      providers: [provideMockStore()],
+      providers: [
+        {
+          provide: FridgeFacade,
+          useValue: {
+            getAllFridges$: () => of([]),
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FridgesMapComponent);

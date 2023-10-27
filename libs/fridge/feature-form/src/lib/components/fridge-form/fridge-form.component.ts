@@ -8,7 +8,6 @@ import {
 import { FormBuilder, FormControlStatus, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subject, combineLatest, map, startWith, takeUntil } from 'rxjs';
-import { Store } from '@ngrx/store';
 
 import {
   Fridge,
@@ -16,7 +15,7 @@ import {
   ProductQuantity,
   ProductQuantityDto,
 } from 'fridge-domain';
-import { FridgesActions, selectFridgeSubmitting } from 'fridge-data-access';
+import { FridgeFacade } from 'fridge-data-access';
 import {
   NumberValidators,
   EarlyErrorStateMatcher,
@@ -95,8 +94,8 @@ export class FridgeFormComponent implements OnInit, OnDestroy {
 
   private submitted$ = new Subject<boolean>();
 
-  private submitting$ = this.store
-    .select(selectFridgeSubmitting(this.fridge?.id || null))
+  private submitting$ = this.fridgeFacade
+    .getFridgeSubmitting$(this.fridge?.id || null)
     .pipe(startWith(false));
 
   public submitDisabled$ = combineLatest([
@@ -122,7 +121,7 @@ export class FridgeFormComponent implements OnInit, OnDestroy {
 
   public constructor(
     private formBuilder: FormBuilder,
-    private store: Store,
+    private fridgeFacade: FridgeFacade,
     public dialogRef: MatDialogRef<FridgeFormComponent>,
     public earlyErrorStateMatcher: EarlyErrorStateMatcher,
     @Inject(MAT_DIALOG_DATA) private data?: FridgeDialogData
@@ -165,20 +164,11 @@ export class FridgeFormComponent implements OnInit, OnDestroy {
 
     switch (this.mode) {
       case FormMode.Create:
-        this.store.dispatch(
-          FridgesActions.createFridge({
-            fridgeData,
-          })
-        );
+        this.fridgeFacade.createFridge(fridgeData);
         break;
       case FormMode.Edit:
-        this.store.dispatch(
-          FridgesActions.updateFridge({
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            id: this.fridge!.id,
-            fridgeData,
-          })
-        );
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        this.fridgeFacade.updateFridge(this.fridge!.id, fridgeData);
         break;
       default:
         throw new Error('Unsupported form mode');
