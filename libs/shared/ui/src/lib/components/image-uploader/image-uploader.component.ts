@@ -73,7 +73,7 @@ export class ImageUploaderComponent
   }
   @Input() public set placeholder(value: string) {
     this._placehoder = value;
-    this.stateChanges.next();
+    this.stateChanges$.next();
   }
 
   public get value(): FileWithUrl | null {
@@ -110,7 +110,7 @@ export class ImageUploaderComponent
   }
   @Input() public set required(value: BooleanInput) {
     this._required = coerceBooleanProperty(value);
-    this.stateChanges.next();
+    this.stateChanges$.next();
   }
 
   public get disabled(): boolean {
@@ -128,7 +128,9 @@ export class ImageUploaderComponent
   @ViewChild(FileInputDirective)
   private fileInputDirective?: FileInputDirective;
 
-  public stateChanges = new Subject<void>();
+  private stateChanges$ = new Subject<void>();
+  public stateChanges = this.stateChanges$.asObservable();
+
   private destroy$ = new Subject();
 
   public constructor(
@@ -178,14 +180,14 @@ export class ImageUploaderComponent
   public onFocusIn() {
     if (!this.focused) {
       this.focused = true;
-      this.stateChanges.next();
+      this.stateChanges$.next();
     }
   }
 
   public onFocusOut(event: FocusEvent) {
     if (!this.elementRef.nativeElement.contains(event.relatedTarget)) {
       this.focused = false;
-      this.stateChanges.next();
+      this.stateChanges$.next();
     }
   }
 
@@ -204,14 +206,14 @@ export class ImageUploaderComponent
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
         this.touch();
-        this.stateChanges.next();
+        this.stateChanges$.next();
         this.updateErrors();
       });
 
     this.formControl.statusChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
-        this.stateChanges.next();
+        this.stateChanges$.next();
       });
   }
 
@@ -222,7 +224,7 @@ export class ImageUploaderComponent
   }
 
   public ngOnDestroy(): void {
-    this.stateChanges.complete();
+    this.stateChanges$.complete();
     this.destroy$.next(null);
     this.destroy$.complete();
   }

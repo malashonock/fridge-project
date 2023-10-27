@@ -72,7 +72,7 @@ export class CounterInputComponent
     })
   );
 
-  public inputDisabled$ = new BehaviorSubject<boolean>(false);
+  private inputDisabled$ = new BehaviorSubject<boolean>(false);
 
   private lowerBoundHit$ = this.valueChanges$.pipe(
     map((value: number | null): boolean => {
@@ -89,7 +89,7 @@ export class CounterInputComponent
     distinctUntilChanged()
   );
 
-  public buttonsDisabled$ = combineLatest([
+  private buttonsDisabled$ = combineLatest([
     this.inputDisabled$,
     this.invalid$,
   ]).pipe(
@@ -99,7 +99,7 @@ export class CounterInputComponent
     distinctUntilChanged()
   );
 
-  public decrementDisabled$ = combineLatest([
+  private decrementDisabled$ = combineLatest([
     this.buttonsDisabled$,
     this.lowerBoundHit$,
   ]).pipe(

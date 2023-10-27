@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   OnDestroy,
   Output,
   ViewChild,
@@ -21,10 +22,10 @@ import { SearchBoxComponent } from 'shared-ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductAutocompleteComponent implements AfterViewInit, OnDestroy {
-  @Output() public selectProduct = new Subject<Product>();
-  @Output() public autocompleteClosed = new Subject();
+  @Output() public selectProduct = new EventEmitter<Product>();
+  @Output() public autocompleteClosed = new EventEmitter<void>();
 
-  public productQuery$ = new Subject<Product | string | null>();
+  private productQuery$ = new Subject<Product | string | null>();
 
   private destroy$ = new Subject();
 
@@ -33,7 +34,7 @@ export class ProductAutocompleteComponent implements AfterViewInit, OnDestroy {
 
   public filteredProducts$ = combineLatest([
     this.store.select(selectAllProducts),
-    this.productQuery$.pipe(startWith('')),
+    this.productQuery$.asObservable().pipe(startWith('')),
   ]).pipe(
     map(([products, query]): Product[] => {
       const sanitizedQuery: string =
@@ -55,13 +56,13 @@ export class ProductAutocompleteComponent implements AfterViewInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(($event): void => {
         const product = $event.option.value as Product;
-        this.selectProduct.next(product);
+        this.selectProduct.emit(product);
       });
 
     this.autocomplete.closed
       .pipe(takeUntil(this.destroy$))
       .subscribe((): void => {
-        this.autocompleteClosed.next(null);
+        this.autocompleteClosed.emit();
       });
   }
 
@@ -76,5 +77,9 @@ export class ProductAutocompleteComponent implements AfterViewInit, OnDestroy {
 
   public reset(): void {
     this.searchBox?.reset();
+  }
+
+  public onSearchQueryChange(productQuery: Product | string | null): void {
+    this.productQuery$.next(productQuery);
   }
 }

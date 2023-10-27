@@ -14,7 +14,7 @@ import { FridgeFormComponent } from 'fridge-feature-form';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FridgesComponent {
-  public searchQuery$ = new Subject<string>();
+  private searchQuery$ = new Subject<string>();
 
   public constructor(private store: Store, private dialog: MatDialog) {}
 
