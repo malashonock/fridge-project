@@ -1,6 +1,7 @@
 import {
   Directive,
   ElementRef,
+  HostBinding,
   NgZone,
   OnDestroy,
   OnInit,
@@ -17,6 +18,12 @@ import {
   selector: '[libFixedHeader]',
 })
 export class FixedHeaderDirective implements OnInit, OnDestroy {
+  // Make header fixed
+  @HostBinding('style.position') private headerPosition = 'fixed';
+  @HostBinding('style.top.px') private headerTop = 0;
+  @HostBinding('style.width.%') private headerWidth = 100;
+  @HostBinding('style.z-index') private headerZIndex = 10;
+
   private headerHeight$ = new BehaviorSubject(
     this.elementRef.nativeElement.getBoundingClientRect().height
   );
@@ -41,9 +48,6 @@ export class FixedHeaderDirective implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    // Make header fixed
-    this.setHeaderStyles();
-
     // Subscribe to header height observable
     this.headerHeight$
       .pipe(distinctUntilChanged(), takeUntil(this.destroy$))
@@ -62,30 +66,11 @@ export class FixedHeaderDirective implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  private setHeaderStyles(): void {
-    this.setHeaderStyle('position', 'fixed');
-    this.setHeaderStyle('top', '0');
-    this.setHeaderStyle('width', '100%');
-    this.setHeaderStyle('z-index', '10');
-  }
-
   private setContentStyles(headerHeight: number): void {
     this.setContentStyle('position', 'fixed');
     this.setContentStyle('top', `${headerHeight}px`);
     this.setContentStyle('width', '100%');
     this.setContentStyle('bottom', '0');
-  }
-
-  private setElementStyle(
-    element: HTMLElement,
-    cssProperty: string,
-    value: string
-  ): void {
-    this.renderer.setStyle(element, cssProperty, value);
-  }
-
-  private setHeaderStyle(cssProperty: string, value: string): void {
-    this.setElementStyle(this.elementRef.nativeElement, cssProperty, value);
   }
 
   private setContentStyle(cssProperty: string, value: string): void {
@@ -99,5 +84,13 @@ export class FixedHeaderDirective implements OnInit, OnDestroy {
         value
       );
     }
+  }
+
+  private setElementStyle(
+    element: HTMLElement,
+    cssProperty: string,
+    value: string
+  ): void {
+    this.renderer.setStyle(element, cssProperty, value);
   }
 }
