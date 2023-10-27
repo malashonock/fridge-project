@@ -122,8 +122,16 @@
         name="ingredients"
         formControlName="ingredients"
         cdkTextareaAutosize
+        [errorStateMatcher]="earlyErrorStateMatcher"
       >
       </textarea>
+      <mat-error
+        *ngIf="controlHasError('ingredients.maxlength')"
+        i18n="@@ingredientsErrorMaxLength"
+        >Product ingredients description should not exceed
+        {{ getControlError('ingredients.maxlength').requiredLength }}
+        characters</mat-error
+      >
     </mat-form-field>
 
     <!-- Nutrients -->

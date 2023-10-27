@@ -56,7 +56,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   public form = this.formBuilder.nonNullable.group({
     name: [this.product?.name, [Validators.required]],
     category: [this.product?.category, [Validators.required]],
-    ingredients: [this.product?.ingredients],
+    ingredients: [this.product?.ingredients, [Validators.maxLength(1000)]],
     price: [
       this.product?.price,
       [

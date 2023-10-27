@@ -60,8 +60,16 @@
           name="description"
           formControlName="description"
           cdkTextareaAutosize
+          [errorStateMatcher]="earlyErrorStateMatcher"
         >
         </textarea>
+        <mat-error
+          *ngIf="controlHasError('description.maxlength')"
+          i18n="@@fridgeDescriptionMaxLength"
+          >Fridge description should not exceed
+          {{ getControlError('description.maxlength').requiredLength }}
+          characters</mat-error
+        >
       </mat-form-field>
     </div>
 
