@@ -53,7 +53,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   private product = this.data?.product;
   private productImage = this.data?.image;
 
-  public form = this.formBuilder.group({
+  public form = this.formBuilder.nonNullable.group({
     name: [this.product?.name, [Validators.required]],
     category: [this.product?.category, [Validators.required]],
     ingredients: [this.product?.ingredients],
@@ -66,7 +66,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
         NumberValidators.maxFractionDigits(2),
       ],
     ],
-    weight: this.formBuilder.group(
+    weight: this.formBuilder.nonNullable.group(
       {
         value: [
           this.product?.weight?.value,
@@ -78,7 +78,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
         validators: [ComboFieldValidators.allOrNone],
       }
     ),
-    nutrients: this.formBuilder.group({
+    nutrients: this.formBuilder.nonNullable.group({
       proteins: [
         this.product?.nutrients?.proteins,
         [NumberValidators.number, Validators.min(0)],
@@ -96,7 +96,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       this.product?.kiloCalories,
       [NumberValidators.number, Validators.min(0)],
     ],
-    shelfLife: this.formBuilder.group({
+    shelfLife: this.formBuilder.nonNullable.group({
       months: [
         this.product?.shelfLife?.months,
         [NumberValidators.number, NumberValidators.integer, Validators.min(0)],

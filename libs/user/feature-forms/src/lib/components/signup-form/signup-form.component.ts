@@ -18,7 +18,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignupFormComponent {
-  public form = this.formBuilder.group(
+  public form = this.formBuilder.nonNullable.group(
     {
       userName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, EmailValidators.valid]],

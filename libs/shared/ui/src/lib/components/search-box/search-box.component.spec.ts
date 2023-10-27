@@ -65,7 +65,7 @@ describe('SearchBoxComponent', () => {
     );
 
     const sub2 = component.searchControl.valueChanges.subscribe((value) => {
-      expect(value).toBeNull();
+      expect(value).toBe('');
       sub2.unsubscribe();
       done();
     });

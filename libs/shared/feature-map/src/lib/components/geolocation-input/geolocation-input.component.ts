@@ -60,9 +60,9 @@ export class GeolocationInputComponent
 {
   @Input() public id = '';
 
-  public form = this.formBuilder.group({
+  public form = this.formBuilder.nonNullable.group({
     mapCoords: [null as GeolocationCoords | null, [Validators.required]],
-    textCoords: this.formBuilder.group({
+    textCoords: this.formBuilder.nonNullable.group({
       latitude: [
         null as number | null,
         [

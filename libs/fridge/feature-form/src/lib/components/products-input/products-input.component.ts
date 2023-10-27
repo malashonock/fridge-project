@@ -51,8 +51,8 @@ export class ProductsInputComponent
   public dataSource = new MatTableDataSource<ProductQuantity>([]);
   public tableColumns: string[] = ['product', 'quantity', 'actions'];
 
-  public form = this.formBuilder.group({
-    productQuantities: this.formBuilder.array([] as FormGroup[]),
+  public form = this.formBuilder.nonNullable.group({
+    productQuantities: this.formBuilder.nonNullable.array([] as FormGroup[]),
   });
 
   public get productEntries(): FormArray {
@@ -135,7 +135,7 @@ export class ProductsInputComponent
   };
 
   private addProductEntry({ product, quantity }: ProductQuantity): void {
-    const productEntry = this.formBuilder.group({
+    const productEntry = this.formBuilder.nonNullable.group({
       product: [product, [Validators.required]],
       quantity: [
         quantity,

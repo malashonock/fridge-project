@@ -50,7 +50,7 @@ export class SearchBoxComponent implements AfterViewInit, OnDestroy {
   @Input() public placeholder = '';
   @Input() public autocomplete?: MatAutocomplete;
 
-  public searchControl = this.formBuilder.control('');
+  public searchControl = this.formBuilder.nonNullable.control('');
 
   private destroy$ = new Subject();
 

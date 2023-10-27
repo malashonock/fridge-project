@@ -1,7 +1,16 @@
-import { FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 
 export class ComboFieldValidators {
-  public static allOrNone(control: FormGroup): ValidationErrors | null {
+  public static allOrNone(control: AbstractControl): ValidationErrors | null {
+    if (!(control instanceof FormGroup)) {
+      return null;
+    }
+
     const subcontrols = Object.entries(control.controls);
     const emptySubcontrols: string[] = [];
     const filledSubcontrols: string[] = [];

@@ -44,11 +44,11 @@ export class FridgeFormComponent implements OnInit, OnDestroy {
   private fridgeProducts = this.data?.products || [];
   private fridgeImage = this.data?.image;
 
-  public form = this.formBuilder.group({
+  public form = this.formBuilder.nonNullable.group({
     model: [this.fridge?.model, [Validators.required]],
     description: [this.fridge?.description, [Validators.maxLength(1000)]],
     geolocation: [this.fridge?.geolocation, [Validators.required]],
-    address: this.formBuilder.group({
+    address: this.formBuilder.nonNullable.group({
       country: [this.fridge?.address.country],
       city: [this.fridge?.address.city],
       street: [this.fridge?.address.street],
@@ -59,7 +59,7 @@ export class FridgeFormComponent implements OnInit, OnDestroy {
       ],
       roomNo: [this.fridge?.address.roomNo],
     }),
-    products: this.formBuilder.control(this.fridgeProducts),
+    products: this.formBuilder.nonNullable.control(this.fridgeProducts),
     image: [this.fridgeImage],
   });
 

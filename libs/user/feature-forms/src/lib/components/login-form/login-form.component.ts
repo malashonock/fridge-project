@@ -13,7 +13,7 @@ import { controlHasError, getControlError } from 'shared-util-forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginFormComponent {
-  public form = this.formBuilder.group({
+  public form = this.formBuilder.nonNullable.group({
     userName: ['', [Validators.required, Validators.minLength(2)]],
     password: ['', [Validators.required]],
   });
