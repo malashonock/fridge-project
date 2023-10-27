@@ -14,7 +14,8 @@ import { FridgeFormComponent } from 'fridge-feature-form';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FridgesComponent {
-  private searchQuery$ = new Subject<string>();
+  private searchQuery = new Subject<string>();
+  public searchQuery$ = this.searchQuery.asObservable();
 
   public constructor(private store: Store, private dialog: MatDialog) {}
 
@@ -23,7 +24,7 @@ export class FridgesComponent {
   }
 
   public onSearchQueryChange(query: string): void {
-    this.searchQuery$.next(query);
+    this.searchQuery.next(query);
   }
 
   public openAddFridgeDialog(): void {
