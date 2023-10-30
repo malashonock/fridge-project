@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Store } from '@ngrx/store';
 
-import { UiActions, selectShowSideMenu } from 'private-shared-data-access';
+import { UiFacade } from 'private-shared-data-access';
 
 @Component({
   selector: 'lib-burger-button',
@@ -10,11 +9,11 @@ import { UiActions, selectShowSideMenu } from 'private-shared-data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BurgerButtonComponent {
-  public showMobileMenu$ = this.store.select(selectShowSideMenu);
+  public showMobileMenu$ = this.uiFacade.getShowSideMenu$();
 
-  public constructor(private store: Store) {}
+  public constructor(private uiFacade: UiFacade) {}
 
   public toggleMobileMenu(): void {
-    this.store.dispatch(UiActions.toggleSideMenu());
+    this.uiFacade.toggleSideMenu();
   }
 }

@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Store } from '@ngrx/store';
 
-import { selectMobileMode } from 'private-shared-data-access';
+import { UiFacade } from 'private-shared-data-access';
 
 @Component({
   selector: 'lib-header',
@@ -10,7 +9,7 @@ import { selectMobileMode } from 'private-shared-data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  public mobileMode$ = this.store.select(selectMobileMode);
+  public mobileMode$ = this.uiFacade.getMobileMode$();
 
-  public constructor(private store: Store) {}
+  public constructor(private uiFacade: UiFacade) {}
 }

@@ -1,13 +1,8 @@
 import { Directive, OnDestroy, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Subject, takeUntil } from 'rxjs';
-import { Store } from '@ngrx/store';
 
-import {
-  UiActions,
-  selectMobileMode,
-  selectShowSideMenu,
-} from 'private-shared-data-access';
+import { UiFacade } from 'private-shared-data-access';
 
 @Directive({
   selector: '[libMobileMenu]',
@@ -15,7 +10,7 @@ import {
 export class MobileMenuDirective implements OnInit, OnDestroy {
   private destroy$ = new Subject();
 
-  public constructor(private host: MatSidenav, private store: Store) {}
+  public constructor(private host: MatSidenav, private uiFacade: UiFacade) {}
 
   public ngOnInit(): void {
     this.subscribeToStoreMobileMode();
@@ -29,8 +24,8 @@ export class MobileMenuDirective implements OnInit, OnDestroy {
   }
 
   private subscribeToStoreMobileMode(): void {
-    this.store
-      .select(selectMobileMode)
+    this.uiFacade
+      .getMobileMode$()
       .pipe(takeUntil(this.destroy$))
       .subscribe((mobileMode: boolean) => {
         this.host.disableClose = !mobileMode;
@@ -39,8 +34,8 @@ export class MobileMenuDirective implements OnInit, OnDestroy {
   }
 
   private subscribeToStoreShowSideMenu(): void {
-    this.store
-      .select(selectShowSideMenu)
+    this.uiFacade
+      .getShowSideMenu$()
       .pipe(takeUntil(this.destroy$))
       .subscribe((showSideMenu: boolean) => {
         this.host.opened = showSideMenu;
@@ -51,7 +46,7 @@ export class MobileMenuDirective implements OnInit, OnDestroy {
     this.host.openedChange
       .pipe(takeUntil(this.destroy$))
       .subscribe((showSideMenu: boolean) => {
-        this.store.dispatch(UiActions.toggleSideMenu({ showSideMenu }));
+        this.uiFacade.toggleSideMenu(showSideMenu);
       });
   }
 }

@@ -4,10 +4,9 @@ import {
   BreakpointState,
   Breakpoints,
 } from '@angular/cdk/layout';
-import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 
-import { UiActions } from 'private-shared-data-access';
+import { UiFacade } from 'private-shared-data-access';
 
 @Directive({
   selector: '[libMobilePage]',
@@ -18,7 +17,7 @@ export class MobilePageDirective implements OnInit, OnDestroy {
 
   public constructor(
     private breakpointObserver: BreakpointObserver,
-    private store: Store,
+    private uiFacade: UiFacade,
     private viewRef: ChangeDetectorRef
   ) {}
 
@@ -39,9 +38,8 @@ export class MobilePageDirective implements OnInit, OnDestroy {
   }
 
   private handleBreakpointChange(state: BreakpointState): void {
-    this.store.dispatch(
-      UiActions.toggleMobileMode({ mobileMode: state.matches })
-    );
+    this.uiFacade.toggleMobileMode(state.matches);
+
     // Need to trigger CD manually to avoid ExpressionChangedAfterItHasBeenCheckedError
     this.viewRef.detectChanges();
   }

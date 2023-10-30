@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideMockStore } from '@ngrx/store/testing';
+
+import { UiFacade } from 'private-shared-data-access';
 
 import { MobilePageDirective } from './mobile-page.directive';
 
@@ -18,7 +19,15 @@ describe('MobilePageDirective', () => {
     await TestBed.configureTestingModule({
       declarations: [HostComponent],
       imports: [MobilePageDirective],
-      providers: [provideMockStore(), MobilePageDirective],
+      providers: [
+        MobilePageDirective,
+        {
+          provide: UiFacade,
+          useValue: {
+            toggleMobileMode: jest.fn(),
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HostComponent);

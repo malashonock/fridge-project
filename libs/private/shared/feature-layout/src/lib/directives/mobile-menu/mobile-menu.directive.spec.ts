@@ -2,17 +2,13 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Store, StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { MatSidenavHarness } from '@angular/material/sidenav/testing';
+import { Subject } from 'rxjs';
 import '@angular/localize/init';
 
-import {
-  PrivateSharedDataAccessModule,
-  UiActions,
-} from 'private-shared-data-access';
+import { UiFacade } from 'private-shared-data-access';
 import { MaterialModule } from 'shared-ui';
 
 import { MobileMenuDirective } from './mobile-menu.directive';
@@ -30,18 +26,22 @@ class HostComponent {}
 describe('MobileMenuDirective', () => {
   let directive: MobileMenuDirective;
   let fixture: ComponentFixture<HostComponent>;
-  let store: Store;
   let loader: HarnessLoader;
+  const testMobileMode = new Subject();
+  const testShowSideMenu = new Subject();
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HostComponent, MobileMenuDirective],
-      imports: [
-        MaterialModule,
-        BrowserAnimationsModule,
-        StoreModule.forRoot(),
-        EffectsModule.forRoot([]),
-        PrivateSharedDataAccessModule,
+      imports: [MaterialModule, BrowserAnimationsModule],
+      providers: [
+        {
+          provide: UiFacade,
+          useValue: {
+            getMobileMode$: () => testMobileMode.asObservable(),
+            getShowSideMenu$: () => testShowSideMenu.asObservable(),
+          },
+        },
       ],
     }).compileComponents();
 
@@ -49,7 +49,6 @@ describe('MobileMenuDirective', () => {
     directive = fixture.debugElement
       .query(By.directive(MobileMenuDirective))
       .injector.get(MobileMenuDirective);
-    store = TestBed.inject(Store);
     loader = TestbedHarnessEnvironment.loader(fixture);
   });
 
@@ -60,36 +59,20 @@ describe('MobileMenuDirective', () => {
   it('should react to changes in mobile mode flag of UI store feature', async () => {
     const sideMenu = await loader.getHarness(MatSidenavHarness);
 
-    store.dispatch(
-      UiActions.toggleMobileMode({
-        mobileMode: true,
-      })
-    );
+    testMobileMode.next(true);
     expect(await sideMenu.getMode()).toBe('over');
 
-    store.dispatch(
-      UiActions.toggleMobileMode({
-        mobileMode: false,
-      })
-    );
+    testMobileMode.next(false);
     expect(await sideMenu.getMode()).toBe('side');
   });
 
   it('should react to changes in showSideMenu flag of UI store feature', async () => {
     const sideMenu = await loader.getHarness(MatSidenavHarness);
 
-    store.dispatch(
-      UiActions.toggleSideMenu({
-        showSideMenu: true,
-      })
-    );
+    testShowSideMenu.next(true);
     expect(await sideMenu.isOpen()).toBe(true);
 
-    store.dispatch(
-      UiActions.toggleSideMenu({
-        showSideMenu: false,
-      })
-    );
+    testShowSideMenu.next(false);
     expect(await sideMenu.isOpen()).toBe(false);
   });
 });

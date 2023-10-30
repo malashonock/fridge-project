@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideMockStore } from '@ngrx/store/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { of } from 'rxjs';
 
 import { HeaderComponent } from './header.component';
+import { UiFacade } from 'private-shared-data-access';
 
 @Component({
   selector: 'lib-logo',
@@ -34,7 +35,14 @@ describe('HeaderComponent', () => {
         TestBurgerButtonComponent,
       ],
       imports: [RouterTestingModule, MatToolbarModule],
-      providers: [provideMockStore()],
+      providers: [
+        {
+          provide: UiFacade,
+          useValue: {
+            getMobileMode$: () => of(false),
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
