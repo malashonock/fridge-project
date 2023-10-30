@@ -8,10 +8,12 @@ import { provideUserRoles } from './config/user-roles.config';
 import { provideAuthInterceptor } from './interceptors/auth.interceptor';
 import { authFeature } from './state/auth.feature';
 import { AuthEffects } from './state/auth.effects';
+import { AuthFacade } from './facade/auth.facade';
 
 @NgModule({
   providers: [
     AuthService,
+    AuthFacade,
     provideAuthSessionInitializer(),
     provideAuthInterceptor(),
     provideUserRoles(),

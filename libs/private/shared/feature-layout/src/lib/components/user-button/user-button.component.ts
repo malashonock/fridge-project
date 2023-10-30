@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 
 import { User } from 'user-domain';
-import { AuthActions, selectLoggedUser } from 'user-data-access';
+import { AuthFacade } from 'user-data-access';
 
 @Component({
   selector: 'lib-user-button',
@@ -12,13 +11,13 @@ import { AuthActions, selectLoggedUser } from 'user-data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserButtonComponent {
-  public userName$ = this.store
-    .select(selectLoggedUser)
+  public userName$ = this.authFacade
+    .getLoggedUser$()
     .pipe(map((user: User | undefined): string => user?.name || ''));
 
-  public constructor(private store: Store) {}
+  public constructor(private authFacade: AuthFacade) {}
 
   public logout(): void {
-    this.store.dispatch(AuthActions.logout());
+    this.authFacade.logout();
   }
 }

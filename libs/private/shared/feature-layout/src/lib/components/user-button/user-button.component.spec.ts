@@ -1,9 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideMockStore } from '@ngrx/store/testing';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { of } from 'rxjs';
 import '@angular/localize/init';
+
+import { AuthFacade } from 'user-data-access';
 
 import { UserButtonComponent } from './user-button.component';
 
@@ -24,7 +26,14 @@ describe('UserButtonComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [UserButtonComponent, TestInitialsPipe],
       imports: [MatMenuModule, MatIconModule],
-      providers: [provideMockStore()],
+      providers: [
+        {
+          provide: AuthFacade,
+          useValue: {
+            getLoggedUser$: () => of(undefined),
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(UserButtonComponent);

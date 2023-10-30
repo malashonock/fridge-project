@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
 
 import { LoginCredentials } from 'user-domain';
-import { AuthActions } from 'user-data-access';
+import { AuthFacade } from 'user-data-access';
 import { controlHasError, getControlError } from 'shared-util-forms';
 
 @Component({
@@ -21,17 +20,16 @@ export class LoginFormComponent {
   public controlHasError = controlHasError.bind(this.form);
   public getControlError = getControlError.bind(this.form);
 
-  public constructor(private formBuilder: FormBuilder, private store: Store) {}
+  public constructor(
+    private formBuilder: FormBuilder,
+    private authFacade: AuthFacade
+  ) {}
 
   public onSubmit(): void {
     if (this.form.invalid) {
       return;
     }
 
-    this.store.dispatch(
-      AuthActions.login({
-        credentials: this.form.value as LoginCredentials,
-      })
-    );
+    this.authFacade.login(this.form.value as LoginCredentials);
   }
 }

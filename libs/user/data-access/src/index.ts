@@ -8,6 +8,5 @@ export * from './lib/config/user-roles.config';
 export * from './lib/guards/authentication.guard';
 export * from './lib/guards/authorization.guard';
 
-// Store APIs
-export * from './lib/state/auth.selectors';
-export * from './lib/state/auth.actions';
+// Store facade
+export * from './lib/facade/auth.facade';

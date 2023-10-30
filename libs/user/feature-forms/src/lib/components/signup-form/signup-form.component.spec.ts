@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputHarness } from '@angular/material/input/testing';
@@ -14,7 +13,7 @@ import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { ReactiveFormsModule } from '@angular/forms';
 import '@angular/localize/init';
 
-import { AuthActions, provideUserRoles } from 'user-data-access';
+import { AuthFacade, provideUserRoles } from 'user-data-access';
 import { mockSignupCredentials } from 'user-util-testing';
 import { UserRoleLabelPipe } from 'user-ui';
 import { MaterialModule } from 'shared-ui';
@@ -26,7 +25,6 @@ describe('SignupFormComponent', () => {
   let component: SignupFormComponent;
   let fixture: ComponentFixture<SignupFormComponent>;
   let loader: HarnessLoader;
-  let store: MockStore;
   let userNameInputHarness: MatInputHarness;
   let emailInputHarness: MatInputHarness;
   let roleSelectHarness: MatSelectHarness;
@@ -38,6 +36,7 @@ describe('SignupFormComponent', () => {
   let passwordFieldHarness: MatFormFieldHarness;
   let passwordConfirmFieldHarness: MatFormFieldHarness;
   let submitButtonHarness: MatButtonHarness;
+  const spyOnAuthFacadeSignup = jest.fn();
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -49,13 +48,21 @@ describe('SignupFormComponent', () => {
         MaterialModule,
         UserRoleLabelPipe,
       ],
-      providers: [provideMockStore(), provideUserRoles()],
+      providers: [
+        provideUserRoles(),
+        {
+          provide: AuthFacade,
+          useValue: {
+            signup: spyOnAuthFacadeSignup,
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SignupFormComponent);
     component = fixture.componentInstance;
     loader = TestbedHarnessEnvironment.loader(fixture);
-    store = TestBed.inject(MockStore);
+
     userNameInputHarness = await loader.getHarness(
       MatInputHarness.with({ selector: '#userName' })
     );
@@ -221,22 +228,18 @@ describe('SignupFormComponent', () => {
 
   describe('submit', () => {
     it('given invalid form values, should NOT allow to submit form', async () => {
-      const spyOnStoreDispatch = jest.spyOn(store, 'dispatch');
-
       expect(
         await (await submitButtonHarness.host()).getProperty('disabled')
       ).toBe(true);
 
       await submitButtonHarness.click();
-      expect(spyOnStoreDispatch).not.toHaveBeenCalled();
+      expect(spyOnAuthFacadeSignup).not.toHaveBeenCalled();
 
       component.onSubmit();
-      expect(spyOnStoreDispatch).not.toHaveBeenCalled();
+      expect(spyOnAuthFacadeSignup).not.toHaveBeenCalled();
     });
 
     it('given valid form values, should dispatch signup action', async () => {
-      const spyOnStoreDispatch = jest.spyOn(store, 'dispatch');
-
       expect(
         await (await submitButtonHarness.host()).getProperty('disabled')
       ).toBe(true);
@@ -253,12 +256,9 @@ describe('SignupFormComponent', () => {
       ).toBe(false);
 
       await submitButtonHarness.click();
-      const expectedAction = AuthActions.signup({
-        credentials: mockSignupCredentials,
-      });
 
-      expect(spyOnStoreDispatch).toHaveBeenCalledTimes(1);
-      expect(spyOnStoreDispatch).toHaveBeenCalledWith(expectedAction);
+      expect(spyOnAuthFacadeSignup).toHaveBeenCalledTimes(1);
+      expect(spyOnAuthFacadeSignup).toHaveBeenCalledWith(mockSignupCredentials);
     });
   });
 });

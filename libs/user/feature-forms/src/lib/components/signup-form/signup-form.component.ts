@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
 
 import { UserRole, SignupCredentials } from 'user-domain';
-import { USER_ROLES, AuthActions } from 'user-data-access';
+import { USER_ROLES, AuthFacade } from 'user-data-access';
 import {
   EmailValidators,
   PasswordValidators,
@@ -36,7 +35,7 @@ export class SignupFormComponent {
 
   public constructor(
     private formBuilder: FormBuilder,
-    private store: Store,
+    private authFacade: AuthFacade,
     @Inject(USER_ROLES) public userRoles: UserRole[]
   ) {}
 
@@ -45,10 +44,6 @@ export class SignupFormComponent {
       return;
     }
 
-    this.store.dispatch(
-      AuthActions.signup({
-        credentials: this.form.value as SignupCredentials,
-      })
-    );
+    this.authFacade.signup(this.form.value as SignupCredentials);
   }
 }
