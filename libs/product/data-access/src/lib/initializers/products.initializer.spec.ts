@@ -1,28 +1,27 @@
 import { TestBed } from '@angular/core/testing';
-import { provideMockStore } from '@ngrx/store/testing';
-import { Store } from '@ngrx/store';
 
-import { ProductsActions } from '../state/products.actions';
 import { initializeProductsFactory } from './products.initializer';
+import { ProductFacade } from '../facade/product.facade';
 
 describe('Products initializer', () => {
-  let mockStore: Store;
-  let productsInitializer: () => void;
-  const mockFetchProductsAction = ProductsActions.fetchProducts();
+  const spyOnProductFacadeLoadProducts = jest.fn();
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [provideMockStore()],
+      providers: [
+        {
+          provide: ProductFacade,
+          useValue: { loadProducts: spyOnProductFacadeLoadProducts },
+        },
+      ],
     });
-
-    mockStore = TestBed.inject(Store);
-    jest.spyOn(mockStore, 'dispatch');
-
-    productsInitializer = initializeProductsFactory(mockStore);
   });
 
-  it('should dispatch a Fetch Products action', () => {
-    productsInitializer();
-    expect(mockStore.dispatch).toHaveBeenCalledWith(mockFetchProductsAction);
+  it('should call loadProducts() method on the product facade', (done) => {
+    TestBed.runInInjectionContext(() => {
+      initializeProductsFactory();
+      expect(spyOnProductFacadeLoadProducts).toHaveBeenCalledTimes(1);
+      done();
+    });
   });
 });

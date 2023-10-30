@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { provideMockStore } from '@ngrx/store/testing';
+import { of } from 'rxjs';
 import '@angular/localize/init';
 
 import { MaterialModule, OrPipe, SearchBoxComponent } from 'shared-ui';
+import { ProductFacade } from 'product-data-access';
 
 import { ProductAutocompleteComponent } from './product-autocomplete.component';
 
@@ -20,7 +21,14 @@ describe('ProductAutocompleteComponent', () => {
         SearchBoxComponent,
         OrPipe,
       ],
-      providers: [provideMockStore()],
+      providers: [
+        {
+          provide: ProductFacade,
+          useValue: {
+            getAllProducts$: () => of([]),
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProductAutocompleteComponent);

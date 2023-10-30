@@ -1,11 +1,16 @@
-import { Store } from '@ngrx/store';
-import { APP_INITIALIZER, InjectionToken, Provider } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  InjectionToken,
+  Provider,
+  inject,
+} from '@angular/core';
 
-import { ProductsActions } from '../state/products.actions';
+import { ProductFacade } from '../facade/product.facade';
 
 // Fetch products on app startup
-export const initializeProductsFactory = (store: Store) => (): void => {
-  store.dispatch(ProductsActions.fetchProducts());
+export const initializeProductsFactory = (): void => {
+  const productFacade = inject(ProductFacade);
+  productFacade.loadProducts();
 };
 
 export const provideProductsInitializer = (
@@ -14,5 +19,5 @@ export const provideProductsInitializer = (
   provide: token,
   multi: true,
   useFactory: initializeProductsFactory,
-  deps: [Store],
+  deps: [ProductFacade],
 });

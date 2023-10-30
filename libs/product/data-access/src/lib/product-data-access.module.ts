@@ -1,5 +1,5 @@
 import { NgModule, Provider } from '@angular/core';
-import { Store, StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { ProductRepository } from './repository/product.repository';
@@ -10,6 +10,7 @@ import { providePeriods } from './configs/periods.config';
 import { initializeProductsFactory } from './initializers/products.initializer';
 import { productsFeature } from './state/products.feature';
 import { ProductsEffects } from './state/products.effects';
+import { ProductFacade } from './facade/product.facade';
 
 const provideConfigs = (): Provider[] => [
   provideProductCategories(),
@@ -19,14 +20,14 @@ const provideConfigs = (): Provider[] => [
 ];
 
 @NgModule({
-  providers: [ProductRepository, provideConfigs()],
+  providers: [ProductRepository, ProductFacade, provideConfigs()],
   imports: [
     StoreModule.forFeature(productsFeature.name, productsFeature.reducer),
     EffectsModule.forFeature([ProductsEffects]),
   ],
 })
 export class ProductDataAccessModule {
-  public constructor(store: Store) {
-    initializeProductsFactory(store)();
+  public constructor() {
+    initializeProductsFactory();
   }
 }

@@ -24,10 +24,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, Subject, catchError, of, takeUntil } from 'rxjs';
-import { Store } from '@ngrx/store';
 
 import { Product } from 'product-domain';
-import { ProductsActions } from 'product-data-access';
+import { ProductFacade } from 'product-data-access';
 import { StaticAssetService } from 'shared-data-access';
 import { ConfirmDeleteComponent } from 'shared-ui';
 import { FileWithUrl } from 'shared-util-forms';
@@ -83,7 +82,7 @@ export class ProductsTableComponent
   public constructor(
     private dialog: MatDialog,
     private staticAssetService: StaticAssetService,
-    private store: Store
+    private productFacade: ProductFacade
   ) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -188,7 +187,7 @@ export class ProductsTableComponent
       .pipe(takeUntil(this.destroy$))
       .subscribe((deleteConfirmed: boolean) => {
         if (deleteConfirmed) {
-          this.store.dispatch(ProductsActions.deleteProduct({ id }));
+          this.productFacade.deleteProduct(id);
         }
       });
   }

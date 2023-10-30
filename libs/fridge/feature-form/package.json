@@ -7,7 +7,6 @@
     "@angular/forms": "^15.2.0",
     "@angular/material": "^15.2.9",
     "rxjs": "~7.8.0",
-    "@ngrx/store": "^15.4.0",
     "fridge-domain": "^0.0.1",
     "product-domain": "^0.0.1",
     "fridge-data-access": "^0.0.1",

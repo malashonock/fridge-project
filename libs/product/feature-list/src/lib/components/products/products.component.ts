@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Product } from 'product-domain';
-import { selectAllProducts } from 'product-data-access';
+import { ProductFacade } from 'product-data-access';
 
 import { ProductFormComponent } from 'product-feature-form';
 
@@ -18,7 +17,10 @@ export class ProductsComponent implements OnDestroy {
   public searchQuery: string;
   private destroy$ = new Subject();
 
-  public constructor(private store: Store, private dialog: MatDialog) {}
+  public constructor(
+    private productFacade: ProductFacade,
+    private dialog: MatDialog
+  ) {}
 
   public ngOnDestroy(): void {
     this.destroy$.next(null);
@@ -26,7 +28,7 @@ export class ProductsComponent implements OnDestroy {
   }
 
   public get products$(): Observable<Product[]> {
-    return this.store.select(selectAllProducts);
+    return this.productFacade.getAllProducts$();
   }
 
   public onSearchQueryChange(searchQuery: string): void {

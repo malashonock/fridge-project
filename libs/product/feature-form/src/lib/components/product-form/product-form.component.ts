@@ -8,7 +8,6 @@ import {
 import { FormBuilder, FormControlStatus, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subject, combineLatest, map, startWith, takeUntil } from 'rxjs';
-import { Store } from '@ngrx/store';
 
 import {
   Product,
@@ -19,12 +18,11 @@ import {
   Period,
 } from 'product-domain';
 import {
-  ProductsActions,
-  selectProductSubmitting,
   PRODUCT_CATEGORIES,
   WEIGHT_UNITS,
   NUTRIENTS,
   PERIODS,
+  ProductFacade,
 } from 'product-data-access';
 import {
   FormMode,
@@ -149,8 +147,8 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
   private submitted$ = new Subject<boolean>();
 
-  private submitting$ = this.store
-    .select(selectProductSubmitting(this.product?.id || null))
+  private submitting$ = this.productFacade
+    .getProductSubmitting$(this.product?.id || null)
     .pipe(startWith(false));
 
   public submitDisabled$ = combineLatest([
@@ -176,7 +174,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
   public constructor(
     private formBuilder: FormBuilder,
-    private store: Store,
+    private productFacade: ProductFacade,
     public dialogRef: MatDialogRef<ProductFormComponent>,
     public earlyErrorStateMatcher: EarlyErrorStateMatcher,
     public comboErrorStateMatcher: ComboErrorStateMatcher,
@@ -215,20 +213,11 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
     switch (this.mode) {
       case FormMode.Create:
-        this.store.dispatch(
-          ProductsActions.createProduct({
-            productData,
-          })
-        );
+        this.productFacade.createProduct(productData);
         break;
       case FormMode.Edit:
-        this.store.dispatch(
-          ProductsActions.updateProduct({
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            id: this.product!.id,
-            productData,
-          })
-        );
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        this.productFacade.updateProduct(this.product!.id, productData);
         break;
       default:
         throw new Error('Unsupported form mode');

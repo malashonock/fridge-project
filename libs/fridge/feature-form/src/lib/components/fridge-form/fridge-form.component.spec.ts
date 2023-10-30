@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { provideMockStore } from '@ngrx/store/testing';
 import { of } from 'rxjs';
 import '@angular/localize/init';
 
@@ -15,6 +14,7 @@ import {
 } from 'shared-ui';
 import { SharedFeatureMapModule } from 'shared-feature-map';
 import { FridgeFacade } from 'fridge-data-access';
+import { ProductFacade } from 'product-data-access';
 import 'jest-global-mocks';
 
 import { FridgeFormComponent } from './fridge-form.component';
@@ -53,7 +53,12 @@ describe('FridgeFormComponent', () => {
             updateFridge: jest.fn(),
           },
         },
-        provideMockStore(), // TODO: remove after refactoring ProductAutoCompleteComponent
+        {
+          provide: ProductFacade,
+          useValue: {
+            getAllProducts$: () => of([]),
+          },
+        },
       ],
     }).compileComponents();
 

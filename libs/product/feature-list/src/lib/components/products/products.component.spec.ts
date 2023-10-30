@@ -1,13 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideMockStore } from '@ngrx/store/testing';
 import { Component, Input } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { of } from 'rxjs';
 import '@angular/localize/init';
 
 import { Product } from 'product-domain';
 import { MaterialModule, OrPipe, SearchBoxComponent } from 'shared-ui';
 
 import { ProductsComponent } from './products.component';
+import { ProductFacade } from 'product-data-access';
 
 @Component({
   selector: 'lib-products-table',
@@ -30,7 +31,14 @@ describe('ProductsComponent', () => {
         SearchBoxComponent,
         OrPipe,
       ],
-      providers: [provideMockStore()],
+      providers: [
+        {
+          provide: ProductFacade,
+          useValue: {
+            getAllProducts$: () => of([]),
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProductsComponent);

@@ -3,9 +3,9 @@ import { TestBed } from '@angular/core/testing';
 import { initializeFridgesFactory } from './fridges.initializer';
 import { FridgeFacade } from '../facade/fridge.facade';
 
-const spyOnFridgeFacadeLoadFridges = jest.fn();
-
 describe('Fridges initializer', () => {
+  const spyOnFridgeFacadeLoadFridges = jest.fn();
+
   beforeEach(() => {
     jest.resetAllMocks();
 

@@ -7,12 +7,11 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Subject, combineLatest, map, startWith, takeUntil } from 'rxjs';
 import { MatAutocomplete } from '@angular/material/autocomplete';
 
 import { Product } from 'product-domain';
-import { selectAllProducts } from 'product-data-access';
+import { ProductFacade } from 'product-data-access';
 import { SearchBoxComponent } from 'shared-ui';
 
 @Component({
@@ -33,7 +32,7 @@ export class ProductAutocompleteComponent implements AfterViewInit, OnDestroy {
   @ViewChild(SearchBoxComponent) private searchBox: SearchBoxComponent;
 
   public filteredProducts$ = combineLatest([
-    this.store.select(selectAllProducts),
+    this.productFacade.getAllProducts$(),
     this.productQuery$.asObservable().pipe(startWith('')),
   ]).pipe(
     map(([products, query]): Product[] => {
@@ -49,7 +48,7 @@ export class ProductAutocompleteComponent implements AfterViewInit, OnDestroy {
     })
   );
 
-  public constructor(private store: Store) {}
+  public constructor(private productFacade: ProductFacade) {}
 
   public ngAfterViewInit(): void {
     this.autocomplete.optionSelected
