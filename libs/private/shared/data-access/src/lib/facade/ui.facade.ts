@@ -21,13 +21,17 @@ export class UiFacade {
 
   public toggleMobileMode(mobileMode?: boolean): void {
     this.store.dispatch(
-      UiActions.toggleMobileMode(mobileMode ? { mobileMode } : undefined)
+      UiActions.toggleMobileMode(
+        mobileMode !== undefined ? { mobileMode } : undefined
+      )
     );
   }
 
   public toggleSideMenu(showSideMenu?: boolean): void {
     this.store.dispatch(
-      UiActions.toggleSideMenu(showSideMenu ? { showSideMenu } : undefined)
+      UiActions.toggleSideMenu(
+        showSideMenu !== undefined ? { showSideMenu } : undefined
+      )
     );
   }
 }
