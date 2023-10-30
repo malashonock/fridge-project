@@ -8,6 +8,7 @@ describe('UI action reducers', () => {
       const originalState: UiState = {
         mobileMode: false,
         showSideMenu: true,
+        loadingCount: 0,
       };
 
       const action = UiActions.toggleMobileMode({ mobileMode: true });
@@ -20,6 +21,7 @@ describe('UI action reducers', () => {
       expect(derivedState).toEqual({
         mobileMode: true,
         showSideMenu: true,
+        loadingCount: 0,
       });
     });
 
@@ -27,6 +29,7 @@ describe('UI action reducers', () => {
       const originalState: UiState = {
         mobileMode: true,
         showSideMenu: false,
+        loadingCount: 0,
       };
 
       const action = UiActions.toggleMobileMode();
@@ -39,6 +42,7 @@ describe('UI action reducers', () => {
       expect(derivedState).toEqual({
         mobileMode: false,
         showSideMenu: false,
+        loadingCount: 0,
       });
     });
   });
@@ -48,6 +52,7 @@ describe('UI action reducers', () => {
       const originalState: UiState = {
         mobileMode: true,
         showSideMenu: false,
+        loadingCount: 0,
       };
 
       const action = UiActions.toggleSideMenu({ showSideMenu: true });
@@ -60,6 +65,7 @@ describe('UI action reducers', () => {
       expect(derivedState).toEqual({
         mobileMode: true,
         showSideMenu: true,
+        loadingCount: 0,
       });
     });
 
@@ -67,6 +73,7 @@ describe('UI action reducers', () => {
       const originalState: UiState = {
         mobileMode: true,
         showSideMenu: true,
+        loadingCount: 0,
       };
 
       const action = UiActions.toggleSideMenu();
@@ -79,6 +86,7 @@ describe('UI action reducers', () => {
       expect(derivedState).toEqual({
         mobileMode: true,
         showSideMenu: false,
+        loadingCount: 0,
       });
     });
   });

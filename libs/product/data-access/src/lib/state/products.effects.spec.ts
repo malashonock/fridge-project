@@ -11,6 +11,7 @@ import {
   mockProduct1Data,
   mockProducts1,
 } from 'product-util-testing';
+import { UiFacade } from 'private-shared-data-access';
 
 import { ProductRepository } from '../repository/product.repository';
 import { ProductsActions } from './products.actions';
@@ -29,6 +30,13 @@ describe('Products feature effects', () => {
         ProductRepository,
         FormDataService,
         provideMockActions(() => actions$),
+        {
+          provide: UiFacade,
+          useValue: {
+            startLoading: jest.fn(),
+            finishLoading: jest.fn(),
+          },
+        },
       ],
     });
 

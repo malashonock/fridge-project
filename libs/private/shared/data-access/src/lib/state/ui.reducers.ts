@@ -23,7 +23,29 @@ const toggleSideMenuReducer: OnReducer<
   };
 };
 
+const startLoadingReducer: OnReducer<
+  UiState,
+  [typeof UiActions.startLoading]
+> = (state: UiState) => {
+  return {
+    ...state,
+    loadingCount: state.loadingCount + 1,
+  };
+};
+
+const finishLoadingReducer: OnReducer<
+  UiState,
+  [typeof UiActions.finishLoading]
+> = (state: UiState) => {
+  return {
+    ...state,
+    loadingCount: state.loadingCount - 1,
+  };
+};
+
 export const UiActionReducers = {
   toggleMobileModeReducer,
   toggleSideMenuReducer,
+  startLoadingReducer,
+  finishLoadingReducer,
 };

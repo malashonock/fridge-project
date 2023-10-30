@@ -3,8 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { provideMockStore } from '@ngrx/store/testing';
+import { of } from 'rxjs';
 import '@angular/localize/init';
+
+import { OrPipe } from 'shared-ui';
+import { UiFacade } from 'private-shared-data-access';
 
 import { LayoutComponent } from './layout.component';
 
@@ -20,8 +23,20 @@ describe('LayoutComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LayoutComponent, TestHeaderComponent],
-      imports: [NoopAnimationsModule, MatSidenavModule, RouterTestingModule],
-      providers: [provideMockStore()],
+      imports: [
+        NoopAnimationsModule,
+        MatSidenavModule,
+        RouterTestingModule,
+        OrPipe,
+      ],
+      providers: [
+        {
+          provide: UiFacade,
+          useValue: {
+            getLoadingCount$: () => of(0),
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LayoutComponent);

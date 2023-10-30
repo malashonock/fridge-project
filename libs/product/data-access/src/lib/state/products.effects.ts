@@ -1,23 +1,26 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
 
 import { Product } from 'product-domain';
 import { WithId } from 'shared-data-access';
 
 import { ProductRepository } from '../repository/product.repository';
 import { ProductsActions } from './products.actions';
+import { UiFacade } from 'private-shared-data-access';
 
 @Injectable()
 export class ProductsEffects {
   public constructor(
     private actions$: Actions,
-    private productRepository: ProductRepository
+    private productRepository: ProductRepository,
+    @Optional() private uiFacade: UiFacade
   ) {}
 
   public fetchProducts$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ProductsActions.fetchProducts),
+      tap(() => this.uiFacade?.startLoading()),
       switchMap(() => {
         return this.productRepository.getProducts().pipe(
           map((products: Product[]) => {
@@ -32,6 +35,19 @@ export class ProductsEffects {
       })
     );
   });
+
+  public fetchProductsFinish$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(
+          ProductsActions.fetchProductsSuccess,
+          ProductsActions.fetchProductsFailure
+        ),
+        tap(() => this.uiFacade?.finishLoading())
+      );
+    },
+    { dispatch: false }
+  );
 
   public createProduct$ = createEffect(() => {
     return this.actions$.pipe(

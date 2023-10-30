@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,7 +22,10 @@ import { environment } from '../environments/environment';
     RootStoreModule,
     UserDataAccessModule,
     SharedFeatureMapModule.forRoot(),
-    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    RouterModule.forRoot(appRoutes, {
+      initialNavigation: 'enabledBlocking',
+      enableTracing: isDevMode(),
+    }),
   ],
   bootstrap: [RootComponent],
 })

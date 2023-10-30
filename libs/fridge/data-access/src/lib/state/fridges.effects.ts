@@ -1,23 +1,26 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
 
 import { Fridge } from 'fridge-domain';
 import { WithId } from 'shared-data-access';
 
 import { FridgeRepository } from '../repository/fridge.repository';
 import { FridgesActions } from './fridges.actions';
+import { UiFacade } from 'private-shared-data-access';
 
 @Injectable()
 export class FridgesEffects {
   public constructor(
     private actions$: Actions,
-    private fridgeRepository: FridgeRepository
+    private fridgeRepository: FridgeRepository,
+    @Optional() private uiFacade: UiFacade
   ) {}
 
   public fetchFridges$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(FridgesActions.fetchFridges),
+      tap(() => this.uiFacade?.startLoading()),
       switchMap(() => {
         return this.fridgeRepository.getFridges().pipe(
           map((fridges: Fridge[]) => {
@@ -32,6 +35,19 @@ export class FridgesEffects {
       })
     );
   });
+
+  public fetchProductsFinish$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(
+          FridgesActions.fetchFridgesSuccess,
+          FridgesActions.fetchFridgesFailure
+        ),
+        tap(() => this.uiFacade?.finishLoading())
+      );
+    },
+    { dispatch: false }
+  );
 
   public createFridge$ = createEffect(() => {
     return this.actions$.pipe(

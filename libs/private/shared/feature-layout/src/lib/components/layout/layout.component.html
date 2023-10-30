@@ -1,4 +1,11 @@
-<lib-header libFixedHeader></lib-header>
+<div libFixedHeader>
+  <lib-header></lib-header>
+  <mat-progress-bar
+    *ngIf="(loadingCount$ | async | or : 0) > 0"
+    color="accent"
+    mode="indeterminate"
+  ></mat-progress-bar>
+</div>
 <mat-sidenav-container class="container">
   <mat-sidenav libMobileMenu class="side-menu" position="end">
     <lib-menu-item

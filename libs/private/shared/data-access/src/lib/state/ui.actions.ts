@@ -1,4 +1,4 @@
-import { createActionGroup } from '@ngrx/store';
+import { createActionGroup, emptyProps } from '@ngrx/store';
 
 export const UiActions = createActionGroup({
   source: 'UI',
@@ -9,5 +9,7 @@ export const UiActions = createActionGroup({
     'Toggle Side Menu': (payload?: { showSideMenu: boolean }) => ({
       showSideMenu: payload?.showSideMenu,
     }),
+    'Start Loading': emptyProps(),
+    'Finish Loading': emptyProps(),
   },
 });

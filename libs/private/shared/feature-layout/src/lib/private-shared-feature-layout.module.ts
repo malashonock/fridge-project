@@ -6,8 +6,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
-import { MenuItemComponent } from 'shared-ui';
+import { MenuItemComponent, OrPipe } from 'shared-ui';
 
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -24,6 +25,7 @@ const materialModules = [
   MatMenuModule,
   MatSidenavModule,
   MatButtonModule,
+  MatProgressBarModule,
 ];
 
 @NgModule({
@@ -37,7 +39,13 @@ const materialModules = [
     InitialsPipe,
     LayoutComponent,
   ],
-  imports: [CommonModule, materialModules, RouterModule, MenuItemComponent],
+  imports: [
+    CommonModule,
+    materialModules,
+    RouterModule,
+    MenuItemComponent,
+    OrPipe,
+  ],
   exports: [LayoutComponent],
 })
 export class PrivateSharedFeatureLayoutModule {}
