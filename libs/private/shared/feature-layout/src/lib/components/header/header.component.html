@@ -1,0 +1,6 @@
+<mat-toolbar color="primary" class="header">
+  <lib-logo></lib-logo>
+  <div class="spacer"></div>
+  <lib-user-button></lib-user-button>
+  <lib-burger-button *ngIf="mobileMode$ | async"></lib-burger-button>
+</mat-toolbar>

@@ -1,0 +1,32 @@
+:host {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; // 16px
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+lib-search-box {
+  max-width: 40rem; // 640px
+}
+
+@media (max-width: 32rem /* 512px */) {
+  :host {
+    // Padding needed to make the table bottom visible
+    // under the floating FAB at the bottom right
+    padding-bottom: 4.5rem; // 72px
+  }
+
+  .add-product-btn {
+    position: fixed;
+    bottom: 1rem; // 16px
+    right: 1rem; // 16px
+    z-index: 2;
+  }
+}

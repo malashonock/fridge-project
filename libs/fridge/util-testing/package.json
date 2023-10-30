@@ -1,0 +1,10 @@
+{
+  "name": "fridge-util-testing",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/core": "^15.2.0",
+    "fridge-domain": "^0.0.1"
+  },
+  "dependencies": {},
+  "sideEffects": false
+}

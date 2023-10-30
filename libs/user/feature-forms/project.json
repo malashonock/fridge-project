@@ -1,0 +1,51 @@
+{
+  "name": "user-feature-forms",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/user/feature-forms/src",
+  "prefix": "lib",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/user/feature-forms/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/user/feature-forms/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/user/feature-forms/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/user/feature-forms/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/user/feature-forms/**/*.ts",
+          "libs/user/feature-forms/**/*.html",
+          "libs/user/feature-forms/package.json"
+        ]
+      }
+    }
+  }
+}

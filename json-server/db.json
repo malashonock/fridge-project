@@ -24,10 +24,7 @@
     "Drinks",
     "Desserts"
   ],
-  "unitsOfWeight": [
-    "g",
-    "ml"
-  ],
+  "unitsOfWeight": ["g", "ml"],
   "products": [
     {
       "id": 1,

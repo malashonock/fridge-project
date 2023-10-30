@@ -1,0 +1,15 @@
+{
+  "name": "fridge-feature-map",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/core": "^15.2.0",
+    "rxjs": "~7.8.0",
+    "leaflet": "^1.9.4",
+    "fridge-domain": "^0.0.1",
+    "shared-feature-map": "^0.0.1",
+    "fridge-feature-list": "^0.0.1",
+    "fridge-data-access": "^0.0.1"
+  },
+  "dependencies": {},
+  "sideEffects": false
+}
