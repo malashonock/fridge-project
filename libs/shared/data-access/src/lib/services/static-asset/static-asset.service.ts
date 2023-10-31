@@ -18,12 +18,7 @@ export class StaticAssetService {
       .get<File>(url, { responseType: 'blob' as 'json' })
       .pipe(
         map((file: File): FileWithUrl => {
-          const clientUploaded = url.startsWith('blob:');
-
-          const urlPrefix = clientUploaded
-            ? ''
-            : this.environment.STATIC_ASSETS_BASE_URL;
-
+          const urlPrefix = this.environment.STATIC_ASSETS_BASE_URL;
           return new FileWithUrl(file, urlPrefix + url);
         })
       );

@@ -21,17 +21,17 @@ describe('FileWithUrl class', () => {
       expect(file).toBeTruthy();
     });
 
-    it('given a url, should store it in the url instance field', () => {
+    it('given a server url, should store it in the serverUrl instance field', () => {
       file = new FileWithUrl(
         new File(['Test file'], 'test.txt'),
         'http://some.url/asset-id'
       );
-      expect(file.url).toBe('http://some.url/asset-id');
+      expect(file.serverUrl).toBe('http://some.url/asset-id');
     });
 
-    it('given no url, should call URL.createObjectURL and store the result in the url instance field', () => {
+    it('should call URL.createObjectURL and store the result in the clientUrl instance field', () => {
       expect(ObjectUrlSpies.spyOnCreateObjectURL).toHaveBeenCalledWith(file);
-      expect(file.url).toBe('mock URL');
+      expect(file.clientUrl).toBe('mock URL');
     });
   });
 
