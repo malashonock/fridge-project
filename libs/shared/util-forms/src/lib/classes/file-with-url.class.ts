@@ -9,7 +9,7 @@ export class FileWithUrl extends File {
     this.url = url || URL.createObjectURL(this);
   }
 
-  public onDestroy(): void {
+  public destroy(): void {
     URL.revokeObjectURL(this.url);
   }
 }

@@ -9,7 +9,7 @@
 />
 
 <div class="image-container">
-  <ng-container *ngIf="formControl.value as image; else noImage">
+  <ng-container *ngIf="image; else noImage">
     <img [src]="image.url" [alt]="image.name" class="image-preview" />
     <button
       type="button"

@@ -35,9 +35,9 @@ describe('FileWithUrl class', () => {
     });
   });
 
-  describe('onDestroy() method', () => {
+  describe('destroy() method', () => {
     it('should call URL.revokeObjectURL', () => {
-      file.onDestroy();
+      file.destroy();
       expect(ObjectUrlSpies.spyOnRevokeObjectURL).toHaveBeenCalled();
     });
   });

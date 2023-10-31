@@ -65,6 +65,10 @@ export class ImageUploaderComponent
     FileValidators.type('image/*'),
   ]);
 
+  public get image(): FileWithUrl | null {
+    return this.formControl.value;
+  }
+
   @Input() public id = '';
 
   private _placehoder = $localize`:@@selectImage:Select image`;
@@ -227,6 +231,8 @@ export class ImageUploaderComponent
     this.stateChanges$.complete();
     this.destroy$.next(null);
     this.destroy$.complete();
+
+    this.image?.destroy();
   }
 
   private updateErrors(): void {
