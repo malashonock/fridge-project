@@ -147,7 +147,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
   private submitted$ = new Subject<boolean>();
 
-  private submitting$ = this.productFacade
+  public submitting$ = this.productFacade
     .getProductSubmitting$(this.product?.id || null)
     .pipe(startWith(false));
 

@@ -189,8 +189,14 @@
       type="submit"
       [disabled]="submitDisabled$ | async"
       color="primary"
+      class="submit-btn"
     >
-      {{ submitText }}
+      <mat-spinner
+        *ngIf="(submitting$ | async) === true"
+        color="accent"
+        diameter="20"
+      ></mat-spinner>
+      <span *ngIf="(submitting$ | async) === false">{{ submitText }}</span>
     </button>
   </mat-dialog-actions>
 </form>

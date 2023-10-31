@@ -18,6 +18,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { matPaginatorIntlProvider } from './configs/mat-paginator-intl.config';
 import { matAutocompleteScrollStrategyProvider } from './configs/mat-autocomplete-scroll-strategy.config';
@@ -42,6 +43,7 @@ const materialModules = [
   MatAutocompleteModule,
   ScrollingModule,
   LayoutModule,
+  MatProgressSpinnerModule,
 ];
 
 @NgModule({

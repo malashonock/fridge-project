@@ -94,7 +94,7 @@ export class FridgeFormComponent implements OnInit, OnDestroy {
 
   private submitted$ = new Subject<boolean>();
 
-  private submitting$ = this.fridgeFacade
+  public submitting$ = this.fridgeFacade
     .getFridgeSubmitting$(this.fridge?.id || null)
     .pipe(startWith(false));
 
