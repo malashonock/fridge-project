@@ -43,7 +43,7 @@ describe('StaticAssetService', () => {
 
       service.fetchAsset(relativeUrl).subscribe((result) => {
         expect(result instanceof FileWithUrl).toBe(true);
-        expect(result.url).toBe(relativeUrl);
+        expect(result.serverUrl).toBe(relativeUrl);
       });
 
       const req = httpTestingController.expectOne(fullUrl);

@@ -208,7 +208,10 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
     const productData = {
       ...this.form.value,
-      imageUrl: this.form.value.image?.url || null,
+      imageUrl:
+        this.form.value.image?.serverUrl ||
+        this.form.value.image?.clientUrl ||
+        null,
     } as ProductFields;
 
     switch (this.mode) {

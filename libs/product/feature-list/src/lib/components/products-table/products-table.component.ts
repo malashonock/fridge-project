@@ -6,6 +6,7 @@ import {
   OnChanges,
   OnDestroy,
   OnInit,
+  Optional,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
@@ -23,13 +24,14 @@ import {
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable, Subject, catchError, of, takeUntil } from 'rxjs';
+import { Observable, Subject, catchError, finalize, of, takeUntil } from 'rxjs';
 
 import { Product } from 'product-domain';
 import { ProductFacade } from 'product-data-access';
 import { StaticAssetService } from 'shared-data-access';
 import { ConfirmDeleteComponent } from 'shared-ui';
 import { FileWithUrl } from 'shared-util-forms';
+import { UiFacade } from 'private-shared-data-access';
 
 import { ProductFormComponent } from 'product-feature-form';
 
@@ -82,7 +84,8 @@ export class ProductsTableComponent
   public constructor(
     private dialog: MatDialog,
     private staticAssetService: StaticAssetService,
-    private productFacade: ProductFacade
+    private productFacade: ProductFacade,
+    @Optional() private uiFacade: UiFacade
   ) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -153,12 +156,17 @@ export class ProductsTableComponent
   private fetchProductImage({
     imageUrl,
   }: Product): Observable<FileWithUrl | null> {
-    return imageUrl
-      ? this.staticAssetService.fetchAsset(imageUrl).pipe(
-          catchError(() => of(null)),
-          takeUntil(this.destroy$)
-        )
-      : of(null);
+    if (!imageUrl) {
+      return of(null);
+    }
+
+    this.uiFacade?.startLoading();
+
+    return this.staticAssetService.fetchAsset(imageUrl).pipe(
+      catchError(() => of(null)),
+      finalize(() => this.uiFacade?.finishLoading()),
+      takeUntil(this.destroy$)
+    );
   }
 
   public openEditProductDialog(product: Product, event?: MouseEvent): void {

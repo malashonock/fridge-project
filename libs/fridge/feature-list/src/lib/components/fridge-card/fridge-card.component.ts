@@ -4,15 +4,17 @@ import {
   Input,
   OnDestroy,
   OnInit,
+  Optional,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable, Subject, catchError, of, takeUntil } from 'rxjs';
+import { Observable, Subject, catchError, finalize, of, takeUntil } from 'rxjs';
 
 import { Fridge, ProductQuantity } from 'fridge-domain';
 import { FridgeFacade } from 'fridge-data-access';
 import { StaticAssetService } from 'shared-data-access';
 import { ConfirmDeleteComponent } from 'shared-ui';
 import { FileWithUrl } from 'shared-util-forms';
+import { UiFacade } from 'private-shared-data-access';
 
 import { FridgeFormComponent } from 'fridge-feature-form';
 
@@ -32,7 +34,8 @@ export class FridgeCardComponent implements OnInit, OnDestroy {
   public constructor(
     private dialog: MatDialog,
     private staticAssetService: StaticAssetService,
-    private fridgeFacade: FridgeFacade
+    private fridgeFacade: FridgeFacade,
+    @Optional() private uiFacade: UiFacade
   ) {}
 
   public ngOnInit(): void {
@@ -50,12 +53,17 @@ export class FridgeCardComponent implements OnInit, OnDestroy {
   }
 
   private fetchFridgeImage(): Observable<FileWithUrl | null> {
-    return this.fridge?.imageUrl
-      ? this.staticAssetService.fetchAsset(this.fridge.imageUrl).pipe(
-          catchError(() => of(null)),
-          takeUntil(this.destroy$)
-        )
-      : of(null);
+    if (!this.fridge?.imageUrl) {
+      return of(null);
+    }
+
+    this.uiFacade?.startLoading();
+
+    return this.staticAssetService.fetchAsset(this.fridge.imageUrl).pipe(
+      catchError(() => of(null)),
+      finalize(() => this.uiFacade?.finishLoading()),
+      takeUntil(this.destroy$)
+    );
   }
 
   public openEditFridgeDialog(): void {

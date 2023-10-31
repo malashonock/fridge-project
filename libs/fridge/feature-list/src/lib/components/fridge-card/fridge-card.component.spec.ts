@@ -10,6 +10,7 @@ import { StaticAssetUrlPipe } from 'shared-data-access';
 import { FridgeFacade } from 'fridge-data-access';
 
 import { FridgeCardComponent } from './fridge-card.component';
+import { UiFacade } from 'private-shared-data-access';
 
 describe('FridgeCardComponent', () => {
   let component: FridgeCardComponent;
@@ -35,6 +36,13 @@ describe('FridgeCardComponent', () => {
           useValue: {
             getFridgeProducts$: () => of([]),
             deleteFridge: jest.fn(),
+          },
+        },
+        {
+          provide: UiFacade,
+          useValue: {
+            startLoading: jest.fn(),
+            finishLoading: jest.fn(),
           },
         },
       ],

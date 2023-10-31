@@ -159,7 +159,10 @@ export class FridgeFormComponent implements OnInit, OnDestroy {
             };
           }
         ) || [],
-      imageUrl: this.form.value.image?.url || null,
+      imageUrl:
+        this.form.value.image?.serverUrl ||
+        this.form.value.image?.clientUrl ||
+        null,
     } as FridgeFields;
 
     switch (this.mode) {

@@ -11,6 +11,7 @@
     "product-feature-form": "^0.0.1",
     "product-ui": "^0.0.1",
     "product-data-access": "^0.0.1",
+    "private-shared-data-access": "^0.0.1",
     "shared-data-access": "^0.0.1",
     "shared-ui": "^0.0.1",
     "shared-util-forms": "^0.0.1"
