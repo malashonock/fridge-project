@@ -2,7 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FridgeUiModule } from 'fridge-ui';
-import { AnyPipe, MaterialModule, OrPipe, SearchBoxComponent } from 'shared-ui';
+import {
+  AnyPipe,
+  ImgSkeletonComponent,
+  MaterialModule,
+  OrPipe,
+  SearchBoxComponent,
+} from 'shared-ui';
 import { StaticAssetUrlPipe } from 'shared-data-access';
 
 import { FridgeCardComponent } from './components/fridge-card/fridge-card.component';
@@ -20,6 +26,7 @@ import { FridgesComponent } from './components/fridges/fridges.component';
     AnyPipe,
     OrPipe,
     SearchBoxComponent,
+    ImgSkeletonComponent,
   ],
   providers: [AnyPipe],
 })

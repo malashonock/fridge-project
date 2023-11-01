@@ -13,6 +13,7 @@ export * from './lib/components/menu-item/menu-item.component';
 export * from './lib/components/search-box/search-box.component';
 export * from './lib/modules/app-root/components/root/root.component';
 export * from './lib/components/page-not-found/page-not-found.component';
+export * from './lib/components/img-skeleton/img-skeleton.component';
 
 // Directives
 export * from './lib/directives/file-input/file-input.directive';

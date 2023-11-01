@@ -5,6 +5,7 @@
     [src]="product.imageUrl | staticAssetUrl"
     i18n-alt="@@productImageAltText"
     alt="Product photo"
+    libImgSkeleton
   />
   <div class="nutritional-facts">
     <p class="energy-value" *ngIf="product?.kiloCalories as kiloCalories">

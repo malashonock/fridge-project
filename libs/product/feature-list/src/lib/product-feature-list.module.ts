@@ -8,6 +8,7 @@ import {
   SearchBoxComponent,
   OrPipe,
   MoneyPipe,
+  ImgSkeletonComponent,
 } from 'shared-ui';
 import { StaticAssetUrlPipe } from 'shared-data-access';
 
@@ -31,6 +32,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     MoneyPipe,
     SearchBoxComponent,
     ProductUiModule,
+    ImgSkeletonComponent,
   ],
 })
 export class ProductFeatureListModule {}

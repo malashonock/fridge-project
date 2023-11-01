@@ -31,6 +31,7 @@ import {
 } from 'shared-util-forms';
 
 import { FileInputDirective } from '../../directives/file-input/file-input.directive';
+import { ImgSkeletonComponent } from '../img-skeleton/img-skeleton.component';
 
 const materialModules = [MatButtonModule];
 
@@ -51,6 +52,7 @@ const materialModules = [MatButtonModule];
     ReactiveFormsModule,
     FileInputDirective,
     materialModules,
+    ImgSkeletonComponent,
   ],
 })
 export class ImageUploaderComponent

@@ -18,6 +18,8 @@ $image-size: 10rem; // 160px
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  line-height: $image-size;
 }
 
 .image-preview {
