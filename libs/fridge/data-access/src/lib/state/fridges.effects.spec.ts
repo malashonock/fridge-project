@@ -11,7 +11,6 @@ import {
   mockFridges1,
 } from 'fridge-util-testing';
 import { FormDataService } from 'shared-util-forms';
-import { UiFacade } from 'private-shared-data-access';
 
 import { FridgeRepository } from '../repository/fridge.repository';
 import { FridgesActions } from './fridges.actions';
@@ -30,13 +29,6 @@ describe('Fridges feature effects', () => {
         FridgeRepository,
         FormDataService,
         provideMockActions(() => actions$),
-        {
-          provide: UiFacade,
-          useValue: {
-            startLoading: jest.fn(),
-            finishLoading: jest.fn(),
-          },
-        },
       ],
     });
 
