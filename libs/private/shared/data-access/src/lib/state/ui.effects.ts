@@ -32,20 +32,17 @@ export class UiEffects {
     );
   });
 
-  public loadingFinish$ = createEffect(
-    () => {
-      return this.actions$.pipe(
-        ofType(
-          FridgesActions.fetchFridgesSuccess,
-          FridgesActions.fetchFridgesFailure,
-          ProductsActions.fetchProductsSuccess,
-          ProductsActions.fetchProductsFailure
-        ),
-        map(() => {
-          return UiActions.finishLoading();
-        })
-      );
-    },
-    { dispatch: false }
-  );
+  public loadingFinish$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(
+        FridgesActions.fetchFridgesSuccess,
+        FridgesActions.fetchFridgesFailure,
+        ProductsActions.fetchProductsSuccess,
+        ProductsActions.fetchProductsFailure
+      ),
+      map(() => {
+        return UiActions.finishLoading();
+      })
+    );
+  });
 }
