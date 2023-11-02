@@ -47,6 +47,9 @@
       "rootDir/*": ["./*"],
       "shared-data-access": ["libs/shared/data-access/src/index.ts"],
       "shared-feature-map": ["libs/shared/feature-map/src/index.ts"],
+      "shared-feature-notifications": [
+        "libs/shared/feature-notifications/src/index.ts"
+      ],
       "shared-ui": ["libs/shared/ui/src/index.ts"],
       "shared-util-forms": ["libs/shared/util-forms/src/index.ts"],
       "shared-util-i18n": ["libs/shared/util-18n/src/index.ts"],
@@ -57,7 +60,8 @@
       "user-ui": ["libs/user/ui/src/index.ts"],
       "user-util-testing": ["libs/user/util-testing/src/index.ts"]
     },
-    "rootDir": "."
+    "rootDir": ".",
+    "skipLibCheck": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -1,0 +1,10 @@
+{
+  "name": "shared-feature-notifications",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/core": "^15.2.0",
+    "@angular/material": "^15.2.9"
+  },
+  "dependencies": {},
+  "sideEffects": false
+}
