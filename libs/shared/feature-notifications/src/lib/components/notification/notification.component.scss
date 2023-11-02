@@ -13,7 +13,7 @@
   padding: 0;
 }
 
-::ng-deep .mat-mdc-snack-bar-container:has([severity="info"]) {
+::ng-deep .mat-mdc-snack-bar-container:has([severity="success"]) {
   --mdc-snackbar-container-color: green;
 }
 

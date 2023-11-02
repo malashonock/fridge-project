@@ -46,6 +46,7 @@ const meta: Meta<TestHostComponent> = {
     severity: {
       options: [
         NotificationSeverity.Info,
+        NotificationSeverity.Success,
         NotificationSeverity.Warning,
         NotificationSeverity.Error,
       ],
@@ -53,6 +54,7 @@ const meta: Meta<TestHostComponent> = {
         type: 'select',
         labels: {
           [NotificationSeverity.Info]: 'NotificationSeverity.Info',
+          [NotificationSeverity.Success]: 'NotificationSeverity.Success',
           [NotificationSeverity.Warning]: 'NotificationSeverity.Warning',
           [NotificationSeverity.Error]: 'NotificationSeverity.Error',
         },
@@ -65,8 +67,15 @@ type Story = StoryObj<TestHostComponent>;
 
 export const Info: Story = {
   args: {
-    message: 'This is a neutral message',
+    message: 'This is an info message',
     severity: NotificationSeverity.Info,
+  },
+};
+
+export const Success: Story = {
+  args: {
+    message: 'This is a success message',
+    severity: NotificationSeverity.Success,
   },
 };
 
