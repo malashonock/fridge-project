@@ -10,3 +10,6 @@ export * from './lib/guards/authorization.guard';
 
 // Store facade
 export * from './lib/facade/auth.facade';
+
+// Store actions
+export * from './lib/state/auth.actions';

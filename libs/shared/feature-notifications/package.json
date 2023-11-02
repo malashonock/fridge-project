@@ -3,7 +3,12 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/core": "^15.2.0",
-    "@angular/material": "^15.2.9"
+    "@angular/material": "^15.2.9",
+    "@ngrx/effects": "^15.4.0",
+    "rxjs": "~7.8.0",
+    "user-data-access": "^0.0.1",
+    "product-data-access": "^0.0.1",
+    "fridge-data-access": "^0.0.1"
   },
   "dependencies": {},
   "sideEffects": false

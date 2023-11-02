@@ -5,6 +5,8 @@ import {
   type StoryObj,
   applicationConfig,
 } from '@storybook/angular';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { NotificationSeverity } from '../../types/notification-severity.enum';
 import { NotificationService } from '../../services/notification/notification.service';
@@ -39,6 +41,8 @@ const meta: Meta<TestHostComponent> = {
         provideAnimations(),
         NotificationService,
         importProvidersFrom(SharedFeatureNotificationsModule),
+        importProvidersFrom(StoreModule.forRoot()),
+        importProvidersFrom(EffectsModule.forRoot()),
       ],
     }),
   ],

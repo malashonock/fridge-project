@@ -10,5 +10,8 @@ export * from './lib/configs/weight-units.config';
 // Store facade
 export * from './lib/facade/product.facade';
 
+// Store actions
+export * from './lib/state/products.actions';
+
 // Shared store selectors
 export { selectAllProducts } from './lib/state/products.selectors';

@@ -8,6 +8,7 @@ import { AppRootModule, RootComponent } from 'shared-ui';
 import { UserDataAccessModule } from 'user-data-access';
 import { RootStoreModule, SharedDataAccessModule } from 'shared-data-access';
 import { SharedFeatureMapModule } from 'shared-feature-map';
+import { SharedFeatureNotificationsModule } from 'shared-feature-notifications';
 
 import { appRoutes } from './app.routes';
 import { environment } from '../environments/environment';
@@ -22,6 +23,7 @@ import { environment } from '../environments/environment';
     RootStoreModule,
     UserDataAccessModule,
     SharedFeatureMapModule.forRoot(),
+    SharedFeatureNotificationsModule,
     RouterModule.forRoot(appRoutes, {
       initialNavigation: 'enabledBlocking',
       enableTracing: isDevMode(),
