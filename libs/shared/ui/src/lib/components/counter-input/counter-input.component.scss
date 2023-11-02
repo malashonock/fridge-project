@@ -1,0 +1,35 @@
+@import '../../../styles/mixins';
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem; // 8px
+  padding: 0.5rem; // 8px
+  padding-bottom: 0;
+  width: 10rem; // 160px
+}
+
+.counter-field {
+  ::ng-deep .mat-mdc-form-field-infix {
+    padding-top: 0.5rem; // 4px
+    padding-bottom: 0.5rem; // 4px
+    height: 100%;
+    min-height: 0;
+  }
+}
+
+.counter-input {
+  text-align: center;
+  font-size: 0.875rem; // 14px
+}
+
+.control-btn {
+  @include mat-icon-btn-resize(2rem); // 32px
+}
+
+.errors {
+  font-size: 0.75rem; // 12px
+  padding-bottom: 0.5rem; // 8px
+  text-align: center;
+}

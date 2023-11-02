@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem; // 4px
+  color: white;
+
+  // Inherit border radius
+  border-radius: var(--mdc-snackbar-container-shape, var(--mdc-shape-small, 4px));
+}
+
+::ng-deep .mdc-snackbar__surface {
+  padding: 0;
+}
+
+::ng-deep .mat-mdc-snack-bar-container:has([severity="success"]) {
+  --mdc-snackbar-container-color: green;
+}
+
+::ng-deep .mat-mdc-snack-bar-container:has([severity="warning"]) {
+  --mdc-snackbar-container-color: orange;
+}
+
+::ng-deep .mat-mdc-snack-bar-container:has([severity="error"]) {
+  --mdc-snackbar-container-color: red;
+}
+
+button[matSnackBarAction] {
+  margin: 0.25rem; // 4px
+}

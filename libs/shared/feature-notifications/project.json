@@ -1,0 +1,95 @@
+{
+  "name": "shared-feature-notifications",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/feature-notifications/src",
+  "prefix": "lib",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/shared/feature-notifications//ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/shared/feature-notifications//tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/shared/feature-notifications//tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/shared/feature-notifications/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/feature-notifications//**/*.ts",
+          "libs/shared/feature-notifications//**/*.html",
+          "libs/shared/feature-notifications/package.json"
+        ]
+      }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "libs/shared/feature-notifications/.storybook",
+        "browserTarget": "shared-feature-notifications:build-storybook",
+        "compodoc": false,
+        "styles": [
+          "@angular/material/prebuilt-themes/indigo-pink.css"
+        ]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/shared-feature-notifications",
+        "configDir": "libs/shared/feature-notifications/.storybook",
+        "browserTarget": "shared-feature-notifications:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "shared-feature-notifications:build-storybook",
+        "staticFilePath": "dist/storybook/shared-feature-notifications"
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "shared-feature-notifications:build-storybook:ci"
+        }
+      }
+    }
+  }
+}

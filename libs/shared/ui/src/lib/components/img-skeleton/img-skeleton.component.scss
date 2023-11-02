@@ -1,0 +1,43 @@
+:host(.loading) {
+  background-color: #eeeeee; // Material Gray 200
+  position: relative;
+  overflow: hidden;
+  color: transparent;
+}
+
+:host(.loading)::after {
+  display: block;
+  position: absolute;
+  content: '';
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    rgba(white, 0.3),
+    transparent
+  );
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  transform: translate(-100%, -100%);
+  animation-name: wave;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+:host(.load-error) {
+  color: black;
+  border: 2px solid black;
+}
+
+@keyframes wave {
+  0% {
+    transform: translate(-100%, -100%);
+  }
+  50% {
+    transform: translate(100%, -100%);
+  }
+  100% {
+    transform: translate(100%, -100%);
+  }
+}

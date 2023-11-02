@@ -32,8 +32,8 @@
     {
       "id": 1,
       "name": "Chicken broth",
-      "ingredients": "Chicken broth, egg, dill, croutons",
       "category": "Soups",
+      "ingredients": "Chicken broth, egg, dill, croutons",
       "price": 4.2,
       "weight": {
         "value": 250,

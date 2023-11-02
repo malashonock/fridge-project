@@ -1,0 +1,78 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": ["ES2022", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "auth-feature-main": ["libs/auth/feature-main/src/index.ts"],
+      "fridge-data-access": ["libs/fridge/data-access/src/index.ts"],
+      "fridge-domain": ["libs/fridge/domain/src/index.ts"],
+      "fridge-feature-form": ["libs/fridge/feature-form/src/index.ts"],
+      "fridge-feature-list": ["libs/fridge/feature-list/src/index.ts"],
+      "fridge-feature-map": ["libs/fridge/feature-map/src/index.ts"],
+      "fridge-ui": ["libs/fridge/ui/src/index.ts"],
+      "fridge-util-testing": ["libs/fridge/util-testing/src/index.ts"],
+      "private-admin-feature-main": [
+        "libs/private/admin/feature-main/src/index.ts"
+      ],
+      "private-shared-data-access": [
+        "libs/private/shared/data-access/src/index.ts"
+      ],
+      "private-shared-feature-layout": [
+        "libs/private/shared/feature-layout/src/index.ts"
+      ],
+      "product-data-access": ["libs/product/data-access/src/index.ts"],
+      "product-domain": ["libs/product/domain/src/index.ts"],
+      "product-feature-form": ["libs/product/feature-form/src/index.ts"],
+      "product-feature-list": ["libs/product/feature-list/src/index.ts"],
+      "product-ui": ["libs/product/ui/src/index.ts"],
+      "product-util-testing": ["libs/product/util-testing/src/index.ts"],
+      "rootDir/*": ["./*"],
+      "shared-data-access": ["libs/shared/data-access/src/index.ts"],
+      "shared-feature-map": ["libs/shared/feature-map/src/index.ts"],
+      "shared-feature-notifications": [
+        "libs/shared/feature-notifications/src/index.ts"
+      ],
+      "shared-ui": ["libs/shared/ui/src/index.ts"],
+      "shared-util-forms": ["libs/shared/util-forms/src/index.ts"],
+      "shared-util-i18n": ["libs/shared/util-18n/src/index.ts"],
+      "shared-util-regex": ["libs/shared/util-regex/src/index.ts"],
+      "user-data-access": ["libs/user/data-access/src/index.ts"],
+      "user-domain": ["libs/user/domain/src/index.ts"],
+      "user-feature-forms": ["libs/user/feature-forms/src/index.ts"],
+      "user-ui": ["libs/user/ui/src/index.ts"],
+      "user-util-testing": ["libs/user/util-testing/src/index.ts"]
+    },
+    "rootDir": ".",
+    "skipLibCheck": true
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "extendedDiagnostics": {
+      "checks": {
+        "optionalChainNotNullable": "suppress"
+      }
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

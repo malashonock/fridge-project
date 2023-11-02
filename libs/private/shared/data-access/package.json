@@ -1,0 +1,14 @@
+{
+  "name": "private-shared-data-access",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/core": "^15.2.0",
+    "rxjs": "~7.8.0",
+    "@ngrx/store": "^15.4.0",
+    "@ngrx/effects": "^15.4.0",
+    "product-data-access": "^0.0.1",
+    "fridge-data-access": "^0.0.1"
+  },
+  "dependencies": {},
+  "sideEffects": false
+}
